@@ -40,8 +40,9 @@ public class TipSpawner : MonoBehaviour
 
         for (int i = 0; i < tipsCount; i++)
         {
-            var tipPos = transform.GetChild(spawnPos.ElementAt(i)).GetComponent<TipPosition>();
-            tipPos.tip = tips.transform.GetChild(i).GetComponent<Image>();
+            var tipPos = transform.GetChild(spawnPos.ElementAt(i));
+            tipPos.gameObject.SetActive(true);
+            tipPos.GetComponent<TipPosition>().tip = tips.transform.GetChild(i).GetComponent<Image>();
         }
     }
 
