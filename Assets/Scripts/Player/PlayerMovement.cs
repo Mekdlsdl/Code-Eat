@@ -8,9 +8,11 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float stickSensitivity;
     private PlayerConfiguration playerConfig;
+    public PlayerConfiguration PlayerConfig => playerConfig;
     private Rigidbody2D playerRb;
     private Animator playerAnim;
     private Vector2 movement;
+    private bool isBusy;
 
     void OnDisable()
     {
@@ -18,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (isBusy)
+            return;
+        
         movement = playerConfig.Input.actions["Move"].ReadValue<Vector2>();
 
         if (DetectInput(movement))
@@ -55,5 +60,10 @@ public class PlayerMovement : MonoBehaviour
     private bool DetectInput(Vector2 move)
     {
         return (move.x >= stickSensitivity || move.x <= -stickSensitivity || move.y >= stickSensitivity || move.y <= -stickSensitivity);
+    }
+
+    public void SetBusyState(bool state)
+    {
+        isBusy = state;
     }
 }
