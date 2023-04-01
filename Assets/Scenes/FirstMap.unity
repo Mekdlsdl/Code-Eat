@@ -2300,7 +2300,7 @@ GameObject:
   - component: {fileID: 628206182}
   - component: {fileID: 628206183}
   m_Layer: 0
-  m_Name: TipSpawn
+  m_Name: TipPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
