@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRb;
     private Animator playerAnim;
     private Vector2 movement;
-    private bool isBusy;
 
     void OnDisable()
     {
@@ -20,9 +19,6 @@ public class PlayerMovement : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (isBusy)
-            return;
-        
         movement = playerConfig.Input.actions["Move"].ReadValue<Vector2>();
 
         if (DetectInput(movement))
@@ -51,19 +47,8 @@ public class PlayerMovement : MonoBehaviour
         playerConfig.Input.SwitchCurrentActionMap("MapControl");
         playerAnim.SetFloat("moveY", -1);
     }
-
-    private bool PressKey(string input_tag)
-    {
-        return playerConfig.Input.actions[input_tag].triggered;
-    }
-
     private bool DetectInput(Vector2 move)
     {
         return (move.x >= stickSensitivity || move.x <= -stickSensitivity || move.y >= stickSensitivity || move.y <= -stickSensitivity);
-    }
-
-    public void SetBusyState(bool state)
-    {
-        isBusy = state;
     }
 }

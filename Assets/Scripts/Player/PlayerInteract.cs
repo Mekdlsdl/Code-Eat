@@ -8,25 +8,31 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject exclamationMark;
     private TipPosition tipPos;
     private GameObject tipObject;
-    private bool isViewingTip = false;
+
+    private static TipPosition viewingTipPos;
+    private static GameObject viewingTipObject;
+    private static bool isViewingTip = false;
 
     void Update()
     {
-        if (exclamationMark.activeSelf)
+        if (exclamationMark.activeSelf && PressKey(InputType.SOUTHBUTTON))
         {
-            if (PressKey(InputType.SOUTHBUTTON))
+            if (!isViewingTip)
             {
-                if (!isViewingTip) {
-                    Time.timeScale = 0;
-                    isViewingTip = true;
-                    tipObject.SetActive(true);
-                }
-                else {
-                    Time.timeScale = 1;
-                    isViewingTip = false;
-                    tipObject.SetActive(false);
-                    tipPos.DisableTrigger();
-                }
+                viewingTipObject = tipObject;
+                viewingTipPos = tipPos;
+
+                Time.timeScale = 0;
+                isViewingTip = true;
+                viewingTipObject.SetActive(true);
+            }
+            else
+            {
+                Time.timeScale = 1;
+                isViewingTip = false;
+                viewingTipObject.SetActive(false);
+
+                viewingTipPos.DisableTrigger();
             }
         }
     }

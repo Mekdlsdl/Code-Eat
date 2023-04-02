@@ -5,28 +5,62 @@ using UnityEngine;
 public class BasicBehaviour : MonoBehaviour
 {
     [SerializeField] private float speed;
-    [SerializeField] private float range;
-    [SerializeField] private float maxDistance;
+    [SerializeField] private float directionChangeInterval = 0.5f;
+    [SerializeField] private float detectionRadius = 3f;
+    [SerializeField] private LayerMask obstacleLayer;
 
+    private Transform detectedPlayer;
     private Vector2 wayPoint;
+    private Vector3 moveDir, lastDir;
 
-    void Start()
+    private float directionTimer = 0f;
+    
+
+    void FixedUpdate()
     {
-        SetNewDestination();
-    }
-
-    void Update()
-    {
-        transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, wayPoint) < range)
+        if (DetectPlayer())
         {
-            SetNewDestination();
+            // 플레이어로부터 멀어진다
+            moveDir = transform.position - detectedPlayer.position;
+            lastDir = moveDir;
         }
+        else
+        {   
+            // 랜덤으로 움직인다
+            if (Time.time >= directionTimer)
+            {
+                if (lastDir != Vector3.zero) {
+                    moveDir = lastDir;
+                    lastDir = Vector3.zero;
+                }
+                else
+                    moveDir = Random.insideUnitCircle;
+                directionTimer = Time.time + directionChangeInterval;
+            }
+        }
+        DetectObstacle();
+        transform.Translate(moveDir.normalized * speed * Time.deltaTime);
     }
 
-    void SetNewDestination()
+    private bool DetectPlayer()
     {
-        wayPoint = new Vector2(Random.Range(-maxDistance, maxDistance + 1), Random.Range(-maxDistance, maxDistance + 1));
+        foreach (Transform player in PlayerSpawn.instance.PlayerTransforms) {
+            if (Vector2.Distance(transform.position, player.position) < detectionRadius) {
+                detectedPlayer = player;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void DetectObstacle()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, moveDir, 1.5f, obstacleLayer);
+
+        if (hit.collider != null) {
+            Vector2 newDir = Vector2.Perpendicular(hit.normal);
+            moveDir = Vector2.Lerp(moveDir, newDir, 0.5f);
+            directionTimer = Time.time + directionChangeInterval;
+        }
     }
 }

@@ -11,11 +11,12 @@ GameObject:
   - component: {fileID: 5451973936217363300}
   - component: {fileID: 5028223099500427346}
   - component: {fileID: 8853504405461695884}
+  - component: {fileID: 1082885202673807613}
   - component: {fileID: 218015112075004807}
   - component: {fileID: 1624947809066870561}
   - component: {fileID: 5225066271476826053}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Enemy2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,6 +67,20 @@ MonoBehaviour:
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &1082885202673807613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3410110253856684642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 292403ef0e256864bb772127ee4ebcde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 4
+  range: 0.5
 --- !u!212 &218015112075004807
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -108,7 +123,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.8679245, g: 0.289854, b: 0.289854, a: 1}
+  m_Color: {r: 0.38825205, g: 0.445271, b: 0.7169812, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
