@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour
 
     public List<Color32> PlayerColors = new List<Color32>();
 
-
     void Awake()
     {
         if (instance != null)
@@ -49,6 +48,13 @@ public class GameManager : MonoBehaviour
         }
         Debug.LogError($"Character Name '{target_name}' not found.");
         return null;
+    }
+
+    public void ChangeActionMaps(string map_name)
+    {
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
+            playerConfig.Input.SwitchCurrentActionMap(map_name);
+        }
     }
 }
 

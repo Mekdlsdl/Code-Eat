@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float moveSpeed;
     public float stickSensitivity;
     private PlayerConfiguration playerConfig;
+    public PlayerConfiguration PlayerConfig => playerConfig;
     private Rigidbody2D playerRb;
     private Animator playerAnim;
     private Vector2 movement;
@@ -43,15 +44,8 @@ public class PlayerMovement : MonoBehaviour
         playerAnim.runtimeAnimatorController = GameManager.instance.GetCharAnimControl(playerConfig.CharacterType);
 
         playerConfig.Input.actions["Move"].Enable();
-        playerConfig.Input.SwitchCurrentActionMap("MapControl");
         playerAnim.SetFloat("moveY", -1);
     }
-
-    private bool PressKey(string input_tag)
-    {
-        return playerConfig.Input.actions[input_tag].triggered;
-    }
-
     private bool DetectInput(Vector2 move)
     {
         return (move.x >= stickSensitivity || move.x <= -stickSensitivity || move.y >= stickSensitivity || move.y <= -stickSensitivity);

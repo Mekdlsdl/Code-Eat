@@ -6,18 +6,19 @@ using UnityEngine.UI;
 
 public class TipSpawner : MonoBehaviour
 {
+    public EnemySpawner enemySpawner;
     [SerializeField] private GameObject tips;
+    private int tipsCount;
 
     private void Awake()
     {
+        tipsCount = tips.transform.childCount;
         Spawn(GetRandomPos());
     }
 
     private HashSet<int> GetRandomPos()
     {
         var spawnPos = new HashSet<int>();
-
-        int tipsCount = tips.transform.childCount;
         int spawnCount = transform.childCount;
 
         int i = 0;
@@ -36,13 +37,11 @@ public class TipSpawner : MonoBehaviour
 
     private void Spawn(HashSet<int> spawnPos)
     {
-        int tipsCount = tips.transform.childCount;
-
         for (int i = 0; i < tipsCount; i++)
         {
             var tipPos = transform.GetChild(spawnPos.ElementAt(i));
             tipPos.gameObject.SetActive(true);
-            tipPos.GetComponent<TipPosition>().tip = tips.transform.GetChild(i).GetComponent<Image>();
+            tipPos.GetComponent<TipPosition>().tip = tips.transform.GetChild(i).gameObject;
         }
     }
 
