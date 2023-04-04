@@ -15,9 +15,9 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        if (exclamationMark.activeSelf && PressKey(InputType.SOUTHBUTTON))
+        if (PressKey(InputType.SOUTHBUTTON))
         {
-            if (!isViewingTip)
+            if (exclamationMark.activeSelf && !isViewingTip)
             {
                 viewingTipObject = tipObject;
                 viewingTipPos = tipPos;
@@ -25,8 +25,9 @@ public class PlayerInteract : MonoBehaviour
                 Time.timeScale = 0;
                 isViewingTip = true;
                 viewingTipObject.SetActive(true);
+                SetExclamation(false);
             }
-            else
+            else if (isViewingTip)
             {
                 Time.timeScale = 1;
                 isViewingTip = false;
@@ -41,12 +42,12 @@ public class PlayerInteract : MonoBehaviour
     {
         tipObject = tip;
         tipPos = tip_pos;
-        exclamationMark.SetActive(true);
+        SetExclamation(true);
     }
 
-    public void DisableTip()
+    public void SetExclamation(bool state)
     {
-        exclamationMark.SetActive(false);
+        exclamationMark.SetActive(state);
     }
 
     private bool PressKey(string input_tag)

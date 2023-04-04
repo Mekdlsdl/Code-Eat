@@ -44,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
         playerAnim.runtimeAnimatorController = GameManager.instance.GetCharAnimControl(playerConfig.CharacterType);
 
         playerConfig.Input.actions["Move"].Enable();
-        playerConfig.Input.SwitchCurrentActionMap("MapControl");
         playerAnim.SetFloat("moveY", -1);
     }
     private bool DetectInput(Vector2 move)

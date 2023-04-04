@@ -16,7 +16,7 @@ public class TipPosition : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other) {
         if (tip)
-            other.GetComponent<PlayerInteract>().DisableTip();
+            other.GetComponent<PlayerInteract>().SetExclamation(false);
     }
 
     public void DisableTrigger()
