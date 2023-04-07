@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Pool;
 
-public class PlayerBattleMode : MonoBehaviour
+public class PlayerBattleMode : BulletLauncher
 {
     private PlayerConfiguration playerConfig;
     [SerializeField] private Sprite playerBattleSprite;
@@ -17,9 +18,14 @@ public class PlayerBattleMode : MonoBehaviour
 
     private void Update()
     {
+        Fire();
+    }
+
+    private void Fire()
+    {
         if (PressKey("Fire"))
-            Debug.Log("Fire");
-        
+            OnFire();
+
     }
 
     private bool PressKey(string input_tag)
