@@ -6,6 +6,8 @@ TagManager:
   tags:
   - StartingLayout
   - BorderLine
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

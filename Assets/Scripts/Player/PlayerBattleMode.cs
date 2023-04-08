@@ -5,7 +5,7 @@ using UnityEngine.Pool;
 
 public class PlayerBattleMode : BulletLauncher
 {
-    private PlayerConfiguration playerConfig;
+    [field: SerializeField] public PlayerConfiguration playerConfig { get; private set; }
     [SerializeField] private Sprite playerBattleSprite;
     private SpriteRenderer spriter;
     
