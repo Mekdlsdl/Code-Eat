@@ -5979,7 +5979,7 @@ MonoBehaviour:
   - {x: -1.53, y: -0.99, z: 0}
   - {x: 1.13, y: -0.99, z: 0}
   playerPrefab: {fileID: 947246544889468303, guid: fd396b642794c974994d3ddb8754f923, type: 3}
-  battlePlayerPrefab: {fileID: 2863237812454940390, guid: 66cf2afee436cd54392c62090cf3dc6b, type: 3}
+  battlePlayerPrefab: {fileID: 2904239054474068481, guid: 5e787fa726df4054fbda4f1284984b34, type: 3}
 --- !u!4 &1316194526
 Transform:
   m_ObjectHideFlags: 0

@@ -33,7 +33,7 @@ public class PlayerSpawn : MonoBehaviour
             player.GetComponent<PlayerMovement>().Init(playerConfigs[i]);
 
             var player_battle = Instantiate(battlePlayerPrefab, BattlePlayerSpawn);
-            player_battle.GetComponent<PlayerBattle>().Init(playerConfigs[i]);
+            player_battle.GetComponent<PlayerBattleMode>().Init(playerConfigs[i]);
         }
     }
 

@@ -17,7 +17,7 @@ public class EnemyEncounter : MonoBehaviour
         Debug.Log("적과 접촉 감지, 문제풀이 모드로 들어갑니다.");
 
         Time.timeScale = 0;
-        GameManager.instance.ChangeActionMaps("ProblemMode");
+        GameManager.instance.ChangeActionMaps("BattleMode");
         
         ProblemManager problemManager = PlayerSpawn.instance.problemManager;
         problemManager.problemType = problemType;
