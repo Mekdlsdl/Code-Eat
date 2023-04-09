@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bullet : MonoBehaviour
+public class Bullet : Poolable
 {
     private Rigidbody2D rb;
+    [SerializeField] private GameObject explosion;
     [field: SerializeField] public int damage { get; } = 10;
     [SerializeField] private float speed = 10.0f;
-    IObjectPool<Bullet> bulletPool;
 
     private void Awake()
     {
@@ -20,16 +20,13 @@ public class Bullet : MonoBehaviour
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
     }
 
-    public void SetPool(IObjectPool<Bullet> pool)
-    {
-        bulletPool = pool;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("BorderLine") || collision.CompareTag("Enemy"))
         {
-            bulletPool.Release(this);
+            Explode();
+            pool.Release(this);
+            
             if (collision.CompareTag("Enemy"))
             {
                 Enemy enemy = collision.GetComponent<Enemy>();
@@ -43,6 +40,12 @@ public class Bullet : MonoBehaviour
 
         }
         
+    }
+
+    private void Explode()
+    {
+        var pos = transform.position;
+        Instantiate(explosion, new Vector2(pos.x - 1.5f, pos.y), Quaternion.identity);
     }
 
 

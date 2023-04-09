@@ -470,7 +470,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f50d58924cdd34eb11f7ba44d51671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
+  prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
+  maxSize: 5
   playerBattleSprite: {fileID: -1502876139, guid: 3f8a696605f31c04689cd58068748be5, type: 3}
 --- !u!1 &3688279340931359503
 GameObject:

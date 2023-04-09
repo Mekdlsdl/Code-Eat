@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PlayerBattleMode : BulletLauncher
+public class PlayerBattleMode : ObjectPooler
 {
-    [field: SerializeField] public PlayerConfiguration playerConfig { get; private set; }
-    [SerializeField] private Sprite playerBattleSprite;
+    public PlayerConfiguration playerConfig { get; private set; }
     private SpriteRenderer spriter;
+
+    [Header("Battle Sprite")]
+    [SerializeField] private Sprite playerBattleSprite;
     
     public void Init(PlayerConfiguration player_config)
     {
@@ -24,7 +26,12 @@ public class PlayerBattleMode : BulletLauncher
     private void Fire()
     {
         if (PressKey("Fire"))
-            OnFire();
+        {
+            var bullet = pool.Get();
+            var bulletPos = new Vector2(transform.position.x + 0.8f, transform.position.y);
+            bullet.transform.position = bulletPos;
+            bullet.GetComponent<Bullet>().Fire();
+        }
 
     }
 
