@@ -472,7 +472,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
   maxSize: 5
-  playerBattleSprite: {fileID: -1502876139, guid: 3f8a696605f31c04689cd58068748be5, type: 3}
+  playerBattleSprite: {fileID: 21300000, guid: 5134b7b9b37671b4fbff4adbbf905a49, type: 3}
 --- !u!1 &3688279340931359503
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,6 @@ public class Problem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerConfig.Input.action[].triggered;
+        //playerConfig.Input.action[].triggered;
     }
 }

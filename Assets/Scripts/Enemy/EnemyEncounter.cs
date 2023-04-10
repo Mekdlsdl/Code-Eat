@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyEncounter : MonoBehaviour
 {
-    [SerializeField] private GameObject problemType;
+    [SerializeField] private EnemyType enemyType;
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player") {
@@ -20,7 +20,7 @@ public class EnemyEncounter : MonoBehaviour
         GameManager.instance.ChangeActionMaps("BattleMode");
         
         ProblemManager problemManager = PlayerSpawn.instance.problemManager;
-        problemManager.problemType = problemType;
+        problemManager.enemyType = enemyType;
         problemManager.gameObject.SetActive(true);
 
         yield return StartCoroutine(CoroutineUtilities.WaitForRealTime(1f));

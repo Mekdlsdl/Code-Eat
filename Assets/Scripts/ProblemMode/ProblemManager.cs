@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class ProblemManager : MonoBehaviour
 {
+    public ProblemType problemType;
+
     //[System.NonSerialized]
-    public GameObject problemType;
+    public EnemyType enemyType;
+
+    
+}
+
+public enum ProblemType
+{
+    DataStructure
 }
