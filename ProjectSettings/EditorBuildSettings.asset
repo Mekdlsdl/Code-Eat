@@ -11,5 +11,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FirstMap.unity
     guid: c839a419d08cb0146ab5f71e6263c609
+  - enabled: 1
+    path: Assets/Scenes/Problem.unity
+    guid: 81cc9056cd9da4d12900465cdf3b293b
+  - enabled: 1
+    path: Assets/Scenes/Battle.unity
+    guid: fb8d59c07e3b72149a0f5c21060d1e31
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3c7d67cb829dafd498ccc28b06398d38, type: 2}

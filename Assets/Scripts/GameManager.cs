@@ -40,6 +40,19 @@ public class GameManager : MonoBehaviour
         };
     }
 
+    // 하연 : MapSelect 화면에서 바로 공격 모드로 진입하여 테스트할 수 있도록 추가
+    public void LoadMapForTest(string sceneName, string actionMapName)
+    {
+        var process = SceneManager.LoadSceneAsync($"{sceneName}");
+        process.completed += (AsyncOperation operation) =>
+        {
+            PlayerSpawn.instance.SpawnPlayersForTest(actionMapName);
+            return;
+        };
+        
+    }
+    //
+
     public RuntimeAnimatorController GetCharAnimControl(string target_name)
     {
         for (int i = 0; i < unlockedCharacters.Count; i++) {
