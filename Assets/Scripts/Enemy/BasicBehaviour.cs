@@ -10,14 +10,24 @@ public class BasicBehaviour : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
 
     private Transform detectedPlayer;
+    private Rigidbody2D rb;
     private Vector2 wayPoint;
     private Vector3 moveDir, lastDir;
 
     private float directionTimer = 0f;
     
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void FixedUpdate()
     {
+        if (GameManager.isProblemMode) {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        
         if (DetectPlayer())
         {
             // 플레이어로부터 멀어진다
