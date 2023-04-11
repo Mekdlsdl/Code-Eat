@@ -33,9 +33,13 @@ public class BasicBehaviour2 : MonoBehaviour
 
         SetNewDestination();
     }
-
     void FixedUpdate()
     {
+        if (GameManager.isProblemMode) {
+            rb.velocity = Vector2.zero;
+            return;
+        }
+        
         if (Vector2.Distance(transform.position, wayPoint) < range)
         {
             SetNewDestination();

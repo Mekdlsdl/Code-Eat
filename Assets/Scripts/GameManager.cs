@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
 
     public List<Color32> PlayerColors = new List<Color32>();
 
+    public static bool isProblemMode = false;
+
     void Awake()
     {
         if (instance != null)

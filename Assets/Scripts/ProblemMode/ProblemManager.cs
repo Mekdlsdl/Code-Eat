@@ -9,6 +9,10 @@ public class ProblemManager : MonoBehaviour
     //[System.NonSerialized]
     public EnemyType enemyType;
 
+    void OnEnable()
+    {
+        
+    }
     
 }
 
