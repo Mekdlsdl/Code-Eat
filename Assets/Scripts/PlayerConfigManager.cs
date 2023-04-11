@@ -51,6 +51,7 @@ public class PlayerConfiguration
     public PlayerInput Input { get; set; }
     public int PlayerScore { get; set; }
     public int PlayerIndex { get; set; }
+    public int PlayerHp { get; set; }
     public bool IsReady { get; set; }
     public string CharacterType { get; set; }
 }

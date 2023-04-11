@@ -13,18 +13,24 @@ public class Bullet : Poolable
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        
     }
 
     public void Fire()
     {
         rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        Explode();
     }
 
+    private void Explode()
+    {
+        Instantiate(explosion, transform.position, Quaternion.identity);
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("BorderLine") || collision.CompareTag("Enemy"))
         {
-            Explode();
             pool.Release(this);
             
             if (collision.CompareTag("Enemy"))
@@ -42,11 +48,7 @@ public class Bullet : Poolable
         
     }
 
-    private void Explode()
-    {
-        var pos = transform.position;
-        Instantiate(explosion, new Vector2(pos.x - 1.5f, pos.y), Quaternion.identity);
-    }
+
 
 
 }
