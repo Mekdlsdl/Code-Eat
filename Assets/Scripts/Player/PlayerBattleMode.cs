@@ -7,6 +7,7 @@ public class PlayerBattleMode : ObjectPooler
 {
     public PlayerConfiguration playerConfig { get; private set; }
     private SpriteRenderer spriter;
+    private Animator animator;
 
     [Header("Battle Sprite")]
     [SerializeField] private Sprite playerBattleSprite;
@@ -15,6 +16,7 @@ public class PlayerBattleMode : ObjectPooler
     {
         playerConfig = player_config;
         spriter = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
         spriter.sprite = playerBattleSprite;
     }
 
@@ -31,6 +33,8 @@ public class PlayerBattleMode : ObjectPooler
             var bulletPos = new Vector2(transform.position.x + 0.8f, transform.position.y);
             bullet.transform.position = bulletPos;
             bullet.GetComponent<Bullet>().Fire();
+            PlayAnimation();
+
         }
 
     }
@@ -38,6 +42,12 @@ public class PlayerBattleMode : ObjectPooler
     private bool PressKey(string input_tag)
     {
         return playerConfig.Input.actions[input_tag].triggered;
+    }
+
+    private void PlayAnimation()
+    {
+        animator.enabled = true;
+        animator.SetTrigger("Shoot");
     }
 
 }

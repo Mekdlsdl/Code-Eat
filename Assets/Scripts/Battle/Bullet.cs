@@ -26,7 +26,7 @@ public class Bullet : Poolable
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("BorderLine") || collision.CompareTag("Enemy"))
