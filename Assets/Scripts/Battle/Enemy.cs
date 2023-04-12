@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float hp { get; private set; } = 100;
+    [SerializeField] public float hp { get; set; } = 30;
     public bool isDead { get; private set; } = false;
     private Rigidbody2D rb;
     private Vector2 pos;
-    private float maxX = 6.0f;
-    [SerializeField] private float speed = 5.0f;
+    private float maxX = 7.0f;
+    [field: SerializeField] public float speed { get; set; } = 5.0f;
+    [field: SerializeField] public float maxSpeed { get; private set; } = 10.0f;
 
     private void Awake()
     {
@@ -19,9 +20,20 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
+        if (!BattleManager.instance.isBattleMode || isDead)
+            return;
+        Move();
+
+    }
+
+    private void Move()
+    {
         Vector2 v = pos;
         v.x += maxX * Mathf.Sin(Time.time * speed);
         transform.position = v;
+        speed += Time.deltaTime;
+        if (speed > maxSpeed)
+            speed = maxSpeed;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

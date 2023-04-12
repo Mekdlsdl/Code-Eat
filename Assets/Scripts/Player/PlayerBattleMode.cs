@@ -6,6 +6,7 @@ using UnityEngine.Pool;
 public class PlayerBattleMode : ObjectPooler
 {
     public PlayerConfiguration playerConfig { get; private set; }
+    private bool isCorrect = true;
     private SpriteRenderer spriter;
     private Animator animator;
 
@@ -22,7 +23,8 @@ public class PlayerBattleMode : ObjectPooler
 
     private void Update()
     {
-        Fire();
+        if (BattleManager.instance.isBattleMode && isCorrect)
+            Fire();
     }
 
     private void Fire()

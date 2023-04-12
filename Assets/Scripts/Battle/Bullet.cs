@@ -24,7 +24,10 @@ public class Bullet : Poolable
 
     private void Explode()
     {
-        Instantiate(explosion, transform.position, Quaternion.identity);
+        var pos = transform.position;
+        pos.x -= 0.8f - 0.35f;
+        pos.y += 1.0f;
+        Instantiate(explosion, pos, Quaternion.identity);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,9 +41,9 @@ public class Bullet : Poolable
                 Enemy enemy = collision.GetComponent<Enemy>();
                 if (!enemy.isDead)
                 {
-                PlayerBattleMode player = transform.parent.GetComponent<PlayerBattleMode>();
-                player.playerConfig.PlayerScore += this.damage;
-                Debug.Log($"플레이어 {player.playerConfig.PlayerIndex} 점수: " + player.playerConfig.PlayerScore);
+                    PlayerBattleMode player = transform.parent.GetComponent<PlayerBattleMode>();
+                    player.playerConfig.PlayerScore += this.damage;
+                    Debug.Log($"플레이어 {player.playerConfig.PlayerIndex} 점수: " + player.playerConfig.PlayerScore);
                 }
             }
 
