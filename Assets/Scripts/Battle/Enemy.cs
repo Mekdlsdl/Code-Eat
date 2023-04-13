@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float hp { get; set; } = 30;
+    [SerializeField] public float hp { get; set; } = 50;
     public bool isDead { get; private set; } = false;
     private Rigidbody2D rb;
     private Vector2 pos;
     private float maxX = 7.0f;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
-    [field: SerializeField] public float maxSpeed { get; private set; } = 10.0f;
+    [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
+    [SerializeField] private float maxSpeed = 10.0f;
 
     private void Awake()
     {
@@ -41,6 +42,8 @@ public class Enemy : MonoBehaviour
         if (!collision.CompareTag("Bullet"))
             return;
 
+        StartCoroutine(Stop());
+
         Bullet bullet = collision.GetComponent<Bullet>();
 
         if (hp - bullet.damage <= 0)
@@ -52,5 +55,12 @@ public class Enemy : MonoBehaviour
         {
             hp -= bullet.damage;
         }
+    }
+
+    IEnumerator Stop() 
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.2f);
+        Time.timeScale = 1;
     }
 }

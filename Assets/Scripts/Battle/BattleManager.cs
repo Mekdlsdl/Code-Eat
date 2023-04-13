@@ -34,6 +34,7 @@ public class BattleManager : MonoBehaviour
             isBattleMode = false;
             battleTime = 0f;
             Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
+            curEnemy.speed = curEnemy.minSpeed;
         }
     }
     
