@@ -50,6 +50,13 @@ public class PlayerInteract : MonoBehaviour
         exclamationMark.SetActive(state);
     }
 
+    public IEnumerator FlickExclamation()
+    {
+        SetExclamation(true);
+        yield return new WaitForSeconds(0.5f);
+        SetExclamation(false);
+    }
+
     private bool PressKey(string input_tag)
     {
         return playerMovement.PlayerConfig.Input.actions[input_tag].triggered;

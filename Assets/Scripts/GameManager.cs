@@ -71,6 +71,34 @@ public class GameManager : MonoBehaviour
             playerConfig.Input.SwitchCurrentActionMap(map_name);
         }
     }
+
+    public IEnumerator StartProblemMode(EnemyType enemyType, Vector3 playerPosition)
+    {
+        GameManager.isProblemMode = true;
+        GameManager.instance.ChangeActionMaps("BattleMode");
+
+        PlayerSpawn.instance.SetCirclePosition(playerPosition);
+        PlayerSpawn.instance.SetCircleTransition(true);
+        yield return new WaitForSeconds(2f);
+        
+        ProblemManager problemManager = PlayerSpawn.instance.problemManager;
+        problemManager.enemyType = enemyType;
+        problemManager.gameObject.SetActive(true);
+
+        PlayerSpawn.instance.FadeOutScreen();
+
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
+    }
+
+    public void ExitProblemMode()
+    {
+        GameManager.isProblemMode = false;
+        GameManager.instance.ChangeActionMaps("MapControl");
+        
+        ProblemManager problemManager = PlayerSpawn.instance.problemManager;
+        problemManager.gameObject.SetActive(false);
+    }
 }
 
 public class InputType

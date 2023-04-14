@@ -1,22 +1,37 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ProblemManager : MonoBehaviour
 {
-    public ProblemType problemType;
+    [System.NonSerialized] public EnemyType enemyType;
 
-    //[System.NonSerialized]
-    public EnemyType enemyType;
+    public List<Transform> optionTransforms;
+    [SerializeField] private Transform problemUI;
+    
+    [SerializeField] private List<GameObject> problems = new List<GameObject>();
+    private GameObject currentProblem;
 
     void OnEnable()
     {
-        
+        SpawnProblem();
     }
-    
-}
+    private void SpawnProblem()
+    {
+        int selectedIndex = Random.Range(0, problems.Count);
+        currentProblem = Instantiate(problems[selectedIndex], problemUI);
+        currentProblem.GetComponent<StackProblem>().pm = this;
+    }
 
-public enum ProblemType
-{
-    DataStructure
+    private void NextProblem()
+    {
+        Destroy(currentProblem);
+        SpawnProblem();
+    }
+
+    public void HideProblem()
+    {
+        DOTween.Rewind("HideProblem");
+        DOTween.Play("HideProblem");
+    }
 }

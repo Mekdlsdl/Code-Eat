@@ -6,6 +6,7 @@ public class PlayerSpawn : MonoBehaviour
 {
     public static PlayerSpawn instance { get; private set; }
     public ProblemManager problemManager;
+    [SerializeField] GameObject screenCover, circleMask;
     
     [SerializeField] private Transform BattlePlayerSpawn;
     [SerializeField] private List<Vector3> spawnPos;
@@ -33,7 +34,7 @@ public class PlayerSpawn : MonoBehaviour
             player.GetComponent<PlayerMovement>().Init(playerConfigs[i]);
 
             var player_battle = Instantiate(battlePlayerPrefab, BattlePlayerSpawn);
-            player_battle.GetComponent<PlayerBattleMode>().Init(playerConfigs[i]);
+            //player_battle.GetComponent<PlayerBattleMode>().Init(playerConfigs[i]);
         }
     }
 
@@ -49,4 +50,20 @@ public class PlayerSpawn : MonoBehaviour
         }
     }
     //
+    
+    public void SetCirclePosition(Vector3 position)
+    {
+        circleMask.transform.localPosition = position;
+    }
+
+    public void SetCircleTransition(bool state)
+    {
+        screenCover.SetActive(state);
+        circleMask.SetActive(state);
+    }
+
+    public void FadeOutScreen()
+    {
+        screenCover.GetComponent<Animator>().Play("BlackScreenFadeOut", -1, 0f);
+    }
 }
