@@ -22,7 +22,6 @@ public class PlayerSetup : MonoBehaviour
     void Update()
     {
         CharacterSelect();
-        MapSelectControl.instance.MapSelect(playerConfig);
     }
 
     private void CharacterSelect()

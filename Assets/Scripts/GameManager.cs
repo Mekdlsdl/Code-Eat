@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (PlayerConfigManager.instance.PlayerConfigs.All(p => p.IsReady == true))
         {
-            MapSelectControl.instance.EnableMapSelection();
+            SceneManager.LoadScene("MapSelect");
         }
     }
 

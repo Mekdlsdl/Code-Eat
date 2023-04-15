@@ -6,7 +6,8 @@ public class MapSelectControl : MonoBehaviour
 {
     public static MapSelectControl instance { get; private set; }
 
-    [SerializeField] private GameObject mapUI;
+    [SerializeField] private GameObject mapUI, mapSelectPlayer;
+    [SerializeField] private Transform playerSpawn;
     [SerializeField] private List<PageAndMap> pageMapList;
 
     private int maxPageIndex;
@@ -20,18 +21,28 @@ public class MapSelectControl : MonoBehaviour
         2 3
     */
 
-    void Awake()
+    void OnEnable()
+    {
+        EnableMapSelection();
+    }
+    private void Init()
     {
         if (instance != null)
             return;
         instance = this;
 
         maxPageIndex = pageMapList.Count - 1;
+        pageIndex = mapIndex = 0;
+
+        foreach (PlayerConfiguration player in PlayerConfigManager.instance.PlayerConfigs) {
+            GameObject p = Instantiate(mapSelectPlayer, playerSpawn);
+            p.GetComponent<MapSelection>().Init(player);
+        }
     }
 
-    public void EnableMapSelection()
+    private void EnableMapSelection()
     {
-        pageIndex = mapIndex = 0;
+        Init();
         HighlightPageMap();
 
         mapUI.SetActive(true);
