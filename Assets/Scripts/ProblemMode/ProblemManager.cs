@@ -5,7 +5,7 @@ using DG.Tweening;
 public class ProblemManager : MonoBehaviour
 {
     [System.NonSerialized] public EnemyType enemyType;
-
+    
     public List<Transform> optionTransforms;
     [SerializeField] private Transform problemUI;
     

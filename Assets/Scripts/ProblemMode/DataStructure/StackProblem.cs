@@ -145,7 +145,7 @@ public class StackProblem : MonoBehaviour
         StackOption answerOptionInfo = answerOption.GetComponent<StackOption>();
         ShowFruit(fruitStack, answerOptionInfo.fruitImages);
         
-        AnswerManager.instance.SetAnswer(answerIndex);
+        AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
     }
 
