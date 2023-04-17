@@ -2,6 +2,12 @@
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
+
+Assets/Bolt.Generated/VisualScripting.Flow/UnitOptions.db
+Assets/Bolt.Generated/VisualScripting.Flow/UnitOptions.db.meta
+Assets/Bolt.Generated/VisualScripting.Core/Property Providers
+Assets/Bolt.Generated/VisualScripting.Core/Property Providers.meta
+
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -10,6 +16,7 @@
 /[Ll]ogs/
 /[Mm]emoryCaptures/
 /[Uu]ser[Ss]ettings/
+Assets/AssetStoreTools*
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
