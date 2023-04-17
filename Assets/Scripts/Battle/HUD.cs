@@ -5,15 +5,17 @@ using UnityEngine.UI;
 using TMPro;
 public class HUD : MonoBehaviour
 {
-    private enum Type { Score, Hp, Time }
+    private enum Type { Score, Hp, Time, EnemyHp }
     [SerializeField] private Type type;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private Slider slider;
     private PlayerBattleMode player;
+    private Enemy enemy;
 
     private void Awake()
     {
         player = transform.parent.parent.GetComponent<PlayerBattleMode>();
+        enemy = BattleManager.instance.curEnemy.GetComponent<Enemy>();
     }
 
     public void LateUpdate()
@@ -38,6 +40,12 @@ public class HUD : MonoBehaviour
                 float remainTime = BattleManager.instance.maxBattleTime - BattleManager.instance.battleTime;
                 int second = Mathf.FloorToInt(remainTime % 60);
                 infoText.text = string.Format("{0:D2}:{1:D2}", 00, second); // D2 자릿수 고정. 00:00 형태
+                break;
+            case Type.EnemyHp:
+                float curEnemyHp = enemy.hp;
+                float maxEnemyHp = enemy.maxHp;
+                slider.value = curEnemyHp / maxEnemyHp;
+                infoText.text = string.Format("{0:F0} / {1:F0}", curEnemyHp, maxEnemyHp);
                 break;
         }
     }

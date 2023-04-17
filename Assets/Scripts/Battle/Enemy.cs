@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float hp { get; set; } = 50;
+    [SerializeField] public float hp { get; private set; } = 50;
+    [SerializeField] public float maxHp { get; private set; } = 50;
     public bool isDead { get; private set; } = false;
     private Rigidbody2D rb;
     private Vector2 pos;
