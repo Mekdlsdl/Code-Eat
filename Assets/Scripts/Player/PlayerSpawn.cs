@@ -5,13 +5,11 @@ using UnityEngine;
 public class PlayerSpawn : MonoBehaviour
 {
     public static PlayerSpawn instance { get; private set; }
-    public ProblemManager problemManager;
     [SerializeField] GameObject screenCover, circleMask;
     
-    [SerializeField] private Transform BattlePlayerSpawn;
     [SerializeField] private List<Vector3> spawnPos;
 
-    [SerializeField] private GameObject playerPrefab, battlePlayerPrefab;
+    [SerializeField] private GameObject playerPrefab;
 
     private List<Transform> playerTransforms = new List<Transform>();
     public List<Transform> PlayerTransforms => playerTransforms;
@@ -32,11 +30,6 @@ public class PlayerSpawn : MonoBehaviour
             var player = Instantiate(playerPrefab, spawnPos[i], gameObject.transform.rotation, gameObject.transform);
             playerTransforms.Add(player.transform);
             player.GetComponent<PlayerMovement>().Init(playerConfigs[i]);
-
-            var player_battle = Instantiate(battlePlayerPrefab, BattlePlayerSpawn);
-            PlayerBattleMode pbm = player_battle.GetComponent<PlayerBattleMode>();
-            //pbm.Init(playerConfigs[i]);
-            //AnswerManager.instance.AddToBattlePlayerList(pbm);
         }
     }
 

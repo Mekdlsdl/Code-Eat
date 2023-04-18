@@ -12,6 +12,9 @@ public class PlayerBattleMode : ObjectPooler
 
     [Header("Battle Sprite")]
     [SerializeField] private Sprite playerBattleSprite;
+
+    [System.NonSerialized] public int inputAnswer = -1;
+    [System.NonSerialized] public int answerRank = -1;
     
     public void Init(PlayerConfiguration player_config)
     {
@@ -50,6 +53,11 @@ public class PlayerBattleMode : ObjectPooler
     {
         animator.enabled = true;
         animator.SetTrigger("Shoot");
+    }
+
+    public void ObtainBullets(int bullet)
+    {
+        // bulletCount = bullet
     }
 
 }

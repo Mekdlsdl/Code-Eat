@@ -79,25 +79,21 @@ public class GameManager : MonoBehaviour
 
         PlayerSpawn.instance.SetCirclePosition(playerPosition);
         PlayerSpawn.instance.SetCircleTransition(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
+
+        var process = SceneManager.LoadSceneAsync("ProblemMode");
+        process.completed += (AsyncOperation operation) =>
+        {
+            ProblemManager.instance.Init(enemyType);
+        };
         
-        ProblemManager problemManager = PlayerSpawn.instance.problemManager;
-        problemManager.enemyType = enemyType;
-        problemManager.gameObject.SetActive(true);
-
-        PlayerSpawn.instance.FadeOutScreen();
-
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject);
     }
 
     public void ExitProblemMode()
     {
         GameManager.isProblemMode = false;
         GameManager.instance.ChangeActionMaps("MapControl");
-        
-        ProblemManager problemManager = PlayerSpawn.instance.problemManager;
-        problemManager.gameObject.SetActive(false);
+
     }
 }
 
