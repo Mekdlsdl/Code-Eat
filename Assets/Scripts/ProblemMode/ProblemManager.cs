@@ -4,19 +4,43 @@ using DG.Tweening;
 
 public class ProblemManager : MonoBehaviour
 {
-    [System.NonSerialized] public EnemyType enemyType;
+    public static ProblemManager instance { get; private set; }
+    private EnemyType enemyType;
     [SerializeField] private Enemy enemy;
+
+    [SerializeField] private GameObject battlePlayerPrefab;
     
     public List<Transform> optionTransforms;
-    [SerializeField] private Transform problemUI;
+    [SerializeField] private Transform battlePlayerTransform, problemUI;
     
     [SerializeField] private List<GameObject> problems = new List<GameObject>();
     private GameObject currentProblem;
 
-    void OnEnable()
+    void Awake()
     {
+        if (instance != null)
+            return;
+        instance = this;
+    }
+
+    public void Init(EnemyType enemy_type)
+    {
+        enemyType = enemy_type;
         SetEnemy();
+        SetPlayers();
         SpawnProblem();
+    }
+
+    private void SetPlayers()
+    {
+        var playerConfigs = PlayerConfigManager.instance.GetPlayerConfigs();
+
+        for (int i = 0; i < playerConfigs.Count; i++) {
+            var player_battle = Instantiate(battlePlayerPrefab, battlePlayerTransform);
+            //PlayerBattleMode pbm = player_battle.GetComponent<PlayerBattleMode>();
+            //pbm.Init(playerConfigs[i]);
+            //AnswerManager.instance.AddToBattlePlayerList(pbm);
+        }
     }
     
     private void SetEnemy()
