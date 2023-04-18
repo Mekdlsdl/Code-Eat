@@ -33,15 +33,17 @@ public class AnswerManager : MonoBehaviour
         return answerIndex;
     }
 
-    /*
-
+    // 플레이어가 답을 눌렀을 때 호출
     public void SetAnswerRank(PlayerBattleMode player)
     {
         player.answerRank = answerRank;
         answerRank ++;
+
+        TryMarkPlayerAnswer();
     }
 
-    public void TryMarkPlayerAnswer()
+    
+    private void TryMarkPlayerAnswer()
     {
         if (playerBattleList.All(p => p.inputAnswer != -1))
         {
@@ -64,6 +66,7 @@ public class AnswerManager : MonoBehaviour
         }
     }
 
+    // 한 문제 풀이가 끝났을 경우 호출
     public void ResetPlayerAnswers()
     {
         foreach (PlayerBattleMode player in playerBattleList) {
@@ -73,8 +76,6 @@ public class AnswerManager : MonoBehaviour
         answerIndex = -1;
         answerRank = 0;
     }
-
-    */
 }
 
 public enum AnswerButton { SouthButton, EastButton, NorthButton, WestButton };
