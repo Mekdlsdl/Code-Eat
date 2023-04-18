@@ -5,6 +5,7 @@ using DG.Tweening;
 public class ProblemManager : MonoBehaviour
 {
     [System.NonSerialized] public EnemyType enemyType;
+    [SerializeField] private Enemy enemy;
     
     public List<Transform> optionTransforms;
     [SerializeField] private Transform problemUI;
@@ -14,7 +15,13 @@ public class ProblemManager : MonoBehaviour
 
     void OnEnable()
     {
+        SetEnemy();
         SpawnProblem();
+    }
+    
+    private void SetEnemy()
+    {
+        // enemy.maxhp = enemy.hp = enemyType.enemyHP;
     }
     private void SpawnProblem()
     {
