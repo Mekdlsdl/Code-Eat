@@ -11,20 +11,28 @@ public class HUD : MonoBehaviour
     [SerializeField] private Slider slider;
     private PlayerBattleMode player;
     private Enemy enemy;
+    private PlayerConfiguration playerConfig;
 
     private void Awake()
     {
-        player = transform.parent.parent.GetComponent<PlayerBattleMode>();
+        if (!gameObject.CompareTag("WorldUI")) // 플레이어 내 UI가 아닌 경우 플레이어 정보 X
+            player = transform.parent.parent.GetComponent<PlayerBattleMode>();
+    }
+
+    private void Start()
+    {
+        if (!gameObject.CompareTag("WorldUI"))
+            playerConfig = player.playerConfig;
         enemy = BattleManager.instance.curEnemy.GetComponent<Enemy>();
+        
     }
 
     public void LateUpdate()
     {
-        var playerConfig = player.playerConfig;
         switch (type) {
             case Type.Score:
                 float curScore = playerConfig.PlayerScore;
-                float maxScore = BattleManager.instance.curEnemy.hp;
+                float maxScore = BattleManager.instance.curEnemy.maxHp;
                 slider.value = curScore / maxScore;
                 infoText.text = string.Format("{0:F0}", curScore);
                 break;

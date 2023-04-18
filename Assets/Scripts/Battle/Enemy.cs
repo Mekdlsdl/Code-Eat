@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     private float maxX = 7.0f;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
-    [SerializeField] private float maxSpeed = 10.0f;
+    [SerializeField] private float maxSpeed = 6.0f;
 
     private void Awake()
     {
