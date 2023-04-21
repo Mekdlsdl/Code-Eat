@@ -1,11 +1,11 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AttackDistribution : MonoBehaviour
 {
-    private int[] attackCounts; // °¢ ÇÃ·¹ÀÌ¾îµéÀÌ º¸À¯ÇÏ°í ÀÖ´Â ÃÑ¾Ë °¹¼ö¸¦ ÀúÀåÇÒ ¹è¿­
-    private bool[] hasAnswered; // ÇÃ·¹ÀÌ¾î°¡ ´äº¯ÇÑ ³»¿ëÀ» ÃßÀûÇÏ±â À§ÇÑ ¹è¿­
+    private int[] attackCounts; // ê° í”Œë ˆì´ì–´ë“¤ì´ ë³´ìœ í•˜ê³  ìˆëŠ” ì´ì•Œ ê°¯ìˆ˜ë¥¼ ì €ì¥í•  ë°°ì—´
+    private bool[] hasAnswered; // í”Œë ˆì´ì–´ê°€ ë‹µë³€í•œ ë‚´ìš©ì„ ì¶”ì í•˜ê¸° ìœ„í•œ ë°°ì—´
 
     void Start()
     {
@@ -15,19 +15,19 @@ public class AttackDistribution : MonoBehaviour
 
     void Update()
     {
-        // ¸ğµç ÇÃ·¹ÀÌ¾î°¡ ´äÀ» ¼±ÅÃÇß´ÂÁö
+        // ëª¨ë“  í”Œë ˆì´ì–´ê°€ ë‹µì„ ì„ íƒí–ˆëŠ”ì§€
         if (CheckAllAnswered())
         {
-            // ÇÃ·¹ÀÌ¾îµéÀÇ ´ä¾È ¼±ÅÃ ¼ø¼­¿¡ µû¶ó °ø°İÈ½¼ö ºĞ¹è
+            // í”Œë ˆì´ì–´ë“¤ì˜ ë‹µì•ˆ ì„ íƒ ìˆœì„œì— ë”°ë¼ ê³µê²©íšŸìˆ˜ ë¶„ë°°
             DistributeAttacks();
-            // ´ÙÀ½ ¶ó¿îµå¿¡ ´ëÇÑ ÀÀ´ä ¼ø¼­ ¹è¿­ ÃÊ±âÈ­
+            // ë‹¤ìŒ ë¼ìš´ë“œì— ëŒ€í•œ ì‘ë‹µ ìˆœì„œ ë°°ì—´ ì´ˆê¸°í™”
             ResetHasAnswered();
         }
     }
 
     void DistributeAttacks()
     {
-        // ÇÃ·¹ÀÌ¾î index ¹× ÃÑ¾Ë count¸¦ ÀúÀåÇÒ Æ©ÇÃ ¸ñ·Ï »ı¼º
+        // í”Œë ˆì´ì–´ index ë° ì´ì•Œ countë¥¼ ì €ì¥í•  íŠœí”Œ ëª©ë¡ ìƒì„±
         List<(int, int, bool)> attackList = new List<(int, int, bool)>();
         for (int i = 0; i < PlayerConfigManager.instance.PlayerConfigs.Count; i++)
         {
@@ -37,14 +37,14 @@ public class AttackDistribution : MonoBehaviour
             }
         }
 
-        // Á¤´ä ¼±ÅÃ ¿©ºÎ¿¡ µû¸¥ ¸ñ·Ï ºĞÇÒ
+        // ì •ë‹µ ì„ íƒ ì—¬ë¶€ì— ë”°ë¥¸ ëª©ë¡ ë¶„í• 
         List<(int, int, bool)> correctAnswers = attackList.FindAll(t => t.Item3 == true);
         List<(int, int, bool)> incorrectAnswers = attackList.FindAll(t => t.Item3 == false);
 
-        // Á¤´äÀ» ¼±ÅÃÇÑ ÇÃ·¹ÀÌ¾î ¼ö °è»ê
+        // ì •ë‹µì„ ì„ íƒí•œ í”Œë ˆì´ì–´ ìˆ˜ ê³„ì‚°
         int numCorrectAnswers = correctAnswers.Count;
 
-        // Á¤´äÀ» ¼±ÅÃÇÑ ÇÃ·¹ÀÌ¾îµéÀ» ÀÀ´ä ¼ø¼­´ë·Î Á¤·Ä
+        // ì •ë‹µì„ ì„ íƒí•œ í”Œë ˆì´ì–´ë“¤ì„ ì‘ë‹µ ìˆœì„œëŒ€ë¡œ ì •ë ¬
         correctAnswers.Sort((a, b) =>
         {
             int indexA = AnswerManager.instance.PlayerBattleList[a.Item1].inputAnswer;
@@ -52,7 +52,7 @@ public class AttackDistribution : MonoBehaviour
             return indexA.CompareTo(indexB);
         });
 
-        // Á¤´äÀ» ¼±ÅÃÇÑ ÇÃ·¹ÀÌ¾îµé¸¸ ¼ø¼­´ë·Î ÃÑ¾Ë Â÷µî ºĞ¹è
+        // ì •ë‹µì„ ì„ íƒí•œ í”Œë ˆì´ì–´ë“¤ë§Œ ìˆœì„œëŒ€ë¡œ ì´ì•Œ ì°¨ë“± ë¶„ë°°
         int attackCount = numCorrectAnswers;
         foreach ((int, int, bool) tuple in correctAnswers)
         {
