@@ -8,7 +8,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float maxHp { get; private set; } = 50;
     public bool isDead { get; private set; } = false;
     private Rigidbody2D rb;
-    private Vector2 pos;
+    private SpriteRenderer sprite;
+    // private Animator animator;
+    public Vector2 pos { get; private set; }
     private float maxX = 7.0f;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
@@ -17,6 +19,8 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
+        // animator = GetComponent<Animator>();
         pos = transform.position;
     }
 
@@ -31,7 +35,9 @@ public class Enemy : MonoBehaviour
     private void Move()
     {
         Vector2 v = pos;
-        v.x += maxX * Mathf.Sin(Time.time * speed);
+        var curPos = maxX * Mathf.Sin(Time.time * speed);
+        v.x += curPos;
+        sprite.flipX = curPos < 0;
         transform.position = v;
         speed += Time.deltaTime;
         if (speed > maxSpeed)
@@ -61,7 +67,7 @@ public class Enemy : MonoBehaviour
     IEnumerator Stop() 
     {
         Time.timeScale = 0;
-        yield return new WaitForSecondsRealtime(0.2f);
+        yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
     }
 }
