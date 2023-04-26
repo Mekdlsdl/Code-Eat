@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7551726270825960831
 Transform:
   m_ObjectHideFlags: 0
@@ -475,6 +475,8 @@ MonoBehaviour:
   prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
   maxSize: 5
   playerBattleSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
+  bulletUI: {fileID: 3714202732853655428}
+  bulletCount: 4
 --- !u!95 &6451660385582014948
 Animator:
   serializedVersion: 5
@@ -1216,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5407831529708469578
 Transform:
   m_ObjectHideFlags: 0
@@ -1337,7 +1339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3423145322764480048
 Transform:
   m_ObjectHideFlags: 0
@@ -1421,7 +1423,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6144555052454582358
 Transform:
   m_ObjectHideFlags: 0
@@ -1505,7 +1507,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8026039773462770602
 Transform:
   m_ObjectHideFlags: 0

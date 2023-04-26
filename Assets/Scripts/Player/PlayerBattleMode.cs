@@ -6,13 +6,13 @@ using UnityEngine.Pool;
 public class PlayerBattleMode : ObjectPooler
 {
     public PlayerConfiguration playerConfig { get; private set; }
-    private bool isCorrect = true;
     private SpriteRenderer spriter;
     private Animator animator;
 
-    [Header("Battle Sprite")]
+    [Header("Player Setting")]
     [SerializeField] private Sprite playerBattleSprite;
-
+    [SerializeField] private GameObject bulletUI;
+    [SerializeField] private int bulletCount = 3;
     [System.NonSerialized] public int inputAnswer = -1;
     [System.NonSerialized] public int answerRank = -1;
     
@@ -22,17 +22,21 @@ public class PlayerBattleMode : ObjectPooler
         spriter = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         spriter.sprite = playerBattleSprite;
+
+        // 테스트용
+        ShowBullets();
     }
+
 
     private void Update()
     {
-        if (BattleManager.instance.isBattleMode && isCorrect)
+        if (BattleManager.instance.isBattleMode)
             Fire();
     }
 
     private void Fire()
     {
-        if (PressKey("Fire"))
+        if (PressKey("Fire") && bulletCount > 0)
         {
             var bullet = pool.Get();
             var bulletPos = new Vector2(transform.position.x + 0.8f, transform.position.y);
@@ -40,6 +44,9 @@ public class PlayerBattleMode : ObjectPooler
             bullet.GetComponent<Bullet>().Fire();
             PlayAnimation();
 
+            // 총알 개수, UI 변동
+            --bulletCount;
+            bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
         }
 
     }
@@ -57,7 +64,17 @@ public class PlayerBattleMode : ObjectPooler
 
     public void ObtainBullets(int bullet)
     {
-        // bulletCount = bullet
+        bulletCount = bullet;
+        ShowBullets();
+    }
+
+    private void ShowBullets()
+    {
+        for (var i = 0; i < 5; i++)
+        {
+            bulletUI.transform.GetChild(i).gameObject.SetActive(i < bulletCount);
+        }
+
     }
 
 }

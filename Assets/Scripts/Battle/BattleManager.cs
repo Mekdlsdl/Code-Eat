@@ -31,12 +31,17 @@ public class BattleManager : MonoBehaviour
 
         if (battleTime > maxBattleTime)
         {
-            isBattleMode = false;
-            battleTime = 0f;
-            Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
-            curEnemy.speed = curEnemy.minSpeed;
-            curEnemy.transform.position = curEnemy.pos;
+            BattleEnd();
         }
+    }
+
+    private void BattleEnd()
+    {
+        isBattleMode = false;
+        battleTime = 0f;
+        Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
+        curEnemy.speed = curEnemy.minSpeed;
+        curEnemy.transform.position = curEnemy.pos;
     }
     
 }
