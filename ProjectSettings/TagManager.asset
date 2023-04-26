@@ -6,9 +6,11 @@ TagManager:
   tags:
   - StartingLayout
   - BorderLine
-  - Enemy
   - Bullet
   - WorldUI
+  - Enemy1
+  - Enemy2
+  - Enemy3
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - Water
   - UI
   - Obstacle
-  - 
+  - Enemy
   - 
   - 
   - 

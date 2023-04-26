@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] public float hp { get; private set; } = 50;
-    [SerializeField] public float maxHp { get; private set; } = 50;
-    public bool isDead { get; private set; } = false;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
     // private Animator animator;
+
+    public bool isDead { get; private set; } = false;
     public Vector2 pos { get; private set; }
     private float maxX = 7.0f;
+    [field: SerializeField] public float hp { get; private set; } = 50;
+    [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
     [SerializeField] private float maxSpeed = 6.0f;
@@ -44,25 +45,19 @@ public class Enemy : MonoBehaviour
             speed = maxSpeed;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision) {
-
-        if (!collision.CompareTag("Bullet"))
-            return;
-
+    public void Hit(int damage)
+    {
         StartCoroutine(Stop());
-
-        Bullet bullet = collision.GetComponent<Bullet>();
-
-        if (hp - bullet.damage <= 0)
-        {
+        
+        if (hp - damage <= 0) {
             hp = 0;
             isDead = true;
         }
-        else
-        {
-            hp -= bullet.damage;
+        else {
+            hp -= damage;
         }
     }
+
 
     IEnumerator Stop() 
     {
