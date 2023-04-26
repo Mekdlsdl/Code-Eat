@@ -58,6 +58,8 @@ public class AnswerManager : MonoBehaviour
         foreach (PlayerBattleMode player in playerBattleList) {
             if (player.inputAnswer == answerIndex)
                 correctPlayers.Add(player);
+            else
+                player.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
         }
 
         correctPlayers = correctPlayers.OrderBy(x => x.answerRank).ToList();
