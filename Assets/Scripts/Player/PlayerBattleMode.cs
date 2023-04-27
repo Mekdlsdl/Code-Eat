@@ -13,8 +13,6 @@ public class PlayerBattleMode : ObjectPooler
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
     [SerializeField] private int bulletCount = 3;
-    [System.NonSerialized] public int inputAnswer = -1;
-    [System.NonSerialized] public int answerRank = -1;
     
     public void Init(PlayerConfiguration player_config)
     {
@@ -65,6 +63,12 @@ public class PlayerBattleMode : ObjectPooler
     public void ObtainBullets(int bullet)
     {
         bulletCount = bullet;
+        ShowBullets();
+    }
+
+    public void ClearBullets()
+    {
+        bulletCount = 0;
         ShowBullets();
     }
 

@@ -6,8 +6,8 @@ public class AnswerManager : MonoBehaviour
 {
     public static AnswerManager instance { get; private set; }
     
-    [SerializeField] private List<PlayerBattleMode> playerBattleList = new List<PlayerBattleMode>();
-    public List<PlayerBattleMode> PlayerBattleList => playerBattleList;
+    [SerializeField] private List<PlayerAnswer> playerAnswerList = new List<PlayerAnswer>();
+    public List<PlayerAnswer> PlayerAnswerList => playerAnswerList;
 
     private int answerIndex, answerRank;
 
@@ -18,14 +18,15 @@ public class AnswerManager : MonoBehaviour
         instance = this;
     }
 
-    public void AddToBattlePlayerList(PlayerBattleMode player)
+    public void AddToPlayerAnswerList(PlayerAnswer player)
     {
-        playerBattleList.Add(player);
+        playerAnswerList.Add(player);
     }
 
-    public void SetProblemAnswer(int index)
+    public void SetProblemAnswer(int index) // 문제에 대한 정답 인덱스를 초기화
     {
         answerIndex = index;
+        PlayerAnswer.enableAnswerSelect = true; // 정답 초기화 후 모든 플레이어의 답 선택 허용
     }
 
     public int ReturnAnswerIndex()
@@ -33,19 +34,21 @@ public class AnswerManager : MonoBehaviour
         return answerIndex;
     }
 
-    // 플레이어가 답을 눌렀을 때 호출
-    public void SetAnswerRank(PlayerBattleMode player)
+    public void LockPlayerAnswer(PlayerAnswer player) // 플레이어가 답을 눌렀을 때 호출
     {
-        player.answerRank = answerRank;
-        answerRank ++;
-
+        RankPlayerAnswer(player);
         TryMarkPlayerAnswer();
     }
 
+    private void RankPlayerAnswer(PlayerAnswer player) // 각 플레이어가 답안을 선택한 순서대로 랭크를 부여
+    {
+        player.answerRank = answerRank;
+        answerRank ++;
+    }
     
     private void TryMarkPlayerAnswer()
     {
-        if (playerBattleList.All(p => p.inputAnswer != -1))
+        if (playerAnswerList.All(p => p.inputAnswer != -1)) // 모든 플레이어가 답을 선택했을 경우
         {
             MarkPlayerAnswer();
         }
@@ -53,30 +56,37 @@ public class AnswerManager : MonoBehaviour
 
     private void MarkPlayerAnswer()
     {
-        List<PlayerBattleMode> correctPlayers = new List<PlayerBattleMode>();
+        List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
 
-        foreach (PlayerBattleMode player in playerBattleList) {
+        foreach (PlayerAnswer player in playerAnswerList) {
             if (player.inputAnswer == answerIndex)
                 correctPlayers.Add(player);
             else
-                player.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
+                player.player_battle_mode.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
         }
 
         correctPlayers = correctPlayers.OrderBy(x => x.answerRank).ToList();
-        for (int i = correctPlayers.Count - 1; i >= 0; i--) {
-            correctPlayers[i].ObtainBullets(i + 1);
+        for (int i = 0; i < correctPlayers.Count; i++) {
+            correctPlayers[i].player_battle_mode.ObtainBullets(correctPlayers.Count - i);
+            Debug.Log(
+                $"P{correctPlayers[i].player_battle_mode.playerConfig.PlayerIndex + 1} 는 정답입니다!" +
+                $"\n총알 {correctPlayers.Count - i}개 를 지급받습니다."
+            );
         }
     }
 
-    // 한 문제 풀이가 끝났을 경우 호출
-    public void ResetPlayerAnswers()
+    public void ResetPlayerAnswers() // 플레이어 답안과 랭크 초기화, 모든 플레이어의 답 선택 잠금
     {
-        foreach (PlayerBattleMode player in playerBattleList) {
+        foreach (PlayerAnswer player in playerAnswerList) {
             player.inputAnswer = -1;
             player.answerRank = -1;
+
+            player.player_battle_mode.ClearBullets();
         }
         answerIndex = -1;
         answerRank = 0;
+        
+        PlayerAnswer.enableAnswerSelect = false;
     }
 }
 

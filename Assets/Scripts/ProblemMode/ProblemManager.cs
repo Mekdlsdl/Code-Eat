@@ -9,10 +9,9 @@ public class ProblemManager : MonoBehaviour
     [SerializeField] private Enemy enemy;
 
     [SerializeField] private GameObject battlePlayerPrefab;
-    
-    public List<Transform> optionTransforms;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     
+    public List<Transform> optionTransforms;
     [SerializeField] private List<GameObject> problems = new List<GameObject>();
     private GameObject currentProblem;
 
@@ -22,7 +21,7 @@ public class ProblemManager : MonoBehaviour
             return;
         instance = this;
     }
-
+    
     public void Init(EnemyType enemy_type)
     {
         enemyType = enemy_type;
@@ -36,31 +35,39 @@ public class ProblemManager : MonoBehaviour
         var playerConfigs = PlayerConfigManager.instance.GetPlayerConfigs();
 
         for (int i = 0; i < playerConfigs.Count; i++) {
-            var player_battle = Instantiate(battlePlayerPrefab, battlePlayerTransform);
-            //PlayerBattleMode pbm = player_battle.GetComponent<PlayerBattleMode>();
-            //pbm.Init(playerConfigs[i]);
-            //AnswerManager.instance.AddToBattlePlayerList(pbm);
+            var player = Instantiate(battlePlayerPrefab, battlePlayerTransform);
+            
+            // 플레이어별 공격 시스템 초기화
+            PlayerBattleMode pbm = player.GetComponent<PlayerBattleMode>();
+            pbm.Init(playerConfigs[i]);
+
+            // 플레이어별 답안지를 답안매니저에 추가
+            PlayerAnswer player_answer = player.GetComponent<PlayerAnswer>();
+            player_answer.Init(playerConfigs[i], pbm);
+            AnswerManager.instance.AddToPlayerAnswerList(player_answer);
         }
     }
     
-    private void SetEnemy()
+    private void SetEnemy() // EnemyType ScriptableObject 에 포함된 정보를 Enemy.cs 에 초기화
     {
         // enemy.maxhp = enemy.hp = enemyType.enemyHP;
     }
     private void SpawnProblem()
     {
+        AnswerManager.instance.ResetPlayerAnswers();
+
         int selectedIndex = Random.Range(0, problems.Count);
         currentProblem = Instantiate(problems[selectedIndex], problemUI);
         currentProblem.GetComponent<StackProblem>().pm = this;
     }
 
-    private void NextProblem()
+    private void NextProblem() // 다음 문제를 불러오고자 할 때 호출
     {
         Destroy(currentProblem);
         SpawnProblem();
     }
 
-    public void HideProblem()
+    public void HideProblem() // 문제 UI를 숨길 때 호출
     {
         DOTween.Rewind("HideProblem");
         DOTween.Play("HideProblem");

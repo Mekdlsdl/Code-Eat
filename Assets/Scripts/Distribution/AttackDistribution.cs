@@ -47,7 +47,7 @@ public class AttackDistribution : MonoBehaviour
         // 정답을 선택한 플레이어들을 응답 순서대로 정렬
         correctAnswers.Sort((a, b) =>
         {
-            int indexA = AnswerManager.instance.PlayerBattleList[a.Item1].inputAnswer;
+            int indexA = AnswerManager.instance.PlayerAnswerList[a.Item1].inputAnswer;
             int indexB = AnswerManager.instance.ReturnAnswerIndex();
             return indexA.CompareTo(indexB);
         });

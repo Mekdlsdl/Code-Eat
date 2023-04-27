@@ -383,6 +383,8 @@ GameObject:
   - component: {fileID: 2904239054474068480}
   - component: {fileID: 838563154311138358}
   - component: {fileID: 8516975046658302142}
+  - component: {fileID: 5528002556924625531}
+  - component: {fileID: 8809745321383091783}
   m_Layer: 0
   m_Name: temp
   m_TagString: Untagged
@@ -503,6 +505,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5528002556924625531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904239054474068481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f50d58924cdd34eb11f7ba44d51671, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
+  maxSize: 5
+  playerBattleSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
+  bulletUI: {fileID: 3714202732853655428, guid: 5e787fa726df4054fbda4f1284984b34, type: 3}
+  bulletCount: 4
+--- !u!114 &8809745321383091783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904239054474068481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8822e374aa7e6fa41a39fdb449e8f709, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3688279340931359503
 GameObject:
   m_ObjectHideFlags: 0
