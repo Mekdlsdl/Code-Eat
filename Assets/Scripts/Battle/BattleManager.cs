@@ -8,6 +8,7 @@ public class BattleManager : MonoBehaviour
     public bool isBattleMode { get; private set; } = true;
     public float battleTime { get; private set; }
     public float maxBattleTime { get; private set; } = 7f; // 7초
+    public float maxScore { get; private set; } = 0;
     [field: SerializeField] public Enemy curEnemy { get; private set; }
 
     private void Awake()
@@ -30,9 +31,7 @@ public class BattleManager : MonoBehaviour
         battleTime += Time.deltaTime;
 
         if (battleTime > maxBattleTime)
-        {
             BattleEnd();
-        }
     }
 
     private void BattleEnd()
@@ -42,6 +41,11 @@ public class BattleManager : MonoBehaviour
         Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
         curEnemy.speed = curEnemy.minSpeed;
         curEnemy.transform.position = curEnemy.pos;
+    }
+
+    public void UpdateMaxScore(int enemyHp)
+    {
+        maxScore += enemyHp;
     }
     
 }

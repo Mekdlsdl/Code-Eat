@@ -32,7 +32,7 @@ public class HUD : MonoBehaviour
         switch (type) {
             case Type.Score:
                 float curScore = playerConfig.PlayerScore;
-                float maxScore = BattleManager.instance.curEnemy.maxHp;
+                float maxScore = BattleManager.instance.maxScore;
                 slider.value = curScore / maxScore;
                 infoText.text = string.Format("{0:F0}", curScore);
                 break;
