@@ -47,6 +47,7 @@ public class BasicBehaviour2 : MonoBehaviour
         else
         {
             transform.position = Vector2.MoveTowards(transform.position, wayPoint, speed * Time.deltaTime);
+            transform.localScale = transform.position.x > wayPoint.x ? new Vector2(1, 1) : new Vector2(-1, 1);
         }
     }
 

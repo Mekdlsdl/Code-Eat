@@ -50,6 +50,7 @@ public class BasicBehaviour : MonoBehaviour
         }
         DetectObstacle();
         transform.Translate(moveDir.normalized * speed * Time.deltaTime);
+        transform.localScale = moveDir.x > 0 ? new Vector2(-1, 1) : new Vector2(1, 1);
     }
 
     private bool DetectPlayer()
