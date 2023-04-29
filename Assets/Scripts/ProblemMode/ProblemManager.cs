@@ -67,6 +67,12 @@ public class ProblemManager : MonoBehaviour
         SpawnProblem();
     }
 
+    public void DisplayProblem() // 문제 UI를 활성화할 때 호출
+    {
+        DOTween.Rewind("DisplayProblem");
+        DOTween.Play("DisplayProblem");
+    }
+
     public void HideProblem() // 문제 UI를 숨길 때 호출
     {
         DOTween.Rewind("HideProblem");

@@ -16,6 +16,8 @@ public class AnswerManager : MonoBehaviour
         if (instance != null)
             return;
         instance = this;
+
+        ProblemManager.instance.DisplayProblem();
     }
 
     public void AddToPlayerAnswerList(PlayerAnswer player)
@@ -51,6 +53,7 @@ public class AnswerManager : MonoBehaviour
         if (playerAnswerList.All(p => p.inputAnswer != -1)) // 모든 플레이어가 답을 선택했을 경우
         {
             MarkPlayerAnswer();
+            ProblemManager.instance.HideProblem();
         }
     }
 

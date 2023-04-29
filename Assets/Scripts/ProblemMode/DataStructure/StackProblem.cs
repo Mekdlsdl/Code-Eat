@@ -47,7 +47,7 @@ public class StackProblem : MonoBehaviour
 
     IEnumerator BeginProblem()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
         guide.SetActive(false);
 
         StackFruit();
