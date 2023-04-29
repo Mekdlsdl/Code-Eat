@@ -9,6 +9,7 @@ public class ProblemManager : MonoBehaviour
     [SerializeField] private Enemy enemy;
 
     [SerializeField] private GameObject battlePlayerPrefab;
+    [SerializeField] private GameObject hitEffect; // 테스트용
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     
     public List<Transform> optionTransforms;
@@ -21,11 +22,23 @@ public class ProblemManager : MonoBehaviour
             return;
         instance = this;
     }
+    void Update()
+    {
+        /// 테스트용 
+        if (Input.GetKeyDown("space"))
+        {
+            Instantiate(hitEffect, transform.parent);
+        }
+        ///
+    }
     
     public void Init(EnemyType enemy_type)
     {
+        // 적 정보 초기화 부분은 BattleManager 로 옮길 수도 있음
         enemyType = enemy_type;
         SetEnemy();
+        ///
+        
         SetPlayers();
         SpawnProblem();
     }

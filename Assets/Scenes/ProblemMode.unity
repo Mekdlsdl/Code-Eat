@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 80799566}
   battlePlayerPrefab: {fileID: 2904239054474068481, guid: 4286087ca5a6e98428c57c4bf3114af8, type: 3}
+  hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
   battlePlayerTransform: {fileID: 94978744}
   problemUI: {fileID: 555342323}
   optionTransforms:
