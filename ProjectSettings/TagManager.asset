@@ -45,12 +45,6 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Background
-    uniqueID: 2393174987
-    locked: 0
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: ScreenCover
-    uniqueID: 368767587
     locked: 0
