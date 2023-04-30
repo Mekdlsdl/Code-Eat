@@ -161,9 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1f49aa710970cf48b88acea384a0449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <hp>k__BackingField: 50
+  <maxHp>k__BackingField: 50
   <speed>k__BackingField: 5
   <minSpeed>k__BackingField: 5
   maxSpeed: 10
+  hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
 --- !u!50 &2310796903150743190
 Rigidbody2D:
   serializedVersion: 4

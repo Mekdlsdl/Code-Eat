@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
     [SerializeField] private float maxSpeed = 6.0f;
+    [SerializeField] private GameObject hitEffect;
 
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class Enemy : MonoBehaviour
     public void Hit(int damage)
     {
         StartCoroutine(Stop());
+        Instantiate(hitEffect, transform.position, Quaternion.identity, transform.parent);
         
         if (hp - damage <= 0) {
             hp = 0;

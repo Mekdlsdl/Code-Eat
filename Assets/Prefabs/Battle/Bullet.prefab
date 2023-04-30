@@ -101,6 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 5837793548317154468, guid: 62ab06765accf0a4aabc24786b5f2ce3, type: 3}
   speed: 30
+  hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
 --- !u!50 &8888104916956378905
 Rigidbody2D:
   serializedVersion: 4

@@ -27,7 +27,7 @@ public class Bullet : Poolable
         var pos = transform.position;
         pos.x -= 0.8f - 0.35f;
         pos.y += 1.0f;
-        Instantiate(explosion, pos, Quaternion.identity);
+        Instantiate(explosion, pos, Quaternion.identity, transform.parent);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

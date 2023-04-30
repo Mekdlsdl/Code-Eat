@@ -5,7 +5,7 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance { get; private set; }
-    public bool isBattleMode { get; private set; } = false;
+    public bool isBattleMode { get; private set; } = true;
     public float battleTime { get; private set; }
     public float maxBattleTime { get; private set; } = 7f; // 7초
     public float maxScore { get; private set; } = 0;
