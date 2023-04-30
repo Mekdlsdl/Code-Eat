@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
+    public static bool isProblemMode = false;
 
     [SerializeField] List<CharacterType> unlockedCharacters = new List<CharacterType>();
     public List<CharacterType> UnlockedCharacters => unlockedCharacters;
@@ -14,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     public List<Color32> PlayerColors = new List<Color32>();
 
-    public static bool isProblemMode = false;
+    public string currentMapName { get; private set; } = "FirstMap";
 
     void Awake()
     {
@@ -22,6 +23,21 @@ public class GameManager : MonoBehaviour
             return;
         instance = this;
     }
+
+    /// 게임오버 화면 테스트
+    void Update()
+    {
+        if (Input.GetKeyDown("g"))
+        {
+            var process = SceneManager.LoadSceneAsync("GameOver");
+            process.completed += (AsyncOperation operation) =>
+            {
+                GameOverControl.instance.Init();
+                return;
+            };
+        }
+    }
+    ///
 
     public IEnumerator TryMapSelect()
     {
@@ -72,10 +88,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartProblemMode(EnemyType enemyType, Vector3 playerPosition)
+    public IEnumerator StartProblemMode(string mapName, EnemyType enemyType, Vector3 playerPosition)
     {
         GameManager.isProblemMode = true;
-        GameManager.instance.ChangeActionMaps("BattleMode");
+        ChangeActionMaps("BattleMode");
+        SetCurrentMapName(mapName);
 
         PlayerSpawn.instance.SetCirclePosition(playerPosition);
         PlayerSpawn.instance.SetCircleTransition(true);
@@ -86,14 +103,32 @@ public class GameManager : MonoBehaviour
         {
             ProblemManager.instance.Init(enemyType);
         };
-        
     }
 
-    public void ExitProblemMode()
+    public void ReturnToMapMode()
     {
-        GameManager.isProblemMode = false;
-        GameManager.instance.ChangeActionMaps("MapControl");
+        isProblemMode = false;
+        ChangeActionMaps("MapControl");
+    }
 
+    public void ReturnToMapSelectMode()
+    {
+        isProblemMode = false;
+        ChangeActionMaps("StartingMenu");
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+        SceneManager.LoadScene("MapSelect");
+    }
+
+    public void RetryMapMode()
+    {
+        ReturnToMapMode();
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+        LoadMap(currentMapName);
+    }
+
+    public void SetCurrentMapName(string map_name)
+    {
+        currentMapName = map_name;
     }
 }
 

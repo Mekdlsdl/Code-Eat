@@ -6,7 +6,7 @@ public class AnswerManager : MonoBehaviour
 {
     public static AnswerManager instance { get; private set; }
     
-    [SerializeField] private List<PlayerAnswer> playerAnswerList = new List<PlayerAnswer>();
+    private List<PlayerAnswer> playerAnswerList = new List<PlayerAnswer>();
     public List<PlayerAnswer> PlayerAnswerList => playerAnswerList;
 
     private int answerIndex, answerRank;
@@ -62,8 +62,10 @@ public class AnswerManager : MonoBehaviour
         List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
 
         foreach (PlayerAnswer player in playerAnswerList) {
-            if (player.inputAnswer == answerIndex)
+            if (player.inputAnswer == answerIndex) {
                 correctPlayers.Add(player);
+                player.AddCorrectCount();
+            }
             else
                 player.player_battle_mode.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
         }

@@ -46,4 +46,9 @@ public class PlayerAnswer : MonoBehaviour
     {
         return playerConfig.Input.actions[input_tag].triggered;
     }
+
+    public void AddCorrectCount()
+    {
+        playerConfig.CorrectProblemCount++;
+    }
 }

@@ -1,5 +1,4 @@
 using System.Linq;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine;
@@ -20,6 +19,16 @@ public class PlayerConfigManager : MonoBehaviour
         instance = this;
     }
 
+    /// 플레이어 별 맞은 문제 개수 확인
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+        {
+            ShowPlayerProblemState();
+        }
+    }
+    ///
+
     public void HandlePlayerJoin(PlayerInput player_input)
     {
         if (!playerConfigs.Any(p => p.PlayerIndex == player_input.playerIndex)) {
@@ -39,6 +48,24 @@ public class PlayerConfigManager : MonoBehaviour
     {
         return playerConfigs;
     }
+
+    public void ResetAllPlayerConfigs() // 맵을 시작하기 전에 각 플레이어의 이전 기록을 초기화한다.
+    {
+        ProblemManager.totalProblemCount = 0;
+
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
+            playerConfig.PlayerScore = 0;
+            playerConfig.CorrectProblemCount = 0;
+            playerConfig.PlayerHp = 100;
+        }
+    }
+
+    private void ShowPlayerProblemState()
+    {
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
+            Debug.Log($"P{playerConfig.PlayerIndex + 1} : {playerConfig.CorrectProblemCount} / {ProblemManager.totalProblemCount}");
+        }
+    }
 }
 
 public class PlayerConfiguration
@@ -50,6 +77,7 @@ public class PlayerConfiguration
     }
     public PlayerInput Input { get; set; }
     public int PlayerScore { get; set; }
+    public int CorrectProblemCount { get; set; }
     public int PlayerIndex { get; set; }
     public int PlayerHp { get; set; } = 100;
     public bool IsReady { get; set; }
