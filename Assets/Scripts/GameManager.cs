@@ -36,6 +36,10 @@ public class GameManager : MonoBehaviour
                 return;
             };
         }
+        else if (Input.GetKeyDown("b"))
+        {
+            ReturnToMapMode();
+        }
     }
     ///
 
@@ -48,11 +52,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadMap(string sceneName)
+    public void LoadMap(string sceneName, bool isReturningToMap = false)
     {
         var process = SceneManager.LoadSceneAsync($"{sceneName}");
         process.completed += (AsyncOperation operation) =>
         {
+            if (isReturningToMap) {
+                PositionControl.instance.TurnOffTips();
+
+                PositionControl.instance.RecoverPos();
+                PositionControl.instance.enemy_spawner.SpawnEnemy();                
+            }
             PlayerSpawn.instance.SpawnPlayers();
             return;
         };
@@ -93,6 +103,7 @@ public class GameManager : MonoBehaviour
         GameManager.isProblemMode = true;
         ChangeActionMaps("BattleMode");
         SetCurrentMapName(mapName);
+        PositionControl.instance.BackupPos();
 
         PlayerSpawn.instance.SetCirclePosition(playerPosition);
         PlayerSpawn.instance.SetCircleTransition(true);
@@ -105,31 +116,38 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    public void ReturnToMapMode()
+    public void ReturnToMapMode() // 문제를 풀고 맵으로 돌아갈 경우
     {
         isProblemMode = false;
         ChangeActionMaps("MapControl");
+
+        LoadMap(currentMapName, true);
     }
 
-    public void ReturnToMapSelectMode()
+    public void ReturnToMapSelectMode() // 맵 선택 모드를 선택해서 이동할 경우
     {
         isProblemMode = false;
         ChangeActionMaps("StartingMenu");
+
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
         SceneManager.LoadScene("MapSelect");
     }
 
-    public void RetryMapMode()
+    public void RetryMapMode() // 다시 시작을 선택해서 해당 맵을 다시 플레이할 경우
     {
-        ReturnToMapMode();
+        isProblemMode = false;
+        ChangeActionMaps("MapControl");
+
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
         LoadMap(currentMapName);
     }
 
-    public void SetCurrentMapName(string map_name)
+    public void SetCurrentMapName(string map_name) // 문제모드로 돌입하기 전 어떤 맵에서 플레이 중인지 알려준다
     {
         currentMapName = map_name;
     }
+
+
 }
 
 public class InputType

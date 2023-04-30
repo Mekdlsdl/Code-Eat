@@ -7,12 +7,13 @@ public class PlayerSpawn : MonoBehaviour
     public static PlayerSpawn instance { get; private set; }
     [SerializeField] GameObject screenCover, circleMask;
     
-    [SerializeField] private List<Vector3> spawnPos;
+    public List<Vector3> spawnPos;
 
     [SerializeField] private GameObject playerPrefab;
 
     private List<Transform> playerTransforms = new List<Transform>();
     public List<Transform> PlayerTransforms => playerTransforms;
+
 
     void Awake()
     {
