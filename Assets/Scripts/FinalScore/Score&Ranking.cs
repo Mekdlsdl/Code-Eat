@@ -4,74 +4,99 @@ using System.Collections.Generic;
 
 public class ScoreResultsWindow : MonoBehaviour
 {
-    public Text[] playerScoreTexts;
-    public Text percentageIncorrectText;
+    public Text playerNameText;
+    public Text playerScoreText;
+    public Text playerProblemText;
     public Text rankingTextUI;
-    public Text playerProbNumTexts;
 
-    private int[] playerNumQuestions;
-    private int[] playerNumIncorrect;
-    private List<PlayerScore> playerScores = new List<PlayerScore>(); //플레이어 점수 참조한 PlayerScore 리스트
 
-    private class PlayerScore
+    public string GetPlayerNameState()
     {
-        public string playerName;
-        public int score;
-    }
+        string playerNameState = "";
 
-    public void UpdatePlayerScore(int playerNumber, int numQuestions, int numIncorrect)
-    {
-        // 플레이어 점수 리스트 업데이트
-        string playerName = "플레이어 " + playerNumber;
-
-        //각 플레이어가 획득한 총 점수 변수 참조 (?)
-        PlayerBattleMode player = transform.parent.GetComponent<PlayerBattleMode>();
-        int score = player.playerConfig.PlayerScore; 
-        
-        PlayerScore playerScore = new PlayerScore { playerName = playerName, score = score };
-        playerScores.Add(playerScore);
-
-        // 각 플레이어 별 푼 문제 개수 & 맞힌 문제 개수
-        int totalQuestions = 0;
-        int totalIncorrect = 0;
-        foreach (var ps in playerScores)
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
         {
-            if (ps.playerName == playerName)
-            {
-                totalQuestions += numQuestions;
-                totalIncorrect += numIncorrect;
-            }
+            playerNameState += $"P{playerConfig.PlayerIndex + 1}\n";
         }
 
+        return playerNameState;
+    }
+
+    public string GetPlayerProblemState()
+    {
+        string playerProblemState = "";
+
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
+        {
+            playerProblemState += $"{playerConfig.CorrectProblemCount} / {ProblemManager.totalProblemCount}\n";
+        }
+
+        return playerProblemState;
+    }
+
+
+    public string GetPlayerScoreState()
+    {
+        string playerScoreState = "";
+
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
+        {
+            int score = playerConfig.PlayerScore;
+            playerScoreState += $"{score}\n";
+        }
+        
+
+        return playerScoreState;
+    }
+
+    public void UpdatePlayerScore()
+    {
+
         // Update UI
-        playerNumQuestions[playerNumber - 1] = totalQuestions;
-        playerNumIncorrect[playerNumber - 1] = totalIncorrect;
-        playerScoreTexts[playerNumber - 1].text = "플레이어 " + playerNumber + " 점수: " + score.ToString();
-        playerProbNumTexts.text = "오답 개수 " + totalIncorrect + " / " + totalQuestions;
+        playerNameText.text = GetPlayerNameState();
+        playerScoreText.text = GetPlayerScoreState();
+        playerProblemText.text = GetPlayerProblemState();
 
 
         // 랭킹 업데이트
         UpdateRankings();
     }
 
-    private void UpdateRankings()
+    public void UpdateRankings()
     {
-        // 점수에 따른 플레이어 점수 내람차순 정렬
-        playerScores.Sort((a, b) => b.score.CompareTo(a.score));
-
-        // 랭킹 업데이트 (top 10)
-        string rankingText = "랭킹:\n";
-        for (int i = 0; i < Mathf.Min(playerScores.Count, 10); i++)
+        // 플레이어 점수 리스트 생성
+        List<int> playerScores = new List<int>();
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
         {
-            rankingText += (i + 1) + ". " + playerScores[i].playerName + " - " + playerScores[i].score + "\n";
+            playerScores.Add(playerConfig.PlayerScore);
         }
-        rankingText.TrimEnd('\n');
-        rankingTextUI.text = rankingText; // UI text component에 랭킹 텍스트 표시
+
+        // 내림차순 정렬
+        playerScores.Sort();
+        playerScores.Reverse();
+
+        // 랭킹을 보여주는 문자열 생성
+        string rankingString = "";
+        int rank = 1;
+        foreach (int score in playerScores)
+        {
+            if (rank > 10) break; // top10만 보여주도록 설정
+            foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
+            {
+                if (playerConfig.PlayerScore == score)
+                {
+                    rankingString += $"{rank}. P{playerConfig.PlayerIndex + 1}: {score}\n";
+                    rank++;
+                    break;
+                }
+            }
+        }
+
+        rankingTextUI.text = rankingString;
     }
+
 
     void Start()
     {
-        playerNumQuestions = new int[playerScoreTexts.Length];
-        playerNumIncorrect = new int[playerScoreTexts.Length];
     }
 }
