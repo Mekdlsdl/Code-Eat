@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
     public static bool isProblemMode = false;
+    public static HashSet<string> encounteredEnemyset = new HashSet<string>();
 
     [SerializeField] List<CharacterType> unlockedCharacters = new List<CharacterType>();
     public List<CharacterType> UnlockedCharacters => unlockedCharacters;
@@ -24,10 +25,10 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    /// 게임오버 화면 테스트
+    ///
     void Update()
     {
-        if (Input.GetKeyDown("g"))
+        if (Input.GetKeyDown("g")) // 게임오버 화면 테스트
         {
             var process = SceneManager.LoadSceneAsync("GameOver");
             process.completed += (AsyncOperation operation) =>
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
         }
         else if (Input.GetKeyDown("b"))
         {
-            ReturnToMapMode();
+            ReturnToMapMode(); // 풀이 모드에서 빠져나오기 테스트
         }
     }
     ///
@@ -98,11 +99,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartProblemMode(string mapName, EnemyType enemyType, Vector3 playerPosition)
+    public IEnumerator StartProblemMode(EnemyType enemyType, Vector3 playerPosition)
     {
         GameManager.isProblemMode = true;
         ChangeActionMaps("BattleMode");
-        SetCurrentMapName(mapName);
         PositionControl.instance.BackupPos();
 
         PlayerSpawn.instance.SetCirclePosition(playerPosition);
@@ -128,8 +128,6 @@ public class GameManager : MonoBehaviour
     {
         isProblemMode = false;
         ChangeActionMaps("StartingMenu");
-
-        PlayerConfigManager.instance.ResetAllPlayerConfigs();
         SceneManager.LoadScene("MapSelect");
     }
 
@@ -137,8 +135,6 @@ public class GameManager : MonoBehaviour
     {
         isProblemMode = false;
         ChangeActionMaps("MapControl");
-
-        PlayerConfigManager.instance.ResetAllPlayerConfigs();
         LoadMap(currentMapName);
     }
 
@@ -147,7 +143,10 @@ public class GameManager : MonoBehaviour
         currentMapName = map_name;
     }
 
-
+    public void ResetEncounteredEnemyList()
+    {
+        encounteredEnemyset = new HashSet<string>();
+    }
 }
 
 public class InputType

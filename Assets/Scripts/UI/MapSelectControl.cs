@@ -110,7 +110,12 @@ public class MapSelectControl : MonoBehaviour
 
     private void ChooseMap()
     {
-        GameManager.instance.LoadMap(pageMapList[pageIndex].maps[mapIndex].name);
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+        GameManager.instance.ResetEncounteredEnemyList();
+
+        string map_name = pageMapList[pageIndex].maps[mapIndex].name;
+        GameManager.instance.SetCurrentMapName(map_name);
+        GameManager.instance.LoadMap(map_name);
     }
 
     private bool PressKey(PlayerConfiguration playerConfig, string input_tag)

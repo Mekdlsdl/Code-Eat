@@ -575,6 +575,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995982690}
     m_Modifications:
+    - target: {fileID: 5782792544421585969, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
+      propertyPath: m_Name
+      value: FourthMap
+      objectReference: {fileID: 0}
     - target: {fileID: 8118325910965643185, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
       propertyPath: m_text
       value: MAP 4
@@ -1226,6 +1230,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995982690}
     m_Modifications:
+    - target: {fileID: 5782792544421585969, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
+      propertyPath: m_Name
+      value: ThirdMap
+      objectReference: {fileID: 0}
     - target: {fileID: 8118325910965643185, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
       propertyPath: m_text
       value: MAP 3
@@ -1746,6 +1754,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 995982690}
     m_Modifications:
+    - target: {fileID: 5782792544421585969, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
+      propertyPath: m_Name
+      value: SecondMap
+      objectReference: {fileID: 0}
     - target: {fileID: 8118325910965643185, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
       propertyPath: m_text
       value: MAP 2
