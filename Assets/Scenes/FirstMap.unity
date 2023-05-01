@@ -5907,6 +5907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1346990480}
   - component: {fileID: 1346990481}
+  - component: {fileID: 1346990483}
   - component: {fileID: 1346990482}
   m_Layer: 0
   m_Name: BlackScreen
@@ -5923,8 +5924,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1346990479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.02155006, y: -0.5802, z: 0}
-  m_LocalScale: {x: 22.086994, y: 13.142906, z: 0}
+  m_LocalPosition: {x: -0.0977, y: -0.0235, z: 0}
+  m_LocalScale: {x: 36.32476, y: 20.6182, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1316194526}
@@ -5968,8 +5969,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 368767587
-  m_SortingLayer: 0
+  m_SortingLayerID: 1905406331
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
@@ -6003,6 +6004,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1346990483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1346990479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8ddc9af358d35842a01e1b93b524e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1355878808
 GameObject:
   m_ObjectHideFlags: 0

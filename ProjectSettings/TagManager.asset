@@ -51,3 +51,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: ScreenTransition
+    uniqueID: 1905406331
+    locked: 0

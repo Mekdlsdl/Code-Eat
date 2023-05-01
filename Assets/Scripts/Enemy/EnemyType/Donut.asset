@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebfa0d84cce471244bc4f074de98212e, type: 3}
   m_Name: Donut
   m_EditorClassIdentifier: 
-  enemyName: 
-  enemyHP: 0
+  enemyName: Donut
+  enemyHP: 110

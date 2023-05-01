@@ -22,6 +22,12 @@ public class PlayerSpawn : MonoBehaviour
         instance = this;
     }
 
+    void OnEnable()
+    {
+        screenCover.SetActive(true);
+        FadeOutScreen();
+    }
+
     public void SpawnPlayers()
     {
         GameManager.instance.ChangeActionMaps("MapControl");

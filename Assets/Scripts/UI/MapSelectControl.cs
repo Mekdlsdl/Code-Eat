@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MapSelectControl : MonoBehaviour
 {
@@ -81,7 +82,7 @@ public class MapSelectControl : MonoBehaviour
         else if (PressKey(playerConfig, InputType.SOUTHBUTTON))
         {
             enableMapSelect = false;
-            ChooseMap();
+            StartCoroutine(ChooseMap());
             return;
         }
         // 하연 : MapSelect 화면에서 바로 공격 모드로 진입하여 테스트할 수 있도록 추가
@@ -108,8 +109,12 @@ public class MapSelectControl : MonoBehaviour
         pageMapList[pageIndex].maps[mapIndex].SetActive(false);
     }
 
-    private void ChooseMap()
+    private IEnumerator ChooseMap()
     {
+        DOTween.Rewind("EnterMapFade");
+        DOTween.Play("EnterMapFade");
+        yield return new WaitForSeconds(1f);
+
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
         GameManager.instance.ResetEncounteredEnemyList();
 
