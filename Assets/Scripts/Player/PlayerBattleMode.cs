@@ -13,6 +13,7 @@ public class PlayerBattleMode : ObjectPooler
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
     [SerializeField] private int bulletCount = 3;
+    public bool isDead { get; private set; } = false;
     
     public void Init(PlayerConfiguration player_config)
     {
@@ -28,7 +29,7 @@ public class PlayerBattleMode : ObjectPooler
 
     private void Update()
     {
-        if (BattleManager.instance.isBattleMode)
+        if (BattleManager.instance.isBattleMode && !isDead)
             Fire();
     }
 
@@ -77,6 +78,18 @@ public class PlayerBattleMode : ObjectPooler
         for (var i = 0; i < 5; i++)
         {
             bulletUI.transform.GetChild(i).gameObject.SetActive(i < bulletCount);
+        }
+
+    }
+
+    public void Damage(int damage)
+    {
+        if (playerConfig.PlayerHp - damage <= 0) {
+            playerConfig.PlayerHp = 0;
+            isDead = true;
+        }
+        else {
+            playerConfig.PlayerHp -= damage;
         }
 
     }
