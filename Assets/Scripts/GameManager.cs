@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviour
         var process = SceneManager.LoadSceneAsync($"{sceneName}");
         process.completed += (AsyncOperation operation) =>
         {
-            PlayerSpawn.instance.SpawnPlayersForTest(actionMapName);
+            PlayerSpawnForTest.instance.SpawnPlayersForTest(actionMapName);
             return;
         };
         
