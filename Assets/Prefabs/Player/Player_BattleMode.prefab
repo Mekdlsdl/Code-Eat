@@ -472,8 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f50d58924cdd34eb11f7ba44d51671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
-  maxSize: 5
+  bulletprefab: {fileID: 8888104916956378907, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
   playerBattleSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
   bulletUI: {fileID: 3714202732853655428}
   bulletCount: 4

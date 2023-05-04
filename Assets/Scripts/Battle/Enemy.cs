@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     public void Hit(int damage)
     {
         StartCoroutine(Stop());
-        Instantiate(hitEffect, transform.position, Quaternion.identity, transform.parent);
+        Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
         
         if (hp - damage <= 0) {
             hp = 0;

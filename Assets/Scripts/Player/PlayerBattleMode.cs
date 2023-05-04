@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class PlayerBattleMode : ObjectPooler
+public class PlayerBattleMode : MonoBehaviour
 {
     public PlayerConfiguration playerConfig { get; private set; }
     private SpriteRenderer spriter;
     private Animator animator;
 
-    [Header("Player Setting")]
+    [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
-    [SerializeField] private int bulletCount = 3;
+    [SerializeField] private int bulletCount = 4;
     public bool isDead { get; private set; } = false;
     
     public void Init(PlayerConfiguration player_config)
@@ -37,7 +37,7 @@ public class PlayerBattleMode : ObjectPooler
     {
         if (PressKey("Fire") && bulletCount > 0)
         {
-            var bullet = pool.Get();
+            var bullet = Instantiate(bulletprefab, transform);
             var bulletPos = new Vector2(transform.position.x + 0.8f, transform.position.y);
             bullet.transform.position = bulletPos;
             bullet.GetComponent<Bullet>().Fire();
@@ -87,6 +87,7 @@ public class PlayerBattleMode : ObjectPooler
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
             isDead = true;
+            // 죽은 플레이어 수 증가, 게임오버 로직
         }
         else {
             playerConfig.PlayerHp -= damage;

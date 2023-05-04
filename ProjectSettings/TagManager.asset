@@ -8,9 +8,9 @@ TagManager:
   - BorderLine
   - Bullet
   - WorldUI
-  - Enemy1
-  - Enemy2
-  - Enemy3
+  - Undefined
+  - EnemyCenter
+  - EnemySide
   layers:
   - Default
   - TransparentFX

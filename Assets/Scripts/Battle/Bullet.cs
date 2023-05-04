@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
 
-public class Bullet : Poolable
+public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject explosion;
@@ -34,7 +34,7 @@ public class Bullet : Poolable
     {
         if (collision.CompareTag("BorderLine") || collision.gameObject.layer == 7)
         {
-            pool.Release(this);
+            Destroy(gameObject);
             
             if (collision.gameObject.layer == 7)
             {
@@ -46,14 +46,11 @@ public class Bullet : Poolable
                 PlayerBattleMode player = transform.parent.GetComponent<PlayerBattleMode>();
                 int curDamage = 0;
 
-                if (collision.CompareTag("Enemy1")) {
+                if (collision.CompareTag("EnemySide")) {
                     curDamage =  this.damage / 2;
                 }
-                else if (collision.CompareTag("Enemy2")) {
+                else if (collision.CompareTag("EnemyCenter")) {
                     curDamage = this.damage;
-                }
-                else if (collision.CompareTag("Enemy3")) {
-                    curDamage = damage * 2;
                 }
 
                 enemy.Hit(curDamage);
