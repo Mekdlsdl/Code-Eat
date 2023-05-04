@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using TMPro;
 
 public class Ranking : MonoBehaviour
 {
-    private TextMesh rankingTextUI;
-    private TextMesh rankingText;
+    public TextMeshProUGUI rankingText;
 
     public void UpdateRankings()
     {
@@ -16,66 +16,45 @@ public class Ranking : MonoBehaviour
             playerScores.Add(playerConfig.PlayerScore);
         }
 
-        // 내림차순 정렬
-        playerScores.Sort();
-        playerScores.Reverse();
-
-
-        // 랭킹을 보여주는 문자열 생성
-        string rankingString = "";
-        int rank = 1;
+        // 각 플레이어의 점수를 InsertRank 메소드로 전달
         foreach (int score in playerScores)
         {
-            if (rank > 10) break; // top10만 보여주도록 설정
-            foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
-            {
-                if (playerConfig.PlayerScore == score)
-                {
-                    InsertRank(score);
-                    rankingString += $"{rank}. P{playerConfig.PlayerIndex + 1}: {score}\n";
-                    rank++;
-                    break;
-                }
-            }
+            InsertRank(score);
         }
-
-        rankingTextUI.text = rankingString;
     }
 
     public void InsertRank(int Score)
     {
         for (int i = 0; i < 10; i++)
         {
-            if (Score > PlayerPrefs.GetInt(i.ToString()))
+            if (Score > PlayerPrefs.GetInt("score" + i, 0))
             {
                 for (int j = 9 - i; j > 0; j--)
                 {
-                    PlayerPrefs.SetInt(j.ToString(), PlayerPrefs.GetInt((j - 1).ToString()));
+                    PlayerPrefs.SetInt("score" + j, PlayerPrefs.GetInt("score" + (j - 1), 0));
                 }
-                PlayerPrefs.SetInt(i.ToString(), Score);
+                PlayerPrefs.SetInt("score" + i, Score);
+                PlayerPrefs.Save(); //갱신된 랭킹 저장
                 break;
             }
         }
-
-        rankingText.text = "Ranking\n\n" +
-            "1. " + PlayerPrefs.GetInt("0") + "\n\n" +
-            "2. " + PlayerPrefs.GetInt("1") + "\n\n" +
-            "3. " + PlayerPrefs.GetInt("2") + "\n\n" +
-            "4. " + PlayerPrefs.GetInt("3") + "\n\n" +
-            "5. " + PlayerPrefs.GetInt("4") + "\n\n" +
-            "6. " + PlayerPrefs.GetInt("5") + "\n\n" +
-            "7. " + PlayerPrefs.GetInt("6") + "\n\n" +
-            "8. " + PlayerPrefs.GetInt("7") + "\n\n" +
-            "9. " + PlayerPrefs.GetInt("8") + "\n\n" +
-            "10. " + PlayerPrefs.GetInt("9");
     }
 
     void Start()
     {
-        rankingTextUI = FindObjectOfType<TextMesh>();
-        rankingText = GameObject.Find("RankingText").GetComponent<TextMesh>();
-
-        UpdateRankings();
-
+        string rankingString = "";
+        for (int i = 0; i < 10; i++)
+        {
+            int score = PlayerPrefs.GetInt("score" + i, 0);
+            if (score > 0)
+            {
+                rankingString += (i + 1) + ". " + score + "\n";
+            }
+            else
+            {
+                break;
+            }
+        }
+        rankingText.text = rankingString;
     }
 }
