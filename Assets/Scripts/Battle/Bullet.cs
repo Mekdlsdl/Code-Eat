@@ -7,13 +7,49 @@ public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private GameObject criticalPopup;
     [field: SerializeField] public int damage { get; } = 10;
     [SerializeField] private float speed = 10.0f;
+    private PlayerBattleMode player;
+    private int layerMask;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        player = transform.parent.GetComponent<PlayerBattleMode>();
+        layerMask = (1 << LayerMask.NameToLayer("BorderLine")) + (1 << LayerMask.NameToLayer("Enemy"));
         
+    }
+
+    private void Update()
+    {
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, transform.up, 0, layerMask); // BorderLine or Enemy
+        
+        if (ray.collider == null)
+            return;
+        
+        Destroy(gameObject);
+
+        if (ray.collider.gameObject.layer == 7) { // Enemy
+            Enemy enemy = ray.collider.GetComponentInParent<Enemy>();
+
+            if (enemy.isDead)
+                return;
+            
+            int curDamage = 0;
+
+            if (ray.collider.CompareTag("EnemySide")) {
+                curDamage =  this.damage / 2;
+            }
+            else if (ray.collider.CompareTag("EnemyCenter")) {
+                curDamage = this.damage;
+                Instantiate(criticalPopup, enemy.transform.position, Quaternion.identity, enemy.transform);
+            }
+
+            enemy.Hit(curDamage);
+            player.playerConfig.PlayerScore += curDamage;
+            Debug.Log($"플레이어 {player.playerConfig.PlayerIndex} 점수: " + player.playerConfig.PlayerScore);
+        }
     }
 
     public void Fire()
@@ -29,42 +65,5 @@ public class Bullet : MonoBehaviour
         pos.y += 1.0f;
         Instantiate(explosion, pos, Quaternion.identity, transform.parent);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("BorderLine") || collision.gameObject.layer == 7)
-        {
-            Destroy(gameObject);
-            
-            if (collision.gameObject.layer == 7)
-            {
-                Enemy enemy = collision.GetComponentInParent<Enemy>();
-
-                if (enemy.isDead)
-                    return;
-                
-                PlayerBattleMode player = transform.parent.GetComponent<PlayerBattleMode>();
-                int curDamage = 0;
-
-                if (collision.CompareTag("EnemySide")) {
-                    curDamage =  this.damage / 2;
-                }
-                else if (collision.CompareTag("EnemyCenter")) {
-                    curDamage = this.damage;
-                }
-
-                enemy.Hit(curDamage);
-                player.playerConfig.PlayerScore += curDamage;
-                Debug.Log($"플레이어 {player.playerConfig.PlayerIndex} 점수: " + player.playerConfig.PlayerScore);
-
-
-            }
-
-        }
-        
-    }
-
-
-
 
 }
