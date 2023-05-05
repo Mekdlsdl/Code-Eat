@@ -2492,7 +2492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <curEnemy>k__BackingField: {fileID: 80799566}
-  hud: {fileID: 0}
+  hud: {fileID: 103445046}
 --- !u!1 &1029783441
 GameObject:
   m_ObjectHideFlags: 0
