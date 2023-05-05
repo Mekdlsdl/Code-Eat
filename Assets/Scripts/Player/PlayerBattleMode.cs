@@ -87,7 +87,7 @@ public class PlayerBattleMode : MonoBehaviour
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
             isDead = true;
-            // 죽은 플레이어 수 증가, 게임오버 로직
+            BattleManager.instance.CheckDead(); // 죽은 플레이어 수 증가, 게임오버 로직
         }
         else {
             playerConfig.PlayerHp -= damage;
