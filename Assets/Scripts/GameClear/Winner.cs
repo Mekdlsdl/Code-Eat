@@ -60,5 +60,6 @@ public class Winner : MonoBehaviour
 
     void Start()
     {
+        UpdateWinner();
     }
 }
