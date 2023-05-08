@@ -28,18 +28,9 @@ public class GameManager : MonoBehaviour
     ///
     void Update()
     {
-        if (Input.GetKeyDown("g")) // 게임오버 화면 테스트
+        if (Input.GetKeyDown("b"))
         {
-            var process = SceneManager.LoadSceneAsync("GameOver");
-            process.completed += (AsyncOperation operation) =>
-            {
-                GameOverControl.instance.Init();
-                return;
-            };
-        }
-        else if (Input.GetKeyDown("b"))
-        {
-            ReturnToMapMode(); // 풀이 모드에서 빠져나오기 테스트
+            ExitProblemMode(); // 풀이 모드에서 빠져나오기 테스트
         }
     }
     ///
@@ -117,7 +108,7 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    public void ReturnToMapMode() // 문제를 풀고 맵으로 돌아갈 경우
+    public void ExitProblemMode() // 문제를 풀고 맵으로 돌아갈 경우
     {
         isProblemMode = false;
         ChangeActionMaps("MapControl");
@@ -147,6 +138,16 @@ public class GameManager : MonoBehaviour
     public void ResetEncounteredEnemyList()
     {
         encounteredEnemyset = new HashSet<string>();
+    }
+
+    public void StartGameOver()
+    {
+        var process = SceneManager.LoadSceneAsync("GameOver");
+        process.completed += (AsyncOperation operation) =>
+        {
+            GameOverControl.instance.Init();
+            return;
+        };
     }
 }
 

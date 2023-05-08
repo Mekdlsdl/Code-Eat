@@ -56,7 +56,7 @@ public class BattleManager : MonoBehaviour
         ++deadCount;
         if (deadCount == PlayerConfigManager.instance.GetPlayerConfigs().Count)
         {
-            //  Game over
+            GameManager.instance.StartGameOver();
         }
     }
     

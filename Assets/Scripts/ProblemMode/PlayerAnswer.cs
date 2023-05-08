@@ -21,7 +21,7 @@ public class PlayerAnswer : MonoBehaviour
 
     void Update()
     {
-        if (!enableAnswerSelect || (inputAnswer != -1))
+        if (!GameManager.isProblemMode && (!enableAnswerSelect || (inputAnswer != -1)))
             return;
         
         if (PressKey(InputType.SOUTHBUTTON))
