@@ -39,6 +39,7 @@ public class AnswerManager : MonoBehaviour
     public void LockPlayerAnswer(PlayerAnswer player) // 플레이어가 답을 눌렀을 때 호출
     {
         RankPlayerAnswer(player);
+        player.player_battle_mode.HoldGun();
         TryMarkPlayerAnswer();
     }
 
@@ -66,8 +67,10 @@ public class AnswerManager : MonoBehaviour
                 correctPlayers.Add(player);
                 player.AddCorrectCount();
             }
-            else
+            else {
                 player.player_battle_mode.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
+                //BattleManager.instance.curEnemy.HurtPlayer();
+            }
         }
 
         correctPlayers = correctPlayers.OrderBy(x => x.answerRank).ToList();
@@ -87,6 +90,7 @@ public class AnswerManager : MonoBehaviour
             player.answerRank = -1;
 
             player.player_battle_mode.ClearBullets();
+            player.player_battle_mode.PutAwayGun();
         }
         answerIndex = -1;
         answerRank = 0;

@@ -80,6 +80,7 @@ public class PlayerConfiguration
     public int CorrectProblemCount { get; set; }
     public int PlayerIndex { get; set; }
     public int PlayerHp { get; set; } = 100;
+    public int CharacterTypeIndex { get; set; }
+    public string CharacterName { get; set; }
     public bool IsReady { get; set; }
-    public string CharacterType { get; set; }
 }

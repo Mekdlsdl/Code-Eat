@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 8516975046658302142}
   - component: {fileID: 5528002556924625531}
   - component: {fileID: 8809745321383091783}
+  - component: {fileID: 6609694731244875811}
   m_Layer: 0
   m_Name: temp
   m_TagString: Untagged
@@ -456,7 +457,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5134b7b9b37671b4fbff4adbbf905a49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -517,9 +518,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55f50d58924cdd34eb11f7ba44d51671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8888104916956378902, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
-  maxSize: 5
-  playerBattleSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
+  bulletprefab: {fileID: 8888104916956378907, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
+  playerBattleSprite: {fileID: 21300000, guid: 5134b7b9b37671b4fbff4adbbf905a49, type: 3}
+  holdGunSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
   bulletUI: {fileID: 3714202732853655428, guid: 5e787fa726df4054fbda4f1284984b34, type: 3}
   bulletCount: 4
 --- !u!114 &8809745321383091783
@@ -534,6 +535,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8822e374aa7e6fa41a39fdb449e8f709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &6609694731244875811
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2904239054474068481}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 63cd29da464e9fb489dcd1e686e27de5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3688279340931359503
 GameObject:
   m_ObjectHideFlags: 0

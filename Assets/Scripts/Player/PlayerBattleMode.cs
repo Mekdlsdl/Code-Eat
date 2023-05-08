@@ -20,6 +20,7 @@ public class PlayerBattleMode : MonoBehaviour
         playerConfig = player_config;
         spriter = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
         spriter.sprite = playerBattleSprite;
 
         // 테스트용
@@ -59,6 +60,8 @@ public class PlayerBattleMode : MonoBehaviour
     {
         animator.enabled = true;
         animator.SetTrigger("Shoot");
+        
+        //animator.Play($"Battle_{playerConfig.CharacterName}_Shoot", -1, 0f);        
     }
 
     public void ObtainBullets(int bullet)
@@ -93,6 +96,15 @@ public class PlayerBattleMode : MonoBehaviour
             playerConfig.PlayerHp -= damage;
         }
 
+    }
+
+    public void HoldGun()
+    {
+        animator.Play($"Battle_{playerConfig.CharacterName}_HoldGun", -1, 0f);
+    }
+    public void PutAwayGun()
+    {
+        animator.Play($"Battle_{playerConfig.CharacterName}_Idle", -1, 0f);
     }
 
 }

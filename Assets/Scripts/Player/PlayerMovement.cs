@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
 
-        playerAnim.runtimeAnimatorController = GameManager.instance.GetCharAnimControl(playerConfig.CharacterType);
+        playerAnim.runtimeAnimatorController = GameManager.instance.GetCharAnimControl(playerConfig.CharacterTypeIndex);
 
         playerConfig.Input.actions["Move"].Enable();
         playerAnim.SetFloat("moveY", -1);

@@ -17,7 +17,6 @@ public class PlayerSetup : MonoBehaviour
     [SerializeField] private GameObject Arrows;
 
     private bool inputEnabled = false;
-    public string SelectedCharacterName {get; private set; }
 
     void Update()
     {
@@ -54,10 +53,13 @@ public class PlayerSetup : MonoBehaviour
 
         if (previousIndex == selectedCharIndex) return;
 
-        SelectedCharacterName = GameManager.instance.UnlockedCharacters[selectedCharIndex].characterName;
-        SetCharacter(SelectedCharacterName);
+        string selectedCharacterName = GameManager.instance.UnlockedCharacters[selectedCharIndex].characterName;
+        SetCharacter(selectedCharacterName);
     }
-
+    private void EnableInput()
+    {
+        inputEnabled = true;
+    }
     public void SetPlayer(PlayerConfiguration config)
     {
         playerConfig = config;
@@ -66,16 +68,9 @@ public class PlayerSetup : MonoBehaviour
 
         Invoke("EnableInput", 0.4f);
     }
-    private void EnableInput()
-    {
-        inputEnabled = true;
-    }
     private void SetCharacter(string character_type)
     {
-        if (!inputEnabled)
-            return;
-        
-        playerConfig.CharacterType = character_type;
+        if (!inputEnabled) return;
         anim.Play(character_type);
     }
     private void ReadyPlayer()
@@ -83,10 +78,10 @@ public class PlayerSetup : MonoBehaviour
         if (!inputEnabled) return;
         inputEnabled = false;
 
-        playerConfig.CharacterType = GameManager.instance.UnlockedCharacters[selectedCharIndex].characterName;
-        
+        playerConfig.CharacterTypeIndex = selectedCharIndex;
+        playerConfig.CharacterName = GameManager.instance.UnlockedCharacters[selectedCharIndex].characterName;
         playerConfig.IsReady = true;
-        //anim.Play($"{selectedCharacterName}_Ready");
+
         statusIcon.sprite = ReadyIcon;
         Arrows.SetActive(false);
 

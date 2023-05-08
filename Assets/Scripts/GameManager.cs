@@ -71,16 +71,15 @@ public class GameManager : MonoBehaviour
         };
         
     }
-    //
+    
 
-    public RuntimeAnimatorController GetCharAnimControl(string target_name)
+    public RuntimeAnimatorController GetCharAnimControl(int index)
     {
-        for (int i = 0; i < unlockedCharacters.Count; i++) {
-            if (unlockedCharacters[i].characterName == target_name)
-                return unlockedCharacters[i].charAnimControl;
-        }
-        Debug.LogError($"Character Name '{target_name}' not found.");
-        return null;
+        return unlockedCharacters[index].charAnimControl;
+    }
+    public RuntimeAnimatorController GetBattleAnimControl(int index)
+    {
+        return unlockedCharacters[index].battleAnimControl;
     }
 
     public void ChangeActionMaps(string map_name)
@@ -168,4 +167,5 @@ public class CharacterType
 {
     public string characterName;
     public RuntimeAnimatorController charAnimControl;
+    public RuntimeAnimatorController battleAnimControl;
 }
