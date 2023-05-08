@@ -62,6 +62,13 @@ public class AttackDistribution : MonoBehaviour
             attackCount -= attacks;
         }
 
+        // 정답을 선택하지 않은 플레이어들은 공격을 하지 않음
+        foreach ((int, int, bool) tuple in incorrectAnswers)
+        {
+            int playerIndex = tuple.Item1;
+            attackCounts[playerIndex] = 0;
+        }
+
     }
 
     bool CheckAllAnswered()
