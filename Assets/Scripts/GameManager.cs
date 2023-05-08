@@ -112,7 +112,8 @@ public class GameManager : MonoBehaviour
         var process = SceneManager.LoadSceneAsync("ProblemMode");
         process.completed += (AsyncOperation operation) =>
         {
-            ProblemManager.instance.Init(enemyType);
+            BattleManager.instance.SetEnemy(enemyType);
+            ProblemManager.instance.Init();
         };
     }
 

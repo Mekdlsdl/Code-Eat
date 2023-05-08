@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    private EnemyType enemyType; public EnemyType enemy_type => enemyType;
     private Rigidbody2D rb;
     private SpriteRenderer sprite;
-    // private Animator animator;
+    private Animator animator;
 
     public bool isDead { get; private set; } = false;
     public Vector2 pos { get; private set; }
@@ -22,7 +23,7 @@ public class Enemy : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        // animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         pos = transform.position;
     }
 
@@ -66,5 +67,12 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
+    }
+
+    public void Init(EnemyType type)
+    {
+        enemyType =  type;
+        animator.runtimeAnimatorController = enemyType.animControl;
+        maxHp = hp = enemyType.enemyHP;
     }
 }

@@ -60,4 +60,8 @@ public class BattleManager : MonoBehaviour
         }
     }
     
+    public void SetEnemy(EnemyType enemy_type)
+    {
+        curEnemy.Init(enemy_type);
+    }
 }
