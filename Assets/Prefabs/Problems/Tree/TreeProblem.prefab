@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ace4d448e25764828abf024229c531e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guide: {fileID: 0}
+  guide: {fileID: 1340173461216906946}
   tree: {fileID: 2704960712923321842}
   generateNode: 
 --- !u!1 &2704960711886222643
@@ -1784,8 +1784,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guide
       objectReference: {fileID: 0}
+    - target: {fileID: 2576578259514741621, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+      propertyPath: m_Name
+      value: Text
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+--- !u!1 &1340173461216906946 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2576578259374465668, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+  m_PrefabInstance: {fileID: 3555760058530737222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1340173461216906949 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2576578259374465667, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}

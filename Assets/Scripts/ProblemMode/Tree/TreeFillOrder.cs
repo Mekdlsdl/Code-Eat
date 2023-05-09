@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class TreeFillOrder : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+//     [SerializeField] private GameObject guide;
+//     [SerializeField] private GameObject guideContent;
+//     string guideText = "순회 방법을 보고 빈칸을 채워보세요!";
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+//     void Start()
+//     {
+//         guideContent = transform.Find("Text");
+//         guideContent.text = guideText;
+//     }
 }
