@@ -55,6 +55,7 @@ public class AnswerManager : MonoBehaviour
         {
             MarkPlayerAnswer();
             ProblemManager.instance.HideProblem();
+            BattleManager.instance.BattleModeOn();
         }
     }
 

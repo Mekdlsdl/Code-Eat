@@ -12,7 +12,7 @@ public class PlayerBattleMode : MonoBehaviour
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
-    [SerializeField] private int bulletCount = 4;
+    [SerializeField] private int bulletCount = 0;
     public bool isDead { get; private set; } = false;
     
     public void Init(PlayerConfiguration player_config)
@@ -23,8 +23,6 @@ public class PlayerBattleMode : MonoBehaviour
         animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
         spriter.sprite = playerBattleSprite;
 
-        // 테스트용
-        ShowBullets();
     }
 
 

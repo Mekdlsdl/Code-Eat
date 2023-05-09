@@ -12,7 +12,7 @@ public class ProblemManager : MonoBehaviour
     [SerializeField] private GameObject battlePlayerPrefab;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     public List<Transform> optionTransforms;
-    private GameObject currentProblem;
+    private GameObject currentProblem, temp;
 
     void Awake()
     {
@@ -52,15 +52,15 @@ public class ProblemManager : MonoBehaviour
     private void SpawnProblem()
     {
         AnswerManager.instance.ResetPlayerAnswers();
-        GameObject problem = Instantiate(currentProblem, problemUI);
-        problem.GetComponent<StackProblem>().pm = this;
+        temp = Instantiate(currentProblem, problemUI);
+        temp.GetComponent<StackProblem>().pm = this;
 
         totalProblemCount++;
     }
 
-    private void NextProblem() // 다음 문제를 불러오고자 할 때 호출
+    public void NextProblem() // 다음 문제를 불러오고자 할 때 호출
     {
-        Destroy(currentProblem);
+        Destroy(temp);
         SpawnProblem();
     }
 

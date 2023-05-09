@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private EnemyType enemyType; public EnemyType enemy_type => enemyType;
-    private Rigidbody2D rb;
     private SpriteRenderer sprite;
     private Animator animator;
 
@@ -15,13 +14,10 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public float hp { get; private set; } = 50;
     [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
-    [field: SerializeField] public float minSpeed { get; private set; } = 5.0f;
-    [SerializeField] private float maxSpeed = 6.0f;
     [SerializeField] private GameObject hitEffect;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         pos = transform.position;
@@ -42,9 +38,6 @@ public class Enemy : MonoBehaviour
         v.x += curPos;
         sprite.flipX = curPos < 0;
         transform.position = v;
-        speed += Time.deltaTime;
-        if (speed > maxSpeed)
-            speed = maxSpeed;
     }
 
     public void Hit(int damage)
@@ -55,6 +48,7 @@ public class Enemy : MonoBehaviour
         if (hp - damage <= 0) {
             hp = 0;
             isDead = true;
+            GameManager.instance.ReturnToMapSelectMode();
         }
         else {
             hp -= damage;

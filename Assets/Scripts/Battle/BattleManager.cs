@@ -5,10 +5,9 @@ using UnityEngine;
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager instance { get; private set; }
-    public bool isBattleMode { get; private set; } = false;
+    public bool isBattleMode { get; set; } = false;
     public float battleTime { get; private set; }
     public float maxBattleTime { get; private set; } = 7f; // 7초
-    public float maxScore { get; private set; } = 0;
     private int deadCount = 0;
     [field: SerializeField] public Enemy curEnemy { get; private set; }
     [SerializeField] private GameObject hud; // isBattleMode = true 시 활성화 필요
@@ -33,22 +32,25 @@ public class BattleManager : MonoBehaviour
         battleTime += Time.deltaTime;
 
         if (battleTime > maxBattleTime)
-            BattleEnd();
+            BattleModeOff();
     }
 
-    private void BattleEnd()
+    public void BattleModeOn()
+    {
+        isBattleMode = true;
+        battleTime = 0f;
+        curEnemy.transform.position = curEnemy.pos;
+        hud.SetActive(true);
+    }
+    private void BattleModeOff()
     {
         isBattleMode = false;
         battleTime = 0f;
         Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
-        curEnemy.speed = curEnemy.minSpeed;
         curEnemy.transform.position = curEnemy.pos;
         hud.gameObject.SetActive(false);
-    }
 
-    public void UpdateMaxScore(int enemyHp)
-    {
-        maxScore += enemyHp;
+        ProblemManager.instance.NextProblem();
     }
 
     public void CheckDead()
