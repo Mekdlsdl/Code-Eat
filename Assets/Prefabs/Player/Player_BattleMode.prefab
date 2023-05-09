@@ -474,7 +474,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletprefab: {fileID: 8888104916956378907, guid: 054cdeda7d170404bb3aac18bb53d672, type: 3}
   playerBattleSprite: {fileID: 1168355107, guid: 72222e213e48b4587ad2de46d1732532, type: 3}
-  holdGunSprite: {fileID: 0}
   bulletUI: {fileID: 3714202732853655428}
   bulletCount: 4
 --- !u!95 &6451660385582014948
@@ -1339,7 +1338,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3423145322764480048
 Transform:
   m_ObjectHideFlags: 0
