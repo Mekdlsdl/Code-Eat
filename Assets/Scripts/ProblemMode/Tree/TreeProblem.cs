@@ -5,7 +5,8 @@ using UnityEngine;
 public class TreeProblem : MonoBehaviour
 {
     [System.NonSerialized] public ProblemManager pm;
-    [SerializeField] private GameObject guide, tree;
+    [SerializeField] public GameObject guide, tree;
+    // [SerializeField] public TextMeshProUGUI guideContent;
     [SerializeField] private List<bool> generateNode;
 
     
