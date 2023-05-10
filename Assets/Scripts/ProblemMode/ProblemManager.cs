@@ -8,7 +8,7 @@ public class ProblemManager : MonoBehaviour
     public static ProblemManager instance { get; private set; }
     public static int totalProblemCount = 0;
 
-    [SerializeField] private GameObject battlePlayerPrefab;
+    [SerializeField] private GameObject battlePlayerPrefab, screenCover;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     public List<Transform> optionTransforms;
     private GameObject currentProblem, temp;
@@ -19,7 +19,8 @@ public class ProblemManager : MonoBehaviour
             return;
         instance = this;
 
-        StartCoroutine(NextProblem(0.8f));
+        screenCover.SetActive(true);
+        StartCoroutine(NextProblem(0.9f));
     }
     
     public void Init()

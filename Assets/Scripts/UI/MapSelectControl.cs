@@ -115,9 +115,6 @@ public class MapSelectControl : MonoBehaviour
         DOTween.Play("EnterMapFade");
         yield return new WaitForSeconds(1f);
 
-        PlayerConfigManager.instance.ResetAllPlayerConfigs();
-        GameManager.instance.ResetEncounteredEnemyList();
-
         string map_name = pageMapList[pageIndex].maps[mapIndex].name;
         GameManager.instance.SetCurrentMapName(map_name);
         GameManager.instance.LoadMap(map_name);

@@ -8,7 +8,6 @@ public class TipPosition : MonoBehaviour
     [field: SerializeField] public GameObject tip { get; set; }
 
 
-    // 아래는 테스트 용
     private void OnTriggerEnter2D(Collider2D other) {
         if (tip)
             other.GetComponent<PlayerInteract>().InteractTip(tip, this);

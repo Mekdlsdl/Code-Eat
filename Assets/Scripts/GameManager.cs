@@ -25,16 +25,6 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
-    ///
-    void Update()
-    {
-        if (Input.GetKeyDown("b"))
-        {
-            ExitProblemMode(); // 풀이 모드에서 빠져나오기 테스트
-        }
-    }
-    ///
-
     public IEnumerator TryMapSelect()
     {
         yield return new WaitForEndOfFrame();
@@ -109,14 +99,18 @@ public class GameManager : MonoBehaviour
 
     public void ExitProblemMode() // 문제를 풀고 맵으로 돌아갈 경우
     {
+        PlayerConfigManager.instance.ResetAllPlayerHealth();
+
         isProblemMode = false;
         ChangeActionMaps("MapControl");
-
         LoadMap(currentMapName, true);
     }
 
     public void ReturnToMapSelectMode() // 맵 선택 모드를 선택해서 이동할 경우
     {
+        ResetEncounteredEnemyList();
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+
         isProblemMode = false;
         ChangeActionMaps("StartingMenu");
         SceneManager.LoadScene("MapSelect");
@@ -124,6 +118,9 @@ public class GameManager : MonoBehaviour
 
     public void RetryMapMode() // 다시 시작을 선택해서 해당 맵을 다시 플레이할 경우
     {
+        ResetEncounteredEnemyList();
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+
         isProblemMode = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName);
@@ -134,11 +131,6 @@ public class GameManager : MonoBehaviour
         currentMapName = map_name;
     }
 
-    public void ResetEncounteredEnemyList()
-    {
-        encounteredEnemyset = new HashSet<string>();
-    }
-
     public void StartGameOver()
     {
         var process = SceneManager.LoadSceneAsync("GameOver");
@@ -147,6 +139,11 @@ public class GameManager : MonoBehaviour
             GameOverControl.instance.Init();
             return;
         };
+    }
+
+    public void ResetEncounteredEnemyList()
+    {
+        encounteredEnemyset = new HashSet<string>();
     }
 }
 

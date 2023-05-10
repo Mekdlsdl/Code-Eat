@@ -49,7 +49,7 @@ public class AnswerManager : MonoBehaviour
     
     private void TryMarkPlayerAnswer()
     {
-        if (playerAnswerList.All(p => p.inputAnswer != -1)) // 모든 플레이어가 답을 선택했을 경우
+        if (playerAnswerList.All(p => (p.inputAnswer != -1) || (p.player_battle_mode.playerConfig.PlayerHp == 0) )) // 살아있는 모든 플레이어가 답을 선택했을 경우
         {
             MarkPlayerAnswer();
             ProblemManager.instance.HideProblem();
@@ -62,13 +62,16 @@ public class AnswerManager : MonoBehaviour
         List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
 
         foreach (PlayerAnswer player in playerAnswerList) {
+            PlayerBattleMode pbm = player.player_battle_mode;
+
             if (player.inputAnswer == answerIndex) {
                 correctPlayers.Add(player);
                 player.AddCorrectCount();
-                player.player_battle_mode.cursor.SetActive(true);
+                pbm.cursor.SetActive(true);
             }
-            else {
-                player.player_battle_mode.Damage(); 
+            else if (pbm.playerConfig.PlayerHp > 0) {
+                Debug.Log($"P{pbm.playerConfig.PlayerIndex + 1} 는 틀렸습니다.");
+                pbm.Damage(BattleManager.instance.curEnemy.damage); 
             }
         }
 

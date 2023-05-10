@@ -19,16 +19,6 @@ public class PlayerConfigManager : MonoBehaviour
         instance = this;
     }
 
-    /// 플레이어 별 맞은 문제 개수 확인
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            ShowPlayerProblemState();
-        }
-    }
-    ///
-
     public void HandlePlayerJoin(PlayerInput player_input)
     {
         if (!playerConfigs.Any(p => p.PlayerIndex == player_input.playerIndex)) {
@@ -60,7 +50,14 @@ public class PlayerConfigManager : MonoBehaviour
         }
     }
 
-    private void ShowPlayerProblemState()
+    public void ResetAllPlayerHealth()
+    {
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
+            playerConfig.PlayerHp = 100;
+        }
+    }
+
+    public void Debug_ShowPlayerProblemState()
     {
         foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
             Debug.Log($"P{playerConfig.PlayerIndex + 1} : {playerConfig.CorrectProblemCount} / {ProblemManager.totalProblemCount}");

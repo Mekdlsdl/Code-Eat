@@ -19,21 +19,11 @@ public class PlayerInteract : MonoBehaviour
         {
             if (exclamationMark.activeSelf && !isViewingTip)
             {
-                viewingTipObject = tipObject;
-                viewingTipPos = tipPos;
-
-                Time.timeScale = 0;
-                isViewingTip = true;
-                viewingTipObject.SetActive(true);
-                SetExclamation(false);
+                OpenTip();
             }
             else if (isViewingTip)
             {
-                Time.timeScale = 1;
-                isViewingTip = false;
-                viewingTipObject.SetActive(false);
-
-                viewingTipPos.DisableTrigger();
+                CloseTip();
             }
         }
     }
@@ -55,6 +45,26 @@ public class PlayerInteract : MonoBehaviour
         SetExclamation(true);
         yield return new WaitForSeconds(0.5f);
         SetExclamation(false);
+    }
+
+    private void OpenTip()
+    {
+        viewingTipObject = tipObject;
+        viewingTipPos = tipPos;
+
+        Time.timeScale = 0;
+        isViewingTip = true;
+        viewingTipObject.SetActive(true);
+        SetExclamation(false);
+    }
+
+    private void CloseTip()
+    {
+        Time.timeScale = 1;
+        isViewingTip = false;
+        viewingTipObject.SetActive(false);
+
+        viewingTipPos.DisableTrigger();
     }
 
     private bool PressKey(string input_tag)

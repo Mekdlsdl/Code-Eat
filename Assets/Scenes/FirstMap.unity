@@ -28665,4 +28665,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d037ce1e2770e4943bbee90b25a73e1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawner: {fileID: 0}
+  enemySpawner: {fileID: 1888308662}

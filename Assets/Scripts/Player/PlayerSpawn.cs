@@ -24,7 +24,6 @@ public class PlayerSpawn : MonoBehaviour
 
     void OnEnable()
     {
-        screenCover.SetActive(true);
         FadeOutScreen();
     }
 
@@ -66,6 +65,7 @@ public class PlayerSpawn : MonoBehaviour
 
     public void FadeOutScreen()
     {
+        screenCover.SetActive(true);
         screenCover.GetComponent<Animator>().Play("BlackScreenFadeOut", -1, 0f);
     }
 }

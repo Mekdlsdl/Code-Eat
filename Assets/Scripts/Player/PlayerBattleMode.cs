@@ -11,7 +11,6 @@ public class PlayerBattleMode : MonoBehaviour
 
     public GameObject cursor;
     [SerializeField] private GameObject bulletprefab;
-    [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
     [SerializeField] private GameObject deadUI;
     [SerializeField] private GameObject incorrectUI;
@@ -46,7 +45,6 @@ public class PlayerBattleMode : MonoBehaviour
             --bulletCount;
             bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
         }
-
     }
 
     private bool PressKey(string input_tag)
@@ -56,9 +54,6 @@ public class PlayerBattleMode : MonoBehaviour
 
     private void PlayAnimation()
     {
-        // animator.enabled = true;
-        // animator.SetTrigger("Shoot");
-        
         animator.Play($"Battle_{playerConfig.CharacterName}_Shoot", -1, 0f);        
     }
 
@@ -81,15 +76,13 @@ public class PlayerBattleMode : MonoBehaviour
         {
             bulletUI.transform.GetChild(i).gameObject.SetActive(i < bulletCount);
         }
-
     }
 
-    public void Damage()
-    {   
-        int damage = 25; // 임시 데미지 값
+    public void Damage(int damage)
+    {
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
-            BattleManager.instance.CheckDead(); // 죽은 플레이어 수 증가, 게임오버 로직
+            StartCoroutine(BattleManager.instance.CheckDead()); // 죽은 플레이어 수 증가, 게임오버 로직
             deadUI.transform.gameObject.SetActive(true);
             spriter.color = new Color32(255, 255, 255, 90);
         }
@@ -98,7 +91,6 @@ public class PlayerBattleMode : MonoBehaviour
             StartCoroutine(DamageAnimation());
             incorrectUI.transform.gameObject.SetActive(true);
         }
-
     }
 
     IEnumerator DamageAnimation()
@@ -132,5 +124,4 @@ public class PlayerBattleMode : MonoBehaviour
         cursor.SetActive(false);
         animator.Play($"Battle_{playerConfig.CharacterName}_Idle", -1, 0f);
     }
-
 }

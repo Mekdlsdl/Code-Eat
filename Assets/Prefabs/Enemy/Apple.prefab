@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5451973936217363300}
   - component: {fileID: 5028223099500427346}
-  - component: {fileID: 1082885202673807613}
+  - component: {fileID: 8686648827095445021}
   - component: {fileID: 218015112075004807}
   - component: {fileID: 1624947809066870561}
   - component: {fileID: 5225066271476826053}
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyType: {fileID: 11400000, guid: b48b35035ed51cf41a743c3b361d08d9, type: 2}
---- !u!114 &1082885202673807613
+--- !u!114 &8686648827095445021
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -59,11 +59,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 3410110253856684642}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 292403ef0e256864bb772127ee4ebcde, type: 3}
+  m_Script: {fileID: 11500000, guid: b84abeec27ee7f34cb810748d858244e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  range: 0.5
+  speed: 5
+  directionChangeInterval: 0.5
+  detectionRadius: 2.5
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!212 &218015112075004807
 SpriteRenderer:
   m_ObjectHideFlags: 0

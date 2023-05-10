@@ -16,6 +16,12 @@ public class TipSpawner : MonoBehaviour
         Spawn(GetRandomPos());
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("space"))
+            Debug_OpenAllTips();
+    }
+
     private HashSet<int> GetRandomPos()
     {
         var spawnPos = new HashSet<int>();
@@ -45,5 +51,11 @@ public class TipSpawner : MonoBehaviour
         }
     }
 
-
+    public void Debug_OpenAllTips()
+    {
+        foreach (Transform tip in transform) {
+            tip.gameObject.SetActive(false);
+        }
+        enemySpawner.SpawnEnemy();
+    }
 }

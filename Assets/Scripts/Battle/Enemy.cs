@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public float hp { get; private set; } = 50;
     [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
+    [field: SerializeField] public int damage { get; set; } = 25;
     [SerializeField] private GameObject hitEffect;
 
     private void Awake()
@@ -46,10 +47,7 @@ public class Enemy : MonoBehaviour
         Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
         
         if (hp - damage <= 0) {
-            hp = 0;
-            isDead = true;
-            BattleManager.instance.BattleModeOff();
-            GameManager.instance.ReturnToMapSelectMode();
+            StartCoroutine(DefeatEnemy());
         }
         else {
             hp -= damage;
@@ -62,6 +60,18 @@ public class Enemy : MonoBehaviour
         Time.timeScale = 0;
         yield return new WaitForSecondsRealtime(0.1f);
         Time.timeScale = 1;
+    }
+
+    IEnumerator DefeatEnemy()
+    {
+        hp = 0;
+        isDead = true;
+
+        Debug.Log("적을 물리쳤습니다. 쓰러진 적 애니메이션 실행");
+        yield return new WaitForSecondsRealtime(1f);
+
+        BattleManager.instance.BattleModeOff();
+        GameManager.instance.ExitProblemMode();
     }
 
     public void Init(EnemyType type)
