@@ -5,15 +5,37 @@ using TMPro;
 
 public class CorrectManager : MonoBehaviour
 {
-    public List<TextMeshProUGUI> correct_text = new List<TextMeshProUGUI>();
+    public GameObject textPrefab;
+    public Transform textParent;
 
-    public void GetPlayerProblemState()
+    private List<TextMeshProUGUI> correct_text = new List<TextMeshProUGUI>();
+
+    public void GetPlayerCorrectState()
     {
-        for (int i = 0; i < correct_text.Count; i++)
+        // 텍스트 초기화
+        foreach (TextMeshProUGUI text in correct_text)
         {
-            int correct = PlayerConfigManager.instance.PlayerConfigs[i].CorrectProblemCount;
+            Destroy(text.gameObject);
+        }
+        correct_text.Clear();
+
+        Vector3 parentPosition = new Vector3(0, 0, 0);
+        textParent.transform.position = parentPosition;
+        float xOffset = 2.5f; //x축으로 ~~씩 이동하도록 하려고 설정
+
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
+        {
+            int playerIndex = playerConfig.PlayerIndex;
+            int correct = playerConfig.CorrectProblemCount;
             int total = ProblemManager.totalProblemCount;
-            correct_text[i].text = $"{correct} / {total}";
+            GameObject newTextObject = Instantiate(textPrefab, textParent);
+
+            Vector3 childPosition = parentPosition + new Vector3(xOffset * playerIndex, 0, 0);
+            newTextObject.transform.position = childPosition;
+
+            TextMeshProUGUI newText = newTextObject.GetComponent<TextMeshProUGUI>();
+            newText.text = $"{correct} / {total}";
+            correct_text.Add(newText);
         }
 
     }

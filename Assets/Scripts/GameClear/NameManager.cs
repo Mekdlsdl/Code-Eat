@@ -1,18 +1,46 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+
 public class NameManager : MonoBehaviour
 {
-    public List<TextMeshProUGUI> player_text = new List<TextMeshProUGUI>();
+    public GameObject textPrefab;
+    public Transform textParent;
 
-    public void GetPlayerNameState()
+    private List<TextMeshProUGUI> player_text = new List<TextMeshProUGUI>();
+
+   public void GetPlayerNameState()
     {
-        for (int i = 0; i < player_text.Count; i++)
+        // 텍스트 초기화
+        foreach (TextMeshProUGUI text in player_text)
         {
-            int playerindex = PlayerConfigManager.instance.PlayerConfigs[i].PlayerIndex;
-            player_text[i].text = $"P{playerindex + 1}";
+            Destroy(text.gameObject);
         }
-    }
+        player_text.Clear();
+
+        // 부모 객체의 위치 지정
+        Vector3 parentPosition = new Vector3(0, 0, 0);
+        textParent.transform.position = parentPosition;
+        float xOffset = 2.5f; //x축으로 ~~씩 이동하도록 하려고 설정
+
+        // 플레이어 수에 따라 새 텍스트 개체 만들기
+
+        foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
+        {
+            int playerIndex = playerConfig.PlayerIndex;
+            GameObject newTextObject = Instantiate(textPrefab, textParent);
+
+            //새로 생성된 텍스트 개체의 위치 설정
+            Vector3 childPosition = parentPosition + new Vector3(xOffset * playerIndex, 0, 0);
+            newTextObject.transform.position = childPosition;
+
+            //새 택스트 개체의 구성요소 load
+            TextMeshProUGUI newText = newTextObject.GetComponent<TextMeshProUGUI>();
+            newText.text = $"P{playerIndex + 1}";
+            player_text.Add(newText);
+        }
+   }
 }
+
