@@ -3608,7 +3608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <hp>k__BackingField: 50
   <maxHp>k__BackingField: 50
-  <speed>k__BackingField: 7
+  <speed>k__BackingField: 5
   hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
 --- !u!1 &1211215796691877999
 GameObject:

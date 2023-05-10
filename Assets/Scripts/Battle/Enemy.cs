@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
         if (hp - damage <= 0) {
             hp = 0;
             isDead = true;
+            BattleManager.instance.BattleModeOff();
             GameManager.instance.ReturnToMapSelectMode();
         }
         else {

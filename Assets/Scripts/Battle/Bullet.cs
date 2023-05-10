@@ -8,8 +8,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] private GameObject explosion;
     [SerializeField] private GameObject criticalPopup;
-    [field: SerializeField] public int damage { get; } = 10;
-    [SerializeField] private float speed = 10.0f;
+    [field: SerializeField] public int damage { get; } = 20;
+    [SerializeField] private float speed = 50.0f;
     private PlayerBattleMode player;
     private int layerMask;
 

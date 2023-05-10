@@ -13,6 +13,8 @@ public class PlayerBattleMode : MonoBehaviour
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
+    [SerializeField] private GameObject deadUI;
+    [SerializeField] private GameObject incorrectUI;
     [SerializeField] private int bulletCount = 0;
     public bool isDead { get; private set; } = false;
     
@@ -71,6 +73,7 @@ public class PlayerBattleMode : MonoBehaviour
     {
         bulletCount = 0;
         ShowBullets();
+        incorrectUI.transform.gameObject.SetActive(false);
     }
 
     private void ShowBullets()
@@ -82,18 +85,45 @@ public class PlayerBattleMode : MonoBehaviour
 
     }
 
-    public void Damage(int damage)
-    {
+    public void Damage()
+    {   
+        int damage = 25; // 임시 데미지 값
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
             isDead = true;
             BattleManager.instance.CheckDead(); // 죽은 플레이어 수 증가, 게임오버 로직
+            deadUI.transform.gameObject.SetActive(true);
+            spriter.color = new Color32(255, 255, 255, 90);
         }
         else {
             playerConfig.PlayerHp -= damage;
+            StartCoroutine(DamageAnimation());
+            incorrectUI.transform.gameObject.SetActive(true);
         }
 
     }
+
+    IEnumerator DamageAnimation()
+    {
+        int countTime = 0;
+
+        while (countTime < 10)
+        {
+            if (countTime % 2 == 0)
+                spriter.color = new Color32(255, 255, 255, 90);
+            else   
+                spriter.color = new Color32(255, 255, 255, 180);
+            
+            yield return new WaitForSecondsRealtime(0.2f);
+
+            countTime++;
+        }
+
+        spriter.color = new Color32(255, 255, 255, 255);
+
+        yield return null;
+    }
+
 
     public void HoldGun()
     {

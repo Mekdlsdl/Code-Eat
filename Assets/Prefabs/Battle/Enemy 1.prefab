@@ -104,9 +104,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <hp>k__BackingField: 50
   <maxHp>k__BackingField: 50
-  <speed>k__BackingField: 5
-  <minSpeed>k__BackingField: 5
-  maxSpeed: 10
+  <speed>k__BackingField: 7
   hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
 --- !u!50 &2310796903150743190
 Rigidbody2D:

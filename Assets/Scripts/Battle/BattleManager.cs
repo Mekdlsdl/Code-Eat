@@ -32,7 +32,7 @@ public class BattleManager : MonoBehaviour
         battleTime += Time.deltaTime;
 
         if (battleTime > maxBattleTime)
-            BattleModeOff();
+            BattleModeOffTimeOut();
     }
 
     public void BattleModeOn()
@@ -42,22 +42,28 @@ public class BattleManager : MonoBehaviour
         curEnemy.transform.position = curEnemy.pos;
         hud.SetActive(true);
     }
-    private void BattleModeOff()
+    public void BattleModeOff()
     {
         isBattleMode = false;
         battleTime = 0f;
-        Debug.Log($"{maxBattleTime} 초 초과. 배틀 모드 종료");
+        Debug.Log("배틀 모드 종료");
         curEnemy.transform.position = curEnemy.pos;
         hud.gameObject.SetActive(false);
+    }
 
+    private void BattleModeOffTimeOut()
+    {
+        BattleModeOff();
         StartCoroutine(ProblemManager.instance.NextProblem(0.6f));
     }
+
 
     public void CheckDead()
     {
         ++deadCount;
         if (deadCount == PlayerConfigManager.instance.GetPlayerConfigs().Count)
         {
+            BattleModeOff();
             GameManager.instance.StartGameOver();
         }
     }

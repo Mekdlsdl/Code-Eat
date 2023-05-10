@@ -68,8 +68,7 @@ public class AnswerManager : MonoBehaviour
                 player.player_battle_mode.cursor.SetActive(true);
             }
             else {
-                player.player_battle_mode.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화
-                //BattleManager.instance.curEnemy.HurtPlayer();
+                player.player_battle_mode.Damage(); 
             }
         }
 
