@@ -16,8 +16,6 @@ public class AnswerManager : MonoBehaviour
         if (instance != null)
             return;
         instance = this;
-
-        ProblemManager.instance.DisplayProblem();
     }
 
     public void AddToPlayerAnswerList(PlayerAnswer player)
@@ -67,6 +65,7 @@ public class AnswerManager : MonoBehaviour
             if (player.inputAnswer == answerIndex) {
                 correctPlayers.Add(player);
                 player.AddCorrectCount();
+                player.player_battle_mode.cursor.SetActive(true);
             }
             else {
                 player.player_battle_mode.ObtainBullets(0); // 틀린 플레이어의 총알 개수 초기화

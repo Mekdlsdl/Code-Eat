@@ -87,17 +87,16 @@ public class StackProblem : MonoBehaviour
         Sprite fruit;
         
         foreach (string code in shuffledArr) {
-            GameObject code_ui = Instantiate(codeUI, codeTransform);
-            code_ui.GetComponent<TextMeshProUGUI>().text = code;
+            var code_ui = Instantiate(codeUI, codeTransform).GetComponent<CodeUI>();
+            code_ui.code_ui.text = code;
 
             switch (code) {
                 case PUSH:
                     fruit = fruitList[Random.Range(0, fruitList.Count)];
                     fruitStack.Push(fruit);
 
-                    Transform target = code_ui.transform.GetChild(0);
-                    target.GetComponent<Image>().sprite = fruit;
-                    target.gameObject.SetActive(true);
+                    code_ui.code_fruit.sprite = fruit;
+                    code_ui.code_fruit.gameObject.SetActive(true);
                     break;
                 
                 case POP:

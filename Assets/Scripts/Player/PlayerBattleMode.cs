@@ -9,6 +9,7 @@ public class PlayerBattleMode : MonoBehaviour
     private SpriteRenderer spriter;
     private Animator animator;
 
+    public GameObject cursor;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private Sprite playerBattleSprite;
     [SerializeField] private GameObject bulletUI;
@@ -21,8 +22,6 @@ public class PlayerBattleMode : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
-        spriter.sprite = playerBattleSprite;
-
     }
 
 
@@ -56,10 +55,10 @@ public class PlayerBattleMode : MonoBehaviour
 
     private void PlayAnimation()
     {
-        animator.enabled = true;
-        animator.SetTrigger("Shoot");
+        // animator.enabled = true;
+        // animator.SetTrigger("Shoot");
         
-        //animator.Play($"Battle_{playerConfig.CharacterName}_Shoot", -1, 0f);        
+        animator.Play($"Battle_{playerConfig.CharacterName}_Shoot", -1, 0f);        
     }
 
     public void ObtainBullets(int bullet)
@@ -102,6 +101,7 @@ public class PlayerBattleMode : MonoBehaviour
     }
     public void PutAwayGun()
     {
+        cursor.SetActive(false);
         animator.Play($"Battle_{playerConfig.CharacterName}_Idle", -1, 0f);
     }
 

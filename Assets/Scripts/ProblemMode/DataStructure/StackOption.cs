@@ -6,4 +6,9 @@ using UnityEngine.UI;
 public class StackOption : MonoBehaviour
 {
     public List<Image> fruitImages;
+
+    void OnDisable()
+    {
+        Destroy(gameObject);
+    }
 }

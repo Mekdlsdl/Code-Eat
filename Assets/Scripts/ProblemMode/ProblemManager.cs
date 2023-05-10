@@ -1,8 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-
-using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ProblemManager : MonoBehaviour
 {
@@ -19,6 +18,8 @@ public class ProblemManager : MonoBehaviour
         if (instance != null)
             return;
         instance = this;
+
+        StartCoroutine(NextProblem(0.8f));
     }
     
     public void Init()
@@ -58,14 +59,18 @@ public class ProblemManager : MonoBehaviour
         totalProblemCount++;
     }
 
-    public void NextProblem() // 다음 문제를 불러오고자 할 때 호출
+    public IEnumerator NextProblem(float waitTime) // 다음 문제를 불러오고자 할 때 호출
     {
-        Destroy(temp);
+        yield return new WaitForSeconds(waitTime);
+        if (temp)
+            Destroy(temp);
+        DisplayProblem();
         SpawnProblem();
     }
 
-    public void DisplayProblem() // 문제 UI를 활성화할 때 호출
+    private void DisplayProblem() // 문제 UI를 활성화할 때 호출
     {
+        gameObject.SetActive(true);
         DOTween.Rewind("DisplayProblem");
         DOTween.Play("DisplayProblem");
     }

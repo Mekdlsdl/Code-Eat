@@ -50,7 +50,7 @@ public class BattleManager : MonoBehaviour
         curEnemy.transform.position = curEnemy.pos;
         hud.gameObject.SetActive(false);
 
-        ProblemManager.instance.NextProblem();
+        StartCoroutine(ProblemManager.instance.NextProblem(0.6f));
     }
 
     public void CheckDead()
