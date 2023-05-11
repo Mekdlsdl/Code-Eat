@@ -25,6 +25,7 @@ public class PlayerBattleMode : MonoBehaviour
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
         playerIndexText.text = "P" + (player_config.PlayerIndex + 1);
+        playerIndexText.color = GameManager.instance.PlayerColors[playerConfig.PlayerIndex];
     }
 
 
