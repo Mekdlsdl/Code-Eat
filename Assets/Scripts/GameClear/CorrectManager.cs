@@ -28,13 +28,14 @@ public class CorrectManager : MonoBehaviour
             int playerIndex = playerConfig.PlayerIndex;
             int correct = playerConfig.CorrectProblemCount;
             int total = ProblemManager.totalProblemCount;
+            int incorrect = total - correct / total;
             GameObject newTextObject = Instantiate(textPrefab, textParent);
 
             Vector3 childPosition = parentPosition + new Vector3(xOffset * playerIndex, 0, 0);
             newTextObject.transform.position = childPosition;
 
             TextMeshProUGUI newText = newTextObject.GetComponent<TextMeshProUGUI>();
-            newText.text = $"{correct} / {total}";
+            newText.text = $"{correct} / {total}\n 오답률: {incorrect}%";
             correct_text.Add(newText);
         }
 
