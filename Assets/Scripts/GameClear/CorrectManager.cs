@@ -38,6 +38,5 @@ public class CorrectManager : MonoBehaviour
             newText.text = $"{correct} / {total}\n 오답률: {incorrect}%";
             correct_text.Add(newText);
         }
-
     }
 }

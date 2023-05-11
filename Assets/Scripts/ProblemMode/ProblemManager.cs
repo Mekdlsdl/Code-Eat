@@ -27,7 +27,6 @@ public class ProblemManager : MonoBehaviour
     {   
         SetPlayers();
         SetProblem();
-        SpawnProblem();
     }
 
     private void SetPlayers()
@@ -58,6 +57,7 @@ public class ProblemManager : MonoBehaviour
         temp.GetComponent<StackProblem>().pm = this;
 
         totalProblemCount++;
+        Debug.Log($"{totalProblemCount} 번째 문제");
     }
 
     public IEnumerator NextProblem(float waitTime) // 다음 문제를 불러오고자 할 때 호출

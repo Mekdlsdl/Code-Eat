@@ -1,20 +1,45 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using TMPro;
+
 
 public class Winner : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI winnerText;
+    
+    public IEnumerator ShowWinner(float delay)
+    {
+        yield return new WaitForSeconds(delay);
 
-    void UpdateWinner()
+        winnerText.text = "최종 우승자는...";
+        DOTween.Rewind("ShowWinnerText");
+        DOTween.Play("ShowWinnerText");
+
+        yield return new WaitForSeconds(1.5f);
+
+        UpdateWinner();
+        DOTween.Rewind("ShowWinnerText");
+        DOTween.Play("ShowWinnerText");
+
+        yield return new WaitForSeconds(1.5f);
+
+        SpawnPlayerResult.instance.ShowAllPlayerScores();
+
+        yield return new WaitForSeconds(1.5f);
+
+        SpawnPlayerResult.instance.ShowAllPlayerStats();
+    }
+
+    private void UpdateWinner()
     {
         // Get the winner
         PlayerConfiguration winner = GetWinner();
         if (winner != null)
         {
             // 우승자 출력
-            winnerText.text = $"P {winner.PlayerIndex + 1} 이(가) 우승자입니다!";
+            winnerText.text = $"P{winner.PlayerIndex + 1}이 우승자입니다!";
         }
         else
         {
@@ -56,10 +81,5 @@ public class Winner : MonoBehaviour
         }
 
         return winner;
-    }
-
-    void Start()
-    {
-        UpdateWinner();
     }
 }

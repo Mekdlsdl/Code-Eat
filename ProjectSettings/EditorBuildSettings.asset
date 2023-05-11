@@ -32,5 +32,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FourthMap.unity
     guid: 126735632cbe2b749a000b3d53b9fae9
+  - enabled: 1
+    path: Assets/Scenes/Result.unity
+    guid: c469b1fb9ba760944b90ed5f1b951564
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3c7d67cb829dafd498ccc28b06398d38, type: 2}

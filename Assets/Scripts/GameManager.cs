@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("left shift"))
+            StartResultMode();
+    }
+
     public IEnumerator TryMapSelect()
     {
         yield return new WaitForEndOfFrame();
@@ -137,6 +143,16 @@ public class GameManager : MonoBehaviour
         process.completed += (AsyncOperation operation) =>
         {
             GameOverControl.instance.Init();
+            return;
+        };
+    }
+
+    public void StartResultMode()
+    {
+        var process = SceneManager.LoadSceneAsync("Result");
+        process.completed += (AsyncOperation operation) =>
+        {
+            SpawnPlayerResult.instance.Init();
             return;
         };
     }

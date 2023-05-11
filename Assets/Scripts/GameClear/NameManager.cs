@@ -11,7 +11,7 @@ public class NameManager : MonoBehaviour
 
     private List<TextMeshProUGUI> player_text = new List<TextMeshProUGUI>();
 
-   public void GetPlayerNameState()
+    public void GetPlayerNameState()
     {
         // 텍스트 초기화
         foreach (TextMeshProUGUI text in player_text)
