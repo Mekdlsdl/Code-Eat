@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
@@ -12,7 +12,7 @@ public class CorrectManager : MonoBehaviour
 
     public void GetPlayerCorrectState()
     {
-        // ÅØ½ºÆ® ÃÊ±âÈ­
+        // í…ìŠ¤íŠ¸ ì´ˆê¸°í™”
         foreach (TextMeshProUGUI text in correct_text)
         {
             Destroy(text.gameObject);
@@ -21,7 +21,7 @@ public class CorrectManager : MonoBehaviour
 
         Vector3 parentPosition = new Vector3(0, 0, 0);
         textParent.transform.position = parentPosition;
-        float xOffset = 2.5f; //xÃàÀ¸·Î ~~¾¿ ÀÌµ¿ÇÏµµ·Ï ÇÏ·Á°í ¼³Á¤
+        float xOffset = 2.5f; //xì¶•ìœ¼ë¡œ ~~ì”© ì´ë™í•˜ë„ë¡ í•˜ë ¤ê³  ì„¤ì •
 
         foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs)
         {
