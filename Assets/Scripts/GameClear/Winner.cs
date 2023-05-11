@@ -39,7 +39,7 @@ public class Winner : MonoBehaviour
         if (winner != null)
         {
             // 우승자 출력
-            winnerText.text = $"P{winner.PlayerIndex + 1}이 우승자입니다!";
+            winnerText.text = $"우승자는 <color={GameManager.instance.ReturnColorHex(winner.PlayerIndex)}>P{winner.PlayerIndex + 1}</color> 입니다!";
         }
         else
         {

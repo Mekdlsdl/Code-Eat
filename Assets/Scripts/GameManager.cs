@@ -161,6 +161,12 @@ public class GameManager : MonoBehaviour
     {
         encounteredEnemyset = new HashSet<string>();
     }
+
+    public string ReturnColorHex(int index)
+    {
+        Color32 color = PlayerColors[index];
+        return "#" + color.r.ToString("X2") + color.g.ToString("X2") + color.b.ToString("X2");
+    }
 }
 
 public class InputType
