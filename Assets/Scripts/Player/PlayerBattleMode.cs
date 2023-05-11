@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Pool;
+using TMPro;
 
 public class PlayerBattleMode : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerBattleMode : MonoBehaviour
     [SerializeField] private GameObject bulletUI;
     [SerializeField] private GameObject deadUI;
     [SerializeField] private GameObject incorrectUI;
+    [SerializeField] private TextMeshProUGUI playerIndexText;
     [SerializeField] private int bulletCount = 0;
     
     public void Init(PlayerConfiguration player_config)
@@ -22,6 +24,7 @@ public class PlayerBattleMode : MonoBehaviour
         spriter = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
+        playerIndexText.text = "P" + (player_config.PlayerIndex + 1);
     }
 
 
