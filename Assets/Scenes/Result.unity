@@ -890,7 +890,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1811303900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03698516, y: -0.16684467, z: 0.35682565}
+  m_LocalPosition: {x: 0.03698516, y: 1.95, z: 89.64317}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -971,7 +971,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2143152375}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 89.64317}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.025906736, y: 0.025906736, z: 0.025906736}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -980,7 +980,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.03698516, y: 2.1098557}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2143152377
@@ -1174,6 +1174,14 @@ PrefabInstance:
     - target: {fileID: 4342066806439559795, guid: a0425ef8e37928941a809a519de4fd26, type: 3}
       propertyPath: m_Name
       value: CorrectTextPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885852145480004636, guid: a0425ef8e37928941a809a519de4fd26, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7885852145480004636, guid: a0425ef8e37928941a809a519de4fd26, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0425ef8e37928941a809a519de4fd26, type: 3}
@@ -1388,12 +1396,20 @@ PrefabInstance:
       value: NameText Prefab
       objectReference: {fileID: 0}
     - target: {fileID: 7208235458460905217, guid: ea06e16dbda619e498ccf471fed71344, type: 3}
+      propertyPath: m_fontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208235458460905217, guid: ea06e16dbda619e498ccf471fed71344, type: 3}
       propertyPath: m_fontAsset
       value: 
       objectReference: {fileID: 11400000, guid: 2a44fa69a05209a4e8809be19b4b5173, type: 2}
     - target: {fileID: 7208235458460905217, guid: ea06e16dbda619e498ccf471fed71344, type: 3}
       propertyPath: m_fontStyle
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7208235458460905217, guid: ea06e16dbda619e498ccf471fed71344, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7208235458460905217, guid: ea06e16dbda619e498ccf471fed71344, type: 3}
       propertyPath: m_sharedMaterial
