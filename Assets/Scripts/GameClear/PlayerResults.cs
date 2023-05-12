@@ -5,11 +5,20 @@ using TMPro;
 
 public class PlayerResults : MonoBehaviour
 {
+    public Animator PlayerAnim;
+    public RectTransform PlayerTransform;
+
     private PlayerConfiguration playerConfig;
+    public PlayerConfiguration PlayerConfig => playerConfig;
+
     [SerializeField] private TextMeshProUGUI score_text, player_text, correct_text;
+
 
     public void Init(PlayerConfiguration player_config)
     {
+        playerConfig = player_config;
+        PlayerAnim.runtimeAnimatorController = GameManager.instance.GetResultAnimControl(playerConfig.CharacterTypeIndex);
+
         int playerIndex = player_config.PlayerIndex;
         int score = player_config.PlayerScore;
 

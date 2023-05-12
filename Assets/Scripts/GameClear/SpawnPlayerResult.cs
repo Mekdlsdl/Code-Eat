@@ -46,4 +46,25 @@ public class SpawnPlayerResult : MonoBehaviour
             result.ShowStat();
     }
 
+    public void PlayerResponseAnimation(List<PlayerConfiguration> winners)
+    {
+        List<int> winnerIndexes = new List<int>();
+        for (int i = 0; i < winners.Count; i++)
+            winnerIndexes.Add(winners[i].PlayerIndex);
+
+        for (int i = 0; i < playerResultList.Count; i++) {
+            PlayerConfiguration player = playerResultList[i].PlayerConfig;
+
+            if (winnerIndexes.Contains(i))
+                playerResultList[i].PlayerAnim.Play($"Result_{player.CharacterName}_Celebrate", -1, 0f);
+
+            else {
+                playerResultList[i].PlayerAnim.Play($"Result_{player.CharacterName}_Applaud", -1, 0f);
+                
+                // 우승자가 있는 방향으로 바라보도록 조정
+                if (i < winnerIndexes[0])
+                    playerResultList[i].PlayerTransform.localScale = new Vector2(-1, 1);
+            }
+        }
+    }
 }

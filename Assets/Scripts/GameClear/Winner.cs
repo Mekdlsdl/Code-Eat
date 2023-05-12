@@ -35,24 +35,25 @@ public class Winner : MonoBehaviour
     private void UpdateWinner()
     {
         // Get the winner
-        PlayerConfiguration winner = GetWinner();
-        if (winner != null)
-        {
-            // 우승자 출력
-            winnerText.text = $"우승자는 <color={GameManager.instance.ReturnColorHex(winner.PlayerIndex)}>P{winner.PlayerIndex + 1}</color> 입니다!";
+        List<PlayerConfiguration> winners = GetWinner();
+
+        string output_text = "우승자는 ";
+
+        for (int i = 0; i < winners.Count; i++) {
+            output_text += $"<color={GameManager.instance.ReturnColorHex(winners[i].PlayerIndex)}>P{winners[i].PlayerIndex + 1}</color>";
+            if (i < winners.Count - 1) output_text += ", ";    
         }
-        else
-        {
-            // 우승자가 없는 경우
-            winnerText.text = "우승자가 없습니다.";
-        }
+        output_text += "입니다!";
+        
+        winnerText.text = output_text;
+        SpawnPlayerResult.instance.PlayerResponseAnimation(winners);
     }
 
-    private PlayerConfiguration GetWinner()
+    private List<PlayerConfiguration> GetWinner()
     {
         List<PlayerConfiguration> players = PlayerConfigManager.instance.PlayerConfigs;
+        List<PlayerConfiguration> winners = new List<PlayerConfiguration>();
 
-        PlayerConfiguration winner = null;
         int highestScore = int.MinValue;
         int highestCorrectAnswers = int.MinValue;
 
@@ -66,7 +67,8 @@ public class Winner : MonoBehaviour
                 //우승자 선정
                 highestScore = score;
                 highestCorrectAnswers = correctAnswers;
-                winner = playerConfig;
+                winners.Clear();
+                winners.Add(playerConfig);
             }
             else if (score == highestScore) // 동점인 경우, 정답 개수에 따라 우승자 결정
             {
@@ -75,11 +77,16 @@ public class Winner : MonoBehaviour
                 {
                     // 동점자들 중 우승자 선정
                     highestCorrectAnswers = correctAnswers;
-                    winner = playerConfig;
+                    winners.Clear();
+                    winners.Add(playerConfig);
+                }
+                else if (correctAnswers == highestCorrectAnswers) // 정답 개수까지 동일할 경우
+                {
+                    // 우승자 2명 이상 선정
+                    winners.Add(playerConfig);
                 }
             }
         }
-
-        return winner;
+        return winners;
     }
 }

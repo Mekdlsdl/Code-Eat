@@ -77,6 +77,10 @@ public class GameManager : MonoBehaviour
     {
         return unlockedCharacters[index].battleAnimControl;
     }
+    public RuntimeAnimatorController GetResultAnimControl(int index)
+    {
+        return unlockedCharacters[index].resultAnimControl;
+    }
 
     public void ChangeActionMaps(string map_name)
     {
@@ -187,4 +191,5 @@ public class CharacterType
     public string characterName;
     public RuntimeAnimatorController charAnimControl;
     public RuntimeAnimatorController battleAnimControl;
+    public RuntimeAnimatorController resultAnimControl;
 }

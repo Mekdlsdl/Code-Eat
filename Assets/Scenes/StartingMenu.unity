@@ -171,9 +171,11 @@ MonoBehaviour:
   - characterName: Bunny
     charAnimControl: {fileID: 9100000, guid: baa88da1ed8f80949a0f76390eefc1f7, type: 2}
     battleAnimControl: {fileID: 9100000, guid: 63cd29da464e9fb489dcd1e686e27de5, type: 2}
+    resultAnimControl: {fileID: 9100000, guid: 42a32be8a67afaf4284524ad0f9416f9, type: 2}
   - characterName: Cat
     charAnimControl: {fileID: 9100000, guid: 3c957c1a340bd1c4faef16bfa00f7d2b, type: 2}
     battleAnimControl: {fileID: 0}
+    resultAnimControl: {fileID: 0}
   lockedCharacters: []
   PlayerColors:
   - serializedVersion: 2
