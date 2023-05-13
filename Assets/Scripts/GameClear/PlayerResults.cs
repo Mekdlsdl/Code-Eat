@@ -7,6 +7,7 @@ public class PlayerResults : MonoBehaviour
 {
     public Animator PlayerAnim;
     public RectTransform PlayerTransform;
+    public GameObject CelebrateEffect;
 
     private PlayerConfiguration playerConfig;
     public PlayerConfiguration PlayerConfig => playerConfig;

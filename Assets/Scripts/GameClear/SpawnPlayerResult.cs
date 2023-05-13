@@ -55,8 +55,10 @@ public class SpawnPlayerResult : MonoBehaviour
         for (int i = 0; i < playerResultList.Count; i++) {
             PlayerConfiguration player = playerResultList[i].PlayerConfig;
 
-            if (winnerIndexes.Contains(i))
+            if (winnerIndexes.Contains(i)) {
                 playerResultList[i].PlayerAnim.Play($"Result_{player.CharacterName}_Celebrate", -1, 0f);
+                playerResultList[i].CelebrateEffect.SetActive(true);
+            }
 
             else {
                 playerResultList[i].PlayerAnim.Play($"Result_{player.CharacterName}_Applaud", -1, 0f);
