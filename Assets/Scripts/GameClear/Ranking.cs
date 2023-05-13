@@ -1,11 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
 
 public class Ranking : MonoBehaviour
 {
-    public TextMeshProUGUI rankingText;
+    void OnEnable()
+    {
+        ClearRank(); // 정확한 디버깅을 위해 임시로 추가
+        UpdateRankings();
+        DisplayRank();
+    }
 
     public void UpdateRankings()
     {
@@ -23,38 +29,45 @@ public class Ranking : MonoBehaviour
         }
     }
 
-    public void InsertRank(int Score)
+    private void InsertRank(int score)
     {
         for (int i = 0; i < 10; i++)
         {
-            if (Score > PlayerPrefs.GetInt("score" + i, 0))
+            if (score > PlayerPrefs.GetInt("score" + i, 0))
             {
                 for (int j = 9 - i; j > 0; j--)
                 {
                     PlayerPrefs.SetInt("score" + j, PlayerPrefs.GetInt("score" + (j - 1), 0));
                 }
-                PlayerPrefs.SetInt("score" + i, Score);
+                PlayerPrefs.SetInt("score" + i, score);
                 PlayerPrefs.Save(); //갱신된 랭킹 저장
                 break;
             }
         }
     }
 
-    void Start()
+    private void DisplayRank()
     {
-        string rankingString = "";
+        TextMeshProUGUI[] ranks = GetComponentsInChildren<TextMeshProUGUI>();
+
+        int[] scoreArray = new int[10];
         for (int i = 0; i < 10; i++)
+            scoreArray[i] = PlayerPrefs.GetInt("score" + i, 0);
+        
+        int[] uniqueScoreArray = new SortedSet<int>(scoreArray).ToArray();
+        Array.Reverse(uniqueScoreArray);
+
+        for (int i = 0; i < uniqueScoreArray.Length; i++)
         {
-            int score = PlayerPrefs.GetInt("score" + i, 0);
-            if (score > 0)
-            {
-                rankingString += (i + 1) + ". " + score + "\n";
-            }
-            else
-            {
-                break;
-            }
+            int score = uniqueScoreArray[i];
+            string textColor = (score == 0) ? "#BAB5B5" : "#A17171";   
+            ranks[i].text = $"{i + 1}. <color={textColor}>{score}pt</color>";
         }
-        rankingText.text = rankingString;
+    }
+
+    private void ClearRank()
+    {
+        for (int i = 0; i < 10; i++)
+            PlayerPrefs.DeleteKey("score" + i);
     }
 }

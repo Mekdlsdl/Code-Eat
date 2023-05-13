@@ -7,6 +7,7 @@ using TMPro;
 
 public class Winner : MonoBehaviour
 {
+    [SerializeField] private GameObject leaderBoard;
     [SerializeField] private TextMeshProUGUI winnerText;
     
     public IEnumerator ShowWinner(float delay)
@@ -30,6 +31,11 @@ public class Winner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         SpawnPlayerResult.instance.ShowAllPlayerStats();
+
+        yield return new WaitForSeconds(2f);
+
+        leaderBoard.SetActive(true);
+
     }
 
     private void UpdateWinner()
