@@ -1256,6 +1256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <curEnemy>k__BackingField: {fileID: 8457789600177319869}
+  hud: {fileID: 0}
 --- !u!4 &744810305
 Transform:
   m_ObjectHideFlags: 0

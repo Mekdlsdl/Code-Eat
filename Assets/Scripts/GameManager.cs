@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 PositionControl.instance.TurnOffTips();
 
                 PositionControl.instance.RecoverPos();
-                PositionControl.instance.enemy_spawner.SpawnEnemy();                
+                PositionControl.instance.enemy_spawner.SpawnEnemy();          
             }
             PlayerSpawn.instance.SpawnPlayers();
             return;

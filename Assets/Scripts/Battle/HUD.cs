@@ -32,8 +32,6 @@ public class HUD : MonoBehaviour
         switch (type) {
             case Type.Score:
                 float curScore = playerConfig.PlayerScore;
-                float maxScore = EnemyHealthManager.totalEnemyHealth; // 합칠 때 이걸로 바꾸기
-                slider.value = curScore / maxScore;
                 infoText.text = string.Format("{0:F0}", curScore);
                 break;
             case Type.Hp:

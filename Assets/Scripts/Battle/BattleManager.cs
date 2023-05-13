@@ -18,6 +18,7 @@ public class BattleManager : MonoBehaviour
             return;
         instance = this;
     }
+    
 
     private void Update()
     {
@@ -76,4 +77,6 @@ public class BattleManager : MonoBehaviour
     {
         curEnemy.Init(enemy_type);
     }
+
+
 }

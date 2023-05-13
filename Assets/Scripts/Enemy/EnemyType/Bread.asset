@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   enemyName: Bread
-  enemyHP: 1
+  enemyHP: 10
   animControl: {fileID: 9100000, guid: b0e6b620cb3981742a03f7f02a81b933, type: 2}
   problem: {fileID: 8010487031716730573, guid: 8099af28919f45d4785b33c57cd81251, type: 3}
