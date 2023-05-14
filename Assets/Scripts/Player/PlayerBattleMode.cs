@@ -13,7 +13,6 @@ public class PlayerBattleMode : MonoBehaviour
     public GameObject cursor;
     [SerializeField] private GameObject bulletprefab;
     [SerializeField] private GameObject bulletUI;
-    [SerializeField] private TextMeshProUGUI bulletCountText;
     [SerializeField] private GameObject deadUI;
     [SerializeField] private GameObject incorrectUI;
     [SerializeField] private TextMeshProUGUI playerIndexText;
@@ -27,7 +26,6 @@ public class PlayerBattleMode : MonoBehaviour
         animator.runtimeAnimatorController = GameManager.instance.GetBattleAnimControl(playerConfig.CharacterTypeIndex);
         playerIndexText.text = "P" + (player_config.PlayerIndex + 1);
         playerIndexText.color = GameManager.instance.PlayerColors[playerConfig.PlayerIndex];
-        bulletCountText.text = "  x  0";
     }
 
 
@@ -49,7 +47,6 @@ public class PlayerBattleMode : MonoBehaviour
 
             // 총알 개수, UI 변동
             --bulletCount;
-            UpdateBulletCountText();
             bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
         }
     }
@@ -74,7 +71,7 @@ public class PlayerBattleMode : MonoBehaviour
     {
         bulletCount = 0;
         ShowBullets();
-        incorrectUI.transform.gameObject.SetActive(false);
+        incorrectUI.SetActive(false);
     }
 
     private void ShowBullets()
@@ -83,13 +80,7 @@ public class PlayerBattleMode : MonoBehaviour
         {
             bulletUI.transform.GetChild(i).gameObject.SetActive(i < bulletCount);
         }
-        UpdateBulletCountText();
         
-    }
-
-    private void UpdateBulletCountText()
-    {
-        bulletCountText.text = "  x  " + bulletCount;
     }
 
     public void Damage(int damage)
@@ -97,13 +88,13 @@ public class PlayerBattleMode : MonoBehaviour
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
             StartCoroutine(BattleManager.instance.CheckDead()); // 죽은 플레이어 수 증가, 게임오버 로직
-            deadUI.transform.gameObject.SetActive(true);
+            deadUI.SetActive(true);
             spriter.color = new Color32(255, 255, 255, 90);
         }
         else {
             playerConfig.PlayerHp -= damage;
             StartCoroutine(DamageAnimation());
-            incorrectUI.transform.gameObject.SetActive(true);
+            incorrectUI.SetActive(true);
         }
     }
 
