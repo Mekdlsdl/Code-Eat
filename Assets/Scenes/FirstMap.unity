@@ -18169,9 +18169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnList:
-  - enemy: {fileID: 3410110253856684642, guid: 58cb547adaea728468fefa2a9a962e3b, type: 3}
+  - enemy: {fileID: 3410110253856684642, guid: 8686caaa316bac74683fd6e8a10d1af3, type: 3}
     spawnPos: {x: -5.5, y: -2.3, z: 0}
-  - enemy: {fileID: 3410110253856684642, guid: 153d53024aa32a54caad001c8a248c2b, type: 3}
+  - enemy: {fileID: 3410110253856684642, guid: 09167efba27f7b941bbff72efa9e8e46, type: 3}
     spawnPos: {x: -5.5, y: 2.2, z: 0}
   - enemy: {fileID: 3410110253856684642, guid: c1ae9a7a24a3e6a4da503d299f0db30d, type: 3}
     spawnPos: {x: -3.97, y: 2.2, z: 0}
