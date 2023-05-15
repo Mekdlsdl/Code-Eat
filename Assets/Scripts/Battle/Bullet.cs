@@ -48,7 +48,7 @@ public class Bullet : MonoBehaviour
 
             enemy.Hit(curDamage);
             player.playerConfig.PlayerScore += curDamage;
-            Debug.Log($"플레이어 {player.playerConfig.PlayerIndex} 점수: " + player.playerConfig.PlayerScore);
+            Debug.Log($"플레이어 {player.playerConfig.PlayerIndex + 1} 점수: " + player.playerConfig.PlayerScore);
         }
     }
 

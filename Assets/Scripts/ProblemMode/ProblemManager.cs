@@ -8,10 +8,10 @@ public class ProblemManager : MonoBehaviour
     public static ProblemManager instance { get; private set; }
     public static int totalProblemCount = 0;
 
-    [SerializeField] private GameObject battlePlayerPrefab, screenCover;
+    [SerializeField] private GameObject battlePlayerPrefab, screenCover, stageCompleteText;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     public List<Transform> optionTransforms;
-    private GameObject currentProblem, temp;
+    private GameObject currentProblem, tempProblem;
 
     void Awake()
     {
@@ -19,7 +19,7 @@ public class ProblemManager : MonoBehaviour
             return;
         instance = this;
 
-        screenCover.SetActive(true);
+        ShowScreen();
         StartCoroutine(NextProblem(0.9f));
     }
     
@@ -53,8 +53,8 @@ public class ProblemManager : MonoBehaviour
     private void SpawnProblem()
     {
         AnswerManager.instance.ResetPlayerAnswers();
-        temp = Instantiate(currentProblem, problemUI);
-        temp.GetComponent<StackProblem>().pm = this;
+        tempProblem = Instantiate(currentProblem, problemUI);
+        tempProblem.GetComponent<StackProblem>().pm = this;
 
         totalProblemCount++;
         Debug.Log($"{totalProblemCount} 번째 문제");
@@ -63,8 +63,8 @@ public class ProblemManager : MonoBehaviour
     public IEnumerator NextProblem(float waitTime) // 다음 문제를 불러오고자 할 때 호출
     {
         yield return new WaitForSeconds(waitTime);
-        if (temp)
-            Destroy(temp);
+        if (tempProblem)
+            Destroy(tempProblem);
         DisplayProblem();
         SpawnProblem();
     }
@@ -80,5 +80,23 @@ public class ProblemManager : MonoBehaviour
     {
         DOTween.Rewind("HideProblem");
         DOTween.Play("HideProblem");
+    }
+
+    private void ShowScreen()
+    {
+        screenCover.SetActive(true);
+        DOTween.Rewind("ProblemModeIn");
+        DOTween.Play("ProblemModeIn");
+    }
+
+    public void HideScreen()
+    {
+        DOTween.Rewind("ProblemModeOut");
+        DOTween.Play("ProblemModeOut");
+    }
+
+    public void ShowStageCompleteText()
+    {
+        stageCompleteText.SetActive(true);
     }
 }

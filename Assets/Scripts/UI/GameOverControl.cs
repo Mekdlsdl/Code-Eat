@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class GameOverControl : MonoBehaviour
 {
     public static GameOverControl instance { get; private set; }
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject player, screenCover;
     [SerializeField] private List<Image> btnList;
     [SerializeField] private Color32 highlightColor, defaultColor;
     [SerializeField] private int btnIndex = 0;
@@ -16,6 +16,8 @@ public class GameOverControl : MonoBehaviour
         if (instance != null)
             return;
         instance = this;
+
+        screenCover.SetActive(true);
     }
 
     public void Init()

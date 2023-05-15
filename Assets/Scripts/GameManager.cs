@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown("left shift"))
-            StartResultMode();
+            StartCoroutine(StartResultMode());
     }
 
     public IEnumerator TryMapSelect()
@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public IEnumerator StartProblemMode(EnemyType enemyType, Vector3 playerPosition)
+    public IEnumerator StartProblemMode(EnemyType enemyType, Vector3 playerPosition, bool is_boss = false)
     {
         GameManager.isProblemMode = true;
         ChangeActionMaps("BattleMode");
@@ -102,14 +102,17 @@ public class GameManager : MonoBehaviour
         var process = SceneManager.LoadSceneAsync("ProblemMode");
         process.completed += (AsyncOperation operation) =>
         {
-            BattleManager.instance.SetEnemy(enemyType);
+            BattleManager.instance.SetEnemy(enemyType, is_boss);
             ProblemManager.instance.Init();
         };
     }
 
-    public void ExitProblemMode() // 문제를 풀고 맵으로 돌아갈 경우
+    public IEnumerator ExitProblemMode() // 문제를 풀고 맵으로 돌아갈 경우
     {
         PlayerConfigManager.instance.ResetAllPlayerHealth();
+        
+        ProblemManager.instance.HideScreen();
+        yield return new WaitForSeconds(0.7f);
 
         isProblemMode = false;
         ChangeActionMaps("MapControl");
@@ -141,8 +144,11 @@ public class GameManager : MonoBehaviour
         currentMapName = map_name;
     }
 
-    public void StartGameOver()
+    public IEnumerator StartGameOver()
     {
+        ProblemManager.instance.HideScreen();
+        yield return new WaitForSeconds(0.7f);
+
         var process = SceneManager.LoadSceneAsync("GameOver");
         process.completed += (AsyncOperation operation) =>
         {
@@ -151,8 +157,14 @@ public class GameManager : MonoBehaviour
         };
     }
 
-    public void StartResultMode()
+    public IEnumerator StartResultMode()
     {
+        ProblemManager.instance.ShowStageCompleteText();
+        yield return new WaitForSeconds(1.5f);
+
+        ProblemManager.instance.HideScreen();
+        yield return new WaitForSeconds(0.7f);
+
         var process = SceneManager.LoadSceneAsync("Result");
         process.completed += (AsyncOperation operation) =>
         {

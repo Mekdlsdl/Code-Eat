@@ -69,15 +69,13 @@ public class BattleManager : MonoBehaviour
             Debug.Log("모든 플레이어가 전투 불능 상태입니다. 모든 플레이어가 죽었음을 충분히 보여주고 2초 뒤 게임 오버로 이동합니다.");
             yield return new WaitForSecondsRealtime(2f);
 
-            GameManager.instance.StartGameOver();
+            StartCoroutine(GameManager.instance.StartGameOver());
         }
     }
     
-    public void SetEnemy(EnemyType enemy_type)
+    public void SetEnemy(EnemyType enemy_type, bool is_boss)
     {
-        curEnemy.Init(enemy_type);
+        curEnemy.Init(enemy_type, is_boss);
         Instantiate(enemy_type.bodyCollider, curEnemy.transform);
     }
-
-
 }

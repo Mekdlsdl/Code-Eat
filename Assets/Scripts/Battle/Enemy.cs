@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public int damage { get; set; } = 25;
     [SerializeField] private FlashHitEffect flashHitEffect;
     [SerializeField] private GameObject hitEffect;
+    
+    private bool isBoss = false;
 
     private void Awake()
     {
@@ -69,17 +71,22 @@ public class Enemy : MonoBehaviour
     {
         hp = 0;
         isDead = true;
-
         animator.Play($"{enemyType.enemyName}_Dead", -1, 0f);
+
         yield return new WaitForSecondsRealtime(1f);
 
         BattleManager.instance.BattleModeOff();
-        GameManager.instance.ExitProblemMode();
+
+        if (isBoss)
+            StartCoroutine(GameManager.instance.StartResultMode());
+        else
+            StartCoroutine(GameManager.instance.ExitProblemMode());
     }
 
-    public void Init(EnemyType type)
+    public void Init(EnemyType type, bool is_boss)
     {
         enemyType =  type;
+        isBoss = is_boss;
         animator.runtimeAnimatorController = enemyType.animControl;
         maxHp = hp = enemyType.enemyHP;
     }
