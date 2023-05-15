@@ -8,5 +8,5 @@ public class EnemyType : ScriptableObject
     public string enemyName;
     public int enemyHP;
     public RuntimeAnimatorController animControl;
-    public GameObject problem;
+    public GameObject bodyCollider, problem;
 }
