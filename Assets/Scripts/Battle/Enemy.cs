@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public int damage { get; set; } = 25;
+    [SerializeField] private FlashHitEffect flashHitEffect;
     [SerializeField] private GameObject hitEffect;
 
     private void Awake()
@@ -45,6 +46,8 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(Stop());
         Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
+        flashHitEffect.Flash();
+        animator.Play($"{enemyType.enemyName}_Hurt", -1, 0f);
         
         if (hp - damage <= 0) {
             StartCoroutine(DefeatEnemy());
@@ -67,7 +70,7 @@ public class Enemy : MonoBehaviour
         hp = 0;
         isDead = true;
 
-        Debug.Log("적을 물리쳤습니다. 쓰러진 적 애니메이션 실행");
+        animator.Play($"{enemyType.enemyName}_Dead", -1, 0f);
         yield return new WaitForSecondsRealtime(1f);
 
         BattleManager.instance.BattleModeOff();
@@ -79,5 +82,10 @@ public class Enemy : MonoBehaviour
         enemyType =  type;
         animator.runtimeAnimatorController = enemyType.animControl;
         maxHp = hp = enemyType.enemyHP;
+    }
+
+    private void ReturnToIdleAnimation()
+    {
+        animator.Play($"{enemyType.enemyName}_Idle", -1, 0f);
     }
 }

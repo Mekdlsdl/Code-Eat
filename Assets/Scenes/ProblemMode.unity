@@ -4003,6 +4003,7 @@ MonoBehaviour:
   <maxHp>k__BackingField: 50
   <speed>k__BackingField: 5
   <damage>k__BackingField: 25
+  flashHitEffect: {fileID: 1211215796691878001}
   hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
 --- !u!1 &1211215796691877999
 GameObject:
@@ -4015,6 +4016,7 @@ GameObject:
   - component: {fileID: 1211215796691877992}
   - component: {fileID: 1211215796691877993}
   - component: {fileID: 1211215796691877998}
+  - component: {fileID: 1211215796691878001}
   - component: {fileID: 1211215796691877994}
   - component: {fileID: 1211215796691878000}
   m_Layer: 7
@@ -4045,6 +4047,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1211215796691878001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211215796691877999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19e86450ce1773244935b78629f53ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashMaterial: {fileID: 2100000, guid: b7d349ab59b4c214186b1286291efb9b, type: 2}
+  duration: 0.1
 --- !u!1001 &3043206431353769716
 PrefabInstance:
   m_ObjectHideFlags: 0
