@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyType : ScriptableObject
 {
     public string enemyName;
-    public int enemyHP;
+    public int enemyHP, damage;
     public RuntimeAnimatorController animControl;
     public GameObject bodyCollider, problem;
 }

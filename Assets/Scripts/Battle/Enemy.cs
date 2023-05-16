@@ -89,6 +89,7 @@ public class Enemy : MonoBehaviour
         isBoss = is_boss;
         animator.runtimeAnimatorController = enemyType.animControl;
         maxHp = hp = enemyType.enemyHP;
+        damage = enemyType.damage;
     }
 
     private void ReturnToIdleAnimation()
