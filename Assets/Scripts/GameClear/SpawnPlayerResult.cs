@@ -26,7 +26,7 @@ public class SpawnPlayerResult : MonoBehaviour
             GameObject player = Instantiate(player_result, transform);
             PlayerResults result = player.GetComponent<PlayerResults>();
             
-            result.Init(players[i]);
+            result.Init(players[i], winnerControl);
             playerResultList.Add(result);
         }
 

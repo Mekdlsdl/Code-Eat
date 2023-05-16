@@ -9,14 +9,16 @@ public class PlayerResults : MonoBehaviour
     public RectTransform PlayerTransform;
     public GameObject CelebrateEffect;
 
+    private Winner winnerControl;
     private PlayerConfiguration playerConfig;
     public PlayerConfiguration PlayerConfig => playerConfig;
 
     [SerializeField] private TextMeshProUGUI score_text, player_text, correct_text;
 
 
-    public void Init(PlayerConfiguration player_config)
+    public void Init(PlayerConfiguration player_config, Winner winner_control)
     {
+        winnerControl = winner_control;
         playerConfig = player_config;
         PlayerAnim.runtimeAnimatorController = GameManager.instance.GetResultAnimControl(playerConfig.CharacterTypeIndex);
 
@@ -34,6 +36,15 @@ public class PlayerResults : MonoBehaviour
         player_text.color = GameManager.instance.PlayerColors[player_config.PlayerIndex];
     }
 
+    void Update()
+    {
+        if (!winnerControl.canExitResults) return;
+        
+        if (PressKey(InputType.EASTBUTTON) || PressKey(InputType.SOUTHBUTTON) || PressKey(InputType.WESTBUTTON) || PressKey(InputType.NORTHBUTTON)) {
+            GameManager.instance.ReturnToMapSelectMode();
+        }
+    }
+
     public void ShowScore()
     {
         score_text.gameObject.SetActive(true);
@@ -44,5 +55,10 @@ public class PlayerResults : MonoBehaviour
     {
         correct_text.gameObject.SetActive(true);
         score_text.gameObject.SetActive(false);
+    }
+
+    private bool PressKey(string input_tag)
+    {
+        return playerConfig.Input.actions[input_tag].triggered;
     }
 }
