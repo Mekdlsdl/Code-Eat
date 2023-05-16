@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
 
     public bool isDead { get; private set; } = false;
     public Vector2 pos { get; private set; }
-    private float maxX = 7.0f;
+    [SerializeField] private float maxX = 13.0f;
     [field: SerializeField] public float hp { get; private set; } = 50;
     [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
