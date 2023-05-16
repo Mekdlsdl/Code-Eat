@@ -88,7 +88,9 @@ public class PlayerBattleMode : MonoBehaviour
         if (playerConfig.PlayerHp - damage <= 0) {
             playerConfig.PlayerHp = 0;
             StartCoroutine(BattleManager.instance.CheckDead()); // 죽은 플레이어 수 증가, 게임오버 로직
+
             deadUI.SetActive(true);
+            animator.Play($"Battle_{playerConfig.CharacterName}_Dead", -1, 0f);
             spriter.color = new Color32(255, 255, 255, 90);
         }
         else {
@@ -128,5 +130,10 @@ public class PlayerBattleMode : MonoBehaviour
     {
         cursor.SetActive(false);
         animator.Play($"Battle_{playerConfig.CharacterName}_Idle", -1, 0f);
+    }
+
+    public bool IsPlayerDead()
+    {
+        return playerConfig.PlayerHp == 0;
     }
 }

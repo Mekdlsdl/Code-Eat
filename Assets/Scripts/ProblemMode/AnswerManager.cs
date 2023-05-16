@@ -71,6 +71,7 @@ public class AnswerManager : MonoBehaviour
             }
             else if (pbm.playerConfig.PlayerHp > 0) {
                 Debug.Log($"P{pbm.playerConfig.PlayerIndex + 1} 는 틀렸습니다.");
+                pbm.PutAwayGun();
                 pbm.Damage(BattleManager.instance.curEnemy.damage); 
             }
         }
@@ -92,7 +93,8 @@ public class AnswerManager : MonoBehaviour
             player.answerRank = -1;
 
             player.player_battle_mode.ClearBullets();
-            player.player_battle_mode.PutAwayGun();
+            if (!player.player_battle_mode.IsPlayerDead())
+                player.player_battle_mode.PutAwayGun();
         }
         answerIndex = -1;
         answerRank = 0;
