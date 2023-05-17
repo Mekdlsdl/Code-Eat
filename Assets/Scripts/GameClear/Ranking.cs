@@ -8,7 +8,7 @@ public class Ranking : MonoBehaviour
 {
     void OnEnable()
     {
-        ClearRank(); // 정확한 디버깅을 위해 임시로 추가
+        // ClearRank(); // 정확한 디버깅을 위해 임시로 추가
         UpdateRankings();
         DisplayRank();
     }
