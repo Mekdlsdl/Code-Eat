@@ -8,7 +8,7 @@ public class Ranking : MonoBehaviour
 {
     void OnEnable()
     {
-        // ClearRank(); // 정확한 디버깅을 위해 임시로 추가
+        ClearRank(); // 정확한 디버깅을 위해 임시로 추가
         UpdateRankings();
         DisplayRank();
     }
@@ -54,12 +54,16 @@ public class Ranking : MonoBehaviour
         for (int i = 0; i < 10; i++)
             scoreArray[i] = PlayerPrefs.GetInt("score" + i, 0);
         
+        // 중복되는 플레이어 점수 제거
         int[] uniqueScoreArray = new SortedSet<int>(scoreArray).ToArray();
         Array.Reverse(uniqueScoreArray);
 
-        for (int i = 0; i < uniqueScoreArray.Length; i++)
+        for (int i = 0; i < 10; i++)
         {
-            int score = uniqueScoreArray[i];
+            int score = 0;
+            if (i < uniqueScoreArray.Length)
+                score = uniqueScoreArray[i];
+            
             string textColor = (score == 0) ? "#BAB5B5" : "#A17171";   
             ranks[i].text = $"{i + 1}. <color={textColor}>{score}pt</color>";
         }

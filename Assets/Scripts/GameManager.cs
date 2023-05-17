@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("left shift"))
+        if (Input.GetKeyDown("left shift") && (ProblemManager.instance != null))
             StartCoroutine(StartResultMode());
     }
 
