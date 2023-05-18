@@ -90,8 +90,6 @@ public class TreeWhatOrder : TreeProblem
             orderImage.color = ordColor;
 
             yield return new WaitForSeconds(0.4f);
-            ordColor.a = 1;
-            orderImage.color = ordColor;
         }
     }
 
