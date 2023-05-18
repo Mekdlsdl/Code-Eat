@@ -1,12 +1,19 @@
+using System.Threading;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
-using System.Collections;
+using TMPro;
+
 
 public class ProblemManager : MonoBehaviour
 {
     public static ProblemManager instance { get; private set; }
     public static int totalProblemCount = 0;
+
+    [SerializeField] private float maxProblemTime;
+    private float timer; public float Timer => timer;
+    [SerializeField] private TextMeshProUGUI timerUI;
 
     [SerializeField] private GameObject battlePlayerPrefab, screenCover, stageCompleteText;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
@@ -21,6 +28,36 @@ public class ProblemManager : MonoBehaviour
 
         ShowScreen();
         StartCoroutine(NextProblem(0.9f));
+    }
+
+    void Update()
+    {
+        if (PlayerAnswer.enableAnswerSelect) {
+            CountDown();
+        }
+    }
+    private void CountDown()
+    {
+        int beforeTime = Mathf.FloorToInt(timer);
+        timer -= Time.deltaTime;
+
+        if (timer < 0)
+            TimeOut();
+        
+        int afterTime = Mathf.FloorToInt(timer);
+        timerUI.text = Mathf.FloorToInt(timer).ToString();
+        timerUI.color = timer < 4 ? Color.red : Color.yellow;
+
+        if (afterTime != beforeTime) {
+            DOTween.Rewind("TimerBounce");
+            DOTween.Play("TimerBounce");
+        }
+    }
+
+    private void TimeOut()
+    {
+        timer = 0;
+        StartCoroutine(AnswerManager.instance.TryMarkPlayerAnswer());
     }
     
     public void Init()
@@ -60,8 +97,12 @@ public class ProblemManager : MonoBehaviour
         Debug.Log($"{totalProblemCount} 번째 문제");
     }
 
-    public IEnumerator NextProblem(float waitTime) // 다음 문제를 불러오고자 할 때 호출
+    public IEnumerator NextProblem(float waitTime = 0.6f) // 다음 문제를 불러오고자 할 때 호출
     {
+        timer = maxProblemTime;
+        timerUI.text = timer.ToString("F0");
+        timerUI.color = Color.white;
+
         yield return new WaitForSeconds(waitTime);
         if (tempProblem)
             Destroy(tempProblem);

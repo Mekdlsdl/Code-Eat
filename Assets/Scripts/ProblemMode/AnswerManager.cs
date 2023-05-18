@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +9,8 @@ public class AnswerManager : MonoBehaviour
     
     private List<PlayerAnswer> playerAnswerList = new List<PlayerAnswer>();
     public List<PlayerAnswer> PlayerAnswerList => playerAnswerList;
+
+    List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
 
     private int answerIndex, answerRank;
 
@@ -38,7 +41,7 @@ public class AnswerManager : MonoBehaviour
     {
         RankPlayerAnswer(player);
         player.player_battle_mode.HoldGun();
-        TryMarkPlayerAnswer();
+        StartCoroutine(TryMarkPlayerAnswer());
     }
 
     private void RankPlayerAnswer(PlayerAnswer player) // 각 플레이어가 답안을 선택한 순서대로 랭크를 부여
@@ -47,19 +50,29 @@ public class AnswerManager : MonoBehaviour
         answerRank ++;
     }
     
-    private void TryMarkPlayerAnswer()
+    public IEnumerator TryMarkPlayerAnswer()
     {
-        if (playerAnswerList.All(p => (p.inputAnswer != -1) || (p.player_battle_mode.playerConfig.PlayerHp == 0) )) // 살아있는 모든 플레이어가 답을 선택했을 경우
+        if (!PlayerAnswer.enableAnswerSelect)
+            yield break;
+        
+        if (playerAnswerList.All(p => (p.inputAnswer != -1) || (ProblemManager.instance.Timer == 0) || (p.player_battle_mode.playerConfig.PlayerHp == 0))) // 살아있는 모든 플레이어가 답을 선택했을 경우
         {
-            MarkPlayerAnswer();
+            PlayerAnswer.enableAnswerSelect = false;
             ProblemManager.instance.HideProblem();
-            BattleManager.instance.BattleModeOn();
+
+            yield return MarkPlayerAnswer();
+
+            // 맞힌 플레이어가 아무도 없을 경우 전투 모드 스킵
+            if (correctPlayers.Count > 0)
+                BattleManager.instance.BattleModeOn();
+            else
+                StartCoroutine(ProblemManager.instance.NextProblem());
         }
     }
 
-    private void MarkPlayerAnswer()
+    IEnumerator MarkPlayerAnswer()
     {
-        List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
+        correctPlayers = new List<PlayerAnswer>();
 
         foreach (PlayerAnswer player in playerAnswerList) {
             PlayerBattleMode pbm = player.player_battle_mode;
@@ -84,6 +97,7 @@ public class AnswerManager : MonoBehaviour
                 $"\n총알 {correctPlayers.Count - i}개 를 지급받습니다."
             );
         }
+        yield break;
     }
 
     public void ResetPlayerAnswers() // 플레이어 답안과 랭크 초기화, 모든 플레이어의 답 선택 잠금
@@ -98,8 +112,6 @@ public class AnswerManager : MonoBehaviour
         }
         answerIndex = -1;
         answerRank = 0;
-        
-        PlayerAnswer.enableAnswerSelect = false;
     }
 }
 

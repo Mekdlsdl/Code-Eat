@@ -6,9 +6,10 @@ using TMPro;
 
 public class Ranking : MonoBehaviour
 {
+    [SerializeField] private bool debug_rank;
     void OnEnable()
     {
-        // ClearRank(); // 정확한 디버깅을 위해 임시로 추가
+        if (debug_rank) ClearRank(); // 정확한 디버깅을 위해 임시로 추가
         UpdateRankings();
         DisplayRank();
     }

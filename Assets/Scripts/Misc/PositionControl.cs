@@ -5,7 +5,8 @@ using UnityEngine;
 public class PositionControl : MonoBehaviour
 {
     public static PositionControl instance { get; private set; }
-    private static Vector3[] backupPlayerPos, backupEnemyPos;
+    private static Vector3[] backupPlayerPos;
+    private static Dictionary<string, Vector3> backupEnemyPos = new Dictionary<string, Vector3>();
     
     public PlayerSpawn playerSpawn;
     [SerializeField] private EnemySpawner enemySpawner;
@@ -26,9 +27,10 @@ public class PositionControl : MonoBehaviour
         for (int i = 0; i < backupPlayerPos.Length; i++)
             backupPlayerPos[i] = playerSpawn.PlayerTransforms[i].localPosition;
         
-        backupEnemyPos = new Vector3[enemySpawner.ExistingEnemyList.Count];
-        for (int j = 0; j < backupEnemyPos.Length; j++)
-            backupEnemyPos[j] = enemySpawner.ExistingEnemyList[j].transform.localPosition;
+        for (int j = 0; j < enemySpawner.ExistingEnemyList.Count; j++) {
+            string enemy_name = enemySpawner.ExistingEnemyList[j].GetComponent<EnemyEncounter>().enemy_type.enemyName;
+            backupEnemyPos[enemy_name] = enemySpawner.ExistingEnemyList[j].transform.localPosition;
+        }
     }
 
     public void RecoverPos()
@@ -36,8 +38,14 @@ public class PositionControl : MonoBehaviour
         for (int i = 0; i < backupPlayerPos.Length; i++)
             playerSpawn.spawnPos[i] = backupPlayerPos[i];
         
-        for (int j = 0; j < backupEnemyPos.Length; j++)
-            enemySpawner.spawnList[j].spawnPos = backupEnemyPos[j];
+        for (int j = 0; j < enemySpawner.spawnList.Count; j++) {
+            var temp = Instantiate(enemySpawner.spawnList[j].enemy);
+            string enemy_name = temp.GetComponent<EnemyEncounter>().enemy_type.enemyName;
+            Destroy(temp);
+            
+            if (backupEnemyPos.ContainsKey(enemy_name))
+                enemySpawner.spawnList[j].spawnPos = backupEnemyPos[enemy_name];
+        }
     }
 
     public void TurnOffTips()

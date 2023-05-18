@@ -55,7 +55,7 @@ public class BattleManager : MonoBehaviour
     private void BattleModeOffTimeOut()
     {
         BattleModeOff();
-        StartCoroutine(ProblemManager.instance.NextProblem(0.6f));
+        StartCoroutine(ProblemManager.instance.NextProblem());
     }
 
 
