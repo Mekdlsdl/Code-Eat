@@ -7,10 +7,9 @@ using TMPro;
 
 public class TreeWhatOrder : TreeProblem
 {
-    [SerializeField] private GameObject guide, tree, option, question;
-    [SerializeField] private List<TMP_Text> treeOptions;
-    // [SerializeField] private List<GameObject> questions;
-    private List<string> optionContent;
+    [SerializeField] private GameObject guide, tree, option, question, cover;
+    [SerializeField] private List<GameObject> treeOptions;
+    [SerializeField] private List<Sprite> optionContent;
     private List<int> optionIndex;
     [SerializeField] public List<TNode> getNode;
     private List<GameObject> orderResult;
@@ -48,10 +47,12 @@ public class TreeWhatOrder : TreeProblem
         question.SetActive(true);
         yield return new WaitForSeconds(3f);
         option.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        // cover.SetActive(false);
     }
 
     void OrderOption() {
-        optionContent = new List<string> {"전위순회", "중위순회", "후위순회", "레벨순회"};
+        // optionContent = new List<string> {"전위순회", "중위순회", "후위순회", "레벨순회"};
         optionIndex = new List<int>();
 
         while (true) {
@@ -66,9 +67,11 @@ public class TreeWhatOrder : TreeProblem
             }
         }
 
+
         int j = 0;
-        foreach (string content in optionContent) {
-            treeOptions[optionIndex[j]].text = content;
+        foreach (Sprite content in optionContent) {
+            Image optionImage = treeOptions[optionIndex[j]].GetComponent<Image>();
+            optionImage.sprite = content;
             j++;
             if (j >= optionContent.Count) {
                 break;
