@@ -13,6 +13,7 @@ public class AnswerManager : MonoBehaviour
     List<PlayerAnswer> correctPlayers = new List<PlayerAnswer>();
 
     private int answerIndex, answerRank;
+    public int AnswerIndex => answerIndex;
 
     void Awake()
     {
@@ -58,14 +59,16 @@ public class AnswerManager : MonoBehaviour
         if (playerAnswerList.All(p => (p.inputAnswer != -1) || (ProblemManager.instance.Timer == 0) || (p.player_battle_mode.playerConfig.PlayerHp == 0))) // 살아있는 모든 플레이어가 답을 선택했을 경우
         {
             PlayerAnswer.enableAnswerSelect = false;
-            ProblemManager.instance.HideProblem();
 
             yield return MarkPlayerAnswer();
 
-            // 맞힌 플레이어가 아무도 없을 경우 전투 모드 스킵
+            yield return ProblemManager.instance.ShowCorrectOption();
+            ProblemManager.instance.HideProblem();
+
+            // 맞힌 플레이어가 한 명이라도 존재할 경우 전투 돌입, 그렇지 않을 경우 전투 스킵
             if (correctPlayers.Count > 0)
                 BattleManager.instance.BattleModeOn();
-            else
+            else if (!GameManager.isGameOver)
                 StartCoroutine(ProblemManager.instance.NextProblem());
         }
     }

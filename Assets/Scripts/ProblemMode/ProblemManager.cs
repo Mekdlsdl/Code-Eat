@@ -1,6 +1,6 @@
-using System.Threading;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.UI;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
@@ -134,6 +134,27 @@ public class ProblemManager : MonoBehaviour
     {
         DOTween.Rewind("ProblemModeOut");
         DOTween.Play("ProblemModeOut");
+    }
+
+    public IEnumerator ShowCorrectOption()
+    {
+        string correctOption = "";
+
+        for (int i = 0; i < optionTransforms.Count; i++) {
+            if (i != AnswerManager.instance.AnswerIndex)
+                optionTransforms[i].GetComponent<Image>().color = new Color32(157, 157, 157, 255);
+            else {
+                correctOption = optionTransforms[i].gameObject.name;
+                DOTween.Rewind($"{correctOption}");
+                DOTween.Play($"{correctOption}");
+            }
+        }
+        yield return new WaitForSeconds(1.5f);
+        
+        DOTween.Pause($"{correctOption}");
+        DOTween.Rewind($"{correctOption}");
+        for (int i = 0; i < optionTransforms.Count; i++)
+            optionTransforms[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
     public void ShowStageCompleteText()

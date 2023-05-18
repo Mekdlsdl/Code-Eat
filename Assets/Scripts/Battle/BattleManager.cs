@@ -64,6 +64,7 @@ public class BattleManager : MonoBehaviour
         ++deadCount;
         if (deadCount == PlayerConfigManager.instance.GetPlayerConfigs().Count)
         {
+            GameManager.isGameOver = true;
             BattleModeOff();
             
             Debug.Log("모든 플레이어가 전투 불능 상태입니다. 모든 플레이어가 죽었음을 충분히 보여주고 2초 뒤 게임 오버로 이동합니다.");
