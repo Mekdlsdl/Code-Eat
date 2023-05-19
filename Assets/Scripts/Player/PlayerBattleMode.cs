@@ -31,7 +31,7 @@ public class PlayerBattleMode : MonoBehaviour
 
     private void Update()
     {
-        if (BattleManager.instance.isBattleMode && playerConfig.PlayerHp > 0)
+        if (BattleManager.instance.isBattleMode && playerConfig.PlayerHp > 0 && !PauseMenu.isPaused)
             Fire();
     }
 

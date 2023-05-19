@@ -25,6 +25,8 @@ public class PlayerSetup : MonoBehaviour
 
     private void CharacterSelect()
     {
+        if (PauseMenu.isPaused) return;
+
         if (!inputEnabled) {
             if (PressKey(InputType.EASTBUTTON))
                 CancelReady();

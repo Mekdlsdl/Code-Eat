@@ -15,6 +15,8 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.isPaused) return;
+        
         if (PressKey(InputType.SOUTHBUTTON))
         {
             if (exclamationMark.activeSelf && !isViewingTip)

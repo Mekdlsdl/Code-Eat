@@ -19,12 +19,6 @@ public class PlayerConfigManager : MonoBehaviour
         instance = this;
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown("right shift"))
-            HandlePlayerJoin(new PlayerInput());
-    }
-
     public void HandlePlayerJoin(PlayerInput player_input)
     {
         if (!playerConfigs.Any(p => p.PlayerIndex == player_input.playerIndex)) {

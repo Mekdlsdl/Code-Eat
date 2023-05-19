@@ -52,7 +52,7 @@ public class MapSelectControl : MonoBehaviour
 
     public void MapSelect(PlayerConfiguration playerConfig)
     {
-        if (!enableMapSelect)
+        if (!enableMapSelect || PauseMenu.isPaused)
             return;
 
         int previousPageIndex = pageIndex;
