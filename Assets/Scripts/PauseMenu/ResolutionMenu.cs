@@ -21,13 +21,13 @@ public class ResolutionMenu : MonoBehaviour
                 break;
             }
         }
+        isFullScreen = Screen.fullScreen;
+        checkMark.SetActive(isFullScreen);
     }
 
     void OnEnable()
     {
         PauseMenu.menuState = MenuState.Resolution;
-        isFullScreen = Screen.fullScreen;
-        checkMark.SetActive(isFullScreen);
     }
 
     void Update()
@@ -84,7 +84,12 @@ public class ResolutionMenu : MonoBehaviour
 
     private void ExitMenu()
     {
-        PauseMenu.menuState = MenuState.Pause;
+        
         gameObject.SetActive(false);
+    }
+
+    void OnDisable()
+    {
+        PauseMenu.menuState = MenuState.Pause;
     }
 }

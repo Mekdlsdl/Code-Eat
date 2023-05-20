@@ -4,6 +4,9 @@ public class EssentialObjects : MonoBehaviour
 {
     void Awake()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (!GameManager.isReturning)
+            DontDestroyOnLoad(this.gameObject);
+        else
+            Destroy(gameObject);
     }
 }

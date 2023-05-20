@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set; }
     public static bool isProblemMode = false;
     public static bool isGameOver = false;
+    public static bool isReturning = false;
     public static HashSet<string> encounteredEnemyset = new HashSet<string>();
 
     [SerializeField] List<CharacterType> unlockedCharacters = new List<CharacterType>();
@@ -118,6 +119,22 @@ public class GameManager : MonoBehaviour
         isProblemMode = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName, true);
+    }
+
+    public void ReturnToCharacterSelect()
+    {
+        ResetEncounteredEnemyList();
+        PlayerConfigManager.instance.ResetAllPlayerConfigs();
+
+        isGameOver = isProblemMode = false;
+        isReturning = true;
+
+        var process = SceneManager.LoadSceneAsync("StartingMenu");
+        process.completed += (AsyncOperation operation) =>
+        {
+            PlayerConfigManager.instance.RespawnPlayers();
+            ChangeActionMaps("StartingMenu");
+        };
     }
 
     public void ReturnToMapSelectMode() // 맵 선택 모드를 선택해서 이동할 경우

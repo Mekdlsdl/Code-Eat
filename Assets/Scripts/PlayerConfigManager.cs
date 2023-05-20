@@ -39,6 +39,20 @@ public class PlayerConfigManager : MonoBehaviour
         return playerConfigs;
     }
 
+    public void RespawnPlayers()
+    {
+        foreach (Transform existingPlayer in GameObject.FindWithTag("StartingLayout").transform) {
+            Destroy(existingPlayer.gameObject);
+        }
+        
+        foreach (PlayerConfiguration player in playerConfigs) {
+            player.IsReady = false;
+            GameObject player_ui = Instantiate(playerUI, GameObject.FindWithTag("StartingLayout").transform);
+            player_ui.transform.localScale = new Vector3(1f, 1f, 1f);
+            player_ui.gameObject.GetComponent<PlayerSetup>().SetPlayer(player);
+        }
+    }
+
     public void ResetAllPlayerConfigs() // 맵을 시작하기 전에 각 플레이어의 이전 기록을 초기화한다.
     {
         ProblemManager.totalProblemCount = 0;
