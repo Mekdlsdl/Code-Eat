@@ -7,7 +7,7 @@ using TMPro;
 using Random = UnityEngine.Random;
 public class StackProblem : MonoBehaviour
 {
-    [System.NonSerialized] public ProblemManager pm;
+    private ProblemManager pm;
 
     [SerializeField] private GameObject guide, fruitBundle, codeUI, stackOption;
     [SerializeField] private Transform codeTransform;
@@ -42,6 +42,7 @@ public class StackProblem : MonoBehaviour
 
     void OnEnable()
     {
+        pm = ProblemManager.instance;
         StartCoroutine(BeginProblem());
     }
 

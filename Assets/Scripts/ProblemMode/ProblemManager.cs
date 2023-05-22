@@ -20,6 +20,8 @@ public class ProblemManager : MonoBehaviour
     public List<Transform> optionTransforms;
     private GameObject currentProblem, tempProblem;
 
+    [System.NonSerialized] public bool isShowingAnswer = false;
+
     void Awake()
     {
         if (instance != null)
@@ -91,7 +93,6 @@ public class ProblemManager : MonoBehaviour
     {
         AnswerManager.instance.ResetPlayerAnswers();
         tempProblem = Instantiate(currentProblem, problemUI);
-        tempProblem.GetComponent<StackProblem>().pm = this;
 
         totalProblemCount++;
         Debug.Log($"{totalProblemCount} 번째 문제");
@@ -138,6 +139,7 @@ public class ProblemManager : MonoBehaviour
 
     public IEnumerator ShowCorrectOption()
     {
+        isShowingAnswer = true;
         string correctOption = "";
 
         for (int i = 0; i < optionTransforms.Count; i++) {
@@ -155,6 +157,8 @@ public class ProblemManager : MonoBehaviour
         DOTween.Rewind($"{correctOption}");
         for (int i = 0; i < optionTransforms.Count; i++)
             optionTransforms[i].GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        
+        isShowingAnswer = false;
     }
 
     public void ShowStageCompleteText()
