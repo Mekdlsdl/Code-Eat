@@ -7,13 +7,14 @@ using TMPro;
 
 public class TreeWhatOrder : TreeProblem
 {
-    [SerializeField] private GameObject guide, tree, option, question, cover;
+    [SerializeField] private GameObject guide, tree, option, question;
     [SerializeField] private List<GameObject> treeOptions;
     [SerializeField] private List<Sprite> optionContent;
     private List<int> optionIndex;
     [SerializeField] public List<TNode> getNode;
     private List<GameObject> orderResult;
     [SerializeField] public TMP_Text resultText;
+    private int answerIndex;
     System.Random random = new System.Random();
 
     /*
@@ -48,11 +49,12 @@ public class TreeWhatOrder : TreeProblem
         yield return new WaitForSeconds(3f);
         option.SetActive(true);
         yield return new WaitForSeconds(1f);
-        // cover.SetActive(false);
+        AnswerManager.instance.SetProblemAnswer(answerIndex);
+
     }
 
     void OrderOption() {
-        // optionContent = new List<string> {"전위순회", "중위순회", "후위순회", "레벨순회"};
+        // optionContent 순서 : "전위순회", "중위순회", "후위순회", "레벨순회"
         optionIndex = new List<int>();
 
         while (true) {
@@ -130,8 +132,7 @@ public class TreeWhatOrder : TreeProblem
                 break;
         }
 
-        int answerIndex = optionIndex[orderNum];
-        AnswerManager.instance.SetProblemAnswer(answerIndex);
+        answerIndex = optionIndex[orderNum];
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
 
         Debug.Log(orderResult.Count);

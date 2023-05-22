@@ -17,7 +17,7 @@ public class TreeProblem : MonoBehaviour
     void Start() {
         RandomTree();
         node = Tree();
-        Debug.Log(node.Count);
+        Debug.Log("node.Count : " + node.Count);
     }
 
     void RandomTree() {
@@ -67,7 +67,7 @@ public class TreeProblem : MonoBehaviour
     [SerializeField] public List<TNode> Tree() {
         // treeName = new List<GameObject>();
         // 역순으로 삽입
-        Debug.Log(treeName.Count);
+        Debug.Log("treeName.Count : " + treeName.Count);
 
         if (treeName.Count == 7) {
             // D, E, F, G
