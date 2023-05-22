@@ -13,7 +13,6 @@ public class TreeWhatOrder : TreeProblem
     private List<int> optionIndex;
     [SerializeField] public List<TNode> getNode;
     private List<GameObject> orderResult;
-    [SerializeField] public TMP_Text resultText;
     private int answerIndex;
     System.Random random = new System.Random();
 

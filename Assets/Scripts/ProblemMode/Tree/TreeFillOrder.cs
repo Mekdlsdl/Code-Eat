@@ -65,19 +65,6 @@ public class TreeFillOrder : TreeProblem
             new int [] {2,1,0}
         };
 
-        // List<int> idx1 = new List<int>() {1,3,2};
-        // List<int> idx2 = new List<int>() {2,1,3};
-        // List<int> idx3 = new List<int>() {2,3,1};
-        // List<int> idx4 = new List<int>() {3,1,2};
-        // List<int> idx5 = new List<int>() {3,2,1};
-
-        // indexs.Add(idx1);
-        // indexs.Add(idx2);
-        // indexs.Add(idx3);
-        // indexs.Add(idx4);
-        // indexs.Add(idx5);
-
-
         // 정답 먼저 넣기
         answerIndex = optionIndex[0];
         Debug.Log("answerResult.Count : " + answerResult.Count);
