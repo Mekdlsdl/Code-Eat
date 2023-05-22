@@ -66,9 +66,10 @@ public class AnswerManager : MonoBehaviour
             ProblemManager.instance.HideProblem();
 
             // 맞힌 플레이어가 한 명이라도 존재할 경우 전투 돌입, 그렇지 않을 경우 전투 스킵
-            if (correctPlayers.Count > 0)
-                BattleManager.instance.BattleModeOn();
-            else if (!GameManager.isGameOver)
+            int n = correctPlayers.Count;
+            if (n > 0) 
+                BattleManager.instance.BattleModeOn(n*(n+1)/2);
+            else if (!GameManager.isGameOver) 
                 StartCoroutine(ProblemManager.instance.NextProblem());
         }
     }

@@ -48,6 +48,7 @@ public class PlayerBattleMode : MonoBehaviour
             // 총알 개수, UI 변동
             --bulletCount;
             bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
+            StartCoroutine(BattleManager.instance.UpdateTotalBulletCount());
         }
     }
 

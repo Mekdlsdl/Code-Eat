@@ -16,6 +16,7 @@ MonoBehaviour:
   enemyHP: 50
   enemyDamage: 25
   enemySpeed: 2.5
+  C: 15
   animControl: {fileID: 9100000, guid: 1adc0c5617b8f9644bfc4422e2c13001, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 16b16778748f18d4c83bef4fc58118da, type: 3}
   problem: {fileID: 8010487031716730573, guid: 8099af28919f45d4785b33c57cd81251, type: 3}
