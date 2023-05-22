@@ -11,9 +11,9 @@ public class TreeFillOrder : TreeProblem
     [SerializeField] private List<GameObject> treeOptions;
     [SerializeField] private List<Sprite> optionContent;
     private List<int> optionIndex;
-    [SerializeField] public List<TNode> getNode;
+    public List<TNode> getNode;
     private List<GameObject> orderResult, answerResult;
-    [SerializeField] public TMP_Text orderType;
+    public TMP_Text orderType;
     private int answerIndex;
     System.Random random = new System.Random();
 
@@ -32,6 +32,9 @@ public class TreeFillOrder : TreeProblem
 
     void Start()
     {
+        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
+        tpScript.generateMin = 0;
+
         StartCoroutine(BeginProblem());
     }
 
@@ -47,13 +50,6 @@ public class TreeFillOrder : TreeProblem
         OrderOption();
         OrderMain();
         question.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        GenerateOptions();
-        option.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        AnswerManager.instance.SetProblemAnswer(answerIndex);
-        Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
-
     }
 
     void GenerateOptions() {
@@ -151,6 +147,12 @@ public class TreeFillOrder : TreeProblem
 
             yield return new WaitForSeconds(0.4f);
         }
+        yield return new WaitForSeconds(0.7f);
+        GenerateOptions();
+        option.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        AnswerManager.instance.SetProblemAnswer(answerIndex);
+        Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
     }
 
     void OrderMain() {

@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 3162926664996745572}
   - component: {fileID: 385865832704939563}
   m_Layer: 0
-  m_Name: FillTree
+  m_Name: FillOrder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -487,6 +487,8 @@ MonoBehaviour:
   generateNode: 
   treeNode: []
   treeName: []
+  generateMin: 0
+  generateCount: 0
   guide: {fileID: 0}
   tree: {fileID: 0}
   option: {fileID: 0}
@@ -2581,7 +2583,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2576578259374465668, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2576578259514741619, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
       propertyPath: m_text

@@ -11,7 +11,7 @@ public class TreeWhatOrder : TreeProblem
     [SerializeField] private List<GameObject> treeOptions;
     [SerializeField] private List<Sprite> optionContent;
     private List<int> optionIndex;
-    [SerializeField] public List<TNode> getNode;
+    public List<TNode> getNode;
     private List<GameObject> orderResult;
     private int answerIndex;
     System.Random random = new System.Random();
@@ -30,6 +30,9 @@ public class TreeWhatOrder : TreeProblem
 
     void Start()
     {
+        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
+        tpScript.generateMin = 0;
+        
         StartCoroutine(BeginProblem());
     }
 
@@ -45,11 +48,6 @@ public class TreeWhatOrder : TreeProblem
         OrderOption();
         OrderMain();
         question.SetActive(true);
-        yield return new WaitForSeconds(3f);
-        option.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        AnswerManager.instance.SetProblemAnswer(answerIndex);
-
     }
 
     void OrderOption() {
@@ -95,6 +93,10 @@ public class TreeWhatOrder : TreeProblem
 
             yield return new WaitForSeconds(0.4f);
         }
+        yield return new WaitForSeconds(0.7f);
+        option.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        AnswerManager.instance.SetProblemAnswer(answerIndex);
     }
 
     void OrderMain() {

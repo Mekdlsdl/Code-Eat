@@ -6,12 +6,10 @@ using TMPro;
 
 public class TreeProblem : MonoBehaviour
 {
-    // [System.NonSerialized] public ProblemManager pm;
-    [SerializeField] public List<bool> generateNode;
-    [SerializeField] public List<GameObject> treeNode, treeName;
-    [SerializeField] public List<TNode> node = new List<TNode>();
-
-
+    public List<bool> generateNode;
+    public List<GameObject> treeNode, treeName;
+    public List<TNode> node = new List<TNode>();
+    public int generateMin, generateCount;
     System.Random random = new System.Random();
 
     void Start() {
@@ -21,17 +19,27 @@ public class TreeProblem : MonoBehaviour
     }
 
     void RandomTree() {
+        generateCount = 0;
         List<bool> bools = new List<bool> {true, false};
         generateNode = new List<bool>();
 
         for (int i=0; i<treeNode.Count; i++) {
             int ranBool = random.Next(2);
+            if (ranBool == 0) {
+                generateCount ++;
+            }
             generateNode.Add(bools[ranBool]);
         }
 
-        for (int j=0; j<treeNode.Count; j++) {
+        // 최소 노드 개수 설정값에 미치지 않으면 다시 생성
+        if (generateCount < generateMin) {
+            RandomTree();
+        }
+        else {
+            for (int j=0; j<treeNode.Count; j++) {
             treeNode[j].SetActive(generateNode[j]);
             treeName[j+3].SetActive(generateNode[j]);
+            }
         }
     }
 

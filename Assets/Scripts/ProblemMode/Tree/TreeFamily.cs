@@ -9,29 +9,44 @@ public class TreeFamily : TreeProblem
 {
     [SerializeField] private GameObject guide, tree, option, question;
     [SerializeField] private List<GameObject> treeOptions;
-    [SerializeField] private List<Sprite> optionContent;
-    private List<int> optionIndex;
-    [SerializeField] public List<TNode> getNode;
-    private List<GameObject> orderResult, answerResult;
-    [SerializeField] public TMP_Text orderType;
-    private int answerIndex;
+    private List<int> optionIndex, ableNode, selectedProblem;
+    private List<int> [] answerNodes;
+    private List<GameObject> treeNames;
+    private bool [] ableProblem;
+    public TMP_Text problem;
+    private int answerIndex, answerNode, nodeNum, problemNum;
+    private Image ansImage;
     System.Random random = new System.Random();
 
     /*
-        OrderOption() : 선택지 인덱스 랜덤 세팅
-        ShowResult() : 순회 결과 출력 및 트리에 표시
-        OrderMain() : 랜덤 종류의 순회 실행
+        SetNodeNum() : 대상 노드 선택
+        SetProblemNum() : 가능한 문제 선택 (부모, 자식, 형제 중)
+        CalculateNode() : 노드 계산, 문제와 정답 세팅
         GenerateOptions() : 선택지 생성
+        OrderOption() : 선택지 인덱스 랜덤 세팅
+        ShowResult() : 문제 출력
+    */
 
-            PreOrder() : 전위순회
-            InOrder() : 중위순회
-            PostOrder() : 후위순회
-            LevelOrder() : 레벨순회
-    
+    /*
+        - 부모노드
+            따로 처리 불필요
+
+        - 자식노드
+            활성화 확인 (해당 노드의 자식노드가 있는지)
+
+        - 형제노드
+            활성화 확인 (해당 노드의 형제노드가 있는지)
+            왼쪽 자식노드일 때는 +1
+            오른쪽 자식노드일 때는 -1
     */
 
     void Start()
     {
+        // 최소 트리 노드 개수 세팅
+        // 선택지에서 대상 노드와 정답 후보 노드는 제외해야 하므로 최소한 5개의 노드 필요
+        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
+        tpScript.generateMin = 2;
+        
         StartCoroutine(BeginProblem());
     }
 
@@ -43,45 +58,148 @@ public class TreeFamily : TreeProblem
         guide.SetActive(false);
         yield return new WaitForSeconds(1f);
         tree.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.6f);
+        CalculateNode();
         OrderOption();
-        OrderMain();
+        ShowResult();
         question.SetActive(true);
-        yield return new WaitForSeconds(3f);
         GenerateOptions();
+        yield return new WaitForSeconds(1.6f);
         option.SetActive(true);
         yield return new WaitForSeconds(1f);
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
+    }
 
+    /*
+    
+    - nodeNum 기준
+       1
+     2   3
+    4 5 6 7
+
+    - 실제 인덱스
+       0
+     1   2
+    3 4 5 6
+
+    */
+    private int SetNodeNum() {
+        nodeNum = -1;
+
+        while (nodeNum == -1) {
+            nodeNum = random.Next(7);
+            if (!treeNames[nodeNum].activeSelf) {
+                nodeNum = -1;
+            }
+        }
+        return nodeNum;
+    }
+
+    private int SetProblemNum() {
+        problemNum = -1;
+        // problemNum = 1; //테스트용
+
+        while (problemNum == -1) {
+            problemNum = random.Next(3);
+
+            if (!ableProblem[problemNum]) {
+                problemNum = -1;
+            }
+        }
+        return problemNum;
+    }
+
+    void CalculateNode() {
+        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
+        treeNames = tpScript.treeName;
+
+        ableProblem = new bool [3];
+
+        nodeNum = SetNodeNum();
+        Debug.Log("nodeNum : " + nodeNum);
+        Debug.Log("treeNames.Count : " + treeNames.Count);
+        nodeNum++;
+        answerNodes = new List<int>[3];
+        
+        if (nodeNum > 1) {
+            // 부모노드
+            ableNode = new List<int>();
+
+            answerNode = nodeNum / 2;
+            ableNode.Add(answerNode);
+            ableProblem[0] = true;
+
+            answerNodes[0] = ableNode;
+
+
+            // 형제노드
+            ableNode = new List<int>();
+
+            // 왼쪽 노드일 경우
+            if (nodeNum % 2 == 0) {
+                if (treeNames[nodeNum].activeSelf) {
+                    ableNode.Add(nodeNum + 1);
+                    ableProblem[2] = true;
+                }
+            }
+            // 오른쪽 노드일 경우
+            else {
+                if (treeNames[nodeNum - 2].activeSelf) {
+                    ableNode.Add(nodeNum - 1);
+                    ableProblem[2] = true;
+                }
+            }
+            answerNodes[2] = ableNode;
+        }
+        
+        // 자식노드 (둘다 활성화되어있다면 아무거나 가능)
+        if (nodeNum < 4) {
+            ableNode = new List<int>();
+
+            // 왼쪽 자식노드
+            if (treeNames[nodeNum * 2 - 1].activeSelf) {
+                ableNode.Add(nodeNum * 2);
+                ableProblem[1] = true;
+            }
+            // 오른쪽 자식노드
+            if (treeNames[nodeNum * 2].activeSelf) {
+                ableNode.Add(nodeNum * 2 + 1);
+                ableProblem[1] = true;
+            }
+            answerNodes[1] = ableNode;
+
+            if (ableNode.Count == 2 && tpScript.generateCount == 2) {
+                ableProblem[1] = false;
+            }
+        }
+
+        problemNum = SetProblemNum();
+        Debug.Log("problemNum : " + problemNum);
+
+        selectedProblem = answerNodes[problemNum];
+        int num = random.Next(selectedProblem.Count);
+        answerNode = selectedProblem[num];
+        Debug.Log("answerNode : " + answerNode);
+        nodeNum--;
     }
 
     void GenerateOptions() {
-        int [][] indexs = {
-            new int [] {0,2,1},
-            new int [] {1,0,2},
-            new int [] {1,2,0},
-            new int [] {2,0,1},
-            new int [] {2,1,0}
-        };
-
         // 정답 먼저 넣기
         answerIndex = optionIndex[0];
-        Debug.Log("answerResult.Count : " + answerResult.Count);
-        for (int i=0; i<answerResult.Count; i++) {
-            GameObject op = treeOptions[answerIndex].transform.GetChild(i).gameObject;
-            Image opImage = op.GetComponent<Image>();
-            Image ansImage = answerResult[i].GetComponent<Image>();
+        GameObject op = treeOptions[answerIndex];
+        Image opImage = op.GetComponent<Image>();
+        ansImage = treeNames[answerNode - 1].GetComponent<Image>();
 
-            opImage.sprite = ansImage.sprite;
-        }
+        opImage.sprite = ansImage.sprite;
+
 
         // 랜덤 리스트를 생성하여 나머지 선택지 채우기
         List<int> selectedRan = new List<int>();
 
         while (selectedRan.Count < 3) {
-            int randomAns = random.Next(5);
-            if (!selectedRan.Contains(randomAns)) {
+            int randomAns = random.Next(7);
+            if (!selectedRan.Contains(randomAns) && randomAns != nodeNum && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
                 selectedRan.Add(randomAns);
             }
         }
@@ -90,16 +208,12 @@ public class TreeFamily : TreeProblem
 
         for (int o=1; o<optionIndex.Count; o++) {
             Debug.Log("optionIndex : " + o);
-            int[] resSeq = indexs[o];
-            Debug.Log("resSeq : " + resSeq[0] + resSeq[1] + resSeq[2]);
-            for (int j=0; j<3; j++) {
-                GameObject op = treeOptions[optionIndex[o]].transform.GetChild(j).gameObject;
-                Image opImage = op.GetComponent<Image>();
-                Image ansImage = answerResult[resSeq[j]].GetComponent<Image>();
-                Debug.Log("GetChild : " + j + ", answerResult : " + resSeq[j]);
+            GameObject opT = treeOptions[optionIndex[o]];
+            Image opTImage = opT.GetComponent<Image>();
+            ansImage = treeNames[selectedRan[o-1]].GetComponent<Image>();
+            Debug.Log("answerResult : " + selectedRan[o-1]);
 
-                opImage.sprite = ansImage.sprite;
-            }
+            opTImage.sprite = ansImage.sprite;
         }    
     }
 
@@ -107,148 +221,28 @@ public class TreeFamily : TreeProblem
         optionIndex = new List<int>();
 
         while (true) {
-            int num = random.Next(optionContent.Count);
+            int num = random.Next(treeOptions.Count);
 
             if (!optionIndex.Contains(num)) {
                 optionIndex.Add(num);
             }
 
-            if (optionIndex.Count == optionContent.Count) {
+            if (optionIndex.Count == treeOptions.Count) {
                 break;
             }
         }
     }
 
-    IEnumerator ShowResult() {
-        int blankIndex = random.Next(orderResult.Count - 3);
-        answerResult = new List<GameObject>();
+    void ShowResult() {
+        List<string> problems = new List<string> {"부모", "자식", "형제"};
 
-        yield return new WaitForSeconds(0.4f);
+        Debug.Log("treeNames.Count : " + treeNames.Count);
+        GameObject node = treeNames[nodeNum].gameObject;
+        GameObject problemNode = question.transform.GetChild(1).gameObject;
+        Image problemNodeImage = problemNode.GetComponent<Image>();
+        Image nodeImage = node.GetComponent<Image>();
 
-        for (int i=0; i<orderResult.Count; i++) {
-            GameObject res = question.transform.GetChild(i).gameObject;
-            Image resImage = res.GetComponent<Image>();
-            Image orderImage = orderResult[i].GetComponent<Image>();
-            Color ordColor = orderImage.color;
-            ordColor.a = 0.5f;
-
-            if (i == blankIndex || i == (blankIndex + 1) || i == (blankIndex + 2)) {
-                answerResult.Add(orderResult[i]);
-            }
-            else {
-                RectTransform rectTrans = res.GetComponent<RectTransform>();
-                rectTrans.sizeDelta = new Vector2(55, 100);
-
-                Transform transform = res.transform;
-                Vector3 newPosition = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
-                transform.position = newPosition;
-
-                resImage.sprite = orderImage.sprite;
-                orderImage.color = ordColor;
-                
-            }
-            res.SetActive(true);
-
-            yield return new WaitForSeconds(0.4f);
-        }
-    }
-
-    void OrderMain() {
-        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
-        orderResult = new List<GameObject>();
-        getNode = tpScript.node;
-        Debug.Log("getNode.Count : " + getNode.Count);
-
-        int last = getNode.Count - 1;
-        TNode root = getNode[last];
-
-        int orderNum = random.Next(4);
-        // int orderNum = 3; //테스트용
-
-        switch(orderNum) {
-            case 0:
-                Debug.Log("PreOrder");
-                orderType.text = "전위순회";
-                PreOrder(root);
-                break;
-
-            case 1:
-                Debug.Log("InOrder");
-                orderType.text = "중위순회";
-                InOrder(root);
-                break;
-            
-            case 2:
-                Debug.Log("PostOrder");
-                orderType.text = "후위순회";
-                PostOrder(root);
-                break;
-
-            case 3:
-                Debug.Log("LevelOrder");
-                orderType.text = "레벨순회";
-                LevelOrder(getNode, root);
-                break;
-        }
-
-        Debug.Log("orderResult.Count : " + orderResult.Count);
-        StartCoroutine(ShowResult());
-    }
-
-    void PostOrder(TNode n) {
-        // Left - Right - Now
-
-        if (n.Left is not null) {
-            PostOrder(n.Left);
-        }
-        if (n.Right is not null) {
-            PostOrder(n.Right);
-        }
-        if (n.Now is not null) {
-            orderResult.Add(n.Now);
-        }
-    }
-
-    void InOrder(TNode n) {
-        // Left - Now - Right
-
-        if (n.Left is not null) {
-            InOrder(n.Left);
-        }
-        if (n.Now is not null) {
-            orderResult.Add(n.Now);
-        }
-        if (n.Right is not null) {
-            InOrder(n.Right);
-        }
-    }
-
-    void PreOrder(TNode n) {
-        // Now - Left - Right
-
-        if (n.Now is not null) {
-            orderResult.Add(n.Now);
-        }
-        if (n.Left is not null) {
-            PreOrder(n.Left);
-        }
-        if (n.Right is not null) {
-            PreOrder(n.Right);
-        }
-    }
-
-    void LevelOrder(List<TNode> getN, TNode n) {
-        // node 차례대로 출력
-
-        Debug.Log("getN.Count : " + getN.Count);
-        List<TNode> getNodeL = getN;
-        Debug.Log(getNodeL.Count);
-
-        int last = getNodeL.Count - 1;
-        for (int k=last; k>-1; k--) {
-            if (getNodeL[k] is not null) {
-                orderResult.Add(getNodeL[k].Now);
-            }
-        }
+        problem.text = "의 " + problems[problemNum] + "노드는?";
+        problemNodeImage.sprite = nodeImage.sprite;
     }
 }
