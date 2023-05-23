@@ -123,6 +123,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToCharacterSelect()
     {
+        TipSpawner.foundTipCount = 0;
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 
@@ -139,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToMapSelectMode() // 맵 선택 모드를 선택해서 이동할 경우
     {
+        TipSpawner.foundTipCount = 0;
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 
@@ -149,6 +151,7 @@ public class GameManager : MonoBehaviour
 
     public void RetryMapMode() // 다시 시작을 선택해서 해당 맵을 다시 플레이할 경우
     {
+        TipSpawner.foundTipCount = 0;
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 

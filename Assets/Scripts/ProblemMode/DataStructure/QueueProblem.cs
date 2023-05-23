@@ -50,7 +50,7 @@ public class QueueProblem : MonoBehaviour
 
     IEnumerator BeginProblem()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
 
         guide.SetActive(false);
         queueUI.SetActive(true);

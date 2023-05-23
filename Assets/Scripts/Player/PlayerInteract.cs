@@ -51,6 +51,8 @@ public class PlayerInteract : MonoBehaviour
 
     private void OpenTip()
     {
+        TipSpawner.instance.UpdateFoundTipCount();
+
         viewingTipObject = tipObject;
         viewingTipPos = tipPos;
 

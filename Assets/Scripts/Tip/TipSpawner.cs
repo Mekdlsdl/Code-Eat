@@ -1,18 +1,27 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class TipSpawner : MonoBehaviour
 {
+    public static TipSpawner instance { get; private set; }
+    public static int foundTipCount = 0;
+    [SerializeField] private TextMeshProUGUI countText;
+
     public EnemySpawner enemySpawner;
     [SerializeField] private GameObject tips;
     private int tipsCount;
+    
 
     private void Awake()
     {
+        if (instance != null)
+            return;
+        instance = this;
+
         tipsCount = tips.transform.childCount;
+        countText.text = $"{foundTipCount}/{tipsCount}";
         Spawn(GetRandomPos());
     }
 
@@ -49,6 +58,12 @@ public class TipSpawner : MonoBehaviour
             tipPos.gameObject.SetActive(true);
             tipPos.GetComponent<TipPosition>().tip = tips.transform.GetChild(i).gameObject;
         }
+    }
+
+    public void UpdateFoundTipCount()
+    {
+        foundTipCount++;
+        countText.text = $"{foundTipCount}/{tipsCount}";
     }
 
     public void Debug_OpenAllTips()
