@@ -18,7 +18,9 @@ public class ProblemManager : MonoBehaviour
     [SerializeField] private GameObject battlePlayerPrefab, screenCover, stageCompleteText;
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     public List<Transform> optionTransforms;
-    private GameObject currentProblem, tempProblem;
+
+    private List<GameObject> problemCandidates;
+    private GameObject tempProblem;
 
     [System.NonSerialized] public bool isShowingAnswer = false;
 
@@ -87,12 +89,12 @@ public class ProblemManager : MonoBehaviour
     }
     private void SetProblem()
     {
-        currentProblem = BattleManager.instance.curEnemy.enemy_type.problem;
+        problemCandidates = BattleManager.instance.curEnemy.enemy_type.problem;
     }
     private void SpawnProblem()
     {
         AnswerManager.instance.ResetPlayerAnswers();
-        tempProblem = Instantiate(currentProblem, problemUI);
+        tempProblem = Instantiate(problemCandidates[Random.Range(0, problemCandidates.Count)], problemUI);
 
         totalProblemCount++;
         Debug.Log($"{totalProblemCount} 번째 문제");
