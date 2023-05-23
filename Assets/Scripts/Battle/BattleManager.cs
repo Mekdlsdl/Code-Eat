@@ -80,9 +80,11 @@ public class BattleManager : MonoBehaviour
     public IEnumerator UpdateTotalBulletCount()
     {
         --totalBulletCount;
-        if (totalBulletCount <= 0) {
+        if (totalBulletCount <= 0 && curEnemy.hp > 0) {
             totalBulletCount = 0;
+
             yield return new WaitForSecondsRealtime(1.5f);
+
             BattleModeOffTimeOut();
         }
         yield return null;
