@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866b19b3e81b1584eb3dddd22d35c825, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  displayDelay: 0.9
+  displayDelay: 1.7
   boxes:
   - {fileID: 8224671466123717846}
   - {fileID: 7279860261231292397}
@@ -142,8 +142,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "front \uC5D0 \uC704\uCE58\uD55C \uC54C\uB9DE\uC740 \uC57C\uCC44\uB97C
-    \uB9DE\uD600\uBCF4\uC138\uC694!"
+  m_text: "<color=red>\uD654\uC0B4\uD45C</color>\uC5D0 \uC704\uCE58\uD55C \uC54C\uB9DE\uC740
+    \uC57C\uCC44\uB97C \uB9DE\uD600\uBCF4\uC138\uC694!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
   m_sharedMaterial: {fileID: -508681348773179626, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
