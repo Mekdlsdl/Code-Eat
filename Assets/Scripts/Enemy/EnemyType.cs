@@ -10,5 +10,6 @@ public class EnemyType : ScriptableObject
     public float enemySpeed;
     public int C;
     public RuntimeAnimatorController animControl;
-    public GameObject bodyCollider, problem;
+    public GameObject bodyCollider;
+    public List<GameObject> problem;
 }

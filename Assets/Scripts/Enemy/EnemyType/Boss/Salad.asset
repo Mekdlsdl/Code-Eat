@@ -16,7 +16,11 @@ MonoBehaviour:
   enemyHP: 90
   enemyDamage: 30
   enemySpeed: 4
+  C: 0
   animControl: {fileID: 9100000, guid: cf6c35a313c27bd47b5295f07403dd2a, type: 2}
   bodyCollider: {fileID: 7228186296966764135, guid: 72a7e5df861b38142b5f66d7084bf125, type: 3}
-  problem: {fileID: 8010487031716730573, guid: 8099af28919f45d4785b33c57cd81251, type: 3}
+  problem:
+  - {fileID: 1477034137882107904, guid: 3d76550008727df4884bbf118035d970, type: 3}
+  - {fileID: 340591531559281639, guid: 883c181bd7010754688f8c53e1d1f35f, type: 3}
+  - {fileID: 8010487031716730573, guid: 8099af28919f45d4785b33c57cd81251, type: 3}
   topdownSprite: {fileID: 21300000, guid: 6e67fc41477992a4296803b1854a2214, type: 3}

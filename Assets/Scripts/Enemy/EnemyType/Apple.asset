@@ -19,4 +19,5 @@ MonoBehaviour:
   C: 15
   animControl: {fileID: 9100000, guid: 1adc0c5617b8f9644bfc4422e2c13001, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 16b16778748f18d4c83bef4fc58118da, type: 3}
-  problem: {fileID: 1477034137882107904, guid: 3d76550008727df4884bbf118035d970, type: 3}
+  problem:
+  - {fileID: 1477034137882107904, guid: 3d76550008727df4884bbf118035d970, type: 3}
