@@ -106,7 +106,7 @@ public class TreeWhatOrder : TreeProblem
         TreeProblem tpScript = tree.GetComponent<TreeProblem>();
         orderResult = new List<GameObject>();
         getNode = tpScript.node;
-        Debug.Log(getNode.Count);
+        // Debug.Log(getNode.Count);
 
         int last = getNode.Count - 1;
         TNode root = getNode[last];
@@ -139,7 +139,7 @@ public class TreeWhatOrder : TreeProblem
         answerIndex = optionIndex[orderNum];
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
 
-        Debug.Log(orderResult.Count);
+        // Debug.Log(orderResult.Count);
         StartCoroutine(ShowResult());
     }
 
@@ -188,9 +188,9 @@ public class TreeWhatOrder : TreeProblem
     void LevelOrder(List<TNode> getN, TNode n) {
         // node 차례대로 출력
 
-        Debug.Log("getN" + getN.Count);
+        // Debug.Log("getN" + getN.Count);
         List<TNode> getNodeL = getN;
-        Debug.Log(getNodeL.Count);
+        // Debug.Log(getNodeL.Count);
 
         int last = getNodeL.Count - 1;
         for (int k=last; k>-1; k--) {

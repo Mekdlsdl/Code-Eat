@@ -78,11 +78,11 @@ public class TreeFamily : TreeProblem
             nodeNum = random.Next(7);
             
             if (!treeNames[nodeNum].activeSelf) {
-                Debug.Log("nodeNum ? : " + nodeNum);
+                // Debug.Log("nodeNum ? : " + nodeNum);
                 nodeNum = -1;
             }
         }
-        Debug.Log("nodeNum : " + nodeNum);
+        // Debug.Log("nodeNum : " + nodeNum);
         return nodeNum;
     }
 
@@ -97,7 +97,7 @@ public class TreeFamily : TreeProblem
                 problemNum = -1;
             }
         }
-        Debug.Log("problemNum : " + problemNum);
+        // Debug.Log("problemNum : " + problemNum);
         return problemNum;
     }
 
@@ -122,8 +122,8 @@ public class TreeFamily : TreeProblem
         ableProblem = new bool [3];
 
         nodeNum = SetNodeNum();
-        Debug.Log("nodeNum : " + nodeNum);
-        Debug.Log("treeNames.Count : " + treeNames.Count);
+        // Debug.Log("nodeNum : " + nodeNum);
+        // Debug.Log("treeNames.Count : " + treeNames.Count);
         nodeNum++;
         answerNodes = new List<int>[3];
         
@@ -173,7 +173,7 @@ public class TreeFamily : TreeProblem
             }
 
             if (ableNode.Count == 2 && tpScript.generateCount == 2) {
-                Debug.Log("tpScript.generateCount : " + tpScript.generateCount);
+                // Debug.Log("tpScript.generateCount : " + tpScript.generateCount);
                 ableProblem[1] = false;
             }
 
@@ -183,12 +183,12 @@ public class TreeFamily : TreeProblem
         }
 
         problemNum = SetProblemNum();
-        Debug.Log("problemNum : " + problemNum);
+        // Debug.Log("problemNum : " + problemNum);
 
         selectedProblem = answerNodes[problemNum];
         int num = random.Next(selectedProblem.Count);
         answerNode = selectedProblem[num];
-        Debug.Log("answerNode : " + answerNode);
+        // Debug.Log("answerNode : " + answerNode);
         nodeNum--;
     }
 
@@ -211,15 +211,15 @@ public class TreeFamily : TreeProblem
                 selectedRan.Add(randomAns);
             }
         }
-        Debug.Log("selectedRan.Count : " + selectedRan.Count);
-        Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
+        // Debug.Log("selectedRan.Count : " + selectedRan.Count);
+        // Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
 
         for (int o=1; o<optionIndex.Count; o++) {
-            Debug.Log("optionIndex : " + o);
+            // Debug.Log("optionIndex : " + o);
             GameObject opT = treeOptions[optionIndex[o]];
             Image opTImage = opT.GetComponent<Image>();
             ansImage = treeNames[selectedRan[o-1]].GetComponent<Image>();
-            Debug.Log("answerResult : " + selectedRan[o-1]);
+            // Debug.Log("answerResult : " + selectedRan[o-1]);
 
             opTImage.sprite = ansImage.sprite;
         }    
@@ -244,7 +244,7 @@ public class TreeFamily : TreeProblem
     void ShowResult() {
         List<string> problems = new List<string> {"부모", "자식", "형제"};
 
-        Debug.Log("treeNames.Count : " + treeNames.Count);
+        // Debug.Log("treeNames.Count : " + treeNames.Count);
         GameObject node = treeNames[nodeNum].gameObject;
         GameObject problemNode = question.transform.GetChild(1).gameObject;
         Image problemNodeImage = problemNode.GetComponent<Image>();

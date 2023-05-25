@@ -61,7 +61,7 @@ public class TreeFillOrder : TreeProblem
 
         // 정답 먼저 넣기
         answerIndex = optionIndex[0];
-        Debug.Log("answerResult.Count : " + answerResult.Count);
+        // Debug.Log("answerResult.Count : " + answerResult.Count);
         for (int i=0; i<answerResult.Count; i++) {
             GameObject op = treeOptions[answerIndex].transform.GetChild(i).gameObject;
             Image opImage = op.GetComponent<Image>();
@@ -79,18 +79,18 @@ public class TreeFillOrder : TreeProblem
                 selectedRan.Add(randomAns);
             }
         }
-        Debug.Log("selectedRan.Count : " + selectedRan.Count);
-        Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
+        // Debug.Log("selectedRan.Count : " + selectedRan.Count);
+        // Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
 
         for (int o=1; o<optionIndex.Count; o++) {
-            Debug.Log("optionIndex : " + o);
+            // Debug.Log("optionIndex : " + o);
             int[] resSeq = indexs[o];
-            Debug.Log("resSeq : " + resSeq[0] + resSeq[1] + resSeq[2]);
+            // Debug.Log("resSeq : " + resSeq[0] + resSeq[1] + resSeq[2]);
             for (int j=0; j<3; j++) {
                 GameObject op = treeOptions[optionIndex[o]].transform.GetChild(j).gameObject;
                 Image opImage = op.GetComponent<Image>();
                 Image ansImage = answerResult[resSeq[j]].GetComponent<Image>();
-                Debug.Log("GetChild : " + j + ", answerResult : " + resSeq[j]);
+                // Debug.Log("GetChild : " + j + ", answerResult : " + resSeq[j]);
 
                 opImage.sprite = ansImage.sprite;
             }
@@ -158,7 +158,7 @@ public class TreeFillOrder : TreeProblem
         TreeProblem tpScript = tree.GetComponent<TreeProblem>();
         orderResult = new List<GameObject>();
         getNode = tpScript.node;
-        Debug.Log("getNode.Count : " + getNode.Count);
+        // Debug.Log("getNode.Count : " + getNode.Count);
 
         int last = getNode.Count - 1;
         TNode root = getNode[last];
@@ -192,7 +192,7 @@ public class TreeFillOrder : TreeProblem
                 break;
         }
 
-        Debug.Log("orderResult.Count : " + orderResult.Count);
+        // Debug.Log("orderResult.Count : " + orderResult.Count);
         StartCoroutine(ShowResult());
     }
 
@@ -241,9 +241,9 @@ public class TreeFillOrder : TreeProblem
     void LevelOrder(List<TNode> getN, TNode n) {
         // node 차례대로 출력
 
-        Debug.Log("getN.Count : " + getN.Count);
+        // Debug.Log("getN.Count : " + getN.Count);
         List<TNode> getNodeL = getN;
-        Debug.Log(getNodeL.Count);
+        // Debug.Log(getNodeL.Count);
 
         int last = getNodeL.Count - 1;
         for (int k=last; k>-1; k--) {
