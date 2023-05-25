@@ -12,7 +12,7 @@ public class TreeProblem : MonoBehaviour
     public int generateMin, generateCount;
     System.Random random = new System.Random();
 
-    void Start() {
+    void OnEnable() {
         RandomTree();
         node = Tree();
         Debug.Log("node.Count : " + node.Count);
@@ -27,6 +27,7 @@ public class TreeProblem : MonoBehaviour
             int ranBool = random.Next(2);
             if (ranBool == 0) {
                 generateCount ++;
+                Debug.Log("generateCount: " + generateCount);
             }
             generateNode.Add(bools[ranBool]);
         }

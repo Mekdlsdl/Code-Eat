@@ -9,7 +9,6 @@ public class TreeFillOrder : TreeProblem
 {
     [SerializeField] private GameObject guide, tree, option, question;
     [SerializeField] private List<GameObject> treeOptions;
-    [SerializeField] private List<Sprite> optionContent;
     private List<int> optionIndex;
     public List<TNode> getNode;
     private List<GameObject> orderResult, answerResult;
@@ -30,11 +29,10 @@ public class TreeFillOrder : TreeProblem
     
     */
 
-    void Start()
+    void OnEnable()
     {
         TreeProblem tpScript = tree.GetComponent<TreeProblem>();
         tpScript.generateMin = 0;
-
         StartCoroutine(BeginProblem());
     }
 
@@ -103,13 +101,13 @@ public class TreeFillOrder : TreeProblem
         optionIndex = new List<int>();
 
         while (true) {
-            int num = random.Next(optionContent.Count);
+            int num = random.Next(treeOptions.Count);
 
             if (!optionIndex.Contains(num)) {
                 optionIndex.Add(num);
             }
 
-            if (optionIndex.Count == optionContent.Count) {
+            if (optionIndex.Count == treeOptions.Count) {
                 break;
             }
         }
@@ -135,9 +133,10 @@ public class TreeFillOrder : TreeProblem
                 RectTransform rectTrans = res.GetComponent<RectTransform>();
                 rectTrans.sizeDelta = new Vector2(55, 100);
 
-                Transform transform = res.transform;
-                Vector3 newPosition = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
-                transform.position = newPosition;
+                Vector2 currentPosition = rectTrans.anchoredPosition;
+                currentPosition.y = currentPosition.y + 10;
+                // Vector2 newPosition = new Vector2(transform.position.x, transform.position.y + 10);
+                rectTrans.anchoredPosition = currentPosition;
 
                 resImage.sprite = orderImage.sprite;
                 orderImage.color = ordColor;
@@ -150,7 +149,7 @@ public class TreeFillOrder : TreeProblem
         yield return new WaitForSeconds(0.7f);
         GenerateOptions();
         option.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
     }

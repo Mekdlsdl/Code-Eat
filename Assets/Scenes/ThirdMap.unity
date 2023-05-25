@@ -8818,7 +8818,11 @@ MonoBehaviour:
   bossSpriteRenderer: {fileID: 202693206}
   bossType: {fileID: 11400000, guid: c17b2656802fd3c458d05bbd39530e9f, type: 2}
   spawnList:
-  - enemy: {fileID: 3410110253856684642, guid: 58cb547adaea728468fefa2a9a962e3b, type: 3}
+  - enemy: {fileID: 3410110253856684642, guid: f0412b7a12e584f3dbb9e7dbaffd9c94, type: 3}
+    spawnPos: {x: -5.5, y: -2.3, z: 0}
+  - enemy: {fileID: 3410110253856684642, guid: 979d4c5a05e854e079b69d6a3354c860, type: 3}
+    spawnPos: {x: -5.5, y: -2.3, z: 0}
+  - enemy: {fileID: 3410110253856684642, guid: 9dc90564adba04a5bb53e229a2347ce5, type: 3}
     spawnPos: {x: -5.5, y: -2.3, z: 0}
 --- !u!4 &604127928
 Transform:

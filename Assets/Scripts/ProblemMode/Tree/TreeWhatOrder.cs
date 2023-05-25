@@ -7,6 +7,7 @@ using TMPro;
 
 public class TreeWhatOrder : TreeProblem
 {
+    private ProblemManager pm;
     [SerializeField] private GameObject guide, tree, option, question;
     [SerializeField] private List<GameObject> treeOptions;
     [SerializeField] private List<Sprite> optionContent;
@@ -28,8 +29,10 @@ public class TreeWhatOrder : TreeProblem
     
     */
 
-    void Start()
+    void OnEnable()
     {
+        pm = ProblemManager.instance;
+        
         TreeProblem tpScript = tree.GetComponent<TreeProblem>();
         tpScript.generateMin = 0;
         
@@ -95,7 +98,7 @@ public class TreeWhatOrder : TreeProblem
         }
         yield return new WaitForSeconds(0.7f);
         option.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         AnswerManager.instance.SetProblemAnswer(answerIndex);
     }
 

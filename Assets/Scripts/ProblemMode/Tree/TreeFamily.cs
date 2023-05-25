@@ -17,6 +17,7 @@ public class TreeFamily : TreeProblem
     private int answerIndex, answerNode, nodeNum, problemNum;
     private Image ansImage;
     System.Random random = new System.Random();
+    private TreeProblem tpScript;
 
     /*
         SetNodeNum() : 대상 노드 선택
@@ -40,12 +41,12 @@ public class TreeFamily : TreeProblem
             오른쪽 자식노드일 때는 -1
     */
 
-    void Start()
+    void OnEnable()
     {
         // 최소 트리 노드 개수 세팅
         // 선택지에서 대상 노드와 정답 후보 노드는 제외해야 하므로 최소한 5개의 노드 필요
-        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
-        tpScript.generateMin = 2;
+        // tpScript = tree.GetComponent<TreeProblem>();
+        // tpScript.generateMin = 2;
         
         StartCoroutine(BeginProblem());
     }
@@ -66,9 +67,38 @@ public class TreeFamily : TreeProblem
         GenerateOptions();
         yield return new WaitForSeconds(1.6f);
         option.SetActive(true);
-        yield return new WaitForSeconds(1f);
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
+    }
+
+    private int SetNodeNum() {
+        nodeNum = -1;
+
+        while (nodeNum == -1) {
+            nodeNum = random.Next(7);
+            
+            if (!treeNames[nodeNum].activeSelf) {
+                Debug.Log("nodeNum ? : " + nodeNum);
+                nodeNum = -1;
+            }
+        }
+        Debug.Log("nodeNum : " + nodeNum);
+        return nodeNum;
+    }
+
+    private int SetProblemNum() {
+        problemNum = -1;
+        // problemNum = 1; //테스트용
+
+        while (problemNum == -1) {
+            problemNum = random.Next(3);
+
+            if (!ableProblem[problemNum]) {
+                problemNum = -1;
+            }
+        }
+        Debug.Log("problemNum : " + problemNum);
+        return problemNum;
     }
 
     /*
@@ -84,34 +114,9 @@ public class TreeFamily : TreeProblem
     3 4 5 6
 
     */
-    private int SetNodeNum() {
-        nodeNum = -1;
-
-        while (nodeNum == -1) {
-            nodeNum = random.Next(7);
-            if (!treeNames[nodeNum].activeSelf) {
-                nodeNum = -1;
-            }
-        }
-        return nodeNum;
-    }
-
-    private int SetProblemNum() {
-        problemNum = -1;
-        // problemNum = 1; //테스트용
-
-        while (problemNum == -1) {
-            problemNum = random.Next(3);
-
-            if (!ableProblem[problemNum]) {
-                problemNum = -1;
-            }
-        }
-        return problemNum;
-    }
 
     void CalculateNode() {
-        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
+        tpScript = tree.GetComponent<TreeProblem>();
         treeNames = tpScript.treeName;
 
         ableProblem = new bool [3];
@@ -126,8 +131,7 @@ public class TreeFamily : TreeProblem
             // 부모노드
             ableNode = new List<int>();
 
-            answerNode = nodeNum / 2;
-            ableNode.Add(answerNode);
+            ableNode.Add(nodeNum / 2);
             ableProblem[0] = true;
 
             answerNodes[0] = ableNode;
@@ -158,19 +162,23 @@ public class TreeFamily : TreeProblem
             ableNode = new List<int>();
 
             // 왼쪽 자식노드
-            if (treeNames[nodeNum * 2 - 1].activeSelf) {
+            if (treeNames[(nodeNum * 2) - 1].activeSelf) {
                 ableNode.Add(nodeNum * 2);
                 ableProblem[1] = true;
             }
             // 오른쪽 자식노드
             if (treeNames[nodeNum * 2].activeSelf) {
-                ableNode.Add(nodeNum * 2 + 1);
+                ableNode.Add((nodeNum * 2) + 1);
                 ableProblem[1] = true;
             }
-            answerNodes[1] = ableNode;
 
             if (ableNode.Count == 2 && tpScript.generateCount == 2) {
+                Debug.Log("tpScript.generateCount : " + tpScript.generateCount);
                 ableProblem[1] = false;
+            }
+
+            if (ableProblem[1]) {
+                answerNodes[1] = ableNode;
             }
         }
 
@@ -199,7 +207,7 @@ public class TreeFamily : TreeProblem
 
         while (selectedRan.Count < 3) {
             int randomAns = random.Next(7);
-            if (!selectedRan.Contains(randomAns) && randomAns != nodeNum && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
+            if (!selectedRan.Contains(randomAns) && (randomAns != nodeNum) && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
                 selectedRan.Add(randomAns);
             }
         }
