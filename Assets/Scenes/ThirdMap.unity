@@ -207,7 +207,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20038133}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: -9.01, z: 0}
+  m_LocalPosition: {x: 10.94, y: -8.86, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 55859552}
   - component: {fileID: 55859551}
   m_Layer: 0
-  m_Name: background
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5187,8 +5187,8 @@ Tilemap:
   - first: {x: -2, y: 3, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 2
-      m_TileSpriteIndex: 11
+      m_TileIndex: 33
+      m_TileSpriteIndex: 42
       m_TileMatrixIndex: 0
       m_TileColorIndex: 24
       m_TileObjectToInstantiateIndex: 65535
@@ -7550,7 +7550,7 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 720
+  - m_RefCount: 719
     m_Data: {fileID: 11400000, guid: 48eeda364d0b8f44dbd99ccfcec341f4, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -7612,8 +7612,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 4446653738e923a4a832cb8b0fb11f4d, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 0
     m_Data: {fileID: 0}
@@ -7637,7 +7637,6 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 720
   - m_RefCount: 719
     m_Data: {fileID: -2097488743, guid: 093f1ae61ac3b5d4e8b0c0e0db19132c, type: 3}
   - m_RefCount: 0
@@ -7700,8 +7699,8 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: a055dde72368f46419cc1539512b6344, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 720
     m_Data:
@@ -7952,7 +7951,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201237223}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.13, y: 8.04, z: 0}
+  m_LocalPosition: {x: -9.17, y: 4.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8591,7 +8590,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340600027}
   m_CullTransparentMesh: 1
---- !u!1 &541361104
+--- !u!1 &345278027
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8599,17 +8598,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 541361105}
-  - component: {fileID: 541361107}
-  - component: {fileID: 541361106}
+  - component: {fileID: 345278030}
+  - component: {fileID: 345278029}
+  - component: {fileID: 345278028}
+  - component: {fileID: 345278031}
   m_Layer: 0
-  m_Name: BlackBar_1
+  m_Name: Ski
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
-  m_CorrespondingSourceObject: {fileID: 0}
 --- !u!95 &345278028
 Animator:
   serializedVersion: 5
