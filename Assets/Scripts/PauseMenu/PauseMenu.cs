@@ -62,12 +62,12 @@ public class PauseMenu : MonoBehaviour
         buttonList[menuIndex].NormalizeButton();
         float verticalInput = Input.GetAxis("Vertical");
 
-        if (!isStickPushed && (verticalInput == 1f || Input.GetKeyDown(KeyCode.UpArrow)))
+        if ((!isStickPushed && verticalInput == 1f) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             isStickPushed = true;
             menuIndex--;
         }
-        else if (!isStickPushed && (verticalInput == -1f || Input.GetKeyDown(KeyCode.DownArrow)))
+        else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             isStickPushed = true;
             menuIndex++;

@@ -45,7 +45,7 @@ public class ResolutionMenu : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        if (!isStickPushed && (horizontalInput == -1f || Input.GetKeyDown(KeyCode.LeftArrow)))
+        if ((!isStickPushed && horizontalInput == -1f) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             isStickPushed = true;
             resolutionNumber--;
@@ -54,7 +54,7 @@ public class ResolutionMenu : MonoBehaviour
             DOTween.Rewind("LeftResolutionArrow");
             DOTween.Play("LeftResolutionArrow");
         }
-        else if (!isStickPushed && (horizontalInput == 1f || Input.GetKeyDown(KeyCode.RightArrow)))
+        else if ((!isStickPushed && horizontalInput == 1f) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             isStickPushed = true;
             resolutionNumber++;

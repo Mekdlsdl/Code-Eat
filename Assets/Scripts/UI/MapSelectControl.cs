@@ -7,7 +7,7 @@ public class MapSelectControl : MonoBehaviour
 {
     public static MapSelectControl instance { get; private set; }
 
-    [SerializeField] private GameObject mapUI, mapSelectPlayer;
+    [SerializeField] private GameObject whiteCover, mapSelectPlayer;
     [SerializeField] private Transform playerSpawn;
     [SerializeField] private List<PageAndMap> pageMapList;
 
@@ -24,6 +24,7 @@ public class MapSelectControl : MonoBehaviour
 
     void OnEnable()
     {
+        whiteCover.SetActive(true);
         EnableMapSelection();
     }
     private void Init()
@@ -46,7 +47,6 @@ public class MapSelectControl : MonoBehaviour
         Init();
         HighlightPageMap();
 
-        mapUI.SetActive(true);
         enableMapSelect = true;
     }
 
