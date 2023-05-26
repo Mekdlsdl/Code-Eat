@@ -9231,7 +9231,7 @@ MonoBehaviour:
   cinematicEffect: {fileID: 1773013894}
   bossObject: {fileID: 1857904633}
   bossSpriteRenderer: {fileID: 202693206}
-  bossType: {fileID: 11400000, guid: c17b2656802fd3c458d05bbd39530e9f, type: 2}
+  bossType: {fileID: 11400000, guid: 39b60d6f11aa046aaa83a291235d9e98, type: 2}
   spawnList:
   - enemy: {fileID: 3410110253856684642, guid: f0412b7a12e584f3dbb9e7dbaffd9c94, type: 3}
     spawnPos: {x: -5.5, y: -2.3, z: 0}
