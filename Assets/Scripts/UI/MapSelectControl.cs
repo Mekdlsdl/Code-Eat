@@ -11,6 +11,7 @@ public class MapSelectControl : MonoBehaviour
     [SerializeField] private Transform playerSpawn;
     [SerializeField] private List<PageAndMap> pageMapList;
 
+
     private int maxPageIndex;
     private int pageIndex, mapIndex;
     
@@ -101,14 +102,19 @@ public class MapSelectControl : MonoBehaviour
 
     private void HighlightPageMap()
     {
-        for (int i = 0; i <= maxPageIndex; i++) {
+        for (int i = 0; i <= maxPageIndex; i++)
+        {
             pageMapList[i].page.SetActive(false);
 
-            for (int j = 0; j < 4; j++)
-                pageMapList[i].maps[j].SetActive(true);
+
+            for (int j = 0; j < 4; j++) {
+            pageMapList[i].maps[j].SetActive(true);
+            pageMapList[i].description[j].SetActive(false);
+            }
         }
         pageMapList[pageIndex].page.SetActive(true);
         pageMapList[pageIndex].maps[mapIndex].SetActive(false);
+        pageMapList[pageIndex].description[mapIndex].SetActive(true);
     }
 
     private IEnumerator ChooseMap()
@@ -133,4 +139,5 @@ public class PageAndMap
 {
     public GameObject page;
     public List<GameObject> maps;
+    public List<GameObject> description;
 }
