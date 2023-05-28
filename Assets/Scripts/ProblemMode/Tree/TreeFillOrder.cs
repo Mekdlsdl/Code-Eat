@@ -15,6 +15,8 @@ public class TreeFillOrder : TreeProblem
     public TMP_Text orderType;
     private int answerIndex;
     System.Random random = new System.Random();
+    WaitForSeconds shortWait = new WaitForSeconds(1f);
+    WaitForSeconds longWait = new WaitForSeconds(2f);
 
     /*
         OrderOption() : 선택지 인덱스 랜덤 세팅
@@ -31,20 +33,18 @@ public class TreeFillOrder : TreeProblem
 
     void OnEnable()
     {
-        TreeProblem tpScript = tree.GetComponent<TreeProblem>();
-        tpScript.generateMin = 0;
         StartCoroutine(BeginProblem());
     }
 
     IEnumerator BeginProblem()
     {
-        yield return new WaitForSeconds(2f);
+        yield return longWait;
         guide.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return longWait;
         guide.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return shortWait;
         tree.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return shortWait;
         OrderOption();
         OrderMain();
         question.SetActive(true);

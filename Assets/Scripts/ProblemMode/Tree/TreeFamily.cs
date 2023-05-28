@@ -18,6 +18,9 @@ public class TreeFamily : TreeProblem
     private Image ansImage;
     System.Random random = new System.Random();
     private TreeProblem tpScript;
+    WaitForSeconds shortWait = new WaitForSeconds(1f);
+    WaitForSeconds midWait = new WaitForSeconds(1.6f);
+    WaitForSeconds longWait = new WaitForSeconds(2f);
 
     /*
         SetNodeNum() : 대상 노드 선택
@@ -53,19 +56,19 @@ public class TreeFamily : TreeProblem
 
     IEnumerator BeginProblem()
     {
-        yield return new WaitForSeconds(2f);
+        yield return longWait;
         guide.SetActive(true);
-        yield return new WaitForSeconds(2f);
+        yield return longWait;
         guide.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return shortWait;
         tree.SetActive(true);
-        yield return new WaitForSeconds(1.6f);
+        yield return midWait;
         CalculateNode();
         OrderOption();
         ShowResult();
         question.SetActive(true);
         GenerateOptions();
-        yield return new WaitForSeconds(1.6f);
+        yield return midWait;
         option.SetActive(true);
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
@@ -207,9 +210,18 @@ public class TreeFamily : TreeProblem
 
         while (selectedRan.Count < 3) {
             int randomAns = random.Next(7);
-            if (!selectedRan.Contains(randomAns) && (randomAns != nodeNum) && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
+            if (selectedRan.Contains(randomAns) || selectedProblem.Contains(randomAns + 1)) {
+                continue;
+            }
+            else if (randomAns == nodeNum || !treeNames[randomAns].activeSelf) {
+                continue;
+            }
+            else {
                 selectedRan.Add(randomAns);
             }
+            // if (!selectedRan.Contains(randomAns) && (randomAns != nodeNum) && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
+            //     selectedRan.Add(randomAns);
+            // }
         }
         // Debug.Log("selectedRan.Count : " + selectedRan.Count);
         // Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
@@ -250,7 +262,7 @@ public class TreeFamily : TreeProblem
         Image problemNodeImage = problemNode.GetComponent<Image>();
         Image nodeImage = node.GetComponent<Image>();
 
-        problem.text = "의 " + problems[problemNum] + "노드는?";
+        problem.text = String.Format("의 {0} 노드는?", problems[problemNum]);
         problemNodeImage.sprite = nodeImage.sprite;
     }
 }
