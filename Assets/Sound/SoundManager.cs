@@ -28,7 +28,6 @@ public class SoundManager : MonoBehaviour
 
     private void AfterAwake()
     {
-        bgmPlayer = GetComponent<AudioSource>();
         sfxPlayer = GetComponent<AudioSource>();
 
         foreach (var b in BGMs) {
@@ -57,10 +56,15 @@ public class SoundManager : MonoBehaviour
     {
         if (!BGMDic.ContainsKey(name))
             return;
-        bgmPlayer.Stop();
+        StopBGM();
         bgmPlayer = BGMDic[name];
         bgmPlayer.Play();
         
+    }
+
+    public void StopBGM()
+    {
+        bgmPlayer.Stop();
     }
 
 
@@ -68,10 +72,9 @@ public class SoundManager : MonoBehaviour
     {
         if (!SFXDic.ContainsKey(name))
             return;
-        sfxPlayer.PlayOneShot(SFXDic[name]);
-    }
 
-    
+        sfxPlayer.PlayOneShot(SFXDic[name], masterVolumeSFX);
+    }
 
 
 

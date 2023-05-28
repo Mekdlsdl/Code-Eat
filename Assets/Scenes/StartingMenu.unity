@@ -3697,6 +3697,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1948037224}
   - component: {fileID: 1948037225}
+  - component: {fileID: 1948037226}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -3735,7 +3736,125 @@ MonoBehaviour:
   masterVolumeBGM: 1
   BGMs:
   - {fileID: 8300000, guid: 8de8f9a26f13de944baff37aaa2f3aab, type: 3}
-  SFXs: []
+  - {fileID: 8300000, guid: 7698d1925f3e9fa46a1384111689873b, type: 3}
+  - {fileID: 8300000, guid: eb0ea68148da36b41aa0e1afbbbf9d9f, type: 3}
+  - {fileID: 8300000, guid: 24738dd1beced244ca9790a99713e927, type: 3}
+  - {fileID: 8300000, guid: 17f551c31423c26408fad84b947edde4, type: 3}
+  - {fileID: 8300000, guid: 2fb9f090cc9a0924783846c7464d6716, type: 3}
+  - {fileID: 8300000, guid: 49f0449a1e6bd0d49bfdf1a57456dfeb, type: 3}
+  SFXs:
+  - {fileID: 8300000, guid: 3f14080f8ff9ad942bf7eed9084c9324, type: 3}
+  - {fileID: 8300000, guid: f9eaa6c6d4c5fbc43a4c3113dcd434d3, type: 3}
+  - {fileID: 8300000, guid: 627af482eac9358489ce5e158889fc11, type: 3}
+  - {fileID: 8300000, guid: bdb3ef9631936d64cb584ae589469aba, type: 3}
+  - {fileID: 8300000, guid: 17cdecd18eac4d94c9f00f929eac6599, type: 3}
+  - {fileID: 8300000, guid: 191a338edfa5a9041b9e4dcbdc5425f3, type: 3}
+  - {fileID: 8300000, guid: ec9e911d71070a64fb58b846ac1ea15e, type: 3}
+  - {fileID: 8300000, guid: bc151b99e0c0faa43afa03b06bb7010e, type: 3}
+  - {fileID: 8300000, guid: 6ac3f592e91bf784ba6e2b5e489ea312, type: 3}
+  - {fileID: 8300000, guid: 3f7bb50893b58164186867bf732d80c1, type: 3}
+  - {fileID: 8300000, guid: 39b479e08ee61ee419b26bf487e625e0, type: 3}
+  - {fileID: 8300000, guid: 5dc9208f160fd8b4ba543b9c35373a7a, type: 3}
+  - {fileID: 8300000, guid: e1cb89efa1a0ea84ea06ca79a0ae1056, type: 3}
+  - {fileID: 8300000, guid: 8258d82104c6f7c4d9bc2aba8d09db9e, type: 3}
+  - {fileID: 8300000, guid: aff2fef480c77a64883311afccb099f4, type: 3}
+  - {fileID: 8300000, guid: b352a85f6ebe3f3499a9bf0e78eba6f1, type: 3}
+--- !u!82 &1948037226
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948037223}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1995926259
 GameObject:
   m_ObjectHideFlags: 0

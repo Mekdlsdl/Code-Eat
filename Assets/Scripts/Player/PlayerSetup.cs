@@ -40,12 +40,14 @@ public class PlayerSetup : MonoBehaviour
             selectedCharIndex++;
             if (selectedCharIndex >= GameManager.instance.UnlockedCharacters.Count)
                 selectedCharIndex = 0;
+            SoundManager.instance.PlaySFX("Change");
         }
         else if (PressKey(InputType.RIGHT))
         {
             selectedCharIndex--;
             if (selectedCharIndex < 0)
                 selectedCharIndex = GameManager.instance.UnlockedCharacters.Count - 1;
+            SoundManager.instance.PlaySFX("Change");
         }
         else if (PressKey(InputType.SOUTHBUTTON))
         {
@@ -87,6 +89,8 @@ public class PlayerSetup : MonoBehaviour
         statusIcon.sprite = ReadyIcon;
         Arrows.SetActive(false);
 
+        SoundManager.instance.PlaySFX("Confirm");
+        
         StartCoroutine(GameManager.instance.TryMapSelect());
     }
 
@@ -97,6 +101,8 @@ public class PlayerSetup : MonoBehaviour
         playerConfig.IsReady = false;
         statusIcon.sprite = WaitingIcon;
         Arrows.SetActive(true);
+
+        SoundManager.instance.PlaySFX("Cancel");
     }
 
     private bool PressKey(string input_tag)

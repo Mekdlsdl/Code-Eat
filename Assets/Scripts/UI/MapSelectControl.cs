@@ -58,13 +58,16 @@ public class MapSelectControl : MonoBehaviour
 
         int previousPageIndex = pageIndex;
 
+
         if (PressKey(playerConfig, InputType.UP))
         {
             mapIndex = Mathf.Clamp(mapIndex - 2, 0, 3);
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (PressKey(playerConfig, InputType.DOWN))
         {
             mapIndex = Mathf.Clamp(mapIndex + 2, 0, 3);
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (PressKey(playerConfig, InputType.LEFT))
         {
@@ -72,6 +75,8 @@ public class MapSelectControl : MonoBehaviour
                 mapIndex -= 1;
             else
                 pageIndex = Mathf.Clamp(pageIndex - 1, 0, maxPageIndex);
+            
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (PressKey(playerConfig, InputType.RIGHT))
         {
@@ -79,21 +84,24 @@ public class MapSelectControl : MonoBehaviour
                 mapIndex += 1;
             else
                 pageIndex = Mathf.Clamp(pageIndex + 1, 0, maxPageIndex);
+            
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (PressKey(playerConfig, InputType.SOUTHBUTTON))
         {
             enableMapSelect = false;
             StartCoroutine(ChooseMap());
+            SoundManager.instance.PlaySFX("Select 2");
             return;
         }
+
         
         // 하연 : MapSelect 화면에서 바로 공격 모드로 진입하여 테스트할 수 있도록 추가
-        else if (PressKey(playerConfig, InputType.EASTBUTTON))
-        {
-            GameManager.instance.LoadMapForTest("Battle", "BattleMode");
-        }
+        // else if (PressKey(playerConfig, InputType.EASTBUTTON))
+        // {
+        //     GameManager.instance.LoadMapForTest("Battle", "BattleMode");
+        // }
         //
-    
         
         if (previousPageIndex != pageIndex)
             mapIndex = (previousPageIndex < pageIndex) ? (mapIndex - 1) : (mapIndex + 1);
@@ -126,6 +134,7 @@ public class MapSelectControl : MonoBehaviour
         string map_name = pageMapList[pageIndex].maps[mapIndex].name;
         GameManager.instance.SetCurrentMapName(map_name);
         GameManager.instance.LoadMap(map_name);
+        SoundManager.instance.PlayBGM("Map " + (mapIndex + 1));
     }
 
     private bool PressKey(PlayerConfiguration playerConfig, string input_tag)
