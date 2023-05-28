@@ -5,19 +5,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class TreeFamily : TreeProblem
+public class TreeFamily : MonoBehaviour
 {
     [SerializeField] private GameObject guide, tree, option, question;
-    [SerializeField] private List<GameObject> treeOptions;
-    private List<int> optionIndex, ableNode, selectedProblem;
-    private List<int> [] answerNodes;
-    private List<GameObject> treeNames;
-    private bool [] ableProblem;
+    [SerializeField] private List<GameObject> treeOptions, treeNames;
+    private List<int> ableNode, selectedProblem;
+    private List<int> optionIndex = new List<int>();
+    private List<int> [] answerNodes = new List<int>[3];
+    // private TreeProblem treeProblem;
+    // private List<GameObject> treeNames = TreeProblem.treeName;
+    private bool [] ableProblem = new bool[3];
     public TMP_Text problem;
     private int answerIndex, answerNode, nodeNum, problemNum;
     private Image ansImage;
-    System.Random random = new System.Random();
-    private TreeProblem tpScript;
+    // System.Random random = new System.Random();
     WaitForSeconds shortWait = new WaitForSeconds(1f);
     WaitForSeconds midWait = new WaitForSeconds(1.6f);
     WaitForSeconds longWait = new WaitForSeconds(2f);
@@ -78,7 +79,7 @@ public class TreeFamily : TreeProblem
         nodeNum = -1;
 
         while (nodeNum == -1) {
-            nodeNum = random.Next(7);
+            nodeNum = UnityEngine.Random.Range(0,7);
             
             if (!treeNames[nodeNum].activeSelf) {
                 // Debug.Log("nodeNum ? : " + nodeNum);
@@ -94,7 +95,7 @@ public class TreeFamily : TreeProblem
         // problemNum = 1; //테스트용
 
         while (problemNum == -1) {
-            problemNum = random.Next(3);
+            problemNum = UnityEngine.Random.Range(0,3);
 
             if (!ableProblem[problemNum]) {
                 problemNum = -1;
@@ -119,8 +120,9 @@ public class TreeFamily : TreeProblem
     */
 
     void CalculateNode() {
-        tpScript = tree.GetComponent<TreeProblem>();
-        treeNames = tpScript.treeName;
+        // tpScript = tree.GetComponent<TreeProblem>();
+        // treeNames = tpScript.treeName;
+        // treeNames = TreeProblem.treeName;
 
         ableProblem = new bool [3];
 
@@ -175,10 +177,10 @@ public class TreeFamily : TreeProblem
                 ableProblem[1] = true;
             }
 
-            if (ableNode.Count == 2 && tpScript.generateCount == 2) {
-                // Debug.Log("tpScript.generateCount : " + tpScript.generateCount);
-                ableProblem[1] = false;
-            }
+            // if (ableNode.Count == 2 && treeProblem.generateCount == 2) {
+            //     // Debug.Log("tpScript.generateCount : " + tpScript.generateCount);
+            //     ableProblem[1] = false;
+            // }
 
             if (ableProblem[1]) {
                 answerNodes[1] = ableNode;
@@ -189,7 +191,7 @@ public class TreeFamily : TreeProblem
         // Debug.Log("problemNum : " + problemNum);
 
         selectedProblem = answerNodes[problemNum];
-        int num = random.Next(selectedProblem.Count);
+        int num = UnityEngine.Random.Range(0,selectedProblem.Count);
         answerNode = selectedProblem[num];
         // Debug.Log("answerNode : " + answerNode);
         nodeNum--;
@@ -197,6 +199,7 @@ public class TreeFamily : TreeProblem
 
     void GenerateOptions() {
         // 정답 먼저 넣기
+
         answerIndex = optionIndex[0];
         GameObject op = treeOptions[answerIndex];
         Image opImage = op.GetComponent<Image>();
@@ -209,7 +212,7 @@ public class TreeFamily : TreeProblem
         List<int> selectedRan = new List<int>();
 
         while (selectedRan.Count < 3) {
-            int randomAns = random.Next(7);
+            int randomAns = UnityEngine.Random.Range(0,7);
             if (selectedRan.Contains(randomAns) || selectedProblem.Contains(randomAns + 1)) {
                 continue;
             }
@@ -241,7 +244,7 @@ public class TreeFamily : TreeProblem
         optionIndex = new List<int>();
 
         while (true) {
-            int num = random.Next(treeOptions.Count);
+            int num = UnityEngine.Random.Range(0,treeOptions.Count);
 
             if (!optionIndex.Contains(num)) {
                 optionIndex.Add(num);

@@ -94,7 +94,7 @@ public class TreeWhatOrder : TreeProblem
         }
         yield return new WaitForSeconds(0.7f);
         option.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return shortWait;
         AnswerManager.instance.SetProblemAnswer(answerIndex);
     }
 

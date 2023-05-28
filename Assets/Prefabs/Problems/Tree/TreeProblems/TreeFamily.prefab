@@ -1310,8 +1310,10 @@ MonoBehaviour:
   - {fileID: 7150746238662800814}
   - {fileID: 6221306389980522669}
   - {fileID: 8955567304779251814}
-  generateMin: 2
+  orderResult: []
+  generateMin: 3
   generateCount: 0
+  orderType: 
 --- !u!1 &5601066493575073213
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,11 +2734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b858814d6f5f4467ada65ea17122b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generateNode: 
-  treeNode: []
-  treeName: []
-  generateMin: 0
-  generateCount: 0
   guide: {fileID: 6456516368768120695}
   tree: {fileID: 5601066492534144121}
   option: {fileID: 8951694604510598587}
@@ -2746,6 +2743,14 @@ MonoBehaviour:
   - {fileID: 7784233533058611712}
   - {fileID: 2596791840556489595}
   - {fileID: 6585114960092938999}
+  treeNames:
+  - {fileID: 8199466055868333468}
+  - {fileID: 356188100622328120}
+  - {fileID: 8947154586483319668}
+  - {fileID: 7577832353390219741}
+  - {fileID: 7150746238662800814}
+  - {fileID: 6221306389980522669}
+  - {fileID: 8955567304779251814}
   problem: {fileID: 4235055855049580997}
 --- !u!1 &8410193140905269541
 GameObject:
