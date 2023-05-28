@@ -1766,8 +1766,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "-> \uC774 \uC2A4\uD14C\uC774\uC9C0\uC5D0\uC11C\uB294 \n\n\uD0D0\uC0C9(\uC774\uC9C4,
-    \uC21C\uCC28, \uC120\uD615)\uC744\n\n\uBC30\uC6B0\uAC8C \uB420 \uAC83\uC785\uB2C8\uB2E4!"
+  m_text: "-> \uC774 \uC2A4\uD14C\uC774\uC9C0\uC5D0\uC11C\uB294 \n\n\uD2B8\uB9AC(\uC21C\uD68C,
+    \uAD6C\uC870)\uC744\n\n\uBC30\uC6B0\uAC8C \uB420 \uAC83\uC785\uB2C8\uB2E4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
   m_sharedMaterial: {fileID: -508681348773179626, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
