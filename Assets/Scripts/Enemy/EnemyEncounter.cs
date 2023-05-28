@@ -8,7 +8,7 @@ public class EnemyEncounter : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.tag == "Player") && (!GameManager.isProblemMode)) {
-            SoundManager.instance.PlaySFX("Encounter");
+            SoundManager.instance.PlaySFX("Complete");
             StartCoroutine(collision.gameObject.GetComponent<PlayerInteract>().FlickExclamation());
             StartCoroutine(GameManager.instance.StartProblemMode(enemyType, collision.transform.localPosition));
             GameManager.encounteredEnemyset.Add(enemyType.enemyName);
