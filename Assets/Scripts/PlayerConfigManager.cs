@@ -31,6 +31,8 @@ public class PlayerConfigManager : MonoBehaviour
             player_ui.gameObject.GetComponent<PlayerSetup>().SetPlayer(player);
 
             Debug.Log($"Player {player_input.playerIndex + 1} Joined.");
+
+            SoundManager.instance.PlaySFX("OK");
         }
     }
 

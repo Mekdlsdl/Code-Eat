@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
         if (PlayerConfigManager.instance.PlayerConfigs.All(p => p.IsReady == true))
         {
+            SoundManager.instance.PlaySFX("Complete");
             SceneManager.LoadScene("MapSelect");
         }
     }
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         isProblemMode = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName, true);
+        SoundManager.instance.PlayBGM(currentMapName);
     }
 
     public void ReturnToCharacterSelect()

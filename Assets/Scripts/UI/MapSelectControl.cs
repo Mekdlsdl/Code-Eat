@@ -91,7 +91,7 @@ public class MapSelectControl : MonoBehaviour
         {
             enableMapSelect = false;
             StartCoroutine(ChooseMap());
-            SoundManager.instance.PlaySFX("Select 2");
+            SoundManager.instance.PlaySFX("OK");
             return;
         }
 
@@ -134,7 +134,7 @@ public class MapSelectControl : MonoBehaviour
         string map_name = pageMapList[pageIndex].maps[mapIndex].name;
         GameManager.instance.SetCurrentMapName(map_name);
         GameManager.instance.LoadMap(map_name);
-        SoundManager.instance.PlayBGM("Map " + (mapIndex + 1));
+        SoundManager.instance.PlayBGM(map_name);
     }
 
     private bool PressKey(PlayerConfiguration playerConfig, string input_tag)

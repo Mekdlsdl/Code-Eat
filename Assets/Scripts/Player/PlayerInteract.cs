@@ -35,6 +35,8 @@ public class PlayerInteract : MonoBehaviour
         tipObject = tip;
         tipPos = tip_pos;
         SetExclamation(true);
+        
+        SoundManager.instance.PlaySFX("Select");
     }
 
     public void SetExclamation(bool state)
@@ -60,6 +62,8 @@ public class PlayerInteract : MonoBehaviour
         isViewingTip = true;
         viewingTipObject.SetActive(true);
         SetExclamation(false);
+
+        SoundManager.instance.PlaySFX("Confirm");
     }
 
     private void CloseTip()
@@ -69,6 +73,8 @@ public class PlayerInteract : MonoBehaviour
         viewingTipObject.SetActive(false);
 
         viewingTipPos.DisableTrigger();
+
+        SoundManager.instance.PlaySFX("Cancel");
     }
 
     private bool PressKey(string input_tag)

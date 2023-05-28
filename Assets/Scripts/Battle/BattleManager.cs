@@ -96,6 +96,11 @@ public class BattleManager : MonoBehaviour
         enemy_type.enemyHP *= PlayerConfigManager.instance.GetPlayerConfigs().Count;
         curEnemy.Init(enemy_type, is_boss);
         Instantiate(enemy_type.bodyCollider, curEnemy.transform);
+
+        if (is_boss)
+            SoundManager.instance.PlayBGM("Boss");
+        else
+            SoundManager.instance.PlayBGM("ProblemMode");
     }
 
 }
