@@ -57,6 +57,7 @@ public class SoundManager : MonoBehaviour
             return;
         StopBGM();
         bgmPlayer = BGMDic[name];
+        bgmPlayer.volume = masterVolumeBGM;
         bgmPlayer.Play();
         
     }
