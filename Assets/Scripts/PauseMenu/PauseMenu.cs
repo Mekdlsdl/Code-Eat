@@ -45,7 +45,6 @@ public class PauseMenu : MonoBehaviour
         DOTween.Rewind("OpenPauseMenu");
         DOTween.Play("OpenPauseMenu");
 
-        SoundManager.instance.PauseBGM();
         SoundManager.instance.PlaySFX("Confirm");
     }
     public void CloseMenu()
@@ -56,7 +55,6 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         isPaused = false;
 
-        SoundManager.instance.PlayBGM();
         SoundManager.instance.PlaySFX("Cancel");
     }
     private void SelectMenu()

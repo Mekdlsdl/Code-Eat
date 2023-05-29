@@ -6,16 +6,16 @@ public class SoundManager : MonoBehaviour
 {
 
     public static SoundManager instance { get; private set; }
-    [SerializeField] private float masterVolumeSFX = 1f;
-    [SerializeField] private float masterVolumeBGM = 1f;
+    [SerializeField] private float masterVolumeSFX = 0.8f;
+    [SerializeField] private float masterVolumeBGM = 0.8f;
     [SerializeField] private AudioClip[] BGMs;
     [SerializeField] private AudioClip[] SFXs;
 
     Dictionary<string, AudioSource> BGMDic = new Dictionary<string, AudioSource>();
     Dictionary<string, AudioClip> SFXDic = new Dictionary<string, AudioClip>();
 
-    AudioSource bgmPlayer;
-    AudioSource sfxPlayer;
+    private AudioSource bgmPlayer;
+    private AudioSource sfxPlayer;
 
 
     private void Awake()
@@ -63,8 +63,10 @@ public class SoundManager : MonoBehaviour
 
     public void PlayBGM()
     {
-        if (bgmPlayer != null)
+        if (bgmPlayer != null) {
+            bgmPlayer.volume = masterVolumeBGM;
             bgmPlayer.Play();  
+        }
     }
 
     public void PauseBGM()
@@ -84,6 +86,18 @@ public class SoundManager : MonoBehaviour
             return;
 
         sfxPlayer.PlayOneShot(SFXDic[name], masterVolumeSFX);
+    }
+
+    public void SetVolumeBGM(float volume)
+    {
+        masterVolumeBGM = volume;
+        if (bgmPlayer != null)
+            bgmPlayer.volume = masterVolumeBGM;
+    }
+
+    public void SetVolumeSFX(float volume)
+    {
+        masterVolumeSFX = volume;
     }
 
 
