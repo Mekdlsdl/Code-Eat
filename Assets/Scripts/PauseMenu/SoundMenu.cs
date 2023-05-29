@@ -24,6 +24,8 @@ public class SoundMenu : MonoBehaviour
 
     void Update()
     {
+        if (!PauseMenu.isPaused) return;
+        
         Navigate();
         SetUpVolume();
 

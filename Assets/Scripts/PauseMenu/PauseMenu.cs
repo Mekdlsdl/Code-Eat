@@ -64,6 +64,8 @@ public class PauseMenu : MonoBehaviour
     }
     private void Navigate()
     {
+        if (!isPaused) return;
+        
         buttonList[menuIndex].NormalizeButton();
         float verticalInput = Input.GetAxis("Vertical");
 

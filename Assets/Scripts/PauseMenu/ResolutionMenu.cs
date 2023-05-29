@@ -32,6 +32,8 @@ public class ResolutionMenu : MonoBehaviour
 
     void Update()
     {
+        if (!PauseMenu.isPaused) return;
+
         if ((Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Z)))
             SetFullScreen(!isFullScreen);
         

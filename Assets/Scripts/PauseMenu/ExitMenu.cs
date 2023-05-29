@@ -21,6 +21,8 @@ public class ExitMenu : MonoBehaviour
 
     void Update()
     {
+        if (!PauseMenu.isPaused) return;
+
         Navigate();
 
         if ((Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Z)))
