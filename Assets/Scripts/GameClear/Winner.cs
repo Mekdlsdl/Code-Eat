@@ -23,6 +23,7 @@ public class Winner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         UpdateWinner();
+        SoundManager.instance.PlaySFX("Winner");
         DOTween.Rewind("ShowWinnerText");
         DOTween.Play("ShowWinnerText");
 
@@ -37,6 +38,7 @@ public class Winner : MonoBehaviour
         yield return new WaitForSeconds(2f);
 
         leaderBoard.SetActive(true);
+        SoundManager.instance.PlaySFX("Change");
         
         yield return new WaitForSeconds(0.5f);
 

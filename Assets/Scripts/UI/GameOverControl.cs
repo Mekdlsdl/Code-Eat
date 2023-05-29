@@ -37,14 +37,18 @@ public class GameOverControl : MonoBehaviour
         if (!enableModeSelect)
             return;
         
-        if (PressKey(playerConfig, InputType.LEFT))
+        if (PressKey(playerConfig, InputType.LEFT)) {
             SetButtonIndex(0);
-        
-        else if (PressKey(playerConfig, InputType.RIGHT))
+            SoundManager.instance.PlaySFX("Cursor");
+        }
+        else if (PressKey(playerConfig, InputType.RIGHT)) {
             SetButtonIndex(1);
-        
-        else if (PressKey(playerConfig, InputType.SOUTHBUTTON))
+            SoundManager.instance.PlaySFX("Cursor");
+        }
+        else if (PressKey(playerConfig, InputType.SOUTHBUTTON)) {
             SelectBtn();
+            SoundManager.instance.PlaySFX("OK");
+        }
     }
 
     private void SetButtonIndex(int index)

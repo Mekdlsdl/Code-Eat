@@ -52,7 +52,11 @@ public class GameManager : MonoBehaviour
                 PositionControl.instance.TurnOffTips();
 
                 PositionControl.instance.RecoverPos();
-                PositionControl.instance.enemy_spawner.SpawnEnemy();          
+                bool notBoss = PositionControl.instance.enemy_spawner.SpawnEnemy();
+                if (notBoss)
+                    SoundManager.instance.PlayBGM(currentMapName);
+                else
+                    SoundManager.instance.StopBGM();        
             }
             PlayerSpawn.instance.SpawnPlayers();
             return;
@@ -120,7 +124,6 @@ public class GameManager : MonoBehaviour
         isProblemMode = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName, true);
-        SoundManager.instance.PlayBGM(currentMapName);
     }
 
     public void ReturnToCharacterSelect()
@@ -137,6 +140,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerConfigManager.instance.RespawnPlayers();
             ChangeActionMaps("StartingMenu");
+            SoundManager.instance.PlayBGM("Intro");
         };
     }
 
@@ -149,6 +153,7 @@ public class GameManager : MonoBehaviour
         isGameOver = isProblemMode = false;
         ChangeActionMaps("StartingMenu");
         SceneManager.LoadScene("MapSelect");
+        SoundManager.instance.PlayBGM("Intro");
     }
 
     public void RetryMapMode() // 다시 시작을 선택해서 해당 맵을 다시 플레이할 경우
@@ -160,6 +165,7 @@ public class GameManager : MonoBehaviour
         isGameOver = isProblemMode = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName);
+        SoundManager.instance.PlayBGM(currentMapName);
     }
 
     public void SetCurrentMapName(string map_name) // 문제모드로 돌입하기 전 어떤 맵에서 플레이 중인지 알려준다
@@ -176,6 +182,8 @@ public class GameManager : MonoBehaviour
         process.completed += (AsyncOperation operation) =>
         {
             GameOverControl.instance.Init();
+            SoundManager.instance.StopBGM();
+            SoundManager.instance.PlaySFX("Game Over");
             return;
         };
     }
@@ -192,6 +200,7 @@ public class GameManager : MonoBehaviour
         process.completed += (AsyncOperation operation) =>
         {
             SpawnPlayerResult.instance.Init();
+            SoundManager.instance.StopBGM();
             return;
         };
     }

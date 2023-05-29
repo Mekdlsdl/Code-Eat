@@ -45,6 +45,8 @@ public class PlayerBattleMode : MonoBehaviour
             bullet.GetComponent<Bullet>().Fire();
             PlayAnimation();
 
+            SoundManager.instance.PlaySFX("Shot");
+
             // 총알 개수, UI 변동
             --bulletCount;
             bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
@@ -93,11 +95,15 @@ public class PlayerBattleMode : MonoBehaviour
             deadUI.SetActive(true);
             animator.Play($"Battle_{playerConfig.CharacterName}_Dead", -1, 0f);
             spriter.color = new Color32(255, 255, 255, 90);
+
+            SoundManager.instance.PlaySFX("Dead");
         }
         else {
             playerConfig.PlayerHp -= damage;
             StartCoroutine(DamageAnimation());
             incorrectUI.SetActive(true);
+
+            SoundManager.instance.PlaySFX("Damaged");
         }
     }
 

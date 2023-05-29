@@ -22,8 +22,10 @@ public class TipPosition : MonoBehaviour
     {
         gameObject.SetActive(false);
 
-        if (CheckOpenedAllTips())
+        if (CheckOpenedAllTips()) {
             transform.parent.GetComponent<TipSpawner>().enemySpawner.SpawnEnemy();
+            SoundManager.instance.PlaySFX("OK");
+        }
     }
 
     private bool CheckOpenedAllTips()

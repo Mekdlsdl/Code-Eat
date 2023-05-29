@@ -15,7 +15,7 @@ public class EnemySpawner : MonoBehaviour
     private List<GameObject> existingEnemyList = new List<GameObject>();
     public List<GameObject> ExistingEnemyList => existingEnemyList;
 
-    public void SpawnEnemy()
+    public bool SpawnEnemy()
     {
         bool enemyExists = false;
 
@@ -30,6 +30,8 @@ public class EnemySpawner : MonoBehaviour
         }
 
         if (!enemyExists) StartCoroutine(SpawnBoss(0.5f, 1f, 2f));
+
+        return enemyExists;
     }
 
     IEnumerator SpawnBoss(float cinematicDelay, float spawnDelay, float battleDelay)
@@ -46,6 +48,8 @@ public class EnemySpawner : MonoBehaviour
         bossSpriteRenderer.sprite = bossType.topdownSprite;
         DOTween.Rewind("SpawnBoss");
         DOTween.Play("SpawnBoss");
+
+        SoundManager.instance.PlaySFX("Boss Spawn");
 
         yield return new WaitForSeconds(battleDelay);
 

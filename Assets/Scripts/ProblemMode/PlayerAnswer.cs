@@ -39,6 +39,8 @@ public class PlayerAnswer : MonoBehaviour
         if (inputAnswer != -1) {
             Debug.Log($"P{playerConfig.PlayerIndex + 1}이 선택한 답 : {(AnswerButton) inputAnswer}");
             AnswerManager.instance.LockPlayerAnswer(this);
+
+            SoundManager.instance.PlaySFX("Select");
         }
     }
 

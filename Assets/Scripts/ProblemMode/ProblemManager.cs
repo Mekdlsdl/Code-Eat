@@ -166,5 +166,7 @@ public class ProblemManager : MonoBehaviour
     public void ShowStageCompleteText()
     {
         stageCompleteText.SetActive(true);
+        SoundManager.instance.StopBGM();
+        SoundManager.instance.PlaySFX("Stage Complete");
     }
 }

@@ -48,8 +48,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        if (bgmPlayer != null)
-            bgmPlayer.Play();   
+        PlayBGM(); 
     }
 
     public void PlayBGM(string name)
@@ -60,6 +59,12 @@ public class SoundManager : MonoBehaviour
         bgmPlayer = BGMDic[name];
         bgmPlayer.Play();
         
+    }
+
+    public void PlayBGM()
+    {
+        if (bgmPlayer != null)
+            bgmPlayer.Play();  
     }
 
     public void StopBGM()

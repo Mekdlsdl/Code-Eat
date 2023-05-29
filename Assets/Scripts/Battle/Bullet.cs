@@ -40,10 +40,12 @@ public class Bullet : MonoBehaviour
 
             if (ray.collider.CompareTag("EnemySide")) {
                 curDamage =  this.damage / 2;
+                SoundManager.instance.PlaySFX("Normal Explosion");
             }
             else if (ray.collider.CompareTag("EnemyCenter")) {
                 curDamage = this.damage;
                 Instantiate(criticalPopup, enemy.transform.position, Quaternion.identity, enemy.transform);
+                SoundManager.instance.PlaySFX("Critical Explosion");
             }
 
             enemy.Hit(curDamage);
