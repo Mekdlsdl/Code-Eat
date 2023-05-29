@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   enemyName: Ice
-  enemyHP: 1
+  enemyHP: 30
   enemyDamage: 100
   enemySpeed: 3
   animControl: {fileID: 9100000, guid: b0e6b620cb3981742a03f7f02a81b933, type: 2}

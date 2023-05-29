@@ -44,6 +44,9 @@ public class PauseMenu : MonoBehaviour
         menu.SetActive(true);
         DOTween.Rewind("OpenPauseMenu");
         DOTween.Play("OpenPauseMenu");
+
+        SoundManager.instance.PauseBGM();
+        SoundManager.instance.PlaySFX("Confirm");
     }
     public void CloseMenu()
     {
@@ -52,10 +55,14 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 1;
         isPaused = false;
+
+        SoundManager.instance.PlayBGM();
+        SoundManager.instance.PlaySFX("Cancel");
     }
     private void SelectMenu()
     {
         settingsList[menuIndex].SetActive(true);
+        SoundManager.instance.PlaySFX("OK");
     }
     private void Navigate()
     {
@@ -66,11 +73,13 @@ public class PauseMenu : MonoBehaviour
         {
             isStickPushed = true;
             menuIndex--;
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             isStickPushed = true;
             menuIndex++;
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (verticalInput == 0f)
             isStickPushed = false;

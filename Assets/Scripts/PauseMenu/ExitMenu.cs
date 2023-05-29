@@ -38,11 +38,13 @@ public class ExitMenu : MonoBehaviour
         {
             isStickPushed = true;
             menuIndex--;
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             isStickPushed = true;
             menuIndex++;
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (verticalInput == 0f)
             isStickPushed = false;
@@ -53,6 +55,8 @@ public class ExitMenu : MonoBehaviour
 
     private void SelectOption()
     {
+        SoundManager.instance.PlaySFX("OK");
+
         if (menuIndex == 0)
             QuitGame();
         
@@ -88,6 +92,7 @@ public class ExitMenu : MonoBehaviour
     {
         PauseMenu.menuState = MenuState.Pause;
         gameObject.SetActive(false);
+        SoundManager.instance.PlaySFX("Cancel");
     }
 
     void OnDisable()

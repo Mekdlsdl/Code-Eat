@@ -53,6 +53,8 @@ public class ResolutionMenu : MonoBehaviour
             
             DOTween.Rewind("LeftResolutionArrow");
             DOTween.Play("LeftResolutionArrow");
+
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if ((!isStickPushed && horizontalInput == 1f) || Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -62,6 +64,8 @@ public class ResolutionMenu : MonoBehaviour
 
             DOTween.Rewind("RightResolutionArrow");
             DOTween.Play("RightResolutionArrow");
+
+            SoundManager.instance.PlaySFX("Cursor");
         }
         else if (horizontalInput == 0f)
             isStickPushed = false;
@@ -80,12 +84,17 @@ public class ResolutionMenu : MonoBehaviour
         isFullScreen = is_full_screen;
         checkMark.SetActive(is_full_screen);
         Screen.fullScreen = is_full_screen;
+
+        if (is_full_screen)
+            SoundManager.instance.PlaySFX("Confirm");
+        else
+            SoundManager.instance.PlaySFX("Cancel");
     }
 
     private void ExitMenu()
     {
-        
         gameObject.SetActive(false);
+        SoundManager.instance.PlaySFX("Cancel");
     }
 
     void OnDisable()

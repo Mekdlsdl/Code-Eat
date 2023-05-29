@@ -19,6 +19,9 @@ public class SoundMenu : MonoBehaviour
     {
         PauseMenu.menuState = MenuState.Pause;
         gameObject.SetActive(false);
+
+        SoundManager.instance.PlaySFX("Cancel");
+
     }
 
     void OnDisable()

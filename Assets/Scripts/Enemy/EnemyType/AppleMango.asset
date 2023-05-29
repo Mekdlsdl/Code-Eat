@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AppleMango
   m_EditorClassIdentifier: 
   enemyName: AppleMango
-  enemyHP: 1
+  enemyHP: 50
   enemyDamage: 25
   enemySpeed: 3
   animControl: {fileID: 9100000, guid: 128b9980be7d9c94b82e58f24f03d1c5, type: 2}
