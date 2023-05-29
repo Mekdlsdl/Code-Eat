@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour
         isDead = true;
         animator.Play($"{enemyType.enemyName}_Dead", -1, 0f);
 
-        SoundManager.instance.PlaySFX("Dead");
+        SoundManager.instance.PlaySFX("Enemy Death");
 
         yield return new WaitForSecondsRealtime(1f);
 

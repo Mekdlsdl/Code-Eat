@@ -96,7 +96,7 @@ public class PlayerBattleMode : MonoBehaviour
             animator.Play($"Battle_{playerConfig.CharacterName}_Dead", -1, 0f);
             spriter.color = new Color32(255, 255, 255, 90);
 
-            SoundManager.instance.PlaySFX("Dead");
+            SoundManager.instance.PlaySFX("Player Death");
         }
         else {
             playerConfig.PlayerHp -= damage;
