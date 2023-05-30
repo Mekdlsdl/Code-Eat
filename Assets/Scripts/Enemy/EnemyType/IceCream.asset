@@ -18,5 +18,6 @@ MonoBehaviour:
   enemySpeed: 2.5
   animControl: {fileID: 9100000, guid: 531142b6a6c9b4f42a1f512456147c68, type: 2}
   bodyCollider: {fileID: 3802751815798120775, guid: 708f66b23f2583d47a09d44c905f3273, type: 3}
-  problem:
-  - {fileID: 2476137460639775454, guid: 1fd593ce212b1406a86315cab37a381f, type: 3}
+  problemInfo:
+  - problem: {fileID: 0}
+    problemTime: 0

@@ -11,7 +11,7 @@ public class ProblemManager : MonoBehaviour
     public static ProblemManager instance { get; private set; }
     public static int totalProblemCount = 0;
 
-    [SerializeField] private float maxProblemTime;
+    private float maxProblemTime;
     private float timer; public float Timer => timer;
     [SerializeField] private TextMeshProUGUI timerUI;
 
@@ -19,7 +19,7 @@ public class ProblemManager : MonoBehaviour
     [SerializeField] private Transform battlePlayerTransform, problemUI;
     public List<Transform> optionTransforms;
 
-    private List<GameObject> problemCandidates;
+    private List<ProblemInfo> problemCandidates;
     private GameObject tempProblem;
 
     [System.NonSerialized] public bool isShowingAnswer = false;
@@ -89,12 +89,15 @@ public class ProblemManager : MonoBehaviour
     }
     private void SetProblem()
     {
-        problemCandidates = BattleManager.instance.curEnemy.enemy_type.problem;
+        problemCandidates = BattleManager.instance.curEnemy.enemy_type.problemInfo;
     }
     private void SpawnProblem()
     {
         AnswerManager.instance.ResetPlayerAnswers();
-        tempProblem = Instantiate(problemCandidates[Random.Range(0, problemCandidates.Count)], problemUI);
+
+        int randomIndex = Random.Range(0, problemCandidates.Count);
+        tempProblem = Instantiate(problemCandidates[randomIndex].problem, problemUI);
+        SetTimer(problemCandidates[randomIndex].problemTime);
 
         totalProblemCount++;
         Debug.Log($"{totalProblemCount} 번째 문제");
@@ -102,15 +105,22 @@ public class ProblemManager : MonoBehaviour
 
     public IEnumerator NextProblem(float waitTime = 0.6f) // 다음 문제를 불러오고자 할 때 호출
     {
-        timer = maxProblemTime;
-        timerUI.text = timer.ToString("F0");
-        timerUI.color = Color.white;
-
         yield return new WaitForSeconds(waitTime);
         if (tempProblem)
             Destroy(tempProblem);
         DisplayProblem();
         SpawnProblem();
+    }
+
+    private void SetTimer(float input_time)
+    {
+        maxProblemTime = input_time;
+        if (maxProblemTime == 0)
+            maxProblemTime = 10;
+        
+        timer = maxProblemTime;
+        timerUI.text = timer.ToString("F0");
+        timerUI.color = Color.white;
     }
 
     private void DisplayProblem() // 문제 UI를 활성화할 때 호출

@@ -4923,7 +4923,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 448629c38b3215948ad1d4d5089dcd33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxProblemTime: 10
   timerUI: {fileID: 542467258}
   battlePlayerPrefab: {fileID: 4400634620571792327, guid: 888c45ebf1e58a24fb065a8b7fae58ad, type: 3}
   screenCover: {fileID: 31145374}

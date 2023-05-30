@@ -10,5 +10,13 @@ public class EnemyType : ScriptableObject
     public float enemySpeed;
     public RuntimeAnimatorController animControl;
     public GameObject bodyCollider;
-    public List<GameObject> problem;
+    public List<ProblemInfo> problemInfo;
+    
+}
+
+[System.Serializable]
+public class ProblemInfo
+{
+    public GameObject problem;
+    public float problemTime;
 }
