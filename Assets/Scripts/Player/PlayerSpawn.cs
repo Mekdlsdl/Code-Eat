@@ -39,18 +39,6 @@ public class PlayerSpawn : MonoBehaviour
         }
     }
 
-    // 하연 : MapSelect 화면에서 바로 공격 모드로 진입하여 테스트할 수 있도록 추가
-    public void SpawnPlayersForTest(string actionMapName)
-    {
-        GameManager.instance.ChangeActionMaps($"{actionMapName}");
-
-        var playerConfigs = PlayerConfigManager.instance.GetPlayerConfigs();
-        for (int i = 0; i < playerConfigs.Count; i++) {
-            var player = Instantiate(playerPrefab, spawnPos[i], gameObject.transform.rotation, gameObject.transform);
-            player.GetComponent<PlayerBattleMode>().Init(playerConfigs[i]);
-        }
-    }
-    //
     
     public void SetCirclePosition(Vector3 position)
     {

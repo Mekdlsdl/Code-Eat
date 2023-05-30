@@ -96,13 +96,6 @@ public class MapSelectControl : MonoBehaviour
         }
 
         
-        // 하연 : MapSelect 화면에서 바로 공격 모드로 진입하여 테스트할 수 있도록 추가
-        // else if (PressKey(playerConfig, InputType.EASTBUTTON))
-        // {
-        //     GameManager.instance.LoadMapForTest("Battle", "BattleMode");
-        // }
-        //
-        
         if (previousPageIndex != pageIndex)
             mapIndex = (previousPageIndex < pageIndex) ? (mapIndex - 1) : (mapIndex + 1);
         HighlightPageMap();
