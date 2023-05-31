@@ -12,13 +12,10 @@ public class TreeFamily : MonoBehaviour
     private List<int> ableNode, selectedProblem;
     private List<int> optionIndex = new List<int>();
     private List<int> [] answerNodes = new List<int>[3];
-    // private TreeProblem treeProblem;
-    // private List<GameObject> treeNames = TreeProblem.treeName;
     private bool [] ableProblem = new bool[3];
     public TMP_Text problem;
     private int answerIndex, answerNode, nodeNum, problemNum;
     private Image ansImage;
-    // System.Random random = new System.Random();
     WaitForSeconds shortWait = new WaitForSeconds(1f);
     WaitForSeconds midWait = new WaitForSeconds(1.6f);
     WaitForSeconds longWait = new WaitForSeconds(2f);
@@ -222,9 +219,6 @@ public class TreeFamily : MonoBehaviour
             else {
                 selectedRan.Add(randomAns);
             }
-            // if (!selectedRan.Contains(randomAns) && (randomAns != nodeNum) && !selectedProblem.Contains(randomAns + 1) && treeNames[randomAns].activeSelf) {
-            //     selectedRan.Add(randomAns);
-            // }
         }
         // Debug.Log("selectedRan.Count : " + selectedRan.Count);
         // Debug.Log("selectedRan : " + selectedRan[0] + selectedRan[1] + selectedRan[2]);
