@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: IceCream
   m_EditorClassIdentifier: 
   enemyName: IceCream
-  enemyHP: 40
+  enemyHP: 50
   enemyDamage: 25
   enemySpeed: 3
   animControl: {fileID: 9100000, guid: 531142b6a6c9b4f42a1f512456147c68, type: 2}
