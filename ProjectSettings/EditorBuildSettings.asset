@@ -14,9 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ProblemMode.unity
     guid: 698cf8b40628b4b99a4746679dad5f6e
-  - enabled: 1
-    path: Assets/Scenes/Battle.unity
-    guid: fb8d59c07e3b72149a0f5c21060d1e31
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: b37d672197b1a5b47a62d6835908e9a5
