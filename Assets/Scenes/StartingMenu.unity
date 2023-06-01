@@ -3092,7 +3092,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -3915,7 +3915,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.3
+  m_Value: 0.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -4872,8 +4872,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07f9eb60b65418a44ad585f2e70fd8b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterVolumeSFX: 0.5
-  masterVolumeBGM: 0.3
+  masterVolumeSFX: 0.4
+  masterVolumeBGM: 0.4
   BGMs:
   - {fileID: 8300000, guid: 8de8f9a26f13de944baff37aaa2f3aab, type: 3}
   - {fileID: 8300000, guid: 7698d1925f3e9fa46a1384111689873b, type: 3}

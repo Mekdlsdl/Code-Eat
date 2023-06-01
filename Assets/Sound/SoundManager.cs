@@ -6,8 +6,8 @@ public class SoundManager : MonoBehaviour
 {
 
     public static SoundManager instance { get; private set; }
-    [SerializeField] private float masterVolumeSFX = 0.3f;
-    [SerializeField] private float masterVolumeBGM = 0.5f;
+    [SerializeField] private float masterVolumeSFX = 0.4f;
+    [SerializeField] private float masterVolumeBGM = 0.4f;
     [SerializeField] private AudioClip[] BGMs;
     [SerializeField] private AudioClip[] SFXs;
 

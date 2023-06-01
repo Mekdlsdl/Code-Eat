@@ -45,7 +45,7 @@ public class HUD : MonoBehaviour
                     return;
                 float remainTime = BattleManager.instance.maxBattleTime - BattleManager.instance.battleTime;
                 int second = Mathf.FloorToInt(remainTime % 60);
-                infoText.text = string.Format("{0:D2}:{1:D2}", 00, second); // D2 자릿수 고정. 00:00 형태
+                infoText.text = string.Format("{0:D2}:{1:D2}", 00, second); 
                 break;
             case Type.EnemyHp:
                 float curEnemyHp = enemy.hp;
