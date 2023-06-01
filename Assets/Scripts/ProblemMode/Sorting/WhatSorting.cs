@@ -7,7 +7,6 @@ public class WhatSorting : MonoBehaviour
 {
     [SerializeField] private List<TMP_Text> contents;
     [SerializeField] private List<int> randomOptions;
-    // private SortingProblem sortingProblem;
     private List<string> sortType;
 
     void OnEnable() {
@@ -28,13 +27,16 @@ public class WhatSorting : MonoBehaviour
     }
 
     void SetOption() {
-        sortType = new List<string>() {"버블\n정렬", "삽입\n정렬", "선택\n정렬", "힙\n정렬"};
+        sortType = new List<string>() {"버블\n정렬", "삽입\n정렬", "선택\n정렬"};
+        List<string> otherType = new List<string>() {"힙\n정렬", "합병\n정렬", "퀵\n정렬", "힙\n정렬", "쉘\n정렬", "기수\n정렬"};
+        int ranIdx = UnityEngine.Random.Range(0,otherType.Count);
+        sortType.Add(otherType[ranIdx]);
 
         for (int i=0; i<randomOptions.Count; i++) {
             contents[i].text = sortType[randomOptions[i]];
         }
 
-        int answerNum = SortingProblem.problemNum;
+        int answerNum = SortingProblem.sortingNum;
         Debug.Log($"answerNum : {answerNum}");
         int answerIndex = randomOptions.IndexOf(answerNum);
         AnswerManager.instance.SetProblemAnswer(answerIndex);

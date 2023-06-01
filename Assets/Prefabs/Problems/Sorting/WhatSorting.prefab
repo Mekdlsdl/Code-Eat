@@ -2344,7 +2344,6 @@ MonoBehaviour:
   beforeDishesText: {fileID: 6576792781572012759}
   randomList: 
   randomDishes: []
-  problemNum: 0
 --- !u!1 &2247252041431347510
 GameObject:
   m_ObjectHideFlags: 0
@@ -8712,7 +8711,7 @@ GameObject:
   - component: {fileID: 3630986571167072880}
   - component: {fileID: 3630986571167072881}
   m_Layer: 0
-  m_Name: TreeOption
+  m_Name: SortingOption
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8761,7 +8760,6 @@ MonoBehaviour:
   - {fileID: 3630986571278088292}
   - {fileID: 3630986569623313381}
   randomOptions: 
-  sortingProblem: {fileID: 0}
 --- !u!1 &3630986571278088314
 GameObject:
   m_ObjectHideFlags: 0
