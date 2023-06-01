@@ -56,7 +56,7 @@ public class KruskalProblem : MonoBehaviour
 
     IEnumerator BeginProblem()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(3.5f);
         guide.SetActive(false);
 
         yield return CreateProblem();
