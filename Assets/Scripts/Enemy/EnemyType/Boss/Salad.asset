@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Salad
   enemyHP: 70
   enemyDamage: 30
-  enemySpeed: 4
+  enemySpeed: 6
   animControl: {fileID: 9100000, guid: cf6c35a313c27bd47b5295f07403dd2a, type: 2}
   bodyCollider: {fileID: 7228186296966764135, guid: 72a7e5df861b38142b5f66d7084bf125, type: 3}
   problemInfo:
