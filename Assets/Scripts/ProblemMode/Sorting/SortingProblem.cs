@@ -18,6 +18,7 @@ public class SortingProblem : MonoBehaviour
     public static List<float> positionList; 
     public static int step = -1;
     public static int sortingNum;
+    private bool breakStep = false;
     private FillSorting fillSorting;
     WaitForSeconds shortWait = new WaitForSeconds(1f);
     WaitForSeconds longWait = new WaitForSeconds(2f);
@@ -134,6 +135,9 @@ public class SortingProblem : MonoBehaviour
 
     IEnumerator BubbleSort(int step = -1) {
         Debug.Log("bubble");
+
+        int count = 0;
+        
         if (problemNum == 1) {
             yield return shortWait;
         }
@@ -175,6 +179,8 @@ public class SortingProblem : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
                 yield return new WaitForSeconds(0.2f);
+
+                count++;
             }
 
             if (changed == false) {
@@ -185,9 +191,15 @@ public class SortingProblem : MonoBehaviour
                 if (problemNum == 1) {
                     AfterStep();
                 }
+                else if (problemNum == 2) {
+                    breakStep = true;
+                }
 
                 break;
             }
+        }
+        if (problemNum == 2 && !breakStep) {
+            step = count;
         }
         AfterSort();
     }
@@ -195,6 +207,7 @@ public class SortingProblem : MonoBehaviour
     IEnumerator InsertionSort(int step = -1) {
         Debug.Log("insertion");
 
+        int count = 0;
         float duration = 0.1f; // 이동에 걸리는 시간
 
         int index = randomList.Count;
@@ -242,6 +255,8 @@ public class SortingProblem : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
                 yield return new WaitForSeconds(0.1f);
+
+                count++;
             }
 
             if (step != -1 && i == step) {
@@ -253,6 +268,11 @@ public class SortingProblem : MonoBehaviour
 
             yield return shortWait;
         }
+
+        if (problemNum == 2 && !breakStep) {
+            step = count;
+        }
+
         AfterSort();
     }
 
@@ -260,7 +280,7 @@ public class SortingProblem : MonoBehaviour
     IEnumerator SelectionSort(int step = -1) {
         int index = randomList.Count;
         float duration = 0.4f; // 이동에 걸리는 시간
-
+        int count = 0;
 
         for (int i=0; i<index; i++) {
             // Debug.Log($"i: {i}");
@@ -307,17 +327,23 @@ public class SortingProblem : MonoBehaviour
                 yield return new WaitForSeconds(0.2f);
                 dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
                 yield return new WaitForSeconds(0.2f);
+
+                count++;
             }
 
             if (step != -1 && i + 1 == step) {
                 if (problemNum == 1) {
                     AfterStep();
                 }
-                
+
                 break;
             }
 
             yield return shortWait;
+        }
+        
+        if (problemNum == 2 && !breakStep) {
+            step = count;
         }
         AfterSort();
     }
