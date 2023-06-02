@@ -57,6 +57,8 @@ public class BattleManager : MonoBehaviour
 
     private void BattleModeOffTimeOut()
     {
+        if (curEnemy.hp == 0) return;
+        
         BattleModeOff();
         StartCoroutine(ProblemManager.instance.NextProblem());
     }
