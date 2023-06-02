@@ -85,12 +85,12 @@ public class Enemy : MonoBehaviour
             StartCoroutine(GameManager.instance.ExitProblemMode());
     }
 
-    public void Init(EnemyType type, bool is_boss)
+    public void Init(EnemyType type, bool is_boss, int player_count)
     {
         enemyType =  type;
         isBoss = is_boss;
         animator.runtimeAnimatorController = enemyType.animControl;
-        maxHp = hp = enemyType.enemyHP;
+        maxHp = hp = enemyType.enemyHP * player_count;
         damage = enemyType.enemyDamage;
         speed = enemyType.enemySpeed;
     }
