@@ -93,8 +93,8 @@ public class BattleManager : MonoBehaviour
     
     public void SetEnemy(EnemyType enemy_type, bool is_boss)
     {
-        enemy_type.enemyHP *= PlayerConfigManager.instance.GetPlayerConfigs().Count;
-        curEnemy.Init(enemy_type, is_boss);
+        int player_count = PlayerConfigManager.instance.GetPlayerConfigs().Count;
+        curEnemy.Init(enemy_type, is_boss, player_count);
         Instantiate(enemy_type.bodyCollider, curEnemy.transform);
 
         if (is_boss)
