@@ -2,14 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class WhatSorting : MonoBehaviour
 {
+    [SerializeField] private GameObject people, afterDishes;
     [SerializeField] private List<TMP_Text> contents;
     [SerializeField] private List<int> randomOptions;
     private List<string> sortType;
+    private int answerIndex;
+    WaitForSeconds shortWait = new WaitForSeconds(1f);
 
     void OnEnable() {
+        StartCoroutine(PeopleGetDishes());
         RandomIndex();
         SetOption();
     }
@@ -38,8 +43,29 @@ public class WhatSorting : MonoBehaviour
 
         int answerNum = SortingProblem.sortingNum;
         Debug.Log($"answerNum : {answerNum}");
-        int answerIndex = randomOptions.IndexOf(answerNum);
+        answerIndex = randomOptions.IndexOf(answerNum);
+    }
+
+    IEnumerator PeopleGetDishes() {
+        people.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+
+        RectTransform dishTransform = afterDishes.GetComponent<RectTransform>();
+        float modifyPosition = dishTransform.anchoredPosition.y;
+        dishTransform.DOLocalMoveY(modifyPosition - 200, 0.8f);
+
+        yield return shortWait;
+
+        RectTransform peopleTransform = people.GetComponent<RectTransform>();
+        float modifyPositionP = peopleTransform.anchoredPosition.y;
+        peopleTransform.DOLocalMoveY(modifyPositionP - 50, 0.4f);
+        dishTransform.DOLocalMoveY(modifyPosition - 250, 0.4f);
+
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
+        
+        yield return new WaitForSeconds(0.5f);
+        people.SetActive(false);
+        afterDishes.SetActive(false);
     }
 }

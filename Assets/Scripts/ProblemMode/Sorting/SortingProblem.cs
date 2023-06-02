@@ -8,7 +8,7 @@ using DG.Tweening;
 
 public class SortingProblem : MonoBehaviour
 {
-    [SerializeField] private GameObject guide, people, divider, beforeDishes, afterDishes, option;
+    [SerializeField] private GameObject guide, divider, beforeDishes, afterDishes, option;
     [SerializeField] private List<GameObject> dishes;
     [SerializeField] private int problemNum;
     public TMP_Text beforeDishesText;
@@ -16,13 +16,23 @@ public class SortingProblem : MonoBehaviour
     public static (int, int) answerDishes;
     public static List<GameObject> randomDishes;
     public static List<float> positionList; 
-    private List<float> randomPositions;
+    public static int step = -1;
     public static int sortingNum;
     private FillSorting fillSorting;
     WaitForSeconds shortWait = new WaitForSeconds(1f);
     WaitForSeconds longWait = new WaitForSeconds(2f);
 
+    /*
+    
+        problemNum
+            0 : WhatSorting
+            1 : FillSorting
+            2 : HowManySteps
+
+    */
+
     void OnEnable() {
+        step = -1;
         GetPosition();
         RandomList();
         SetPosition();
@@ -76,40 +86,24 @@ public class SortingProblem : MonoBehaviour
         }
     }
 
-    IEnumerator AfterSort() {
+    void AfterSort() {
         if (problemNum == 0) {
-            yield return shortWait;
-            people.SetActive(true);
-            yield return new WaitForSeconds(1.5f);
-
-            RectTransform dishTransform = afterDishes.GetComponent<RectTransform>();
-            float modifyPosition = dishTransform.anchoredPosition.y;
-            dishTransform.DOLocalMoveY(modifyPosition - 200, 0.8f);
-
-            yield return shortWait;
-            RectTransform peopleTransform = people.GetComponent<RectTransform>();
-            float modifyPositionP = peopleTransform.anchoredPosition.y;
-            peopleTransform.DOLocalMoveY(modifyPositionP - 50, 0.4f);
-            dishTransform.DOLocalMoveY(modifyPosition - 250, 0.4f);
-
             option.SetActive(true);
-
-            yield return new WaitForSeconds(0.5f);
-            people.SetActive(false);
-            afterDishes.SetActive(false);
         }
         else if (problemNum == 1) {
             fillSorting = option.GetComponent<FillSorting>();
             option.SetActive(true);
             fillSorting.SetOption();
         }
+        else {
+            option.SetActive(true);
+        }
     }
 
     void DoSort() {
         sortingNum = UnityEngine.Random.Range(0,3);
-        int step = -1;
 
-        if (problemNum == 1) {
+        if (problemNum == 1 || problemNum == 2) {
             step = UnityEngine.Random.Range(2,4);
         }
 
@@ -140,7 +134,10 @@ public class SortingProblem : MonoBehaviour
 
     IEnumerator BubbleSort(int step = -1) {
         Debug.Log("bubble");
-        yield return shortWait;
+        if (problemNum == 1) {
+            yield return shortWait;
+        }
+
         for (int index=randomList.Count-1; index>0; index--) {
             // Debug.Log($"index : {index}");
 
@@ -171,16 +168,28 @@ public class SortingProblem : MonoBehaviour
                 }
             }
 
+            if (problemNum == 2) {
+                RectTransform dishesTransform = afterDishes.GetComponent<RectTransform>();
+                yield return new WaitForSeconds(0.1f);
+                dishesTransform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.2f);
+                dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.2f);
+            }
+
             if (changed == false) {
                 break;
             }
 
             if (step != -1 && randomList.Count - index == step) {
-                AfterStep();
+                if (problemNum == 1) {
+                    AfterStep();
+                }
+
                 break;
             }
         }
-        StartCoroutine(AfterSort());
+        AfterSort();
     }
 
     IEnumerator InsertionSort(int step = -1) {
@@ -219,21 +228,32 @@ public class SortingProblem : MonoBehaviour
                 randomList[j+1] = temp;
                 j--;
 
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.2f);
             }
             randomList[j+1] = key;
             RectTransform dishTransform3 = dishes[randomList[j+1]].GetComponent<RectTransform>();
             Vector2 modifyPosition3 = dishTransform3.anchoredPosition;
             dishTransform.DOLocalMove(new Vector3(modifyPosition3.x, modifyPosition, 0), duration);
 
+            if (problemNum == 2) {
+                RectTransform dishesTransform = afterDishes.GetComponent<RectTransform>();
+                yield return new WaitForSeconds(0.1f);
+                dishesTransform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.2f);
+                dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.1f);
+            }
+
             if (step != -1 && i == step) {
-                AfterStep();
+                if (problemNum == 1) {
+                    AfterStep();
+                }
                 break;
             }
 
             yield return shortWait;
         }
-        StartCoroutine(AfterSort());
+        AfterSort();
     }
 
 
@@ -265,29 +285,40 @@ public class SortingProblem : MonoBehaviour
                 }
             }
             
-        // Debug.Log($"{randomList[i]} / {randomList[i+1]}");
-        RectTransform dishTransform1 = dishes[randomList[i]].GetComponent<RectTransform>();
-        float modifyPosition1 = dishTransform1.anchoredPosition.x;
-        RectTransform dishTransform2 = dishes[randomList[least]].GetComponent<RectTransform>();
-        float modifyPosition2 = dishTransform2.anchoredPosition.x;
+            // Debug.Log($"{randomList[i]} / {randomList[i+1]}");
+            RectTransform dishTransform1 = dishes[randomList[i]].GetComponent<RectTransform>();
+            float modifyPosition1 = dishTransform1.anchoredPosition.x;
+            RectTransform dishTransform2 = dishes[randomList[least]].GetComponent<RectTransform>();
+            float modifyPosition2 = dishTransform2.anchoredPosition.x;
 
-        // Debug.Log($"{positionList[randomList[i+1]]} / {positionList[randomList[i]]}");
+            // Debug.Log($"{positionList[randomList[i+1]]} / {positionList[randomList[i]]}");
 
-        dishTransform1.DOLocalMoveX(modifyPosition2, duration);
-        dishTransform2.DOLocalMoveX(modifyPosition1, duration);
+            dishTransform1.DOLocalMoveX(modifyPosition2, duration);
+            dishTransform2.DOLocalMoveX(modifyPosition1, duration);
 
+            int temp = randomList[i];
+            randomList[i] = randomList[least];
+            randomList[least] = temp;
 
-        int temp = randomList[i];
-        randomList[i] = randomList[least];
-        randomList[least] = temp;
+            if (problemNum == 2) {
+                RectTransform dishesTransform = afterDishes.GetComponent<RectTransform>();
+                yield return new WaitForSeconds(0.2f);
+                dishesTransform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.2f);
+                dishesTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.2f);
+            }
 
-        if (step != -1 && i - 1 == step) {
-            AfterStep();
-            break;
+            if (step != -1 && i + 1 == step) {
+                if (problemNum == 1) {
+                    AfterStep();
+                }
+                
+                break;
+            }
+
+            yield return shortWait;
         }
-
-        yield return shortWait;
-        }
-        StartCoroutine(AfterSort());
+        AfterSort();
     }
 }

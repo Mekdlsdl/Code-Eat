@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff1f4ddd0b2bd64c987f7eeb98040d6, type: 3}
+  m_Name: FoodTray
+  m_EditorClassIdentifier: 
+  enemyName: FoodTray
+  enemyHP: 70
+  enemyDamage: 30
+  enemySpeed: 4
+  animControl: {fileID: 9100000, guid: cf6c35a313c27bd47b5295f07403dd2a, type: 2}
+  bodyCollider: {fileID: 7228186296966764135, guid: 72a7e5df861b38142b5f66d7084bf125, type: 3}
+  problemInfo:
+  - problem: {fileID: 2247252041404480618, guid: 03d56111c7a4f45298ed6e461c42313d, type: 3}
+    problemTime: 10
+  - problem: {fileID: 4340939879922172798, guid: b6f04263b32384114b0375e18942625f, type: 3}
+    problemTime: 15
+  - problem: {fileID: 9063162412011948514, guid: 46343e5cd1eef4b489a2270ae1b95366, type: 3}
+    problemTime: 10
+  topdownSprite: {fileID: 21300000, guid: 6e67fc41477992a4296803b1854a2214, type: 3}

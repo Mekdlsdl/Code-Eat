@@ -47,7 +47,6 @@ public class FillSorting : MonoBehaviour
     void SetBlank()
     {
         randomIndex = UnityEngine.Random.Range(0,5);
-        // sortingProblem = new SortingProblem();
         List<float> dishPositions = SortingProblem.positionList;
 
         RectTransform blankTransform = blank.GetComponent<RectTransform>();
@@ -137,7 +136,5 @@ public class FillSorting : MonoBehaviour
 
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
-
-        
     }
 }
