@@ -16,6 +16,7 @@ public class FillSorting : MonoBehaviour
 
     void OnEnable() {
         pm = ProblemManager.instance;
+        instantiatedDishes = new List<GameObject>();
         StartCoroutine(BeginProblem());
     }
 
@@ -86,6 +87,9 @@ public class FillSorting : MonoBehaviour
         rectInsDish2.localScale = defaltPosition;
         rectInsDish1.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
         rectInsDish2.DOScale(1f, 0.4f).SetEase(Ease.OutBack);
+
+        instantiatedDishes.Add(instantiatedDish1);
+        instantiatedDishes.Add(instantiatedDish2);
     }
 
     public bool FindTuple(List<(int, int)> tupleList, (int, int) targetTuple)
