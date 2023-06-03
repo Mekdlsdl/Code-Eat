@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Apple
   enemyHP: 30
   enemyDamage: 25
-  enemySpeed: 4
+  enemySpeed: 3.5
   animControl: {fileID: 9100000, guid: 1adc0c5617b8f9644bfc4422e2c13001, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 16b16778748f18d4c83bef4fc58118da, type: 3}
   problemInfo:

@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Egg
   enemyHP: 30
   enemyDamage: 25
-  enemySpeed: 3
+  enemySpeed: 3.5
   animControl: {fileID: 9100000, guid: 33d7d7d8a7b562f48a1f1072d8da7845, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 793dd49529ea64844b1fa836f3f57fb3, type: 3}
   problemInfo:
