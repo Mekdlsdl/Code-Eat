@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: SweetPotato
   enemyHP: 50
   enemyDamage: 25
-  enemySpeed: 4
+  enemySpeed: 4.2
   animControl: {fileID: 9100000, guid: 0cd2b8d86c614204eb27b709e26c2ed3, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 8c43d17151e0ecf48806eeb7b40cffa3, type: 3}
   problemInfo:

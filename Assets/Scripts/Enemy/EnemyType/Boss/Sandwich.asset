@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Sandwich
   enemyHP: 70
   enemyDamage: 30
-  enemySpeed: 4.5
+  enemySpeed: 4.8
   animControl: {fileID: 9100000, guid: 69ab8b7d50262494fb2acc50976aaa32, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: a00ec7d29cf27be46a69925cf8bd3754, type: 3}
   problemInfo:

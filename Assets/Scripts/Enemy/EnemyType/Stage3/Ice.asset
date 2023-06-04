@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: Ice
   enemyHP: 40
   enemyDamage: 25
-  enemySpeed: 4
+  enemySpeed: 4.1
   animControl: {fileID: 9100000, guid: b0e6b620cb3981742a03f7f02a81b933, type: 2}
   bodyCollider: {fileID: 6249367409712287586, guid: af4e536fafa888a488debb7f0cc771da, type: 3}
   problemInfo:

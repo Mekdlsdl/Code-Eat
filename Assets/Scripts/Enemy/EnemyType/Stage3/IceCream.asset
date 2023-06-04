@@ -15,7 +15,7 @@ MonoBehaviour:
   enemyName: IceCream
   enemyHP: 50
   enemyDamage: 25
-  enemySpeed: 4
+  enemySpeed: 4.2
   animControl: {fileID: 9100000, guid: 531142b6a6c9b4f42a1f512456147c68, type: 2}
   bodyCollider: {fileID: 3802751815798120775, guid: 708f66b23f2583d47a09d44c905f3273, type: 3}
   problemInfo:
