@@ -13,7 +13,7 @@ public class TreeWhatOrder : TreeProblem
     private List<int> optionIndex;
     public List<TNode> getNode;
     private List<GameObject> orderResult;
-    private int answerIndex;
+    private int answerIndex, orderNum;
     System.Random random = new System.Random();
     WaitForSeconds shortWait = new WaitForSeconds(1f);
     WaitForSeconds longWait = new WaitForSeconds(2f);
@@ -107,7 +107,12 @@ public class TreeWhatOrder : TreeProblem
         int last = getNode.Count - 1;
         TNode root = getNode[last];
 
-        int orderNum = random.Next(4);
+        if (tpScript.generateCount < 3) {
+            orderNum = UnityEngine.Random.Range(1,3);
+        }
+        else {
+            orderNum = random.Next(4);
+        }
         // int orderNum = 3; //테스트용
 
         switch(orderNum) {
