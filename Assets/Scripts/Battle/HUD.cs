@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 public class HUD : MonoBehaviour
 {
-    private enum Type { Score, Hp, Time, EnemyHp,ControlButton } // 시완 - controlButton 추가 했습니다. 나머진 수정x
+    private enum Type { Score, Hp, Time, EnemyHp } //
     [SerializeField] private Type type;
     [SerializeField] private TextMeshProUGUI infoText;
     [SerializeField] private Slider slider;
