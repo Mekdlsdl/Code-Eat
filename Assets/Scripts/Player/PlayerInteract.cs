@@ -17,17 +17,12 @@ public class PlayerInteract : MonoBehaviour
     {
         if (PauseMenu.isPaused) return;
         
-        if (PressKey(InputType.SOUTHBUTTON))
-        {
-            if (exclamationMark.activeSelf && !isViewingTip)
-            {
+        if (PressKey(InputType.SOUTHBUTTON) && exclamationMark.activeSelf && !isViewingTip)
                 OpenTip();
-            }
-            else if (isViewingTip)
-            {
+        
+        else if (PressKey(InputType.EASTBUTTON) && isViewingTip)
                 CloseTip();
-            }
-        }
+
     }
 
     public void InteractTip(GameObject tip, TipPosition tip_pos)
