@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5225066271476826053}
   - component: {fileID: 7868718732824864961}
   m_Layer: 0
-  m_Name: IceCream
+  m_Name: Icecream
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 3410110253856684642}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.67, y: 0, z: 0}
-  m_LocalScale: {x: -1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -109,7 +109,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 707649946, guid: a3fcdeea31dea804a839b3eabef98670, type: 3}
+  m_Sprite: {fileID: -1503253029, guid: ad2cecd49367d0747838aa744a8bed6b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -133,7 +133,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.061109543, y: -0.05838549}
+  m_Offset: {x: 0.024433613, y: -0.11543715}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -144,7 +144,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2568512, y: 1.1795087}
+  m_Size: {x: 0.85748863, y: 1.489218}
   m_EdgeRadius: 0
 --- !u!50 &5225066271476826053
 Rigidbody2D:
@@ -177,7 +177,7 @@ Animator:
   m_GameObject: {fileID: 3410110253856684642}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2d0846f0466b64b4e8437660d2be4a38, type: 2}
+  m_Controller: {fileID: 9100000, guid: 862730d256135814494dc0bd75456b50, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

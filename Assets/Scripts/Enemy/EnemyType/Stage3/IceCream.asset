@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfa0d84cce471244bc4f074de98212e, type: 3}
-  m_Name: IceCream
+  m_Name: Icecream
   m_EditorClassIdentifier: 
-  enemyName: IceCream
+  enemyName: Icecream
   enemyHP: 50
   enemyDamage: 25
   enemySpeed: 4.2
-  animControl: {fileID: 9100000, guid: 531142b6a6c9b4f42a1f512456147c68, type: 2}
-  bodyCollider: {fileID: 3802751815798120775, guid: 708f66b23f2583d47a09d44c905f3273, type: 3}
+  animControl: {fileID: 9100000, guid: 9026fcf3582dde748851a5ad5b300b73, type: 2}
+  bodyCollider: {fileID: 6995052045486120965, guid: c9ef62a31e5b73c4aac33d13f69fe698, type: 3}
   problemInfo:
   - problem: {fileID: 4101214310308326604, guid: ce6ee452e8f644d41ae7a7ab2b6a2e1b, type: 3}
     problemTime: 15
