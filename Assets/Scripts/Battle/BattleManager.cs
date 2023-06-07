@@ -45,14 +45,15 @@ public class BattleManager : MonoBehaviour
         curEnemy.transform.position = curEnemy.pos;
         hud.SetActive(true);
     }
-    public void BattleModeOff()
+    public void BattleModeOff(bool enemyDead = false)
     {
         isBattleMode = false;
         battleTime = 0f;
         totalBulletCount = 0;
         Debug.Log("배틀 모드 종료");
-        curEnemy.transform.position = curEnemy.pos;
         hud.SetActive(false);
+        if (!enemyDead)
+            curEnemy.transform.position = curEnemy.pos;
     }
 
     private void BattleModeOffTimeOut()

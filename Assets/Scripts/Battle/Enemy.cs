@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
 
-        BattleManager.instance.BattleModeOff();
+        BattleManager.instance.BattleModeOff(true);
 
         if (isBoss)
             StartCoroutine(GameManager.instance.StartResultMode());
