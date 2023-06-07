@@ -3250,8 +3250,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Kruskal \uC54C\uACE0\uB9AC\uC998\uC5D0 \uB530\uB77C\n\uCD5C\uC18C \uC2E0\uC7A5
-    \uD2B8\uB9AC\uC5D0 \uCD94\uAC00\uD560 \uC120\uBD84\uC744 \uB9DE\uD600\uBCF4\uC138\uC694! "
+  m_text: "\uB2E4\uC74C\uC5D0 \uC120\uD0DD\uB420 \uAE38\uC744 \uB9DE\uD600\uBCF4\uC138\uC694! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
   m_sharedMaterial: {fileID: -508681348773179626, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}

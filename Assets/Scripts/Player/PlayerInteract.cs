@@ -17,10 +17,6 @@ public class PlayerInteract : MonoBehaviour
     void Update()
     {
         if (PauseMenu.isPaused) return;
-
-        // if (tipCount == -1) {
-        //     tipCount = 1;
-        // }
         
         if (PressKey(InputType.SOUTHBUTTON) && exclamationMark.activeSelf && !isViewingTip)
                 OpenTip();
@@ -70,10 +66,9 @@ public class PlayerInteract : MonoBehaviour
     private void CloseTip()
     {
         RectTransform tipTransform = viewingTipObject.GetComponent<RectTransform>();
-        
-        Time.timeScale = 1;
 
         if (tipCount == 0) {
+            Time.timeScale = 1;
             viewingTipObject.SetActive(false);
             isViewingTip = false;
         }
