@@ -27,8 +27,6 @@ public class Bullet : MonoBehaviour
         
         if (ray.collider == null)
             return;
-        
-        Destroy(gameObject);
 
         if (ray.collider.gameObject.layer == 7) { // Enemy
             Enemy enemy = ray.collider.GetComponentInParent<Enemy>();
@@ -54,6 +52,9 @@ public class Bullet : MonoBehaviour
             ++player.playerConfig.HitShotCount;
             Debug.Log($"플레이어 {player.playerConfig.PlayerIndex + 1} 점수: " + player.playerConfig.PlayerScore);
         }
+
+        Destroy(gameObject);
+
     }
 
     public void Fire()

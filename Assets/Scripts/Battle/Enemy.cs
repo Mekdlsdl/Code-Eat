@@ -15,8 +15,7 @@ public class Enemy : MonoBehaviour
     [field: SerializeField] public float maxHp { get; private set; } = 50;
     [field: SerializeField] public float speed { get; set; } = 5.0f;
     [field: SerializeField] public int damage { get; set; } = 25;
-    [SerializeField] private FlashHitEffect flashHitEffect;
-    [SerializeField] private GameObject hitEffect;
+    // [SerializeField] private FlashHitEffect flashHitEffect;
     
     private bool isBoss = false;
 
@@ -40,15 +39,13 @@ public class Enemy : MonoBehaviour
         Vector2 v = pos;
         var curPos = maxX * Mathf.Sin(Time.time * speed);
         v.x += curPos;
-        sprite.flipX = curPos < 0;
         transform.position = v;
     }
 
     public void Hit(int damage)
     {
         StartCoroutine(Stop());
-        Instantiate(hitEffect, transform.position, Quaternion.identity, transform);
-        flashHitEffect.Flash();
+        //flashHitEffect.Flash();
         animator.Play($"{enemyType.enemyName}_Hurt", -1, 0f);
         
         if (hp - damage <= 0) {
@@ -77,7 +74,7 @@ public class Enemy : MonoBehaviour
 
         yield return new WaitForSecondsRealtime(1f);
 
-        BattleManager.instance.BattleModeOff();
+        BattleManager.instance.BattleModeOff(true);
 
         if (isBoss)
             StartCoroutine(GameManager.instance.StartResultMode());
