@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Burger
   enemyHP: 50
-  enemyDamage: 25
+  enemyDamage: 20
   enemySpeed: 4.2
   animControl: {fileID: 9100000, guid: 812198268c58b764c96a5e1ab6433db1, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: f5ca68634a140af4484030f0ffd60dd2, type: 3}

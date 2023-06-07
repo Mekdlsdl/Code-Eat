@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Egg
   m_EditorClassIdentifier: 
   enemyName: Egg
-  enemyHP: 30
-  enemyDamage: 25
+  enemyHP: 40
+  enemyDamage: 20
   enemySpeed: 4
   animControl: {fileID: 9100000, guid: 33d7d7d8a7b562f48a1f1072d8da7845, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 793dd49529ea64844b1fa836f3f57fb3, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   enemyName: Bread
-  enemyHP: 40
-  enemyDamage: 25
+  enemyHP: 45
+  enemyDamage: 20
   enemySpeed: 4.1
   animControl: {fileID: 9100000, guid: b0e6b620cb3981742a03f7f02a81b933, type: 2}
   bodyCollider: {fileID: 6249367409712287586, guid: af4e536fafa888a488debb7f0cc771da, type: 3}

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Avocado
   m_EditorClassIdentifier: 
   enemyName: Avocado
-  enemyHP: 40
-  enemyDamage: 25
+  enemyHP: 45
+  enemyDamage: 20
   enemySpeed: 4.1
   animControl: {fileID: 9100000, guid: 128b9980be7d9c94b82e58f24f03d1c5, type: 2}
   bodyCollider: {fileID: 3115100831248317288, guid: d96a77cb03ee8ff4f83ae26d63880c57, type: 3}

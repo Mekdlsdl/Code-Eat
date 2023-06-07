@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   enemyName: Ice
-  enemyHP: 40
-  enemyDamage: 25
+  enemyHP: 45
+  enemyDamage: 20
   enemySpeed: 4.1
   animControl: {fileID: 9100000, guid: 60ec3a7751746a642a81be7ff6e35bb6, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 76f4a9fd17a7a4e43b84ffc9e7ef2c05, type: 3}

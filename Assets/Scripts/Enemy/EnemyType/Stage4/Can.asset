@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Can
   m_EditorClassIdentifier: 
   enemyName: Can
-  enemyHP: 30
-  enemyDamage: 25
+  enemyHP: 40
+  enemyDamage: 20
   enemySpeed: 4
   animControl: {fileID: 9100000, guid: 0cd724ba0ff3f674d9c99dd7dfc467a6, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: 106099d001a9bad4888b559f493e6af6, type: 3}

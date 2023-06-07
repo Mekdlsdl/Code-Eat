@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: Icecream
   enemyHP: 50
-  enemyDamage: 25
+  enemyDamage: 20
   enemySpeed: 4.2
   animControl: {fileID: 9100000, guid: 9026fcf3582dde748851a5ad5b300b73, type: 2}
   bodyCollider: {fileID: 6995052045486120965, guid: c9ef62a31e5b73c4aac33d13f69fe698, type: 3}
