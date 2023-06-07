@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 5837793548317154468, guid: 62ab06765accf0a4aabc24786b5f2ce3, type: 3}
+  hitEffect: {fileID: 8576286405292538111, guid: d7b553d711407dd448ddfeb0ab6fa683, type: 3}
   criticalPopup: {fileID: 873174551710424545, guid: 2273f14d997eb0d44805e1825496b3f5, type: 3}
   speed: 50
 --- !u!50 &8888104916956378905
