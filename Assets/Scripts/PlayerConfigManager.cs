@@ -63,6 +63,9 @@ public class PlayerConfigManager : MonoBehaviour
             playerConfig.PlayerScore = 0;
             playerConfig.CorrectProblemCount = 0;
             playerConfig.PlayerHp = 100;
+            playerConfig.TotalShotCount = 0;
+            playerConfig.HitShotCount = 0;
+            playerConfig.CriticalShotCount = 0;
         }
     }
 
@@ -91,6 +94,9 @@ public class PlayerConfiguration
     public PlayerInput Input { get; set; }
     public int PlayerScore { get; set; }
     public int CorrectProblemCount { get; set; }
+    public int TotalShotCount { get; set; }
+    public int HitShotCount { get; set; }
+    public int CriticalShotCount { get; set; }
     public int PlayerIndex { get; set; }
     public int PlayerHp { get; set; } = 100;
     public int CharacterTypeIndex { get; set; }

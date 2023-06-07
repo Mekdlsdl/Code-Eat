@@ -37,6 +37,14 @@ public class Winner : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
 
+        SpawnPlayerResult.instance.ShowAllPlayerHitShot();
+
+        yield return new WaitForSeconds(2f);
+
+        SpawnPlayerResult.instance.ShowAllPlayerCriticalShot();
+
+        yield return new WaitForSeconds(2f);
+
         leaderBoard.SetActive(true);
         SoundManager.instance.PlaySFX("Change");
         

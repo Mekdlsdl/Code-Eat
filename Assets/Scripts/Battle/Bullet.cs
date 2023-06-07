@@ -45,11 +45,13 @@ public class Bullet : MonoBehaviour
             else if (ray.collider.CompareTag("EnemyCenter")) {
                 curDamage = this.damage;
                 Instantiate(criticalPopup, enemy.transform.position, Quaternion.identity, enemy.transform);
+                ++player.playerConfig.CriticalShotCount;
                 SoundManager.instance.PlaySFX("Critical Explosion");
             }
 
             enemy.Hit(curDamage);
             player.playerConfig.PlayerScore += curDamage;
+            ++player.playerConfig.HitShotCount;
             Debug.Log($"플레이어 {player.playerConfig.PlayerIndex + 1} 점수: " + player.playerConfig.PlayerScore);
         }
     }

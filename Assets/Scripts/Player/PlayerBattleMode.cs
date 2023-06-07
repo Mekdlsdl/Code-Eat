@@ -51,6 +51,8 @@ public class PlayerBattleMode : MonoBehaviour
             --bulletCount;
             bulletUI.transform.GetChild(bulletCount).gameObject.SetActive(false);
             StartCoroutine(BattleManager.instance.UpdateTotalBulletCount());
+
+            ++playerConfig.TotalShotCount;
         }
     }
 

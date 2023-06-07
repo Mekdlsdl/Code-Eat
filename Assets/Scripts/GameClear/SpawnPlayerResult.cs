@@ -46,6 +46,18 @@ public class SpawnPlayerResult : MonoBehaviour
             result.ShowStat();
     }
 
+    public void ShowAllPlayerHitShot()
+    {
+        foreach (PlayerResults result in playerResultList)
+            result.ShowHitShot();
+    }
+
+    public void ShowAllPlayerCriticalShot()
+    {
+        foreach (PlayerResults result in playerResultList)
+            result.ShowCriticalShot();
+    }
+
     public void PlayerResponseAnimation(List<PlayerConfiguration> winners)
     {
         List<int> winnerIndexes = new List<int>();
