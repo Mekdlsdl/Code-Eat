@@ -27,13 +27,14 @@ public class PlayerResults : MonoBehaviour
 
         int total = player_config.TotalProblemCount;
         int correct = player_config.CorrectProblemCount;
-        double incorrect = ((total - correct) / (double)total) * 100;
+        double incorrect = (total != 0) ? (((total - correct) / (double)total) * 100) : 0;
 
         int totalShotCount = player_config.TotalShotCount;
         int hitShotCount = player_config.HitShotCount;
-        double hitShotRate = hitShotCount / (double)totalShotCount * 100;
         int criticalShotCount = player_config.CriticalShotCount;
-        double criticalShotRate = criticalShotCount / (double)totalShotCount * 100;
+
+        double hitShotRate = (totalShotCount != 0) ? (hitShotCount / (double)totalShotCount * 100) : 0;
+        double criticalShotRate = (totalShotCount != 0) ? (criticalShotCount / (double)totalShotCount * 100) : 0;
 
         score_text.text = $"{score}pt";
         player_text.text = $"P{playerIndex + 1}";
