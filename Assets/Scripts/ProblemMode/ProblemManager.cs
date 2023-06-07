@@ -9,7 +9,6 @@ using TMPro;
 public class ProblemManager : MonoBehaviour
 {
     public static ProblemManager instance { get; private set; }
-    public static int totalProblemCount = 0;
 
     private float maxProblemTime;
     private float timer; public float Timer => timer;
@@ -99,8 +98,7 @@ public class ProblemManager : MonoBehaviour
         tempProblem = Instantiate(problemCandidates[randomIndex].problem, problemUI);
         SetTimer(problemCandidates[randomIndex].problemTime);
 
-        totalProblemCount++;
-        Debug.Log($"{totalProblemCount} 번째 문제");
+        PlayerConfigManager.instance.IncreasePlayerProblemCount();
     }
 
     public IEnumerator NextProblem(float waitTime = 0.6f) // 다음 문제를 불러오고자 할 때 호출

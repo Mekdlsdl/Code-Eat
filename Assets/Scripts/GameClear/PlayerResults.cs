@@ -25,7 +25,7 @@ public class PlayerResults : MonoBehaviour
         int playerIndex = player_config.PlayerIndex;
         int score = player_config.PlayerScore;
 
-        int total = ProblemManager.totalProblemCount;
+        int total = player_config.TotalProblemCount;
         int correct = player_config.CorrectProblemCount;
         double incorrect = ((total - correct) / (double)total) * 100;
 

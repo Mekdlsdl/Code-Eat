@@ -57,11 +57,10 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void ResetAllPlayerConfigs() // 맵을 시작하기 전에 각 플레이어의 이전 기록을 초기화한다.
     {
-        ProblemManager.totalProblemCount = 0;
-
         foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
             playerConfig.PlayerScore = 0;
             playerConfig.CorrectProblemCount = 0;
+            playerConfig.TotalProblemCount = 0;
             playerConfig.PlayerHp = 100;
             playerConfig.TotalShotCount = 0;
             playerConfig.HitShotCount = 0;
@@ -76,10 +75,11 @@ public class PlayerConfigManager : MonoBehaviour
         }
     }
 
-    public void Debug_ShowPlayerProblemState()
+    public void IncreasePlayerProblemCount()
     {
         foreach (PlayerConfiguration playerConfig in PlayerConfigManager.instance.PlayerConfigs) {
-            Debug.Log($"P{playerConfig.PlayerIndex + 1} : {playerConfig.CorrectProblemCount} / {ProblemManager.totalProblemCount}");
+            if (playerConfig.PlayerHp > 0)
+                playerConfig.TotalProblemCount++;
         }
     }
 }
@@ -94,6 +94,7 @@ public class PlayerConfiguration
     public PlayerInput Input { get; set; }
     public int PlayerScore { get; set; }
     public int CorrectProblemCount { get; set; }
+    public int TotalProblemCount { get; set; }
     public int TotalShotCount { get; set; }
     public int HitShotCount { get; set; }
     public int CriticalShotCount { get; set; }
