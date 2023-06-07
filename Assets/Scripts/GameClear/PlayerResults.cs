@@ -48,7 +48,7 @@ public class PlayerResults : MonoBehaviour
 
     void Update()
     {
-        if (!winnerControl.canExitResults) return;
+        if (!winnerControl.canExitResults || PauseMenu.isPaused) return;
         
         if (PressKey(InputType.EASTBUTTON) || PressKey(InputType.SOUTHBUTTON) || PressKey(InputType.WESTBUTTON) || PressKey(InputType.NORTHBUTTON)) {
             GameManager.instance.ReturnToMapSelectMode();
