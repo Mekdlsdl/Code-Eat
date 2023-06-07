@@ -12,23 +12,29 @@ public class PlayerInteract : MonoBehaviour
     private static TipPosition viewingTipPos;
     private static GameObject viewingTipObject;
     private static bool isViewingTip = false;
+    private static int tipCount;
 
     void Update()
     {
         if (PauseMenu.isPaused) return;
+
+        // if (tipCount == -1) {
+        //     tipCount = 1;
+        // }
         
         if (PressKey(InputType.SOUTHBUTTON) && exclamationMark.activeSelf && !isViewingTip)
                 OpenTip();
         
         else if (PressKey(InputType.EASTBUTTON) && isViewingTip)
                 CloseTip();
-
     }
 
     public void InteractTip(GameObject tip, TipPosition tip_pos)
     {
         tipObject = tip;
         tipPos = tip_pos;
+
+        tipCount = tipObject.GetComponent<RectTransform>().childCount - 1;
         SetExclamation(true);
         
         SoundManager.instance.PlaySFX("Select");
@@ -63,9 +69,19 @@ public class PlayerInteract : MonoBehaviour
 
     private void CloseTip()
     {
+        RectTransform tipTransform = viewingTipObject.GetComponent<RectTransform>();
+        
         Time.timeScale = 1;
-        isViewingTip = false;
-        viewingTipObject.SetActive(false);
+
+        if (tipCount == 0) {
+            viewingTipObject.SetActive(false);
+            isViewingTip = false;
+        }
+        else {
+            tipTransform.GetChild(tipCount).gameObject.SetActive(false);
+            isViewingTip = true;
+            tipCount --;
+        }
 
         viewingTipPos.DisableTrigger();
 
