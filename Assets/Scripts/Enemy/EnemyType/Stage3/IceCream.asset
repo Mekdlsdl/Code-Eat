@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebfa0d84cce471244bc4f074de98212e, type: 3}
-  m_Name: Icecream
+  m_Name: IceCream
   m_EditorClassIdentifier: 
   enemyName: Icecream
   enemyHP: 50
