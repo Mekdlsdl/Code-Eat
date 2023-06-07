@@ -71,14 +71,13 @@ public class PlayerInteract : MonoBehaviour
             Time.timeScale = 1;
             viewingTipObject.SetActive(false);
             isViewingTip = false;
+            viewingTipPos.DisableTrigger();
         }
         else {
             tipTransform.GetChild(tipCount).gameObject.SetActive(false);
             isViewingTip = true;
             tipCount --;
         }
-
-        viewingTipPos.DisableTrigger();
 
         SoundManager.instance.PlaySFX("Cancel");
     }
