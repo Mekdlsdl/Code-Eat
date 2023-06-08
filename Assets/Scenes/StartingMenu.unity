@@ -784,6 +784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a601439d7a8784fa86c97d4cf38083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resolutionMenu: {fileID: 797019663}
+  soundMenu: {fileID: 1807224453}
+  exitMenu: {fileID: 1195585601}
   menu: {fileID: 272610972}
   buttonList:
   - {fileID: 971029541}

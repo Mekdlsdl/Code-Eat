@@ -14,7 +14,6 @@ public class SoundMenu : MonoBehaviour
     private float step = 0.1f;
 
     private int menuIndex = 0;
-    private bool isStickPushed = false;
 
 
     void OnEnable()
@@ -22,60 +21,51 @@ public class SoundMenu : MonoBehaviour
         PauseMenu.menuState = MenuState.Sound;
     }
 
-    void Update()
+    void OnDisable()
+    {
+        PauseMenu.menuState = MenuState.Pause;
+    }
+
+    public void SoundMenuNavigate(PlayerConfiguration playerConfig)
     {
         if (!PauseMenu.isPaused) return;
         
-        Navigate();
-        SetUpVolume();
+        Navigate(playerConfig);
+        SetUpVolume(playerConfig);
 
-        if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.X)))
+        if (PressKey(playerConfig, InputType.EASTBUTTON))
             Exit();
     }
 
-    private void Navigate()
+    private void Navigate(PlayerConfiguration playerConfig)
     {
-        float verticalInput = Input.GetAxis("Vertical");
-
-        if ((!isStickPushed && verticalInput == 1f) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (PressKey(playerConfig, InputType.UP))
         {
-            isStickPushed = true;
             menuIndex--;
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (PressKey(playerConfig, InputType.DOWN))
         {
-            isStickPushed = true;
             menuIndex++;
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if (verticalInput == 0f)
-            isStickPushed = false;
-
         menuIndex = Mathf.Clamp(menuIndex, 0, 1);
         HighlightButton();
     }
 
-    private void SetUpVolume()
+    private void SetUpVolume(PlayerConfiguration playerConfig)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        if ((!isStickPushed && horizontalInput == -1f) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (PressKey(playerConfig, InputType.LEFT))
         {
-            isStickPushed = true;
             sliders[menuIndex].value = previousVolume[menuIndex] - step;
-
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if ((!isStickPushed && horizontalInput == 1f) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (PressKey(playerConfig, InputType.RIGHT))
         {
-            isStickPushed = true;
             sliders[menuIndex].value = previousVolume[menuIndex] + step;
-
             SoundManager.instance.PlaySFX("Cursor");
         }
-
         previousVolume[menuIndex] = sliders[menuIndex].value;
-
     }
 
     private void HighlightButton()
@@ -93,11 +83,10 @@ public class SoundMenu : MonoBehaviour
         gameObject.SetActive(false);
 
         SoundManager.instance.PlaySFX("Cancel");
-
     }
 
-    void OnDisable()
+    private bool PressKey(PlayerConfiguration playerConfig, string input_tag)
     {
-        PauseMenu.menuState = MenuState.Pause;
+        return playerConfig.Input.actions[input_tag].triggered;
     }
 }

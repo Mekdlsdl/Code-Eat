@@ -9,7 +9,6 @@ public class ExitMenu : MonoBehaviour
     [SerializeField] List<TextMeshProUGUI> buttons;
     [SerializeField] private Color highlightColor, defaultColor, disabledColor;
     private int menuIndex = 0;
-    private bool isStickPushed = false;
 
     void OnEnable()
     {
@@ -22,44 +21,42 @@ public class ExitMenu : MonoBehaviour
         HighlightButton();
     }
 
-    void Update()
+    void OnDisable()
+    {
+        buttons[1].color = defaultColor;
+        PauseMenu.menuState = MenuState.Pause;
+    }
+
+    public void ExitMenuNavigate(PlayerConfiguration playerConfig)
     {
         if (!PauseMenu.isPaused) return;
 
-        Navigate();
+        Navigate(playerConfig);
 
-        if ((Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Z)))
+        if (PressKey(playerConfig, InputType.SOUTHBUTTON))
             SelectOption();
         
-        if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.X)))
+        else if (PressKey(playerConfig, InputType.EASTBUTTON))
             Exit();
     }
-    private void Navigate()
+    private void Navigate(PlayerConfiguration playerConfig)
     {
         NormalizeButton();
-        float verticalInput = Input.GetAxis("Vertical");
 
-        if ((!isStickPushed && verticalInput == 1f) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (PressKey(playerConfig, InputType.UP))
         {
-            isStickPushed = true;
             menuIndex--;
             SoundManager.instance.PlaySFX("Cursor");
             
-            if (ExcludeMapSelect())
-                menuIndex--;
+            if (ExcludeMapSelect()) menuIndex--;
         }
-        else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (PressKey(playerConfig, InputType.DOWN))
         {
-            isStickPushed = true;
             menuIndex++;
             SoundManager.instance.PlaySFX("Cursor");
 
-            if (ExcludeMapSelect())
-                menuIndex++;
+            if (ExcludeMapSelect()) menuIndex++;
         }
-        else if (verticalInput == 0f)
-            isStickPushed = false;
-
         menuIndex = Mathf.Clamp(menuIndex, 0, buttons.Count - 1);
         HighlightButton();
     }
@@ -117,9 +114,8 @@ public class ExitMenu : MonoBehaviour
         SoundManager.instance.PlaySFX("Cancel");
     }
 
-    void OnDisable()
+    private bool PressKey(PlayerConfiguration playerConfig, string input_tag)
     {
-        buttons[1].color = defaultColor;
-        PauseMenu.menuState = MenuState.Pause;
+        return playerConfig.Input.actions[input_tag].triggered;
     }
 }

@@ -5,19 +5,32 @@ using DG.Tweening;
 
 public class PauseMenu : MonoBehaviour
 {
+    public static PauseMenu instance { get; private set; }
+    public static bool isPaused = false;
+    public static MenuState menuState = MenuState.Pause; 
+
+    public ResolutionMenu resolutionMenu;
+    public SoundMenu soundMenu;
+    public ExitMenu exitMenu;
+
     [SerializeField] private GameObject menu;
     [SerializeField] private List<PauseButton> buttonList;
     [SerializeField] private List<GameObject> settingsList;
-    public static bool isPaused = false;
-    public static MenuState menuState = MenuState.Pause; 
-    private int menuIndex = 0;
-    private bool isStickPushed = false;
 
-    void Update()
+    private int menuIndex = 0;
+
+    void Awake()
+    {
+        if (instance != null)
+            return;
+        instance = this;
+    }
+
+    public void PauseMenuNavigate(PlayerConfiguration playerConfig)
     {
         if (menuState != MenuState.Pause) return;
 
-        if ((Input.GetKeyDown(KeyCode.JoystickButton7) || Input.GetKeyDown(KeyCode.Escape)))
+        if (PressKey(playerConfig, InputType.PAUSE))
         {
             if (!menu.activeSelf && !isPaused)
                 OpenMenu();
@@ -26,12 +39,12 @@ public class PauseMenu : MonoBehaviour
                 CloseMenu();
             return;
         }
-        else if ((menu.activeSelf && isPaused && (Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.X))))
+        else if (menu.activeSelf && isPaused && PressKey(playerConfig, InputType.EASTBUTTON))
             CloseMenu();
 
-        Navigate();
+        Navigate(playerConfig);
 
-        if (menu.activeSelf && (Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Z)))
+        if (menu.activeSelf && PressKey(playerConfig, InputType.SOUTHBUTTON))
             SelectMenu();
     }
 
@@ -62,27 +75,22 @@ public class PauseMenu : MonoBehaviour
         settingsList[menuIndex].SetActive(true);
         SoundManager.instance.PlaySFX("OK");
     }
-    private void Navigate()
+    private void Navigate(PlayerConfiguration playerConfig)
     {
         if (!isPaused) return;
         
         buttonList[menuIndex].NormalizeButton();
-        float verticalInput = Input.GetAxis("Vertical");
 
-        if ((!isStickPushed && verticalInput == 1f) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (PressKey(playerConfig, InputType.UP))
         {
-            isStickPushed = true;
             menuIndex--;
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
+        else if (PressKey(playerConfig, InputType.DOWN))
         {
-            isStickPushed = true;
             menuIndex++;
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if (verticalInput == 0f)
-            isStickPushed = false;
 
         menuIndex = Mathf.Clamp(menuIndex, 0, buttonList.Count - 1);
         buttonList[menuIndex].HighlightButton();
@@ -96,6 +104,11 @@ public class PauseMenu : MonoBehaviour
         buttonList[0].HighlightButton();
 
         menuIndex = 0;
+    }
+
+    private bool PressKey(PlayerConfiguration playerConfig, string input_tag)
+    {
+        return playerConfig.Input.actions[input_tag].triggered;
     }
 }
 

@@ -225,6 +225,7 @@ public class InputType
     public const string EASTBUTTON = "EASTBUTTON";
     public const string NORTHBUTTON = "NORTHBUTTON";
     public const string WESTBUTTON = "WESTBUTTON";
+    public const string PAUSE = "PAUSE";
 }
 
 [System.Serializable]

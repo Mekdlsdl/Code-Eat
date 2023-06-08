@@ -25,6 +25,7 @@ public class PlayerConfigManager : MonoBehaviour
             PlayerConfiguration player = new PlayerConfiguration(player_input);
             playerConfigs.Add(player);
             player_input.transform.SetParent(PlayerConfigManager.instance.transform);
+            player_input.GetComponent<PauseNavigation>().Init(player);
 
             GameObject player_ui = Instantiate(playerUI, GameObject.FindWithTag("StartingLayout").transform);
             player_ui.transform.localScale = new Vector3(1f, 1f, 1f);

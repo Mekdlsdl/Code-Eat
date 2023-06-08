@@ -9,7 +9,6 @@ public class ResolutionMenu : MonoBehaviour
     private int resolutionNumber;
     private (int, int) selectedResolution;
 
-    private bool isStickPushed = false;
     private bool isFullScreen = false;
 
     void Start()
@@ -29,27 +28,29 @@ public class ResolutionMenu : MonoBehaviour
     {
         PauseMenu.menuState = MenuState.Resolution;
     }
+    
+    void OnDisable()
+    {
+        PauseMenu.menuState = MenuState.Pause;
+    }
 
-    void Update()
+    public void ResolutionMenuNavigate(PlayerConfiguration playerConfig)
     {
         if (!PauseMenu.isPaused) return;
 
-        if ((Input.GetKeyDown(KeyCode.JoystickButton0) || Input.GetKeyDown(KeyCode.Z)))
+        if (PressKey(playerConfig, InputType.SOUTHBUTTON))
             SetFullScreen(!isFullScreen);
         
-        else if ((Input.GetKeyDown(KeyCode.JoystickButton1) || Input.GetKeyDown(KeyCode.X)))
+        else if (PressKey(playerConfig, InputType.EASTBUTTON))
             ExitMenu();
 
-        Navigate();
+        Navigate(playerConfig);
     }
 
-    private void Navigate()
+    private void Navigate(PlayerConfiguration playerConfig)
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-
-        if ((!isStickPushed && horizontalInput == -1f) || Input.GetKeyDown(KeyCode.LeftArrow))
+        if (PressKey(playerConfig, InputType.LEFT))
         {
-            isStickPushed = true;
             resolutionNumber--;
             SetResolution();
             
@@ -58,9 +59,8 @@ public class ResolutionMenu : MonoBehaviour
 
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if ((!isStickPushed && horizontalInput == 1f) || Input.GetKeyDown(KeyCode.RightArrow))
+        else if (PressKey(playerConfig, InputType.RIGHT))
         {
-            isStickPushed = true;
             resolutionNumber++;
             SetResolution();
 
@@ -69,8 +69,6 @@ public class ResolutionMenu : MonoBehaviour
 
             SoundManager.instance.PlaySFX("Cursor");
         }
-        else if (horizontalInput == 0f)
-            isStickPushed = false;
     }
 
     private void SetResolution()
@@ -99,8 +97,8 @@ public class ResolutionMenu : MonoBehaviour
         SoundManager.instance.PlaySFX("Cancel");
     }
 
-    void OnDisable()
+    private bool PressKey(PlayerConfiguration playerConfig, string input_tag)
     {
-        PauseMenu.menuState = MenuState.Pause;
+        return playerConfig.Input.actions[input_tag].triggered;
     }
 }
