@@ -14,6 +14,8 @@ public class Winner : MonoBehaviour
     
     public IEnumerator ShowWinner(float delay)
     {
+        SoundManager.instance.PlaySFX("Complete");
+        
         yield return new WaitForSeconds(delay);
 
         winnerText.text = "최종 우승자는...";
@@ -30,18 +32,22 @@ public class Winner : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         SpawnPlayerResult.instance.ShowAllPlayerScores();
+        SoundManager.instance.PlaySFX("Cursor");
 
         yield return new WaitForSeconds(1.5f);
 
         SpawnPlayerResult.instance.ShowAllPlayerStats();
+        SoundManager.instance.PlaySFX("Cursor");
 
         yield return new WaitForSeconds(2f);
 
         SpawnPlayerResult.instance.ShowAllPlayerHitShot();
+        SoundManager.instance.PlaySFX("Cursor");
 
         yield return new WaitForSeconds(2f);
 
         SpawnPlayerResult.instance.ShowAllPlayerCriticalShot();
+        SoundManager.instance.PlaySFX("Cursor");
 
         yield return new WaitForSeconds(2f);
 

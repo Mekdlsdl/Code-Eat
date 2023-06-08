@@ -39,18 +39,21 @@ public class Bullet : MonoBehaviour
             if (ray.collider.CompareTag("EnemySide")) {
                 curDamage =  this.damage / 2;
                 SoundManager.instance.PlaySFX("Normal Explosion");
+                SoundManager.instance.PlaySFX("Enemy Hurt");
             }
             else if (ray.collider.CompareTag("EnemyCenter")) {
                 curDamage = this.damage;
                 Instantiate(criticalPopup, enemy.transform.position, Quaternion.identity, enemy.transform);
                 ++player.playerConfig.CriticalShotCount;
                 SoundManager.instance.PlaySFX("Critical Explosion");
+                SoundManager.instance.PlaySFX("Critical Hurt");
             }
 
             enemy.Hit(curDamage);
             player.playerConfig.PlayerScore += curDamage;
             ++player.playerConfig.HitShotCount;
             Debug.Log($"플레이어 {player.playerConfig.PlayerIndex + 1} 점수: " + player.playerConfig.PlayerScore);
+
         }
 
         Destroy(gameObject);
