@@ -39,8 +39,8 @@ public class PlayerResults : MonoBehaviour
         score_text.text = $"{score}pt";
         player_text.text = $"P{playerIndex + 1}";
         correct_text.text = $"{correct} / {total}\n 오답률 : {incorrect:N0}%";
-        hit_shot_text.text = $"{hitShotCount} / {totalShotCount}\n 공격 성공률 : {hitShotRate:N0}%";
-        critical_shot_text.text = $"{criticalShotCount} / {totalShotCount}\n 크리티컬 확률 : {criticalShotRate:N0}%";
+        hit_shot_text.text = $"{hitShotCount} / {totalShotCount}\n 공격 성공률\n : {hitShotRate:N0}%";
+        critical_shot_text.text = $"{criticalShotCount} / {totalShotCount}\n 치명타 : {criticalShotRate:N0}%";
 
         result_text_list = new List<TextMeshProUGUI>() {score_text, correct_text,  hit_shot_text, critical_shot_text};
 

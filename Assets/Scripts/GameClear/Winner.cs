@@ -14,7 +14,6 @@ public class Winner : MonoBehaviour
     
     public IEnumerator ShowWinner(float delay)
     {
-        SoundManager.instance.PlaySFX("Complete");
         
         yield return new WaitForSeconds(delay);
 
@@ -39,17 +38,17 @@ public class Winner : MonoBehaviour
         SpawnPlayerResult.instance.ShowAllPlayerStats();
         SoundManager.instance.PlaySFX("Cursor");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         SpawnPlayerResult.instance.ShowAllPlayerHitShot();
         SoundManager.instance.PlaySFX("Cursor");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         SpawnPlayerResult.instance.ShowAllPlayerCriticalShot();
         SoundManager.instance.PlaySFX("Cursor");
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(4f);
 
         leaderBoard.SetActive(true);
         SoundManager.instance.PlaySFX("Change");
