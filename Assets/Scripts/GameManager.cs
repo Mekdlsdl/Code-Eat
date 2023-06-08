@@ -203,6 +203,16 @@ public class GameManager : MonoBehaviour
         Color32 color = PlayerColors[index];
         return "#" + color.r.ToString("X2") + color.g.ToString("X2") + color.b.ToString("X2");
     }
+
+    public bool CheckActiveScene(string scene_name)
+    {
+        for(int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (scene_name == SceneManager.GetSceneAt(i).name)
+                return true;
+        }
+        return false;
+    }
 }
 
 public class InputType

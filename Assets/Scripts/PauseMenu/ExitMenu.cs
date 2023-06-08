@@ -7,12 +7,15 @@ public class ExitMenu : MonoBehaviour
 {
     [SerializeField] PauseMenu pauseMenu;
     [SerializeField] List<TextMeshProUGUI> buttons;
-    [SerializeField] private Color highlightColor, defaultColor;
+    [SerializeField] private Color highlightColor, defaultColor, disabledColor;
     private int menuIndex = 0;
     private bool isStickPushed = false;
 
     void OnEnable()
     {
+        if (GameManager.instance.CheckActiveScene("StartingMenu"))
+            buttons[1].color = disabledColor;
+
         PauseMenu.menuState = MenuState.Exit;
         NormalizeButton();
         menuIndex = 0;
@@ -41,17 +44,23 @@ public class ExitMenu : MonoBehaviour
             isStickPushed = true;
             menuIndex--;
             SoundManager.instance.PlaySFX("Cursor");
+            
+            if (ExcludeMapSelect())
+                menuIndex--;
         }
         else if ((!isStickPushed && verticalInput == -1f) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             isStickPushed = true;
             menuIndex++;
             SoundManager.instance.PlaySFX("Cursor");
+
+            if (ExcludeMapSelect())
+                menuIndex++;
         }
         else if (verticalInput == 0f)
             isStickPushed = false;
 
-        menuIndex = Mathf.Clamp(menuIndex, 0, 1);
+        menuIndex = Mathf.Clamp(menuIndex, 0, buttons.Count - 1);
         HighlightButton();
     }
 
@@ -62,11 +71,22 @@ public class ExitMenu : MonoBehaviour
         if (menuIndex == 0)
             QuitGame();
         
-        else if  (menuIndex == 1) {
+        else if (menuIndex == 1) {
+            gameObject.SetActive(false);
+            pauseMenu.CloseMenu();
+            GameManager.instance.ReturnToMapSelectMode();
+        }
+        
+        else if  (menuIndex == 2) {
             gameObject.SetActive(false);
             pauseMenu.CloseMenu();
             GameManager.instance.ReturnToCharacterSelect();
         }
+    }
+
+    private bool ExcludeMapSelect()
+    {
+        return ((menuIndex == 1) && GameManager.instance.CheckActiveScene("StartingMenu"));
     }
 
     private void HighlightButton()
@@ -99,6 +119,7 @@ public class ExitMenu : MonoBehaviour
 
     void OnDisable()
     {
+        buttons[1].color = defaultColor;
         PauseMenu.menuState = MenuState.Pause;
     }
 }
