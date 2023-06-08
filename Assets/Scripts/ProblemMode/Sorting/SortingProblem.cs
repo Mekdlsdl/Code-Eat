@@ -198,8 +198,13 @@ public class SortingProblem : MonoBehaviour
                 break;
             }
         }
-        if (problemNum == 2 && !breakStep) {
-            step = count;
+        if (!breakStep) {
+            if (problemNum == 1) {
+                AfterStep();
+            }
+            else if (problemNum == 2) {
+                step = count;
+            } 
         }
         AfterSort();
     }
@@ -263,14 +268,22 @@ public class SortingProblem : MonoBehaviour
                 if (problemNum == 1) {
                     AfterStep();
                 }
+                else if (problemNum == 2) {
+                    breakStep = true;
+                }
                 break;
             }
 
             yield return shortWait;
         }
 
-        if (problemNum == 2 && !breakStep) {
-            step = count;
+        if (!breakStep) {
+            if (problemNum == 1) {
+                AfterStep();
+            }
+            else if (problemNum == 2) {
+                step = count;
+            } 
         }
 
         AfterSort();
@@ -335,6 +348,9 @@ public class SortingProblem : MonoBehaviour
                 if (problemNum == 1) {
                     AfterStep();
                 }
+                else if (problemNum == 2) {
+                    breakStep = true;
+                }
 
                 break;
             }
@@ -342,8 +358,13 @@ public class SortingProblem : MonoBehaviour
             yield return shortWait;
         }
         
-        if (problemNum == 2 && !breakStep) {
-            step = count;
+        if (!breakStep) {
+            if (problemNum == 1) {
+                AfterStep();
+            }
+            else if (problemNum == 2) {
+                step = count;
+            } 
         }
         AfterSort();
     }
