@@ -9,6 +9,7 @@ public class StackProblem : MonoBehaviour
 {
     private ProblemManager pm;
 
+    [SerializeField] private float codeDisplayDelay;
     [SerializeField] private GameObject guide, fruitBundle, codeUI, stackOption;
     [SerializeField] private Transform codeTransform;
     [SerializeField] private List<Sprite> fruitList;
@@ -104,7 +105,7 @@ public class StackProblem : MonoBehaviour
                     fruitStack.Pop();
                     break;
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(codeDisplayDelay);
         }
         SetOptions();
     }

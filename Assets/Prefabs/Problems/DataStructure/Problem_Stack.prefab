@@ -267,6 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e377564b524f2947b45306bdb7f3ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  codeDisplayDelay: 0.6
   guide: {fileID: 8010487033268262780}
   fruitBundle: {fileID: 8010487031828879481}
   codeUI: {fileID: 8222326872164569125, guid: 4b49215f9a0925d47bcbdc3f66a85b1a, type: 3}

@@ -20,8 +20,8 @@ public class QueueProblem : MonoBehaviour
     private List<Sprite> vegetableOptions = new List<Sprite>();
     private List<GameObject> spawnedOptions = new List<GameObject>();
 
-    private const string ENQUEUE = "enqueue(   )";
-    private const string DEQUEUE = "dequeue()";
+    private const string ENQUEUE = "<color=#49AB81>enqueue(   )</color>";
+    private const string DEQUEUE = "<color=#FF647E>dequeue()</color>";
     private string[] arr = { ENQUEUE, DEQUEUE };
 
     int front = -1, rear = -1;
