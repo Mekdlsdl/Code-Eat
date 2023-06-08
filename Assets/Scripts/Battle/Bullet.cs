@@ -36,10 +36,11 @@ public class Bullet : MonoBehaviour
             
             int curDamage = 0;
 
+            SoundManager.instance.PlaySFX("Enemy Hurt");
+
             if (ray.collider.CompareTag("EnemySide")) {
                 curDamage =  this.damage / 2;
                 SoundManager.instance.PlaySFX("Normal Explosion");
-                SoundManager.instance.PlaySFX("Enemy Hurt");
             }
             else if (ray.collider.CompareTag("EnemyCenter")) {
                 curDamage = this.damage;
