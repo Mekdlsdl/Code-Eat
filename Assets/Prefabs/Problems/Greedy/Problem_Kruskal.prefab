@@ -2144,7 +2144,7 @@ MonoBehaviour:
   targetIsSelf: 1
   targetGO: {fileID: 0}
   tweenTargetIsTargetGO: 1
-  delay: 1.8
+  delay: 0
   duration: 0.8
   easeType: 6
   easeCurve:
@@ -3250,7 +3250,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2E4\uC74C\uC5D0 \uC120\uD0DD\uB420 \uAE38\uC744 \uB9DE\uD600\uBCF4\uC138\uC694! "
+  m_text: "\uB2E4\uC74C\uC5D0 \uC120\uD0DD\uB420 \uAE38\uB85C \uC774\uC5B4\uC9C4
+    \uC9D1\uC744 \n\uB9DE\uD600\uBCF4\uC138\uC694! "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
   m_sharedMaterial: {fileID: -508681348773179626, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}

@@ -59,8 +59,8 @@ public class KruskalProblem : MonoBehaviour
         yield return new WaitForSeconds(3.5f);
         guide.SetActive(false);
 
-        yield return CreateProblem();
         problemUI.SetActive(true);
+        yield return CreateProblem();
         
         yield return new WaitForSeconds(3f);
         CreateOptions();
@@ -80,6 +80,13 @@ public class KruskalProblem : MonoBehaviour
             }
             else if (FindParent(a) != FindParent(b)) {
                 UnionParent(a, b);
+                // GameObject costGameObject = sortedEdges[i].Transform.GetChild(0).gameObject;
+                // RectTransform costTransform = costGameObject.GetComponent<RectTransform>();
+                // yield return new WaitForSeconds(0.1f);
+                // costTransform.DOScale(1.1f, 0.1f).SetEase(Ease.OutQuad);
+                // yield return new WaitForSeconds(0.2f);
+                // costTransform.DOScale(1f, 0.1f).SetEase(Ease.OutQuad);
+                yield return new WaitForSeconds(0.6f);
                 sortedEdges[i].HighlightEdge();
             }
         }
