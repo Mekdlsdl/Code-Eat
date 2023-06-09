@@ -8,7 +8,7 @@ public class PlayerInteract : MonoBehaviour
     [SerializeField] private GameObject exclamationMark;
     private TipPosition tipPos;
     private GameObject tipObject;
-
+    private List<PlayerConfiguration> playerConfigs;
     private static TipPosition viewingTipPos;
     private static GameObject viewingTipObject;
     private static bool isViewingTip = false;
@@ -58,6 +58,7 @@ public class PlayerInteract : MonoBehaviour
         Time.timeScale = 0;
         isViewingTip = true;
         viewingTipObject.SetActive(true);
+        TipManager.instance.tipPlayers.SetActive(true);
         SetExclamation(false);
 
         SoundManager.instance.PlaySFX("Confirm");
@@ -69,14 +70,27 @@ public class PlayerInteract : MonoBehaviour
 
         if (tipCount == 0) {
             Time.timeScale = 1;
-            viewingTipObject.SetActive(false);
-            isViewingTip = false;
-            viewingTipPos.DisableTrigger();
+            TipManager.instance.CheckOffPlayer(playerMovement.PlayerConfig.PlayerIndex);
+            Debug.Log($"P{playerMovement.PlayerConfig.PlayerIndex + 1}(이)가 닫음.");
+
+            if (TipManager.instance.isAllOff()) {
+                TipManager.instance.tipPlayers.SetActive(false);
+                viewingTipObject.SetActive(false);
+                isViewingTip = false;
+                TipManager.instance.ResetOffPlayer();
+                viewingTipPos.DisableTrigger();
+            }
         }
         else {
-            tipTransform.GetChild(tipCount).gameObject.SetActive(false);
-            isViewingTip = true;
-            tipCount --;
+            TipManager.instance.CheckOffPlayer(playerMovement.PlayerConfig.PlayerIndex);
+            Debug.Log($"P{playerMovement.PlayerConfig.PlayerIndex + 1}(이)가 닫음.");
+
+            if (TipManager.instance.isAllOff()) {
+                tipTransform.GetChild(tipCount).gameObject.SetActive(false);
+                TipManager.instance.ResetOffPlayer();
+                isViewingTip = true;
+                tipCount --;
+            }
         }
 
         SoundManager.instance.PlaySFX("Cancel");

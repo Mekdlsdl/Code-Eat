@@ -12,7 +12,7 @@ public class PositionControl : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     public EnemySpawner enemy_spawner => enemySpawner;
 
-    [SerializeField] private GameObject tips, tipPos;    
+    [SerializeField] private GameObject tips, tipPos;
     
     void Awake()
     {
