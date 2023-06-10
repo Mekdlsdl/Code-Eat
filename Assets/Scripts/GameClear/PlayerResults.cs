@@ -51,7 +51,16 @@ public class PlayerResults : MonoBehaviour
     {
         if (!winnerControl.canExitResults || PauseMenu.isPaused) return;
         
-        if (PressKey(InputType.EASTBUTTON) || PressKey(InputType.SOUTHBUTTON) || PressKey(InputType.WESTBUTTON) || PressKey(InputType.NORTHBUTTON)) {
+        if (
+            PressKey(InputType.UP) ||
+            PressKey(InputType.DOWN) ||
+            PressKey(InputType.LEFT) ||
+            PressKey(InputType.RIGHT) ||
+            PressKey(InputType.EASTBUTTON) || 
+            PressKey(InputType.SOUTHBUTTON) || 
+            PressKey(InputType.WESTBUTTON) || 
+            PressKey(InputType.NORTHBUTTON)
+            ) {
             GameManager.instance.ReturnToMapSelectMode();
         }
     }
