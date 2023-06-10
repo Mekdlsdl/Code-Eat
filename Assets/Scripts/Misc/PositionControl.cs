@@ -12,7 +12,7 @@ public class PositionControl : MonoBehaviour
     [SerializeField] private EnemySpawner enemySpawner;
     public EnemySpawner enemy_spawner => enemySpawner;
 
-    [SerializeField] private GameObject tips, tipPos;
+    [SerializeField] private GameObject tips, tipPos, goalGuide;
     
     void Awake()
     {
@@ -52,5 +52,10 @@ public class PositionControl : MonoBehaviour
     {
         tips.SetActive(false);
         tipPos.SetActive(false);
+    }
+
+    public void ShowGuide()
+    {
+        goalGuide.SetActive(true);
     }
 }

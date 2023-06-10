@@ -58,6 +58,9 @@ public class GameManager : MonoBehaviour
                 else
                     SoundManager.instance.StopBGM();        
             }
+            else
+                PositionControl.instance.ShowGuide();
+
             PlayerSpawn.instance.SpawnPlayers();
             return;
         };
