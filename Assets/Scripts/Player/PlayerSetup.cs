@@ -18,6 +18,12 @@ public class PlayerSetup : MonoBehaviour
 
     private bool inputEnabled = false;
 
+    void Start()
+    {
+        if (GameManager.instance.UnlockedCharacters.Count == 1)
+            Arrows.SetActive(false);
+    }
+
     void Update()
     {
         CharacterSelect();
@@ -87,7 +93,9 @@ public class PlayerSetup : MonoBehaviour
         playerConfig.IsReady = true;
 
         statusIcon.sprite = ReadyIcon;
-        Arrows.SetActive(false);
+
+        if (GameManager.instance.UnlockedCharacters.Count > 1)
+            Arrows.SetActive(false);
 
         SoundManager.instance.PlaySFX("Confirm");
         
@@ -100,7 +108,9 @@ public class PlayerSetup : MonoBehaviour
 
         playerConfig.IsReady = false;
         statusIcon.sprite = WaitingIcon;
-        Arrows.SetActive(true);
+
+        if (GameManager.instance.UnlockedCharacters.Count > 1)
+            Arrows.SetActive(true);
 
         SoundManager.instance.PlaySFX("Cancel");
     }
