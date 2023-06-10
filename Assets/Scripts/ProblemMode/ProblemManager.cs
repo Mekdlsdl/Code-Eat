@@ -33,6 +33,11 @@ public class ProblemManager : MonoBehaviour
         StartCoroutine(NextProblem(0.9f));
     }
 
+    void OnDisable()
+    {
+        isShowingAnswer = false;
+    }
+
     void Update()
     {
         if (PlayerAnswer.enableAnswerSelect) {
