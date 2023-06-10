@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
         {
             PlayerConfigManager.instance.RespawnPlayers();
             ChangeActionMaps("StartingMenu");
-            SoundManager.instance.PlayBGM("Intro");
+            SoundManager.instance.PlayBGM("StartingMenu");
         };
     }
 
@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
         isGameOver = isProblemMode = false;
         ChangeActionMaps("StartingMenu");
         SceneManager.LoadScene("MapSelect");
-        SoundManager.instance.PlayBGM("Intro");
+        SoundManager.instance.PlayBGM("StartingMenu");
     }
 
     public void RetryMapMode() // 다시 시작을 선택해서 해당 맵을 다시 플레이할 경우

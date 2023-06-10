@@ -66,6 +66,7 @@ public class SoundMenu : MonoBehaviour
             SoundManager.instance.PlaySFX("Cursor");
         }
         previousVolume[menuIndex] = sliders[menuIndex].value;
+        SetUpSoundManagerVolume(menuIndex, sliders[menuIndex].value);
     }
 
     private void HighlightButton()
@@ -75,6 +76,14 @@ public class SoundMenu : MonoBehaviour
 
         texts[1-menuIndex].color = defaultColor;
         sliders[1-menuIndex].interactable = false;
+    }
+
+    private void SetUpSoundManagerVolume(int menuIndex, float volume)
+    {
+        if (menuIndex == 0)
+            SoundManager.instance.SetVolumeBGM(volume);
+        else if (menuIndex == 1)
+            SoundManager.instance.SetVolumeSFX(volume);
     }
 
     private void Exit()

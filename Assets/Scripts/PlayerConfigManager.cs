@@ -33,7 +33,7 @@ public class PlayerConfigManager : MonoBehaviour
 
             Debug.Log($"Player {player_input.playerIndex + 1} Joined.");
 
-            SoundManager.instance.PlaySFX("OK");
+            SoundManager.instance.PlaySFX("Select");
         }
     }
 

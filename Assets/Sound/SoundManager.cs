@@ -46,11 +46,6 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        PlayBGM(); 
-    }
-
     public void PlayBGM(string name)
     {
         if (!BGMDic.ContainsKey(name))
@@ -69,6 +64,7 @@ public class SoundManager : MonoBehaviour
             bgmPlayer.Play();  
         }
     }
+
 
     public void PauseBGM()
     {

@@ -44,6 +44,7 @@ public class IntroMenu : MonoBehaviour
         yield return new WaitForSeconds(displayTitleDelay);
 
         Title.SetActive(true);
+        SoundManager.instance.PlaySFX("Select");
 
         yield return new WaitForSeconds(8f);
         if (!enablePlayerInput) EnableInput(true);
@@ -52,7 +53,7 @@ public class IntroMenu : MonoBehaviour
     IEnumerator StartGame()
     {
         isGameStarted = true;
-        
+        SoundManager.instance.PlaySFX("Complete");
         anim.Play("GameStartBlink", -1, 0f);
         yield return new WaitForSeconds(1f);
 
@@ -60,12 +61,17 @@ public class IntroMenu : MonoBehaviour
         DOTween.Play("MoveFork");
 
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("StartingMenu");
+        var process = SceneManager.LoadSceneAsync("StartingMenu");
+        process.completed += (AsyncOperation operation) =>
+        {
+            SoundManager.instance.PlayBGM("StartingMenu");
+        };
     }
 
     private void ShowCredits()
     {
         if (Credits.activeSelf || isShowingCredits) return;
+        SoundManager.instance.PlaySFX("Confirm");
         Credits.SetActive(true);
         isShowingCredits = true;
 
@@ -76,6 +82,7 @@ public class IntroMenu : MonoBehaviour
     private void HideCredits()
     {
         if (!Credits.activeSelf || !isShowingCredits) return;
+        SoundManager.instance.PlaySFX("Cancel");
         isShowingCredits = false;
 
         DOTween.Rewind("CreditHide");
