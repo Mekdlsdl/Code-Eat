@@ -5005,7 +5005,7 @@ GameObject:
   - component: {fileID: 1777568736}
   - component: {fileID: 1777568735}
   m_Layer: 5
-  m_Name: Canvas (1)
+  m_Name: StageComplete
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
