@@ -13,6 +13,7 @@ public class PlayerInteract : MonoBehaviour
     private static GameObject viewingTipObject;
     private static bool isViewingTip = false;
     private static int tipCount;
+    public static bool isViewingGuide = false;
 
     void Update()
     {
@@ -23,6 +24,10 @@ public class PlayerInteract : MonoBehaviour
         
         else if (PressKey(InputType.EASTBUTTON) && isViewingTip)
                 CloseTip();
+
+        if (PressKey(InputType.EASTBUTTON) && isViewingGuide) {
+            CloseGuide();
+        }
     }
 
     public void InteractTip(GameObject tip, TipPosition tip_pos)
@@ -69,11 +74,11 @@ public class PlayerInteract : MonoBehaviour
         RectTransform tipTransform = viewingTipObject.GetComponent<RectTransform>();
 
         if (tipCount == 0) {
-            Time.timeScale = 1;
             TipManager.instance.CheckOffPlayer(playerMovement.PlayerConfig.PlayerIndex);
             Debug.Log($"P{playerMovement.PlayerConfig.PlayerIndex + 1}(이)가 닫음.");
 
             if (TipManager.instance.isAllOff()) {
+                Time.timeScale = 1;
                 TipManager.instance.tipPlayers.SetActive(false);
                 viewingTipObject.SetActive(false);
                 isViewingTip = false;
@@ -91,6 +96,21 @@ public class PlayerInteract : MonoBehaviour
                 isViewingTip = true;
                 tipCount --;
             }
+        }
+
+        SoundManager.instance.PlaySFX("Cancel");
+    }
+
+    private void CloseGuide() {
+        MapGuideManager.instance.CheckOffPlayer(playerMovement.PlayerConfig.PlayerIndex);
+        Debug.Log($"P{playerMovement.PlayerConfig.PlayerIndex + 1}(이)가 닫음.");
+
+        if (MapGuideManager.instance.isAllOff()) {
+            Time.timeScale = 1;
+            isViewingGuide = false;
+            PositionControl.instance.TurnOffGuide();
+            MapGuideManager.instance.tipPlayers.SetActive(false);
+            MapGuideManager.instance.ResetOffPlayer();
         }
 
         SoundManager.instance.PlaySFX("Cancel");

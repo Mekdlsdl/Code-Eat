@@ -57,5 +57,11 @@ public class PositionControl : MonoBehaviour
     public void ShowGuide()
     {
         goalGuide.SetActive(true);
+        PlayerInteract.isViewingGuide = true;
+    }
+
+    public void TurnOffGuide()
+    {
+        goalGuide.SetActive(false);
     }
 }

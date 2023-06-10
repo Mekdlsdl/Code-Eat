@@ -42304,6 +42304,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapGoalGuide
       objectReference: {fileID: 0}
+    - target: {fileID: 2108682823836468099, guid: 26d5782b52a2d1e40b43cca3a0de3a7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2108682823836468102, guid: 26d5782b52a2d1e40b43cca3a0de3a7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

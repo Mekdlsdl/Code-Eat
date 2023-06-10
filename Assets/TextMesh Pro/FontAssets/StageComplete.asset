@@ -71,8 +71,8 @@ Material:
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.699986
-    - _ScaleRatioB: 0.29375002
-    - _ScaleRatioC: 0.29375002
+    - _ScaleRatioB: 0.29374996
+    - _ScaleRatioC: 0.29374996
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0

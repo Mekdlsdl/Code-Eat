@@ -60,7 +60,7 @@ public class TreeFamily : MonoBehaviour
         guide.SetActive(false);
         yield return shortWait;
         tree.SetActive(true);
-        yield return midWait;
+        yield return shortWait;
         CalculateNode();
         OrderOption();
         ShowResult();
