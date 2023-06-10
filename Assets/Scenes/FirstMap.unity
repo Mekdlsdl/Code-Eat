@@ -31475,6 +31475,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinematicEffect: {fileID: 275955025}
+  smokeEffect: {fileID: 1734073303798583903, guid: 62fb33fd221565a47abbd8b1735bfadf, type: 3}
   bossObject: {fileID: 1915385032}
   bossSpriteRenderer: {fileID: 9195424199270017217}
   bossType: {fileID: 11400000, guid: c17b2656802fd3c458d05bbd39530e9f, type: 2}

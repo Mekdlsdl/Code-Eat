@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject cinematicEffect, bossObject;
+    [SerializeField] private GameObject cinematicEffect, smokeEffect, bossObject;
     [SerializeField] private SpriteRenderer bossSpriteRenderer;
 
 
@@ -26,6 +26,10 @@ public class EnemySpawner : MonoBehaviour
                 enemyExists = true;
                 var enemy = Instantiate(spawnList[i].enemy, spawnList[i].spawnPos, gameObject.transform.rotation, gameObject.transform);
                 existingEnemyList.Add(enemy);
+
+                // 첫 적 생성일 경우에 smoke 이펙트 실행
+                if (GameManager.encounteredEnemyset.Count == 0)
+                    Instantiate(smokeEffect, enemy.transform);
             }
         }
 

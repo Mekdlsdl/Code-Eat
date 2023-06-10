@@ -10161,6 +10161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinematicEffect: {fileID: 1773013894}
+  smokeEffect: {fileID: 1734073303798583903, guid: 62fb33fd221565a47abbd8b1735bfadf, type: 3}
   bossObject: {fileID: 1857904633}
   bossSpriteRenderer: {fileID: 202693206}
   bossType: {fileID: 11400000, guid: 39b60d6f11aa046aaa83a291235d9e98, type: 2}
