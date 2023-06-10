@@ -2,6 +2,107 @@
     "name": "PlayerControls",
     "maps": [
         {
+            "name": "Intro",
+            "id": "d21902ba-7cc8-4b48-90c0-2086b7b04a3a",
+            "actions": [
+                {
+                    "name": "SOUTHBUTTON",
+                    "type": "Button",
+                    "id": "3a4c3a4c-bd5d-4f57-bb1e-7bb43784fd4a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "EASTBUTTON",
+                    "type": "Button",
+                    "id": "874025a3-3dda-49c6-895b-63c3699c498f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "WESTBUTTON",
+                    "type": "Button",
+                    "id": "17d968e1-99de-4436-b8ea-3949b07689ac",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "3a166de4-b79b-41ac-ab4e-27f12bf2a9c6",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SOUTHBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eaf4c29a-89d7-4908-ac7e-464720688ec5",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SOUTHBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d6bddb67-e1cf-4eec-b36e-fc13706e75f2",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WESTBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "245b07e8-26a8-4974-8812-478c37b26a94",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "WESTBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "353d4667-16cf-4d16-ab86-2267b18a9659",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EASTBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fc44430f-88d1-4f00-9e4a-ae3a99751e73",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "EASTBUTTON",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "StartingMenu",
             "id": "579a0bd9-1834-4aac-81c8-f9ddeacce848",
             "actions": [

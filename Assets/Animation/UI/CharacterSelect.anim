@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Bunny_Chase
+  m_Name: CharacterSelect
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,16 +20,16 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -1215887120, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
-    - time: 0.07692308
-      value: {fileID: -274483724, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
-    - time: 0.15384616
-      value: {fileID: 160766186, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
+      value: {fileID: 1221543813, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
+    - time: 0.2
+      value: {fileID: -164268456, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
+    - time: 0.4
+      value: {fileID: -1915727673, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
     attribute: m_Sprite
     path: 
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_SampleRate: 13
+  m_SampleRate: 5
   m_WrapMode: 0
   m_Bounds:
     m_Center: {x: 0, y: 0, z: 0}
@@ -44,15 +44,15 @@ AnimationClip:
       customType: 0
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -1215887120, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
-    - {fileID: -274483724, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
-    - {fileID: 160766186, guid: ad1a5d22668ec7f4dbbcd2d539c4447f, type: 3}
+    - {fileID: 1221543813, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
+    - {fileID: -164268456, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
+    - {fileID: -1915727673, guid: e3d48010f879df149a3c81b24d2a8800, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.23076925
+    m_StopTime: 0.6
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
