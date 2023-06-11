@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static bool isProblemMode = false;
     public static bool isGameOver = false;
     public static bool isReturning = false;
+    public static bool isEnemySpawned = false;
     public static HashSet<string> encounteredEnemyset = new HashSet<string>();
 
     [SerializeField] List<CharacterType> unlockedCharacters = new List<CharacterType>();
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 
-        isGameOver = isProblemMode = false;
+        isGameOver = isProblemMode = isEnemySpawned = false;
         isReturning = true;
 
         var process = SceneManager.LoadSceneAsync("StartingMenu");
@@ -141,7 +142,7 @@ public class GameManager : MonoBehaviour
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 
-        isGameOver = isProblemMode = false;
+        isGameOver = isProblemMode = isEnemySpawned = false;
         ChangeActionMaps("StartingMenu");
         SceneManager.LoadScene("MapSelect");
         SoundManager.instance.PlayBGM("StartingMenu");
@@ -153,7 +154,7 @@ public class GameManager : MonoBehaviour
         ResetEncounteredEnemyList();
         PlayerConfigManager.instance.ResetAllPlayerConfigs();
 
-        isGameOver = isProblemMode = false;
+        isGameOver = isProblemMode = isEnemySpawned = false;
         ChangeActionMaps("MapControl");
         LoadMap(currentMapName);
         SoundManager.instance.PlayBGM(currentMapName);

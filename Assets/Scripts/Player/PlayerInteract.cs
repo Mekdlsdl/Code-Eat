@@ -17,7 +17,7 @@ public class PlayerInteract : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenu.isPaused) return;
+        if (PauseMenu.isPaused || GameManager.isEnemySpawned) return;
         
         if (PressKey(InputType.SOUTHBUTTON) && exclamationMark.activeSelf && !isViewingTip)
                 OpenTip();

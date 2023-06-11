@@ -17,6 +17,7 @@ public class EnemySpawner : MonoBehaviour
 
     public bool SpawnEnemy()
     {
+        GameManager.isEnemySpawned = true;
         bool enemyExists = false;
 
         for (int i = 0; i < spawnList.Count; i++) {
