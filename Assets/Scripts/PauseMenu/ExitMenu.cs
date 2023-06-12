@@ -65,8 +65,11 @@ public class ExitMenu : MonoBehaviour
     {
         SoundManager.instance.PlaySFX("OK");
 
-        if (menuIndex == 0)
-            QuitGame();
+        if (menuIndex == 0) {
+            gameObject.SetActive(false);
+            pauseMenu.CloseMenu();
+            GameManager.instance.ReturnToCharacterSelect();
+        }
         
         else if (menuIndex == 1) {
             gameObject.SetActive(false);
@@ -74,11 +77,8 @@ public class ExitMenu : MonoBehaviour
             GameManager.instance.ReturnToMapSelectMode();
         }
         
-        else if  (menuIndex == 2) {
-            gameObject.SetActive(false);
-            pauseMenu.CloseMenu();
-            GameManager.instance.ReturnToCharacterSelect();
-        }
+        else if  (menuIndex == 2)
+            QuitGame();
     }
 
     private bool ExcludeMapSelect()
