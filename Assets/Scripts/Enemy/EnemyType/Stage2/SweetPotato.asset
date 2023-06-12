@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SweetPotato
   m_EditorClassIdentifier: 
   enemyName: SweetPotato
-  enemyHP: 50
+  enemyHP: 45
   enemyDamage: 20
   enemySpeed: 4.2
   animControl: {fileID: 9100000, guid: 0cd2b8d86c614204eb27b709e26c2ed3, type: 2}
