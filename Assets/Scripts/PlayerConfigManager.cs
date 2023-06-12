@@ -11,6 +11,8 @@ public class PlayerConfigManager : MonoBehaviour
     public List<PlayerConfiguration> PlayerConfigs => playerConfigs;
 
     [SerializeField] private GameObject playerUI;
+
+    [System.NonSerialized] public bool enableJoin = false;
     
     void Awake()
     {
@@ -21,6 +23,8 @@ public class PlayerConfigManager : MonoBehaviour
 
     public void HandlePlayerJoin(PlayerInput player_input)
     {
+        if (!enableJoin) return;
+
         if (!playerConfigs.Any(p => p.PlayerIndex == player_input.playerIndex)) {
             PlayerConfiguration player = new PlayerConfiguration(player_input);
             playerConfigs.Add(player);

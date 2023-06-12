@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public static bool isEnemySpawned = false;
     public static HashSet<string> encounteredEnemyset = new HashSet<string>();
 
+    [SerializeField] private GameObject gamepadGuide;
+
     [SerializeField] List<CharacterType> unlockedCharacters = new List<CharacterType>();
     public List<CharacterType> UnlockedCharacters => unlockedCharacters;
     [SerializeField] List<string> lockedCharacters = new List<string>();
@@ -26,6 +28,11 @@ public class GameManager : MonoBehaviour
         if (instance != null)
             return;
         instance = this;
+    }
+
+    void Start()
+    {
+        gamepadGuide.SetActive(true);
     }
 
     void Update()
