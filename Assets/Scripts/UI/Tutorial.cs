@@ -36,6 +36,8 @@ public class Tutorial : MonoBehaviour
         isClosingGuide = true;
         DOTween.Rewind("HideGamepadGuide");
         DOTween.Play("HideGamepadGuide");
+
+        SoundManager.instance.PlaySFX("Cancel");
     }
 
     private bool PressKey(string input_tag)

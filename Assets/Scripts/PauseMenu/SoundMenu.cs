@@ -28,7 +28,7 @@ public class SoundMenu : MonoBehaviour
 
     public void SoundMenuNavigate(PlayerConfiguration playerConfig)
     {
-        if (!PauseMenu.isPaused) return;
+        if (!PauseMenu.isPaused || playerConfig.PlayerIndex != PauseMenu.instance.menuPlayerIndex) return;
         
         Navigate(playerConfig);
         SetUpVolume(playerConfig);

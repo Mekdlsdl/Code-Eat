@@ -36,14 +36,15 @@ public class ResolutionMenu : MonoBehaviour
 
     public void ResolutionMenuNavigate(PlayerConfiguration playerConfig)
     {
-        if (!PauseMenu.isPaused) return;
+        if (!PauseMenu.isPaused || playerConfig.PlayerIndex != PauseMenu.instance.menuPlayerIndex) return;
 
-        if (PressKey(playerConfig, InputType.SOUTHBUTTON))
+        if (PressKey(playerConfig, InputType.SOUTHBUTTON)) {
             SetFullScreen(!isFullScreen);
+        }
         
-        else if (PressKey(playerConfig, InputType.EASTBUTTON))
+        else if (PressKey(playerConfig, InputType.EASTBUTTON)) {
             ExitMenu();
-
+        }
         Navigate(playerConfig);
     }
 

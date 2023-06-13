@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private List<PauseButton> buttonList;
     [SerializeField] private List<GameObject> settingsList;
 
+    public int menuPlayerIndex = 0;
     private int menuIndex = 0;
 
     void Awake()
@@ -32,20 +33,36 @@ public class PauseMenu : MonoBehaviour
 
         if (PressKey(playerConfig, InputType.PAUSE))
         {
-            if (!menu.activeSelf && !isPaused)
-                OpenMenu();
-            
-            else if (menu.activeSelf && isPaused)
-                CloseMenu();
+            if (!menu.activeSelf && !isPaused) {
+                // Debug.Log($"{playerConfig.PlayerIndex}이 누름");
+                menuPlayerIndex = playerConfig.PlayerIndex;
+
+                if (playerConfig.PlayerIndex == menuPlayerIndex) {
+                    OpenMenu();
+                }
+            }
+                
+            else if (menu.activeSelf && isPaused) {
+                if (playerConfig.PlayerIndex == menuPlayerIndex) {
+                    CloseMenu();
+                }
+            }
             return;
         }
-        else if (menu.activeSelf && isPaused && PressKey(playerConfig, InputType.EASTBUTTON))
-            CloseMenu();
+        else if (menu.activeSelf && isPaused && PressKey(playerConfig, InputType.EASTBUTTON)) {
+            if (playerConfig.PlayerIndex == menuPlayerIndex) {
+                CloseMenu();
+            }
+        }
 
-        Navigate(playerConfig);
+        if (playerConfig.PlayerIndex == menuPlayerIndex) {
+            Navigate(playerConfig);
+        }
 
         if (menu.activeSelf && PressKey(playerConfig, InputType.SOUTHBUTTON))
-            SelectMenu();
+            if (playerConfig.PlayerIndex == menuPlayerIndex) {
+                SelectMenu();
+            }
     }
 
     private void OpenMenu()

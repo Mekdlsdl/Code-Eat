@@ -29,7 +29,7 @@ public class ExitMenu : MonoBehaviour
 
     public void ExitMenuNavigate(PlayerConfiguration playerConfig)
     {
-        if (!PauseMenu.isPaused) return;
+        if (!PauseMenu.isPaused  || playerConfig.PlayerIndex != PauseMenu.instance.menuPlayerIndex) return;
 
         Navigate(playerConfig);
 
