@@ -35,7 +35,6 @@ public class PlayerInteract : MonoBehaviour
         tipObject = tip;
         tipPos = tip_pos;
 
-        tipCount = tipObject.GetComponent<RectTransform>().childCount - 1;
         SetExclamation(true);
         
         SoundManager.instance.PlaySFX("Select");
@@ -59,6 +58,8 @@ public class PlayerInteract : MonoBehaviour
 
         viewingTipObject = tipObject;
         viewingTipPos = tipPos;
+
+        tipCount = tipObject.GetComponent<RectTransform>().childCount - 1;
 
         Time.timeScale = 0;
         isViewingTip = true;
