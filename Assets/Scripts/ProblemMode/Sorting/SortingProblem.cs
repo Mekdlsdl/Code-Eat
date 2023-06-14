@@ -88,10 +88,7 @@ public class SortingProblem : MonoBehaviour
     }
 
     void AfterSort() {
-        if (problemNum == 0) {
-            option.SetActive(true);
-        }
-        else if (problemNum == 1) {
+        if (problemNum == 1) {
             fillSorting = option.GetComponent<FillSorting>();
             option.SetActive(true);
             fillSorting.SetOption();
