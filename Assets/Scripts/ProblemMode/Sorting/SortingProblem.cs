@@ -105,7 +105,7 @@ public class SortingProblem : MonoBehaviour
         sortingNum = UnityEngine.Random.Range(0,3);
 
         if (problemNum == 1 || problemNum == 2) {
-            step = UnityEngine.Random.Range(2,4);
+            step = UnityEngine.Random.Range(1,6);
         }
 
         switch (sortingNum) {
