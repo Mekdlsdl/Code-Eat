@@ -101,7 +101,10 @@ public class SortingProblem : MonoBehaviour
     void DoSort() {
         sortingNum = UnityEngine.Random.Range(0,3);
 
-        if (problemNum == 1 || problemNum == 2) {
+        if (problemNum == 1) {
+            step = UnityEngine.Random.Range(2,5);
+        }
+        else if (problemNum == 2) {
             step = UnityEngine.Random.Range(1,6);
         }
 
