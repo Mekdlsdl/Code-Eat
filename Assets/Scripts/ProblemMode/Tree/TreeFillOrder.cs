@@ -149,7 +149,7 @@ public class TreeFillOrder : TreeProblem
         yield return new WaitForSeconds(0.7f);
         GenerateOptions();
         option.SetActive(true);
-        yield return shortWait;
+        // yield return shortWait;
         AnswerManager.instance.SetProblemAnswer(answerIndex);
         Debug.Log($"정답 인덱스 : {(AnswerButton) answerIndex}");
     }
