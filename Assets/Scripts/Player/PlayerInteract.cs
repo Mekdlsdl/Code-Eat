@@ -30,6 +30,14 @@ public class PlayerInteract : MonoBehaviour
         }
     }
 
+    void OnDestroy() // 씬이 언로드 될 때 호출
+    {
+        viewingTipPos = null;
+        viewingTipObject = null;
+        isViewingTip = false;
+        isViewingGuide = false;
+    }
+
     public void InteractTip(GameObject tip, TipPosition tip_pos)
     {
         tipObject = tip;
