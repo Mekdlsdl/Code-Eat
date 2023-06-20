@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseNavigation : MonoBehaviour
 {
@@ -9,6 +8,13 @@ public class PauseNavigation : MonoBehaviour
     public void Init(PlayerConfiguration player_config)
     {
         playerConfig = player_config;
+        player_config.Input.onDeviceLost += OnDeviceLost;
+    }
+
+    private void OnDeviceLost(PlayerInput playerInput)
+    {
+        if (PauseMenu.instance.gameObject.activeSelf && (playerConfig.PlayerIndex == PauseMenu.instance.menuPlayerIndex))
+            PauseMenu.instance.CloseMenu();
     }
 
     void Update()

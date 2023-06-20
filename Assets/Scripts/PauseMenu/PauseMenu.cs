@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
@@ -17,7 +16,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private List<PauseButton> buttonList;
     [SerializeField] private List<GameObject> settingsList;
 
-    public int menuPlayerIndex = 0;
+    [System.NonSerialized] public int menuPlayerIndex = 0;
     private int menuIndex = 0;
 
     void Awake()
