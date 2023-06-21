@@ -15622,6 +15622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 274031622}
   - component: {fileID: 274031624}
+  - component: {fileID: 274031625}
   - component: {fileID: 274031623}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -15747,6 +15748,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274031621}
   m_CullTransparentMesh: 1
+--- !u!114 &274031625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274031621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Gamepad_Confirm
+  location: 
+  targetText: {fileID: 274031623}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &275955025
 GameObject:
   m_ObjectHideFlags: 0
@@ -27736,6 +27755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1534146933}
   - component: {fileID: 1534146935}
+  - component: {fileID: 1534146936}
   - component: {fileID: 1534146934}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -27861,6 +27881,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534146932}
   m_CullTransparentMesh: 1
+--- !u!114 &1534146936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534146932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Control_Settings
+  location: 
+  targetText: {fileID: 1534146934}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1540067679
 GameObject:
   m_ObjectHideFlags: 0
@@ -28515,6 +28553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1755810701}
   - component: {fileID: 1755810703}
+  - component: {fileID: 1755810704}
   - component: {fileID: 1755810702}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -28541,7 +28580,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 150, y: 55}
-  m_SizeDelta: {x: 300, y: 100}
+  m_SizeDelta: {x: 348.56, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1755810702
 MonoBehaviour:
@@ -28640,6 +28679,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1755810700}
   m_CullTransparentMesh: 1
+--- !u!114 &1755810704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1755810700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Control_Title
+  location: 
+  targetText: {fileID: 1755810702}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!213 &1756979646
 Sprite:
   m_ObjectHideFlags: 0
@@ -31330,6 +31387,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1881698021}
   - component: {fileID: 1881698023}
+  - component: {fileID: 1881698024}
   - component: {fileID: 1881698022}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -31455,6 +31513,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1881698020}
   m_CullTransparentMesh: 1
+--- !u!114 &1881698024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1881698020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Gamepad_Move
+  location: 
+  targetText: {fileID: 1881698022}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1888308661
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,7 +19,6 @@ public class LocalizeUI : MonoBehaviour
 
     private void OnLanguageChange()
     {
-        Debug.Log(",,,");
         switch (uiType) {
             case UIType.Text:
                 // TextMeshProUGUI targetText = GetComponent<TextMeshProUGUI>();
