@@ -1,12 +1,22 @@
 using TMPro;
 using UnityEngine;
 using DG.Tweening;
+using System.Collections.Generic;
 
 public class ResolutionMenu : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI resolutionText;
+    [SerializeField] private TextMeshProUGUI languageText, resolutionText;
     [SerializeField] private GameObject checkMark;
+    [SerializeField] private Color highlightColor, defaultColor;
+    [SerializeField] private List<TextMeshProUGUI> options;
+
+    public delegate void SetLanguageDelegate();
+    public SetLanguageDelegate setUiLanguage;
+
+    private int menuIndex = 0;
     private int resolutionNumber;
+    private int languageNumber = 0;
+
     private (int, int) selectedResolution;
 
     private bool isFullScreen = false;
@@ -26,6 +36,9 @@ public class ResolutionMenu : MonoBehaviour
 
     void OnEnable()
     {
+        NormalizeButton();
+        menuIndex = 0;
+        HighlightButton();
         PauseMenu.menuState = MenuState.Resolution;
     }
     
@@ -50,26 +63,66 @@ public class ResolutionMenu : MonoBehaviour
 
     private void Navigate(PlayerConfiguration playerConfig)
     {
-        if (PressKey(playerConfig, InputType.LEFT))
+        if (PressKey(playerConfig, InputType.UP))
         {
-            resolutionNumber--;
-            SetResolution();
-            
-            DOTween.Rewind("LeftResolutionArrow");
-            DOTween.Play("LeftResolutionArrow");
+            NormalizeButton();
+            menuIndex = 0;
+            SoundManager.instance.PlaySFX("Cursor");
+            HighlightButton();
+        }
+        else if (PressKey(playerConfig, InputType.DOWN))
+        {
+            NormalizeButton();
+            menuIndex = 1;
+            SoundManager.instance.PlaySFX("Cursor");
+            HighlightButton();
+        }
+        else if (PressKey(playerConfig, InputType.LEFT))
+        {
+            if (menuIndex == 0) {
+                languageNumber--;
+                SetLanguage();
 
+                DOTween.Rewind("LeftLanguageArrow");
+                DOTween.Play("LeftLanguageArrow");
+            }
+            else if (menuIndex == 1) {
+                resolutionNumber--;
+                SetResolution();
+                
+                DOTween.Rewind("LeftResolutionArrow");
+                DOTween.Play("LeftResolutionArrow");
+            }
             SoundManager.instance.PlaySFX("Cursor");
         }
         else if (PressKey(playerConfig, InputType.RIGHT))
         {
-            resolutionNumber++;
-            SetResolution();
+            if (menuIndex == 0) {
+                languageNumber++;
+                SetLanguage();
 
-            DOTween.Rewind("RightResolutionArrow");
-            DOTween.Play("RightResolutionArrow");
+                DOTween.Rewind("RightLanguageArrow");
+                DOTween.Play("RightLanguageArrow");
+            }
+            else if (menuIndex == 1) {
+                resolutionNumber++;
+                SetResolution();
 
+                DOTween.Rewind("RightResolutionArrow");
+                DOTween.Play("RightResolutionArrow");
+            }
             SoundManager.instance.PlaySFX("Cursor");
         }
+    }
+
+    private void HighlightButton()
+    {
+        options[menuIndex].color = highlightColor;
+    }
+
+    private void NormalizeButton()
+    {
+        options[menuIndex].color = defaultColor;
     }
 
     private void SetResolution()
@@ -78,6 +131,14 @@ public class ResolutionMenu : MonoBehaviour
         selectedResolution = (240 * resolutionNumber, 135 * resolutionNumber);
         resolutionText.text = $"{selectedResolution.Item1} x {selectedResolution.Item2}";
         Screen.SetResolution(selectedResolution.Item1, selectedResolution.Item2, Screen.fullScreen);
+    }
+
+    private void SetLanguage()
+    {
+        Resources.UnloadUnusedAssets();
+        LocalizationManager.instance.currentLanguage = languageNumber = Mathf.Clamp(languageNumber, 0, 1);
+        languageText.text = LocalizationManager.instance.translationDict["Language"][languageNumber];
+        setUiLanguage?.Invoke();
     }
 
     public void SetFullScreen (bool is_full_screen)

@@ -1,0 +1,31 @@
+Language : 한국어 | English
+
+Gamepad_Title : 게임 조작 방법 | CONTROLS
+Gamepad_Cancel : 취소 | Cancel
+Gamepad_Confirm : 확인 | Confirm
+Gamepad_Move : 이동 | Move
+
+Resolution_Title : 해상도 설정 | GRAPHICS
+Resolution_Fullscreen : 전체화면 | Fullscreen
+Sound_Title : 소리 설정 | VOLUME
+Sound_BGM : 배경 음악 | Music
+Sound_SFX : 효과음 | Sound Effect
+Exit_Character : 캐릭터 선택 | Character Select
+Exit_Map : 맵 선택 | Stage Select
+Exit_Game : 게임 종료 | Exit Game
+
+Control_Title : 조작키 | CONTROLS
+Control_Character : 캐릭터 선택 | Select Character
+Control_Ready : 준비 | Ready
+Control_Cancel : 취소 | Cancel
+Control_Settings : 설정 | Settings
+
+MapSelect_Title : 맵 선택 | STAGE SELECT
+MapSelect_LStick : 맵 선택 | Navigate
+MapSelect_SelectButton : 입장 | Select
+MapSelect_SettingButton : 설정 | Settings
+MapSelect_Description_Title : 스테이지 설명 | Stage Topic
+MapSelect_Description_DataStructure : 이 스테이지에서는<br><br>자료구조(리스트, 스택, 큐)를<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Stack, List and Queue!
+MapSelect_Description_Greedy : 이 스테이지에서는<br><br>그리디 알고리즘을<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Greedy Algorithm!
+MapSelect_Description_Tree : 이 스테이지에서는<br><br>트리(순회, 구조)를<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Tree Data Structure!
+MapSelect_Description_Sorting : 이 스테이지에서는<br><br>정렬(버블, 선택, 삽입)을<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Sorting Algorithm!

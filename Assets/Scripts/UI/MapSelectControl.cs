@@ -57,7 +57,7 @@ public class MapSelectControl : MonoBehaviour
             return;
 
         int previousPageIndex = pageIndex;
-
+        int previousMapIndex = mapIndex;
 
         if (PressKey(playerConfig, InputType.UP))
         {
@@ -98,7 +98,9 @@ public class MapSelectControl : MonoBehaviour
         
         if (previousPageIndex != pageIndex)
             mapIndex = (previousPageIndex < pageIndex) ? (mapIndex - 1) : (mapIndex + 1);
-        HighlightPageMap();
+
+        if (previousMapIndex != mapIndex)
+            HighlightPageMap();
     }
 
     private void HighlightPageMap()

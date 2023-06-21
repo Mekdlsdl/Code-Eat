@@ -885,6 +885,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300527162}
   - component: {fileID: 300527164}
+  - component: {fileID: 300527165}
   - component: {fileID: 300527163}
   m_Layer: 5
   m_Name: Description (3)
@@ -967,7 +968,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 8
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1011,6 +1012,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300527161}
   m_CullTransparentMesh: 1
+--- !u!114 &300527165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300527161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Description_Sorting
+  location: 
+  targetText: {fileID: 300527163}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &310909088
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,6 +1301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 369649958}
   - component: {fileID: 369649960}
+  - component: {fileID: 369649961}
   - component: {fileID: 369649959}
   m_Layer: 5
   m_Name: Text
@@ -1407,6 +1427,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 369649957}
   m_CullTransparentMesh: 1
+--- !u!114 &369649961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 369649957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Title
+  location: 
+  targetText: {fileID: 369649959}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &375931888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,6 +2711,7 @@ GameObject:
   m_Component:
   - component: {fileID: 932011668}
   - component: {fileID: 932011670}
+  - component: {fileID: 932011671}
   - component: {fileID: 932011669}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -2698,8 +2737,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 500, y: 50}
+  m_AnchoredPosition: {x: 137.12, y: 0}
+  m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932011669
 MonoBehaviour:
@@ -2798,6 +2837,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 932011667}
   m_CullTransparentMesh: 1
+--- !u!114 &932011671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 932011667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_LStick
+  location: 
+  targetText: {fileID: 932011669}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &932369843 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5782792544421585969, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
@@ -2994,6 +3051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1040501588}
   - component: {fileID: 1040501590}
+  - component: {fileID: 1040501591}
   - component: {fileID: 1040501589}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -3019,8 +3077,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 95.45999, y: 0}
+  m_SizeDelta: {x: 210.61, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040501589
 MonoBehaviour:
@@ -3119,6 +3177,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1040501587}
   m_CullTransparentMesh: 1
+--- !u!114 &1040501591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040501587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_SettingButton
+  location: 
+  targetText: {fileID: 1040501589}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1050514538
 GameObject:
   m_ObjectHideFlags: 0
@@ -3129,6 +3205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1050514539}
   - component: {fileID: 1050514541}
+  - component: {fileID: 1050514542}
   - component: {fileID: 1050514540}
   m_Layer: 5
   m_Name: Description (2)
@@ -3255,6 +3332,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050514538}
   m_CullTransparentMesh: 1
+--- !u!114 &1050514542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050514538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Description_Tree
+  location: 
+  targetText: {fileID: 1050514540}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1053766063
 GameObject:
   m_ObjectHideFlags: 0
@@ -3303,6 +3398,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1059212101}
   - component: {fileID: 1059212103}
+  - component: {fileID: 1059212104}
   - component: {fileID: 1059212102}
   m_Layer: 5
   m_Name: Description
@@ -3351,8 +3447,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC774 \uC2A4\uD14C\uC774\uC9C0\uC5D0\uC11C\uB294 \n\n\uC790\uB8CC\uAD6C\uC870(\uB9AC\uC2A4\uD2B8,
-    \uC2A4\uD0DD, \uD050)\uB97C\n\n\uBC30\uC6B0\uAC8C \uB420 \uAC83\uC785\uB2C8\uB2E4!"
+  m_text: "\uC774 \uC2A4\uD14C\uC774\uC9C0\uC5D0\uC11C\uB294<br><br>\uC790\uB8CC\uAD6C\uC870(\uB9AC\uC2A4\uD2B8,
+    \uC2A4\uD0DD, \uD050)\uB97C<br><br>\uBC30\uC6B0\uAC8C \uB420 \uAC83\uC785\uB2C8\uB2E4!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
   m_sharedMaterial: {fileID: -508681348773179626, guid: 1bef81929a4345640b3f4654ba37c30b, type: 2}
@@ -3429,6 +3525,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1059212100}
   m_CullTransparentMesh: 1
+--- !u!114 &1059212104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059212100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Description_DataStructure
+  location: 
+  targetText: {fileID: 1059212102}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!224 &1113464490 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8901635484175284143, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
@@ -4894,6 +5008,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1601723102}
   - component: {fileID: 1601723104}
+  - component: {fileID: 1601723105}
   - component: {fileID: 1601723103}
   m_Layer: 5
   m_Name: Title
@@ -5019,6 +5134,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1601723101}
   m_CullTransparentMesh: 1
+--- !u!114 &1601723105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601723101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Description_Title
+  location: 
+  targetText: {fileID: 1601723103}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1617206397
 GameObject:
   m_ObjectHideFlags: 0
@@ -5181,6 +5314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655710683}
   - component: {fileID: 1655710685}
+  - component: {fileID: 1655710686}
   - component: {fileID: 1655710684}
   m_Layer: 5
   m_Name: Description (1)
@@ -5307,6 +5441,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655710682}
   m_CullTransparentMesh: 1
+--- !u!114 &1655710686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655710682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_Description_Greedy
+  location: 
+  targetText: {fileID: 1655710684}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!224 &1661938384 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8901635484175284143, guid: 8e20525e2bd6c1c49b71d60bcac4b6c7, type: 3}
@@ -5353,6 +5505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1730458527}
   - component: {fileID: 1730458529}
+  - component: {fileID: 1730458530}
   - component: {fileID: 1730458528}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -5378,8 +5531,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 150, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 114.39, y: 0}
+  m_SizeDelta: {x: 195.46, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1730458528
 MonoBehaviour:
@@ -5478,6 +5631,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730458526}
   m_CullTransparentMesh: 1
+--- !u!114 &1730458530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730458526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: MapSelect_SelectButton
+  location: 
+  targetText: {fileID: 1730458528}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1763390784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5763,6 +5934,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1917424426}
   - component: {fileID: 1917424428}
+  - component: {fileID: 1917424429}
   - component: {fileID: 1917424427}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -5788,8 +5960,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 150, y: 63}
-  m_SizeDelta: {x: 300, y: 100}
+  m_AnchoredPosition: {x: 0.36999893, y: 63}
+  m_SizeDelta: {x: 365.89, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1917424427
 MonoBehaviour:
@@ -5845,7 +6017,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -5888,6 +6060,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1917424425}
   m_CullTransparentMesh: 1
+--- !u!114 &1917424429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1917424425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Control_Title
+  location: 
+  targetText: {fileID: 1917424427}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1926817474
 GameObject:
   m_ObjectHideFlags: 0
