@@ -32,3 +32,12 @@ MapSelect_Description_Sorting : 이 스테이지에서는<br><br>정렬(버블, 
 
 GameOver_Retry : 다시하기 | Retry
 GameOver_StageSelect : 스테이지 선택 | Stage Select
+
+Winner_Start : 최종 우승자는 | The winner is
+Winner_Reveal_1 : 우승자는 | The winner is
+Winner_Reveal_2 : 입니다! | !
+
+Result_Incorrect : 오답률 | Incorrect
+Result_Accuracy : 공격 성공률 | Aim Accuracy
+Result_Critical : 치명타 | Critical
+Result_Exit : 맵 선택으로 돌아가려면 아무 키나 누르세요! | Press any key to return to stage select!

@@ -17,7 +17,7 @@ public class Winner : MonoBehaviour
         
         yield return new WaitForSeconds(delay);
 
-        winnerText.text = "최종 우승자는...";
+        winnerText.text = $"{LocalizationManager.instance.ReturnTranslatedText("Winner_Start")}...";
         DOTween.Rewind("ShowWinnerText");
         DOTween.Play("ShowWinnerText");
 
@@ -64,13 +64,13 @@ public class Winner : MonoBehaviour
         // Get the winner
         List<PlayerConfiguration> winners = GetWinner();
 
-        string output_text = "우승자는 ";
+        string output_text = $"{LocalizationManager.instance.ReturnTranslatedText("Winner_Reveal_1")} ";
 
         for (int i = 0; i < winners.Count; i++) {
             output_text += $"<color={GameManager.instance.ReturnColorHex(winners[i].PlayerIndex)}>P{winners[i].PlayerIndex + 1}</color>";
             if (i < winners.Count - 1) output_text += ", ";    
         }
-        output_text += "입니다!";
+        output_text += $"{LocalizationManager.instance.ReturnTranslatedText("Winner_Reveal_2")}";
         
         winnerText.text = output_text;
         SpawnPlayerResult.instance.PlayerResponseAnimation(winners);

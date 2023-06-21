@@ -36,11 +36,15 @@ public class PlayerResults : MonoBehaviour
         double hitShotRate = (totalShotCount != 0) ? (hitShotCount / (double)totalShotCount * 100) : 0;
         double criticalShotRate = (totalShotCount != 0) ? (criticalShotCount / (double)totalShotCount * 100) : 0;
 
+        string correctTag = LocalizationManager.instance.ReturnTranslatedText("Result_Incorrect");
+        string hitTag = LocalizationManager.instance.ReturnTranslatedText("Result_Accuracy");
+        string criticalTag = LocalizationManager.instance.ReturnTranslatedText("Result_Critical");
+
         score_text.text = $"{score}pt";
         player_text.text = $"P{playerIndex + 1}";
-        correct_text.text = $"{correct} / {total}\n 오답률 : {incorrect:N0}%";
-        hit_shot_text.text = $"{hitShotCount} / {totalShotCount}\n 공격 성공률\n : {hitShotRate:N0}%";
-        critical_shot_text.text = $"{criticalShotCount} / {totalShotCount}\n 치명타 : {criticalShotRate:N0}%";
+        correct_text.text = $"{correct} / {total}\n {correctTag} : {incorrect:N0}%";
+        hit_shot_text.text = $"{hitShotCount} / {totalShotCount}\n {hitTag}\n : {hitShotRate:N0}%";
+        critical_shot_text.text = $"{criticalShotCount} / {totalShotCount}\n {criticalTag} : {criticalShotRate:N0}%";
 
         result_text_list = new List<TextMeshProUGUI>() {score_text, correct_text,  hit_shot_text, critical_shot_text};
 

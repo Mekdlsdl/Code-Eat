@@ -23,7 +23,7 @@ public class LocalizeUI : MonoBehaviour
         switch (uiType) {
             case UIType.Text:
                 // TextMeshProUGUI targetText = GetComponent<TextMeshProUGUI>();
-                targetText.text = LocalizationManager.instance.translationDict[tagName][LocalizationManager.instance.currentLanguage];
+                targetText.text = LocalizationManager.instance.ReturnTranslatedText(tagName);
                 break;
 
             case UIType.Image:

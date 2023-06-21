@@ -36,4 +36,9 @@ public class LocalizationManager : MonoBehaviour
             translationDict[tag_key] = tag_values;
         }
     }
+
+    public string ReturnTranslatedText(string tag)
+    {
+        return LocalizationManager.instance.translationDict[tag][currentLanguage];
+    }
 }

@@ -137,7 +137,7 @@ public class ResolutionMenu : MonoBehaviour
     {
         Resources.UnloadUnusedAssets();
         LocalizationManager.instance.currentLanguage = languageNumber = Mathf.Clamp(languageNumber, 0, 1);
-        languageText.text = LocalizationManager.instance.translationDict["Language"][languageNumber];
+        languageText.text = LocalizationManager.instance.ReturnTranslatedText("Language");
         setUiLanguage?.Invoke();
     }
 
