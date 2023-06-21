@@ -34,7 +34,7 @@ public class GameOverControl : MonoBehaviour
 
     public void ModeSelect(PlayerConfiguration playerConfig)
     {
-        if (!enableModeSelect)
+        if (!enableModeSelect || PauseMenu.isPaused)
             return;
         
         if (PressKey(playerConfig, InputType.LEFT)) {

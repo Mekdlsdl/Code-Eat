@@ -29,3 +29,6 @@ MapSelect_Description_DataStructure : 이 스테이지에서는<br><br>자료구
 MapSelect_Description_Greedy : 이 스테이지에서는<br><br>그리디 알고리즘을<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Greedy Algorithm!
 MapSelect_Description_Tree : 이 스테이지에서는<br><br>트리(순회, 구조)를<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Tree Data Structure!
 MapSelect_Description_Sorting : 이 스테이지에서는<br><br>정렬(버블, 선택, 삽입)을<br><br>배우게 될 것입니다! | In this stage,<br><br>You will learn about Sorting Algorithm!
+
+GameOver_Retry : 다시하기 | Retry
+GameOver_StageSelect : 스테이지 선택 | Stage Select

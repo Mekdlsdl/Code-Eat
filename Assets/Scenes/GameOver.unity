@@ -1086,6 +1086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1255852032}
   - component: {fileID: 1255852034}
+  - component: {fileID: 1255852035}
   - component: {fileID: 1255852033}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -1211,6 +1212,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255852031}
   m_CullTransparentMesh: 1
+--- !u!114 &1255852035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255852031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: GameOver_StageSelect
+  location: 
+  targetText: {fileID: 1255852033}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1266448494
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,6 +1316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301219190}
   - component: {fileID: 1301219192}
+  - component: {fileID: 1301219193}
   - component: {fileID: 1301219191}
   m_Layer: 5
   m_Name: Text (TMP)
@@ -1422,6 +1442,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301219189}
   m_CullTransparentMesh: 1
+--- !u!114 &1301219193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301219189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: GameOver_Retry
+  location: 
+  targetText: {fileID: 1301219191}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1819011670
 GameObject:
   m_ObjectHideFlags: 0
