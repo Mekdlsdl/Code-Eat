@@ -739,6 +739,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Guide
       objectReference: {fileID: 0}
+    - target: {fileID: 2576578259514741620, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 884.1544
+      objectReference: {fileID: 0}
+    - target: {fileID: 2576578259514741620, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -2.3788
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
 --- !u!224 &8010487033268262779 stripped
@@ -751,3 +759,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2576578259374465668, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
   m_PrefabInstance: {fileID: 5542576291205723640}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8010487033397995147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2576578259514741619, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+  m_PrefabInstance: {fileID: 5542576291205723640}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010487033397995149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &8010487033397995149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2576578259514741621, guid: a1c46fb160d1040999fa0d48088a621b, type: 3}
+  m_PrefabInstance: {fileID: 5542576291205723640}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6355327064796003533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8010487033397995149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Stack_Guide
+  location: 
+  targetText: {fileID: 8010487033397995147}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}

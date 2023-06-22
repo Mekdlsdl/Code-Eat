@@ -21,17 +21,17 @@ public class LocalizeUI : MonoBehaviour
     {
         switch (uiType) {
             case UIType.Text:
-                // TextMeshProUGUI targetText = GetComponent<TextMeshProUGUI>();
-                targetText.text = LocalizationManager.instance.ReturnTranslatedText(tagName);
+                string[] texts = LocalizationManager.instance.ReturnTranslatedText(tagName).Split('@');
+                
+                targetText.text = texts[0];
+                if (texts.Length > 1) targetText.fontSize = int.Parse(texts[1]);
                 break;
 
             case UIType.Image:
-                // Image targetImage = GetComponent<Image>();
                 targetImage.sprite = Resources.Load($"Tips/{location}/{tagName}") as Sprite;
                 break;
 
             case UIType.Video:
-                // VideoClip targetVideo = GetComponent<VideoClip>();
                 targetVideo = Resources.Load($"Tips/{location}/{tagName}") as VideoClip;
                 break;
             

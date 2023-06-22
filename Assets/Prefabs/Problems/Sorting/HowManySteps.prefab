@@ -182,6 +182,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4256792667825615153}
   - component: {fileID: 4256792667825615159}
+  - component: {fileID: 8225703388443078567}
   - component: {fileID: 4256792667825615158}
   - component: {fileID: 178386831657784538}
   - component: {fileID: 86276512297092053}
@@ -221,6 +222,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4256792667825615152}
   m_CullTransparentMesh: 1
+--- !u!114 &8225703388443078567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4256792667825615152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: HowMaySteps
+  location: 
+  targetText: {fileID: 4256792667825615158}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!114 &4256792667825615158
 MonoBehaviour:
   m_ObjectHideFlags: 0

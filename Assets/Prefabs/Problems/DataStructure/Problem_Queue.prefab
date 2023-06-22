@@ -83,6 +83,7 @@ GameObject:
   m_Component:
   - component: {fileID: 340591533114708902}
   - component: {fileID: 340591533114708896}
+  - component: {fileID: 8199432149889753349}
   - component: {fileID: 340591533114708897}
   - component: {fileID: 4454321380051433037}
   - component: {fileID: 4511384542335525186}
@@ -111,8 +112,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000095367, y: -17}
-  m_SizeDelta: {x: 717.64, y: 172.29}
+  m_AnchoredPosition: {x: -2.22, y: -17}
+  m_SizeDelta: {x: 894.36, y: 172.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &340591533114708896
 CanvasRenderer:
@@ -122,6 +123,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 340591533114708903}
   m_CullTransparentMesh: 1
+--- !u!114 &8199432149889753349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 340591533114708903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Queue_Guide
+  location: 
+  targetText: {fileID: 340591533114708897}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!114 &340591533114708897
 MonoBehaviour:
   m_ObjectHideFlags: 0

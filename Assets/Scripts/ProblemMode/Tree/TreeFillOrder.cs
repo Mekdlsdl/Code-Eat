@@ -169,31 +169,38 @@ public class TreeFillOrder : TreeProblem
         switch(orderNum) {
             case 0:
                 Debug.Log("PreOrder");
-                orderType.text = "전위순회";
+                SetText("FillOrder_Preorder");
                 PreOrder(root);
                 break;
 
             case 1:
                 Debug.Log("InOrder");
-                orderType.text = "중위순회";
+                SetText("FillOrder_Inorder");
                 InOrder(root);
                 break;
             
             case 2:
                 Debug.Log("PostOrder");
-                orderType.text = "후위순회";
+                SetText("FillOrder_Postorder");
                 PostOrder(root);
                 break;
 
             case 3:
                 Debug.Log("LevelOrder");
-                orderType.text = "레벨순회";
+                SetText("FillOrder_LevelOrder");
                 LevelOrder(getNode, root);
                 break;
         }
 
         // Debug.Log("orderResult.Count : " + orderResult.Count);
         StartCoroutine(ShowResult());
+    }
+
+    private void SetText(string tag)
+    {
+        string[] texts = LocalizationManager.instance.ReturnTranslatedText(tag).Split('@');
+        orderType.text = texts[0];
+        if (texts.Length > 1) orderType.fontSize = int.Parse(texts[1]);
     }
 
     void PostOrder(TNode n) {

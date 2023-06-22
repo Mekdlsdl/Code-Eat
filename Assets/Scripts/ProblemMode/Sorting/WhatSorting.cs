@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,8 +33,12 @@ public class WhatSorting : MonoBehaviour
     }
 
     void SetOption() {
-        sortType = new List<string>() {"버블\n정렬", "삽입\n정렬", "선택\n정렬"};
-        List<string> otherType = new List<string>() {"힙\n정렬", "합병\n정렬", "퀵\n정렬", "힙\n정렬", "쉘\n정렬", "기수\n정렬"};
+        //sortType = new List<string>() {"버블\n정렬", "삽입\n정렬", "선택\n정렬"};
+        //List<string> otherType = new List<string>() {"힙\n정렬", "합병\n정렬", "퀵\n정렬", "힙\n정렬", "쉘\n정렬", "기수\n정렬"};
+
+        sortType = LocalizationManager.instance.ReturnTranslatedText("AnswerSort").Split(',').ToList();
+        List<string> otherType = LocalizationManager.instance.ReturnTranslatedText("OtherSort").Split(',').ToList();
+
         int ranIdx = UnityEngine.Random.Range(0,otherType.Count);
         sortType.Add(otherType[ranIdx]);
 

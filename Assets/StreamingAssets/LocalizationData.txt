@@ -41,3 +41,33 @@ Result_Incorrect : 오답률 | Incorrect
 Result_Accuracy : 공격 성공률 | Aim Accuracy
 Result_Critical : 치명타 | Critical
 Result_Exit : 맵 선택으로 돌아가려면 아무 키나 누르세요! | Press any key to return to stage select!
+
+ProblemMode_Attack : 공격 | Shoot
+
+List_Guide : 리스트 A의 요소를 맞혀보세요! | Guess the correct element from the List!
+Queue_Guide : <color=red>화살표</color>에 위치한 알맞은 야채를 맞혀보세요! | Guess the vegetable located at the <color=red>arrow</color>!
+Stack_Guide : 최종 스택의 상태를 맞혀보세요! | Guess the final state of the Stack!
+
+Coin_Guide : 금액을 지불할<br>최소의 동전 개수를 맞혀보세요! | Guess the <color=red>minimum number</color> of coins to pay!
+Kruskal_Guide : 다음에 선택될 길로 이어진 집을<br>맞혀보세요! | Guess the next path<br>according to Kruskal's Algorithm!
+Lecture_Guide : 겹치지 않게 배정할 수 있는<br><color=red>최대</color> 강의  개수를 맞혀보세요! | Guess the <color=red>max number</color> of<br>assignable classes within this timeline!
+
+TreeFamily_1 : 문제를 보고<br>어떤 노드인지 맞혀보세요! | Guess the correct node!
+TreeFamily_2 : 의 # 노드는? | Guess the # node!@40
+TreeFamily_3 : 부모,자식,형제 | Parent,Child,Sibling
+
+WhatOrder : 순회 결과를 보고<br>어떤 순회인지 맞혀보세요! | Guess the name<br>of the shown algorithm!
+
+FillOrder : 순회 방식을 보고 빈칸을 채워보세요! | Guess the traversal order<br>according to the algorithm!
+FillOrder_Preorder : 전위순회 | Preorder@40
+FillOrder_Inorder : 중위순회 | Inorder@40
+FillOrder_Postorder : 후위순회 | Postorder@40
+FillOrder_LevelOrder : 레벨순회 | Level Order@40
+
+FillSorting : 중간 단계의 정렬 결과를 보고<br>빈칸을 채워보세요! | Guess the blank<br>after the sort!
+
+HowMaySteps : 몇 단계 정렬한 결과인지<br>맞혀보세요! | Guess how many steps<br>have been completed!
+
+WhatSorting : 정렬 과정을 보고<br>어떤 정렬인지 맞혀보세요! | Guess the name<br>of the shown algorithm!
+AnswerSort : 버블<br>정렬,삽입<br>정렬,선택<br>정렬 | Bubble<br>Sort,Insertion<br>Sort,Selection<br>Sort
+OtherSort : 힙<br>정렬,합병<br>정렬,퀵<br>정렬,힙<br>정렬,쉘<br>정렬,기수<br>정렬 | Heap<br>Sort,Merge<br>Sort,Quick<br>Sort,Heap<br>Sort,Shell<br>Sort,Radix<br>Sort

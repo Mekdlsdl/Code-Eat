@@ -1,4 +1,4 @@
-using System;
+using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -251,7 +251,8 @@ public class TreeFamily : MonoBehaviour
     }
 
     void ShowResult() {
-        List<string> problems = new List<string> {"부모", "자식", "형제"};
+        // List<string> problems = new List<string> {"부모", "자식", "형제"};
+        string[] problems = LocalizationManager.instance.ReturnTranslatedText("TreeFamily_3").Split(',');
 
         // Debug.Log("treeNames.Count : " + treeNames.Count);
         GameObject node = treeNames[nodeNum].gameObject;
@@ -259,7 +260,15 @@ public class TreeFamily : MonoBehaviour
         Image problemNodeImage = problemNode.GetComponent<Image>();
         Image nodeImage = node.GetComponent<Image>();
 
-        problem.text = String.Format("의 {0} 노드는?", problems[problemNum]);
+        // problem.text = String.Format("의 {0} 노드는?", problems[problemNum]);
+
+        string[] texts = LocalizationManager.instance.ReturnTranslatedText("TreeFamily_2").Split('@');
+        string problemText = texts[0];
+        problem.text = Regex.Replace(problemText, "#", problems[problemNum]);
+        
+        if (texts.Length > 1)
+            problem.fontSize = int.Parse(texts[1]);
+
         problemNodeImage.sprite = nodeImage.sprite;
     }
 }

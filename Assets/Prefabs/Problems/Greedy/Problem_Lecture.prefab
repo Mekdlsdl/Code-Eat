@@ -1983,6 +1983,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8796706451865653977}
   - component: {fileID: 8796706451865653983}
+  - component: {fileID: 8646652663131087013}
   - component: {fileID: 8796706451865653982}
   - component: {fileID: 4863542802643728178}
   - component: {fileID: 4626748838554689597}
@@ -2011,8 +2012,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000095367, y: -17}
-  m_SizeDelta: {x: 717.64, y: 172.29}
+  m_AnchoredPosition: {x: -12.92, y: -17}
+  m_SizeDelta: {x: 1029.99, y: 172.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8796706451865653983
 CanvasRenderer:
@@ -2022,6 +2023,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8796706451865653976}
   m_CullTransparentMesh: 1
+--- !u!114 &8646652663131087013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8796706451865653976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 0
+  tagName: Lecture_Guide
+  location: 
+  targetText: {fileID: 8796706451865653982}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!114 &8796706451865653982
 MonoBehaviour:
   m_ObjectHideFlags: 0
