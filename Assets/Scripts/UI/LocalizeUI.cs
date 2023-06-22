@@ -9,7 +9,7 @@ public class LocalizeUI : MonoBehaviour
     [SerializeField] private string tagName, location;
     [SerializeField] private TextMeshProUGUI targetText;
     [SerializeField] private Image targetImage;
-    [SerializeField] private VideoClip targetVideo;
+    [SerializeField] private VideoPlayer targetVideo;
     
     void Start()
     {
@@ -32,7 +32,7 @@ public class LocalizeUI : MonoBehaviour
                 break;
 
             case UIType.Video:
-                targetVideo = LocalizationManager.instance.ReturnTranslatedVideo(tagName);
+                targetVideo.clip = LocalizationManager.instance.ReturnTranslatedVideo(tagName);
                 break;
             
             default:

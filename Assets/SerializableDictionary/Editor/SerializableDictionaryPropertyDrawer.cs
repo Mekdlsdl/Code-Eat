@@ -5,6 +5,7 @@ using UnityEditor;
 using System.Reflection;
 using System;
 
+[CustomPropertyDrawer(typeof(StringVideoListDictionary))]
 [CustomPropertyDrawer(typeof(StringSpriteListDictionary))]
 public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 {
@@ -550,6 +551,8 @@ public class SerializableDictionaryPropertyDrawer : PropertyDrawer
 	}
 }
 
+
+[CustomPropertyDrawer(typeof(VideoListStorage))]
 
 [CustomPropertyDrawer(typeof(SpriteListStorage))]
 public class SerializableDictionaryStoragePropertyDrawer : PropertyDrawer

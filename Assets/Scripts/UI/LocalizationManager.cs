@@ -10,6 +10,12 @@ public class SpriteListStorage : SerializableDictionary.Storage<List<Sprite>>{}
 [System.Serializable]
 public class StringSpriteListDictionary : SerializableDictionary<string, List<Sprite>, SpriteListStorage>{}
 
+[System.Serializable]
+public class VideoListStorage : SerializableDictionary.Storage<List<VideoClip>>{}
+
+[System.Serializable]
+public class StringVideoListDictionary : SerializableDictionary<string, List<VideoClip>, VideoListStorage>{}
+
 public class LocalizationManager : MonoBehaviour
 {
     public static LocalizationManager instance { get; private set; }
@@ -18,6 +24,7 @@ public class LocalizationManager : MonoBehaviour
     
     public Dictionary<string, string[]> translationDict = new Dictionary<string, string[]>();
     public StringSpriteListDictionary spriteDict;
+    public StringVideoListDictionary videoDict;
 
     void Awake()
     {
@@ -58,6 +65,6 @@ public class LocalizationManager : MonoBehaviour
 
     public VideoClip ReturnTranslatedVideo(string tag)
     {
-        return null;
+        return videoDict[tag][currentLanguage];
     }
 }
