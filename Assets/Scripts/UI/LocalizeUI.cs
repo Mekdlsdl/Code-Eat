@@ -28,11 +28,11 @@ public class LocalizeUI : MonoBehaviour
                 break;
 
             case UIType.Image:
-                targetImage.sprite = Resources.Load($"Tips/{location}/{tagName}") as Sprite;
+                targetImage.sprite = LocalizationManager.instance.ReturnTranslatedImage(tagName);
                 break;
 
             case UIType.Video:
-                targetVideo = Resources.Load($"Tips/{location}/{tagName}") as VideoClip;
+                targetVideo = LocalizationManager.instance.ReturnTranslatedVideo(tagName);
                 break;
             
             default:

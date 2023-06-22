@@ -2,13 +2,22 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Video;
+
+[System.Serializable]
+public class SpriteListStorage : SerializableDictionary.Storage<List<Sprite>>{}
+
+[System.Serializable]
+public class StringSpriteListDictionary : SerializableDictionary<string, List<Sprite>, SpriteListStorage>{}
 
 public class LocalizationManager : MonoBehaviour
 {
     public static LocalizationManager instance { get; private set; }
-    public Dictionary<string, string[]> translationDict = new Dictionary<string, string[]>();
 
     public int currentLanguage;
+    
+    public Dictionary<string, string[]> translationDict = new Dictionary<string, string[]>();
+    public StringSpriteListDictionary spriteDict;
 
     void Awake()
     {
@@ -39,6 +48,16 @@ public class LocalizationManager : MonoBehaviour
 
     public string ReturnTranslatedText(string tag)
     {
-        return LocalizationManager.instance.translationDict[tag][currentLanguage];
+        return translationDict[tag][currentLanguage];
+    }
+
+    public Sprite ReturnTranslatedImage(string tag)
+    {
+        return spriteDict[tag][currentLanguage];
+    }
+
+    public VideoClip ReturnTranslatedVideo(string tag)
+    {
+        return null;
     }
 }

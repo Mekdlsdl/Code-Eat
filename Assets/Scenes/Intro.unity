@@ -35280,6 +35280,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abaf053275fb1e3418e5ea71f5d4d27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLanguage: 0
+  spriteDict:
+    m_keys:
+    - DS1
+    - DS2
+    - DS3
+    - DS4
+    - DS4-1
+    - DS4-2
+    - DS5
+    - DS5-1
+    - DS5-2
+    m_values:
+    - data:
+      - {fileID: 21300000, guid: 89fbc01527ae94d0484b178a29dbf228, type: 3}
+      - {fileID: 21300000, guid: 740145dd885d14c5e8c539eee44ba8ea, type: 3}
+    - data:
+      - {fileID: 21300000, guid: 5f55711a205de47c5ac7ff39dacc25f9, type: 3}
+      - {fileID: 21300000, guid: 6f0ea817df04249c7bb1eb29d4e1de45, type: 3}
+    - data:
+      - {fileID: 21300000, guid: a90ecf5b1f6644bb987ac395a346126c, type: 3}
+      - {fileID: 21300000, guid: 86b6aa31b4260450da29a6915281ab94, type: 3}
+    - data:
+      - {fileID: 21300000, guid: 6888c56dfc49842a1a27ee96413cf025, type: 3}
+      - {fileID: 21300000, guid: 12b3ca051b1bc4465a962231f0da4319, type: 3}
+    - data:
+      - {fileID: 21300000, guid: a2b11fc425c2d4cec945719a417d4757, type: 3}
+      - {fileID: 21300000, guid: aa855565808bd49a583ed5f80f5b7dc2, type: 3}
+    - data:
+      - {fileID: 21300000, guid: b63b33e5640f24cdd9cb92c3d87ad855, type: 3}
+      - {fileID: 21300000, guid: 94f541acba0c44492b891e4f6630ecce, type: 3}
+    - data:
+      - {fileID: 21300000, guid: 85dd55425002948f38e686606e2660a5, type: 3}
+      - {fileID: 21300000, guid: bd53115b3f4304ac8b021accc7cffe7d, type: 3}
+    - data:
+      - {fileID: 21300000, guid: 8d275cc4417dd4813992dbfb77d17e25, type: 3}
+      - {fileID: 21300000, guid: 31f65e01a5daf429bb89dd7b6787ffdd, type: 3}
+    - data:
+      - {fileID: 21300000, guid: 9e5e55c976edc46849e6366efe21bc52, type: 3}
+      - {fileID: 21300000, guid: d85580c87979947dbaf98b8d1d28a468, type: 3}
 --- !u!114 &1721330317
 MonoBehaviour:
   m_ObjectHideFlags: 0
