@@ -35390,6 +35390,7 @@ MonoBehaviour:
     - S3
     - S4
     - G2-2
+    - MapGuide
     m_values:
     - data:
       - {fileID: 32900000, guid: 7e64ae9d2ed5543f58a53af79dc5817f, type: 3}
@@ -35415,6 +35416,9 @@ MonoBehaviour:
     - data:
       - {fileID: 32900000, guid: e4237939ea04c49c394e75013b532273, type: 3}
       - {fileID: 32900000, guid: 4c8958c8f405246f59fc7fb5b9590aa3, type: 3}
+    - data:
+      - {fileID: 32900000, guid: db473f3fdeb984bb0a2c544466f3665f, type: 3}
+      - {fileID: 32900000, guid: f1b6f79e1af9442168ac395b14c8f5b0, type: 3}
 --- !u!114 &1721330317
 MonoBehaviour:
   m_ObjectHideFlags: 0

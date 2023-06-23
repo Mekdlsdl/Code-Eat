@@ -1,4 +1,5 @@
 Language : 한국어 | English
+JoinText : CharacterSelect | CharacterSelect_en
 
 Gamepad_Title : 게임 조작 방법 | CONTROLS
 Gamepad_Cancel : 취소 | Cancel

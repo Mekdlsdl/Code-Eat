@@ -34,6 +34,10 @@ public class LocalizeUI : MonoBehaviour
             case UIType.Video:
                 targetVideo.clip = LocalizationManager.instance.ReturnTranslatedVideo(tagName);
                 break;
+
+            case UIType.Animation:
+                GetComponent<Animator>().Play($"{LocalizationManager.instance.ReturnTranslatedText(tagName)}", -1, 0f);
+                break;
             
             default:
                 break;

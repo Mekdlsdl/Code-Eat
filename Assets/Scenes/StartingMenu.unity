@@ -6595,6 +6595,7 @@ GameObject:
   - component: {fileID: 1201406229}
   - component: {fileID: 1201406228}
   - component: {fileID: 1201406227}
+  - component: {fileID: 1201406230}
   m_Layer: 5
   m_Name: CharacterSelectText
   m_TagString: Untagged
@@ -6681,6 +6682,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201406225}
   m_CullTransparentMesh: 1
+--- !u!114 &1201406230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201406225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ad0ba2a8e4b9e84597b622c9b353e48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiType: 3
+  tagName: JoinText
+  location: 
+  targetText: {fileID: 0}
+  targetImage: {fileID: 0}
+  targetVideo: {fileID: 0}
 --- !u!1 &1262426843
 GameObject:
   m_ObjectHideFlags: 0
