@@ -65,11 +65,13 @@ public class TreeWhatOrder : TreeProblem
             }
         }
 
+        string[] orderNames = { "Preorder", "Inorder", "Postorder", "Levelorder" };
 
         int j = 0;
         foreach (Sprite content in optionContent) {
             Image optionImage = treeOptions[optionIndex[j]].GetComponent<Image>();
-            optionImage.sprite = content;
+            //optionImage.sprite = content;
+            optionImage.sprite = LocalizationManager.instance.ReturnTranslatedImage(orderNames[j]);
             j++;
             if (j >= optionContent.Count) {
                 break;
