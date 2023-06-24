@@ -36,7 +36,9 @@ public class WhatSorting : MonoBehaviour
         //sortType = new List<string>() {"버블\n정렬", "삽입\n정렬", "선택\n정렬"};
         //List<string> otherType = new List<string>() {"힙\n정렬", "합병\n정렬", "퀵\n정렬", "힙\n정렬", "쉘\n정렬", "기수\n정렬"};
 
-        sortType = LocalizationManager.instance.ReturnTranslatedText("AnswerSort").Split(',').ToList();
+        string[] sort_type = LocalizationManager.instance.ReturnTranslatedText("AnswerSort").Split('@');
+        
+        sortType = sort_type[0].Split(',').ToList();
         List<string> otherType = LocalizationManager.instance.ReturnTranslatedText("OtherSort").Split(',').ToList();
 
         int ranIdx = UnityEngine.Random.Range(0,otherType.Count);
@@ -44,6 +46,9 @@ public class WhatSorting : MonoBehaviour
 
         for (int i=0; i<randomOptions.Count; i++) {
             contents[i].text = sortType[randomOptions[i]];
+
+            if (sort_type.Length > 1)
+                contents[i].fontSize = int.Parse(sort_type[1]);
         }
 
         int answerNum = SortingProblem.sortingNum;
