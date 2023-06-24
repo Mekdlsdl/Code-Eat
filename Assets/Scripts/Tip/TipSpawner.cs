@@ -25,11 +25,11 @@ public class TipSpawner : MonoBehaviour
         Spawn(GetRandomPos());
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown("space"))
-            Debug_OpenAllTips();
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown("space"))
+    //         Debug_OpenAllTips();
+    // }
 
     private HashSet<int> GetRandomPos()
     {

@@ -35,11 +35,11 @@ public class GameManager : MonoBehaviour
         gamepadGuide.SetActive(true);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown("left shift") && (ProblemManager.instance != null))
-            StartCoroutine(StartResultMode());
-    }
+    // void Update()
+    // {
+    //     if (Input.GetKeyDown("left shift") && (ProblemManager.instance != null))
+    //         StartCoroutine(StartResultMode());
+    // }
 
     public IEnumerator TryMapSelect()
     {
