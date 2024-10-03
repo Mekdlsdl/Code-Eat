@@ -109,12 +109,12 @@ public class TreeWhatOrder : TreeProblem
         int last = getNode.Count - 1;
         TNode root = getNode[last];
 
-        if (tpScript.generateCount < 3) {
-            orderNum = UnityEngine.Random.Range(1,3);
-        }
-        else {
-            orderNum = random.Next(4);
-        }
+        //if (tpScript.generateCount < 3) {
+        //    orderNum = UnityEngine.Random.Range(1,3);
+        //}
+        //else {
+        orderNum = random.Next(4);
+        //}
         // int orderNum = 3; //테스트용
 
         switch(orderNum) {
